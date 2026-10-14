@@ -36,19 +36,30 @@ export function assemblePacket(
   source: string | null,
 ): Packet {
   const f = item.finding;
-  const proofs = (receipt.proofs ?? []).filter((p) => p.file === f.file && (!f.detail || p.name === f.detail || item.family !== 'proof-gap'));
+  // Filter on raw values; scrubbing happens only after the match.
+  const proofs = (receipt.proofs ?? [])
+    .filter((p) => p.file === f.file && (!f.detail || p.name === f.detail || item.family !== 'proof-gap'))
+    .map((p) => ({ ...p, file: scrub(p.file), name: scrub(p.name) }));
   const withPatch = files.filter((x) => x.patch);
   const own = withPatch.filter((x) => x.filename === f.file);
   const sources = withPatch.filter((x) => x.filename !== f.file && !isTestPath(x.filename) && /\.(js|jsx|ts|tsx|mjs|cjs|mts|cts|vue|svelte|py)$/.test(x.filename));
-  const diff = [...own, ...sources].slice(0, MAX_FILES).map((x) => ({ file: x.filename, patch: scrub(x.patch!.slice(0, MAX_PATCH)) }));
+  // Scrub before slicing so a marker cannot be cut at the limit.
+  const diff = [...own, ...sources].slice(0, MAX_FILES).map((x) => ({ file: scrub(x.filename), patch: scrub(x.patch!).slice(0, MAX_PATCH) }));
+  const finding: Finding = {
+    ...f,
+    title: scrub(f.title),
+    ...(f.file !== undefined ? { file: scrub(f.file) } : {}),
+    ...(f.detail ? { detail: scrub(f.detail) } : {}),
+  };
+  const body = scrub(pr.body ?? '').replace(/\n{3,}/g, '\n\n').slice(0, MAX_BODY);
   return {
     key: item.key,
-    finding: { ...f, title: scrub(f.title), ...(f.detail ? { detail: scrub(f.detail) } : {}) },
+    finding,
     family: item.family,
     proofs,
-    pr: { title: scrub(pr.title), body: scrub((pr.body ?? '').slice(0, MAX_BODY)) },
+    pr: { title: scrub(pr.title), body },
     diff,
-    testSource: f.file && source !== null ? { file: f.file, ...sourceWindow(scrub(source), f.line) } : null,
+    testSource: f.file && source !== null ? { file: scrub(f.file), ...sourceWindow(scrub(source), f.line) } : null,
     baseRun: proofs.length ? proofs.map((p) => `${p.name}: before ${p.before}, after ${p.after}`).join('; ') : 'n/a',
   };
 }
