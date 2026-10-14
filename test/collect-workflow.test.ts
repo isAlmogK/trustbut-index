@@ -54,16 +54,58 @@ describe('collect.yml', () => {
 });
 
 describe('run.yml ingest post-processing', () => {
-  it('aggregates after ingest and writes the checklist for pilot dates, before the commit', async () => {
+  const ingestJob = async () => {
     const yml = await load('run.yml');
-    const job = yml.slice(yml.indexOf('\n  ingest:'));
-    const ingestAt = job.indexOf('src/cli.ts ingest');
-    const aggAt = job.indexOf('src/cli.ts aggregate --manifest "$MANIFEST" --date "$DATE"');
-    const commitAt = job.indexOf('name: Commit results');
-    expect(ingestAt).toBeGreaterThan(0);
-    expect(aggAt).toBeGreaterThan(ingestAt);
-    expect(commitAt).toBeGreaterThan(aggAt);
-    expect(job).toContain('case "$DATE" in pilot-*) npx tsx src/cli.ts checklist --manifest "$MANIFEST" --date "$DATE" ;; esac');
-    expect(job).toMatch(/for attempt in 1 2 3 4 5; do/);
+    return yml.slice(yml.indexOf('\n  ingest:'));
+  };
+  it('commits raw per-PR files first, without the derived files', async () => {
+    const job = await ingestJob();
+    const raw = job.slice(job.indexOf('name: Commit raw results'), job.indexOf('name: Aggregate'));
+    const adds = raw.split('\n').filter((l) => /git add /.test(l));
+    expect(adds).toEqual(['          git add "results/$DATE"/*.run.json "results/$DATE"/*.receipt.json']);
+    expect(raw).not.toMatch(/aggregate\.json|pilot-check/);
+    expect(raw).toMatch(/for attempt in 1 2 3 4 5; do/);
+    expect(raw).toMatch(/git pull --rebase && git push/);
+  });
+  it('recomputes aggregate and checklist from the latest main after the raw push', async () => {
+    const job = await ingestJob();
+    const rawAt = job.indexOf('name: Commit raw results');
+    const derivedAt = job.indexOf('name: Aggregate');
+    expect(job.indexOf('src/cli.ts ingest')).toBeLessThan(rawAt);
+    expect(derivedAt).toBeGreaterThan(rawAt);
+    const derived = job.slice(derivedAt);
+    expect(derived.indexOf('git reset --hard origin/main')).toBeLessThan(derived.indexOf('src/cli.ts aggregate --manifest "$MANIFEST" --date "$DATE"'));
+    expect(derived).toContain('case "$DATE" in pilot-*) npx tsx src/cli.ts checklist --manifest "$MANIFEST" --date "$DATE" ;; esac');
+    expect(derived).toContain('git add "results/$DATE/aggregate.json"');
+    expect(derived).toMatch(/for attempt in 1 2 3 4 5; do/);
+    expect(derived).toMatch(/git push/);
+    expect(job).not.toMatch(/write different files/);
+  });
+  it('never puts inputs or secrets inside a run: script', async () => {
+    const yml = await load('run.yml');
+    const lines = yml.split('\n');
+    let inRun = false;
+    let indent = 0;
+    const bad: string[] = [];
+    for (const l of lines) {
+      const m = /^(\s*)(?:- )?run:\s*(.*)$/.exec(l);
+      if (m) {
+        indent = m[1]!.length;
+        inRun = m[2] === '|' || m[2] === '';
+        if (/\$\{\{\s*(inputs|secrets)\./.test(m[2]!)) bad.push(l);
+        continue;
+      }
+      if (inRun) {
+        if (l.trim() !== '' && l.length - l.trimStart().length <= indent) inRun = false;
+        else if (/\$\{\{\s*(inputs|secrets)\./.test(l)) bad.push(l);
+      }
+    }
+    expect(bad).toEqual([]);
+  });
+  it('collect fails fast unless run from main', async () => {
+    const yml = await load('collect.yml');
+    expect(yml).toContain('GITHUB_REF" != "refs/heads/main"');
+    expect(yml).toContain('::error::Run collect from main');
+    expect(yml.indexOf('Run collect from main')).toBeLessThan(yml.indexOf('npm ci'));
   });
 });

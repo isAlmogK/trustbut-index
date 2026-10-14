@@ -42,6 +42,8 @@ Then:
 
 Optional inputs: `-f until=YYYY-MM-DD` (last merge date, default today UTC), `-f days=N` (window length, default 90).
 
+A failed collect run can be rerun. Rerun with the same `until`, because the stale and window checks use the current time, so a rerun on a different day can select a different manifest. Delete a partial `results/<name>/` only if you intend to start that collection over.
+
 ## Run the full study
 
 Tag `prereg-v1` first, because the method is frozen at that tag:

@@ -143,27 +143,44 @@ jobs:
           DATE: ${{ inputs.date }}
           MANIFEST: ${{ inputs.manifest }}
         run: npx tsx src/cli.ts ingest --artifacts artifacts --date "$DATE" --manifest "$MANIFEST"
-      - name: Aggregate and, for a pilot, write the checklist
-        env:
-          DATE: ${{ inputs.date }}
-          MANIFEST: ${{ inputs.manifest }}
-        run: |
-          npx tsx src/cli.ts aggregate --manifest "$MANIFEST" --date "$DATE"
-          case "$DATE" in pilot-*) npx tsx src/cli.ts checklist --manifest "$MANIFEST" --date "$DATE" ;; esac
-      - name: Commit results
+      - name: Commit raw results
         env:
           DATE: ${{ inputs.date }}
           BATCH: ${{ inputs.batch }}
         run: |
           git config user.name "trustbut-index"
           git config user.email "actions@users.noreply.github.com"
-          git add results
+          shopt -s nullglob
+          git add "results/$DATE"/*.run.json "results/$DATE"/*.receipt.json
           git diff --cached --quiet && exit 0
           git commit -m "data: results $DATE batch $BATCH"
-          # Batches ingest in parallel and write different files, so a rejected push only needs a rebase.
+          # Per-PR files have distinct names across batches, so a rejected push only needs a rebase.
           for attempt in 1 2 3 4 5; do
             if git pull --rebase && git push; then exit 0; fi
             git rebase --abort 2>/dev/null || true
+            sleep "$((attempt * 5))"
+          done
+          exit 1
+      - name: Aggregate and, for a pilot, write the checklist
+        env:
+          DATE: ${{ inputs.date }}
+          MANIFEST: ${{ inputs.manifest }}
+          BATCH: ${{ inputs.batch }}
+        run: |
+          # aggregate.json and pilot-check.md cover every batch present on main. Parallel batches would conflict on them,
+          # so each attempt recomputes them from the latest main; the last ingest to finish writes the complete set.
+          git config user.name "trustbut-index"
+          git config user.email "actions@users.noreply.github.com"
+          for attempt in 1 2 3 4 5; do
+            git fetch origin main
+            git reset --hard origin/main
+            npx tsx src/cli.ts aggregate --manifest "$MANIFEST" --date "$DATE"
+            case "$DATE" in pilot-*) npx tsx src/cli.ts checklist --manifest "$MANIFEST" --date "$DATE" ;; esac
+            git add "results/$DATE/aggregate.json"
+            if [ -f "results/$DATE/pilot-check.md" ]; then git add "results/$DATE/pilot-check.md"; fi
+            git diff --cached --quiet && exit 0
+            git commit -m "data: aggregate $DATE after batch $BATCH"
+            if git push; then exit 0; fi
             sleep "$((attempt * 5))"
           done
           exit 1
