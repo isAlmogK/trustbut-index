@@ -2,6 +2,7 @@ import { Command } from 'commander';
 import { registerAggregate } from './aggregate/command.js';
 import { registerCollect } from './collect/command.js';
 import { registerLabel } from './label/command.js';
+import { registerPilot } from './pilot/command.js';
 import { registerReport } from './report/command.js';
 import { registerRun } from './run/command.js';
 
@@ -12,5 +13,6 @@ registerRun(program);
 registerAggregate(program);
 registerLabel(program);
 registerReport(program);
+registerPilot(program);
 
 await program.parseAsync(process.argv);
