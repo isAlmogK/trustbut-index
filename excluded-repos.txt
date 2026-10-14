@@ -1,0 +1,1 @@
+# Repos excluded from the study at their maintainers' request, one owner/name per line.

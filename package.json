@@ -1,0 +1,23 @@
+{
+  "name": "trustbut-index",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit",
+    "cli": "tsx src/cli.ts",
+    "review": "tsx src/cli.ts label review"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.133.0",
+    "@resvg/resvg-js": "^2.6.2",
+    "commander": "^15.0.0",
+    "execa": "^10.1.1",
+    "semver": "^7.8.5",
+    "smol-toml": "^1.9.1",
+    "tsx": "^4.23.15"
+  }
+}
