@@ -109,3 +109,20 @@ describe('run.yml ingest post-processing', () => {
     expect(yml.indexOf('Run collect from main')).toBeLessThan(yml.indexOf('npm ci'));
   });
 });
+
+describe('all workflows', () => {
+  it('never use the runner context in job-level env (GitHub rejects the file)', async () => {
+    for (const f of ['run.yml', 'collect.yml', 'pages.yml', 'ci.yml']) {
+      const lines = (await load(f)).split('\n');
+      const bad: string[] = [];
+      let inJobEnv = false;
+      for (const l of lines) {
+        if (/^ {4}env:\s*$/.test(l)) { inJobEnv = true; continue; }
+        if (inJobEnv && !/^ {6,}\S/.test(l)) inJobEnv = false;
+        if (inJobEnv && /\$\{\{\s*runner\./.test(l)) bad.push(l.trim());
+      }
+      expect({ f, bad }).toEqual({ f, bad: [] });
+    }
+  });
+});
+

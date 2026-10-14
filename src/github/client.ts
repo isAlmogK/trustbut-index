@@ -83,7 +83,7 @@ export class GitHub implements GitHubApi {
   }
 
   private async throttleSearch(): Promise<void> {
-    const wait = this.lastSearch + (this.opts.searchIntervalMs ?? 2100) - this.now();
+    const wait = this.lastSearch + (this.opts.searchIntervalMs ?? 3000) - this.now();
     if (wait > 0) await this.sleep(wait);
     this.lastSearch = this.now();
   }
@@ -100,22 +100,25 @@ export class GitHub implements GitHubApi {
       });
       if (res.ok) return res.json();
       if (res.status === 404) throw new NotFoundError(path);
-      const wait = this.retryWait(res);
+      const body = await res.text();
+      const wait = this.retryWait(res, body, attempt);
       if (wait !== null && attempt < max) {
         await this.sleep(wait);
         continue;
       }
-      throw new Error(`GitHub ${res.status} for ${path}: ${await res.text()}`);
+      throw new Error(`GitHub ${res.status} for ${path}: ${body}`);
     }
   }
 
-  private retryWait(res: Response): number | null {
-    const after = res.headers.get('retry-after');
-    if (after) return Number(after) * 1000;
+  private retryWait(res: Response, body: string, attempt: number): number | null {
+    const after = Number(res.headers.get('retry-after'));
+    if (res.headers.get('retry-after') && Number.isFinite(after) && after >= 0) return after * 1000;
     if ((res.status === 403 || res.status === 429) && res.headers.get('x-ratelimit-remaining') === '0') {
       const reset = Number(res.headers.get('x-ratelimit-reset')) * 1000;
       return Math.max(reset - this.now(), 0) + 1000;
     }
+    // Secondary rate limits come without usable headers; GitHub asks for at least a minute, then exponential backoff.
+    if ((res.status === 403 || res.status === 429) && /secondary rate limit/i.test(body)) return 60_000 * 2 ** attempt;
     if (res.status >= 500) return 2000;
     return null;
   }

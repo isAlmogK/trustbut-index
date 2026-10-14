@@ -55,8 +55,8 @@ jobs:
       matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
     env:
       ENTRY: ${{ matrix.entry }}
-      WORK: ${{ runner.temp }}/work
-      OUT: ${{ runner.temp }}/out
+      # WORK and OUT default to $RUNNER_TEMP/work and $RUNNER_TEMP/out (src/run/job.ts); the runner
+      # context isn't available in job-level env.
       CI: 'true'
     steps:
       - uses: actions/checkout@v4
