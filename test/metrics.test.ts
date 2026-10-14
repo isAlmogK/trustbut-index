@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { GroupStats } from '../src/aggregate/index.js';
 import { wilson } from '../src/aggregate/stats.js';
-import { calibration, hitRate, labelStats } from '../src/label/metrics.js';
+import { calibration, hitRate, labelStats, latestFinals } from '../src/label/metrics.js';
 import type { FinalLabel } from '../src/label/review.js';
 import type { SampleItem } from '../src/label/sample.js';
 import type { Label } from '../src/types.js';
@@ -41,5 +41,28 @@ describe('hitRate', () => {
     const h = hitRate(allAgents, sample, finals);
     expect(h.prsWithReal).toMatchObject({ k: 1, n: 3 });
     expect(h.p).toBeCloseTo(0.4 / 3, 6);
+  });
+});
+
+describe('latest label per finding', () => {
+  const relabelSample = [item('x', 'p1', 'agent', 'proof-gap'), item('z', 'p2', 'agent', 'escapes', true)];
+  const relabelFinals = [
+    fin('x', 'real', 'real'), fin('x', 'false', 'real'),
+    fin('z', 'true-but-benign', 'real', true), fin('z', 'true-but-benign', 'real', true),
+  ];
+
+  it('latestFinals keeps the later label, one per key, in first-appearance order', () => {
+    const latest = latestFinals(relabelFinals);
+    expect(latest.map((f) => f.key)).toEqual(['x', 'z']);
+    expect(latest.find((f) => f.key === 'x')!.label).toBe('false');
+  });
+
+  it('hitRate does not count a relabelled finding as real', () => {
+    const allAgents = { anyCounted: wilson(1, 1) } as GroupStats;
+    expect(hitRate(allAgents, relabelSample, relabelFinals).prsWithReal).toMatchObject({ k: 0, n: 2 });
+  });
+
+  it('calibration counts a double-posted blind key once', () => {
+    expect(calibration(relabelSample, relabelFinals, []).blind).toMatchObject({ k: 0, n: 1 });
   });
 });

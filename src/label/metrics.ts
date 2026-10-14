@@ -17,8 +17,15 @@ export interface LabelStats {
   accuracy: RateCI;
 }
 
+/** Keeps the last line per finding key, in first-appearance order. A repeat POST in the review page is a relabel. */
+export function latestFinals(finals: FinalLabel[]): FinalLabel[] {
+  const last = new Map<string, FinalLabel>();
+  for (const f of finals) last.set(f.key, f);
+  return [...last.values()];
+}
+
 export function labelStats(sample: SampleItem[], finals: FinalLabel[]): LabelStats[] {
-  const byKey = new Map(finals.map((f) => [f.key, f]));
+  const byKey = new Map(latestFinals(finals).map((f) => [f.key, f]));
   const out: LabelStats[] = [];
   for (const group of ['all', 'agent', 'human'] as const) {
     for (const family of ['all', ...FAMILIES] as const) {
@@ -40,7 +47,8 @@ export interface Calibration {
   overruled: RateCI;
 }
 
-export function calibration(sample: SampleItem[], finals: FinalLabel[], drafts: Draft[]): Calibration {
+export function calibration(sample: SampleItem[], latest: FinalLabel[], drafts: Draft[]): Calibration {
+  const finals = latestFinals(latest);
   const draftOf = new Map(drafts.map((d) => [d.key, d.label]));
   const blindKeys = new Set(sample.filter((s) => s.blind).map((s) => s.key));
   const withDraft = finals.map((f) => ({ ...f, draft: f.draftLabel ?? draftOf.get(f.key) ?? null })).filter((f) => f.draft);
@@ -61,7 +69,7 @@ export interface HitRate {
 }
 
 export function hitRate(allAgents: GroupStats, sample: SampleItem[], finals: FinalLabel[]): HitRate {
-  const real = new Set(finals.filter((f) => f.label === 'real').map((f) => f.key));
+  const real = new Set(latestFinals(finals).filter((f) => f.label === 'real').map((f) => f.key));
   const prs = new Map<string, boolean>();
   for (const s of sample.filter((x) => x.group === 'agent')) prs.set(s.prId, (prs.get(s.prId) ?? false) || real.has(s.key));
   const prsWithReal = wilson([...prs.values()].filter(Boolean).length, prs.size);
