@@ -35,7 +35,7 @@ describe('missing inputs are user errors', () => {
   });
 
   it('matrix, aggregate and label sample fail on a missing manifest', async () => {
-    for (const args of [['matrix', '--manifest', 'm.jsonl'], ['aggregate', '--manifest', 'm.jsonl', '--date', 'd'], ['label', 'sample', '--manifest', 'm.jsonl', '--date', 'd']]) {
+    for (const args of [['matrix', '--manifest', 'm.jsonl'], ['aggregate', '--manifest', 'm.jsonl', '--date', '2026-01-01'], ['label', 'sample', '--manifest', 'm.jsonl', '--date', 'd']]) {
       const r = await cli(args);
       expect(r.exitCode, args.join(' ')).not.toBe(0);
       expect(r.stderr).toContain('m.jsonl does not exist');
