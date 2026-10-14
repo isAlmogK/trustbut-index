@@ -9,7 +9,7 @@
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
     "cli": "tsx src/cli.ts",
-    "review": "tsx src/cli.ts label review"
+    "review": "tsx src/cli.ts label review --date"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.133.0",

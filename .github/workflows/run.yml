@@ -1,0 +1,162 @@
+name: run
+# Runs trustbut on one batch of a manifest. The `pr` jobs execute untrusted code from the studied
+# repos: they get read-only access to this public repo, no secrets, and no persisted credentials.
+# Only `ingest` can write, and it never executes anything from a studied repo.
+on:
+  workflow_dispatch:
+    inputs:
+      manifest:
+        description: manifest path, e.g. manifests/2026-11-02.jsonl
+        required: true
+      batch:
+        description: batch index (250 PRs per batch)
+        required: true
+        default: '0'
+      date:
+        description: results folder name, e.g. 2026-11-02
+        required: true
+
+permissions: {}
+
+env:
+  TRUSTBUT_SPEC: '0.4.0'
+
+jobs:
+  plan:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    outputs:
+      matrix: ${{ steps.m.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - id: m
+        env:
+          MANIFEST: ${{ inputs.manifest }}
+          BATCH: ${{ inputs.batch }}
+        run: echo "matrix=$(npx tsx src/cli.ts matrix --manifest "$MANIFEST" --batch "$BATCH")" >> "$GITHUB_OUTPUT"
+
+  pr:
+    needs: plan
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    permissions:
+      contents: read
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    env:
+      ENTRY: ${{ matrix.entry }}
+      WORK: ${{ runner.temp }}/work
+      OUT: ${{ runner.temp }}/out
+      CI: 'true'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: index
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Pin Node 22 and trustbut for the study's own scripts
+        run: |
+          echo "NODE22=$(which node)" >> "$GITHUB_ENV"
+          npm install --prefix "$RUNNER_TEMP/tb" "trustbut@$TRUSTBUT_SPEC"
+          echo "TB_CLI=$RUNNER_TEMP/tb/node_modules/trustbut/dist/cli.js" >> "$GITHUB_ENV"
+          cd index && npm ci
+      - id: prep
+        continue-on-error: true
+        working-directory: index
+        run: '"$NODE22" --import tsx src/cli.ts job prepare'
+      - if: steps.prep.outputs.has_node == 'true'
+        continue-on-error: true
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.prep.outputs.node_version }}
+      - if: steps.prep.outputs.pm == 'pnpm' || steps.prep.outputs.pm == 'yarn' || steps.prep.outputs.pm == 'yarn-berry'
+        continue-on-error: true
+        working-directory: ${{ runner.temp }}/work/repo
+        run: corepack enable
+      - if: steps.prep.outputs.pm == 'bun'
+        continue-on-error: true
+        uses: oven-sh/setup-bun@v2
+      - if: steps.prep.outputs.has_python == 'true'
+        continue-on-error: true
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ steps.prep.outputs.python_version }}
+      - if: steps.prep.outputs.has_python == 'true'
+        continue-on-error: true
+        uses: astral-sh/setup-uv@v6
+      - if: steps.prep.outputs.has_python == 'true'
+        continue-on-error: true
+        run: |
+          uv venv "$RUNNER_TEMP/venv" --python "$(which python)"
+          echo "VIRTUAL_ENV=$RUNNER_TEMP/venv" >> "$GITHUB_ENV"
+          echo "$RUNNER_TEMP/venv/bin" >> "$GITHUB_PATH"
+      - continue-on-error: true
+        working-directory: index
+        run: '"$NODE22" --import tsx src/cli.ts job install'
+      - continue-on-error: true
+        working-directory: index
+        run: '"$NODE22" --import tsx src/cli.ts job verify'
+      - if: always()
+        working-directory: index
+        run: '"$NODE22" --import tsx src/cli.ts job record'
+      - if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: result-${{ matrix.id }}
+          path: ${{ runner.temp }}/out
+          if-no-files-found: warn
+          retention-days: 7
+
+  ingest:
+    needs: pr
+    if: always()
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: |
+          npm install --prefix "$RUNNER_TEMP/tb" "trustbut@$TRUSTBUT_SPEC"
+          echo "TB_CLI=$RUNNER_TEMP/tb/node_modules/trustbut/dist/cli.js" >> "$GITHUB_ENV"
+          echo "NODE22=$(which node)" >> "$GITHUB_ENV"
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
+        with:
+          pattern: result-*
+          path: artifacts
+      - env:
+          DATE: ${{ inputs.date }}
+          MANIFEST: ${{ inputs.manifest }}
+        run: npx tsx src/cli.ts ingest --artifacts artifacts --date "$DATE" --manifest "$MANIFEST"
+      - name: Commit results
+        env:
+          DATE: ${{ inputs.date }}
+          BATCH: ${{ inputs.batch }}
+        run: |
+          git config user.name "trustbut-index"
+          git config user.email "actions@users.noreply.github.com"
+          git add results
+          git diff --cached --quiet && exit 0
+          git commit -m "data: results $DATE batch $BATCH"
+          # Batches ingest in parallel and write different files, so a rejected push only needs a rebase.
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase && git push; then exit 0; fi
+            git rebase --abort 2>/dev/null || true
+            sleep "$((attempt * 5))"
+          done
+          exit 1

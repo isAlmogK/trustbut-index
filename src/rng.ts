@@ -33,3 +33,8 @@ export function shuffle<T>(xs: readonly T[], rand: () => number): T[] {
   }
   return out;
 }
+
+/** Plain UTF-16 code-unit order. Unlike localeCompare, it is the same on every machine and locale. */
+export function byCodeUnit(a: string, b: string): number {
+  return a < b ? -1 : a > b ? 1 : 0;
+}
