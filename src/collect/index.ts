@@ -1,4 +1,5 @@
 import { NotFoundError, readRepoFile, type GitHubApi } from '../github/client.js';
+import { byCodeUnit } from '../rng.js';
 import { AGENT_IDS, type ManifestEntry, type PrDetail } from '../types.js';
 import { AGENTS, attribute, extractModel, hasAgentMarker } from './agents.js';
 import {
@@ -142,7 +143,7 @@ export async function collect(gh: GitHubApi, o: CollectOptions): Promise<{ entri
 
   const candidates: Candidate[] = [];
   let ambiguous = 0;
-  for (const k of [...hits.keys()].sort()) {
+  for (const k of [...hits.keys()].sort(byCodeUnit)) {
     const { repo, number } = hits.get(k)!;
     const facts = await qualifiedRepo(repo);
     if (!facts) continue;
@@ -177,7 +178,7 @@ export async function collect(gh: GitHubApi, o: CollectOptions): Promise<{ entri
       const f = repoCache.get(h.repo)!;
       return toEntry(h, { group: 'human', agent: null, model: 'unknown', evidence: [], repoStars: f.stars, repoLanguage: f.language, selectedAt });
     }),
-  ].sort((a, b) => a.id.localeCompare(b.id, 'en', { numeric: true }));
+  ].sort((a, b) => byCodeUnit(a.id, b.id));
 
   const count = (xs: { agent: string }[]) => Object.fromEntries(AGENT_IDS.map((a) => [a, xs.filter((x) => x.agent === a).length]));
   const selectedCounts = count(selected);

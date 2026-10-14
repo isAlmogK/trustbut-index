@@ -41,3 +41,19 @@ describe('sampleFindings', () => {
     expect(again.map((x) => x.key)).toEqual(s.map((x) => x.key));
   });
 });
+
+describe('sampleFindings golden order', () => {
+  const at = (repo: string, n: number, agent: AgentId | null, findings: number): PrResult => ({
+    entry: { id: `${repo}#${n}`, repo, pr: n, group: agent ? 'agent' : 'human', agent } as PrResult['entry'],
+    run: { status: 'ran' } as PrResult['run'],
+    receipt: {
+      specVersion: '1.0', producer: { name: 'trustbut', version: '0.4.0' }, subject: { base: 'b', head: 'h' }, verdict: 'warn',
+      findings: Array.from({ length: findings }, () => ({ id: 'escape-added', severity: 'warn' as const, title: 'e' })),
+    },
+  });
+  it('pins the key order for mixed-case repos and #9/#10 ids (code-unit sort, seed prereg-v1)', () => {
+    const results = [at('a/x', 9, 'copilot', 1), at('a/x', 10, 'copilot', 2), at('B/y', 1, 'codex', 1), at('_z/w', 3, 'codex', 1), at('a/x', 11, null, 1), at('Z/q', 2, null, 1)];
+    const keys = sampleFindings(results, { seed: 'prereg-v1', insufficient: new Set(), blindCount: 2 }).map((s) => s.key);
+    expect(keys).toEqual(['B__y__1:0', '_z__w__3:0', 'Z__q__2:0', 'a__x__10:1', 'a__x__11:0', 'a__x__10:0', 'a__x__9:0']);
+  });
+});

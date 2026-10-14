@@ -1,5 +1,6 @@
 import { join } from 'node:path';
 import { readJsonOr, readJsonl } from '../jsonl.js';
+import { byCodeUnit } from '../rng.js';
 import { AGENT_IDS, fileId, type Family, type ManifestEntry, type Receipt, type RunRecord } from '../types.js';
 import { FAMILIES, familiesOf } from './families.js';
 import { newcombe, wilson, type DiffCI, type RateCI } from './stats.js';
@@ -79,7 +80,7 @@ export function aggregate(date: string, results: PrResult[], minPerAgent = 30): 
   const compare = (metric: Comparison['metric'], pick: (g: GroupStats) => RateCI): Comparison => ({
     metric, agents: pick(allAgents), human: pick(human), diff: newcombe(pick(allAgents), pick(human)),
   });
-  const versions = [...new Set(results.map((r) => r.receipt?.producer.version).filter((v): v is string => Boolean(v)))].sort();
+  const versions = [...new Set(results.map((r) => r.receipt?.producer.version).filter((v): v is string => Boolean(v)))].sort(byCodeUnit);
   return {
     date,
     trustbutVersions: versions,

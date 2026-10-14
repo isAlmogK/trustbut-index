@@ -1,4 +1,4 @@
-import { rngFor, shuffle } from '../rng.js';
+import { byCodeUnit, rngFor, shuffle } from '../rng.js';
 import { AGENT_IDS, type AgentId, type ManifestEntry, type PrDetail } from '../types.js';
 
 export interface Candidate {
@@ -18,7 +18,7 @@ export function selectAgentPrs(cands: Candidate[], opts: { perAgent: number; per
   for (const agent of AGENT_IDS) {
     const mine = cands
       .filter((c) => c.agent === agent)
-      .sort((a, b) => key(a.pr.repo, a.pr.number).localeCompare(key(b.pr.repo, b.pr.number)));
+      .sort((a, b) => byCodeUnit(key(a.pr.repo, a.pr.number), key(b.pr.repo, b.pr.number)));
     queues.set(agent, shuffle(mine, rngFor(`${opts.seed}:${agent}`)));
   }
   const perAgent = new Map<AgentId, number>();
@@ -62,7 +62,7 @@ export async function matchHumans(
   for (const c of selected) need.set(c.pr.repo, (need.get(c.pr.repo) ?? 0) + 1);
   const humans: PrDetail[] = [];
   let shortfall = 0;
-  for (const repo of [...need.keys()].sort()) {
+  for (const repo of [...need.keys()].sort(byCodeUnit)) {
     const k = need.get(repo)!;
     const pool = (pools.get(repo) ?? [])
       .filter((p) => p.authorType === 'User' && p.mergedAt && !agentNumbers.has(key(repo, p.number)))

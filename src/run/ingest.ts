@@ -1,6 +1,7 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 import { writeJson } from '../jsonl.js';
+import { byCodeUnit } from '../rng.js';
 import type { RunRecord } from '../types.js';
 import { isRunRecord, looksLikeReceipt } from './status.js';
 
@@ -37,7 +38,7 @@ export async function ingest(
   let written = 0;
   let dirs: string[];
   try {
-    dirs = (await readdir(artifactsDir)).filter((d) => d.startsWith('result-')).sort();
+    dirs = (await readdir(artifactsDir)).filter((d) => d.startsWith('result-')).sort(byCodeUnit);
   } catch {
     return { written: 0, rejected: [] };
   }

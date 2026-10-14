@@ -1,5 +1,6 @@
 import { createHash } from 'node:crypto';
 import Anthropic from '@anthropic-ai/sdk';
+import { byCodeUnit } from '../rng.js';
 import { LABELS, type Label } from '../types.js';
 import type { Packet } from './packet.js';
 
@@ -83,5 +84,5 @@ export async function collectBatch(
     const key = ids[r.custom_id];
     if (key) drafts.push(parseResult(key, r.result));
   }
-  return drafts.sort((a, b) => a.key.localeCompare(b.key));
+  return drafts.sort((a, b) => byCodeUnit(a.key, b.key));
 }

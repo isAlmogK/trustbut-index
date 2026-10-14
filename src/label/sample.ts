@@ -1,6 +1,6 @@
 import { countedFindings } from '../aggregate/families.js';
 import type { PrResult } from '../aggregate/index.js';
-import { rngFor, shuffle } from '../rng.js';
+import { byCodeUnit, rngFor, shuffle } from '../rng.js';
 import { AGENT_IDS, fileId, type AgentId, type Family, type Finding, type Group } from '../types.js';
 
 export interface SampleItem {
@@ -32,7 +32,7 @@ export function sampleFindings(
   const { seed, insufficient, agentTarget = 150, humanTarget = 50, perPr = 5, blindCount = 20 } = opts;
   const eligible = results
     .filter((r) => r.run?.status === 'ran' && r.receipt && countedFindings(r.receipt).length > 0)
-    .sort((a, b) => a.entry.id.localeCompare(b.entry.id, 'en', { numeric: true }));
+    .sort((a, b) => byCodeUnit(a.entry.id, b.entry.id));
 
   const picked: Pending[] = [];
   const queues = AGENT_IDS.filter((a) => !insufficient.has(a)).map((a) =>
@@ -56,7 +56,7 @@ export function sampleFindings(
     picked.push(...items);
     humanCount += items.length;
   }
-  return shuffle(picked.sort((a, b) => a.key.localeCompare(b.key)), rngFor(`${seed}:label:order`)).map((x, order) => ({
+  return shuffle(picked.sort((a, b) => byCodeUnit(a.key, b.key)), rngFor(`${seed}:label:order`)).map((x, order) => ({
     ...x, order, blind: order < blindCount,
   }));
 }
