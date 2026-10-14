@@ -32,3 +32,16 @@ describe('svg primitives', () => {
     expect(s.match(/<rect class="part"/g)!.length).toBe(2);
   });
 });
+
+describe('long labels', () => {
+  const long = 'Test passes without the change';
+  it('wraps long dot-plot column headers onto separate lines', () => {
+    const svg = dotPlot([{ label: 'copilot', dimmed: false }], [long], [[null]], CSS_PALETTE, () => '#000');
+    expect(svg.match(/<tspan/g)!.length).toBeGreaterThan(1);
+    expect(svg).toContain('Test passes');
+  });
+  it('leaves room for the longest family name in stacked bars', () => {
+    const svg = stackedBars([{ label: long, parts: [{ name: 'real', value: 1, color: '#000' }] }], CSS_PALETTE);
+    expect(Number(svg.match(/class="part" x="([\d.]+)"/)![1])).toBeGreaterThanOrEqual(220);
+  });
+});

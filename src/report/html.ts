@@ -77,10 +77,10 @@ const STYLE = `
 @media (prefers-color-scheme: dark){:root{--bg:#121212;--fg:#ececec;--muted:#a3a3a3;--grid:#2c2c2c;--agent:#7ea2ff;--human:#e0a060;--real:#66bb6a;--benign:#8a8a8a;--false:#ef5350;--pass:#66bb6a;--miss:#ef5350;--card:#1c1c1c}}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,sans-serif}
 main{max-width:980px;margin:0 auto;padding:24px 16px 64px}h1{font-size:28px;line-height:1.2}h2{margin-top:48px}
-.muted{color:var(--muted)}.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.muted{color:var(--muted)}a{color:var(--agent)}.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
 .tile{background:var(--card);border-radius:10px;padding:16px;border-left:6px solid var(--miss)}.tile.pass{border-left-color:var(--pass)}
 .tname{font-weight:600}.tval{font-size:40px;font-weight:700}.tci,.ttarget{color:var(--muted);font-size:14px}
-.ex{background:var(--card);border-radius:10px;padding:12px 16px;margin:8px 0}figure{margin:0}svg{max-width:100%;height:auto}
+.ex{background:var(--card);border-radius:10px;padding:12px 16px;margin:8px 0}figure{margin:0}svg{max-width:100%;height:auto}figure{overflow-x:auto}figure svg{min-width:560px}
 .legend span{display:inline-block;margin-right:16px}.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}`;
 
 export function renderReport(d: ReportData): string {

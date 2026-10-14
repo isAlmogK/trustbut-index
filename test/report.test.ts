@@ -49,6 +49,8 @@ describe('renderReport', () => {
     expect(order.every((i) => i > 0)).toBe(true);
     expect([...order].sort((a, b) => a - b)).toEqual(order);
     expect(html).toContain('prefers-color-scheme: dark');
+    expect(html).toMatch(/a\{color:var\(--agent\)\}/);
+    expect(html).toContain('figure{overflow-x:auto}figure svg{min-width:560px}');
     expect(html).not.toMatch(/<script[^>]+src=/);
     expect(html).toContain('Precision');
     expect(html).toContain('roughly 90% joint coverage');
