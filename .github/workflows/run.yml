@@ -38,7 +38,10 @@ jobs:
           cache: npm
       - run: npm ci
       - id: m
-        run: echo "matrix=$(npx tsx src/cli.ts matrix --manifest '${{ inputs.manifest }}' --batch '${{ inputs.batch }}')" >> "$GITHUB_OUTPUT"
+        env:
+          MANIFEST: ${{ inputs.manifest }}
+          BATCH: ${{ inputs.batch }}
+        run: echo "matrix=$(npx tsx src/cli.ts matrix --manifest "$MANIFEST" --batch "$BATCH")" >> "$GITHUB_OUTPUT"
 
   pr:
     needs: plan
@@ -140,13 +143,18 @@ jobs:
         with:
           pattern: result-*
           path: artifacts
-      - run: npx tsx src/cli.ts ingest --artifacts artifacts --date '${{ inputs.date }}'
+      - env:
+          DATE: ${{ inputs.date }}
+        run: npx tsx src/cli.ts ingest --artifacts artifacts --date "$DATE"
       - name: Commit results
+        env:
+          DATE: ${{ inputs.date }}
+          BATCH: ${{ inputs.batch }}
         run: |
           git config user.name "trustbut-index"
           git config user.email "actions@users.noreply.github.com"
           git add results
           git diff --cached --quiet && exit 0
-          git commit -m "data: results ${{ inputs.date }} batch ${{ inputs.batch }}"
+          git commit -m "data: results $DATE batch $BATCH"
           git pull --rebase
           git push

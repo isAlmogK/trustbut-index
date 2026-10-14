@@ -8,7 +8,7 @@ import { fsFiles, inferRecipe } from './recipe.js';
 import { TIMEOUT_EXIT, classify, looksLikeReceipt } from './status.js';
 
 const INSTALL_BUDGET_MS = 20 * 60_000;
-const VERIFY_BUDGET_MS = 40 * 60_000;
+const VERIFY_BUDGET_MS = 35 * 60_000;
 
 export interface JobEnv {
   work: string;
@@ -42,7 +42,8 @@ async function git(args: string[]): Promise<boolean> {
   return (await execa('git', args, { reject: false, stdio: 'inherit' })).exitCode === 0;
 }
 
-async function setOutputs(env: JobEnv, outputs: Record<string, string>): Promise<void> {
+export async function setOutputs(env: JobEnv, outputs: Record<string, string>): Promise<void> {
+  for (const [k, v] of Object.entries(outputs)) if (/[\r\n]/.test(v)) throw new Error(`output ${k} contains a newline`);
   if (!env.githubOutput) return;
   await appendFile(env.githubOutput, Object.entries(outputs).map(([k, v]) => `${k}=${v}\n`).join(''));
 }

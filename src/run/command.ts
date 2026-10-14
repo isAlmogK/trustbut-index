@@ -6,6 +6,16 @@ import { ingest } from './ingest.js';
 import { install, jobEnv, prepare, record, verify } from './job.js';
 import { batchMatrix } from './matrix.js';
 
+export function parseBatch(s: string): number {
+  if (!/^\d+$/.test(s)) throw new Error(`invalid batch "${s}": expected digits only`);
+  return Number(s);
+}
+
+export function parseDate(s: string): string {
+  if (!/^(pilot-)?\d{4}-\d{2}-\d{2}$/.test(s)) throw new Error(`invalid date "${s}": expected YYYY-MM-DD or pilot-YYYY-MM-DD`);
+  return s;
+}
+
 export function registerRun(program: Command): void {
   program
     .command('matrix')
@@ -14,7 +24,7 @@ export function registerRun(program: Command): void {
     .option('--batch <n>', 'batch index', '0')
     .action(async (o: { manifest: string; batch: string }) => {
       const entries = await readJsonl<ManifestEntry>(o.manifest);
-      process.stdout.write(JSON.stringify(batchMatrix(entries, Number(o.batch))));
+      process.stdout.write(JSON.stringify(batchMatrix(entries, parseBatch(o.batch))));
     });
 
   program
@@ -39,7 +49,7 @@ export function registerRun(program: Command): void {
     .requiredOption('--date <date>')
     .action(async (o: { artifacts: string; date: string }) => {
       const env = jobEnv();
-      const res = await ingest(o.artifacts, `results/${o.date}`, async (p) =>
+      const res = await ingest(o.artifacts, `results/${parseDate(o.date)}`, async (p) =>
         (await execa(env.node22, [env.tbCli, 'validate', p], { reject: false })).exitCode === 0,
       );
       console.log(JSON.stringify(res, null, 2));

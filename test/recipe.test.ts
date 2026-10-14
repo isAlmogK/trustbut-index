@@ -59,3 +59,13 @@ describe('no runner', () => {
     expect(inferRecipe(memFiles({ 'package.json': JSON.stringify({ scripts: { build: 'tsc' } }) }))).toBeNull();
   });
 });
+
+describe('untrusted version strings', () => {
+  it('rejects newline-bearing or non-version pins', () => {
+    expect(nodeVersion(memFiles({ '.nvmrc': '20\nhas_node=false' }))).toBe('22');
+    expect(nodeVersion(memFiles({ 'package.json': JSON.stringify({ volta: { node: '20.1.0\nx=y' } }) }))).toBe('22');
+    expect(nodeVersion(memFiles({ '.nvmrc': 'v20.1.0' }))).toBe('20.1.0');
+    expect(pythonVersion(memFiles({ '.python-version': 'system' }))).toBe('3.12');
+    expect(pythonVersion(memFiles({ '.python-version': '3.11.4' }))).toBe('3.11.4');
+  });
+});

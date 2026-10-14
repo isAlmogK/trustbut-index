@@ -79,3 +79,12 @@ describe('job steps', () => {
     expect(await record(ent, ev)).toMatchObject({ status: 'setup-failed', stage: 'install', exitCodes: { install: 3, verify: null } });
   });
 });
+
+describe('step outputs', () => {
+  it('rejects values containing a newline', async () => {
+    const { setOutputs } = await import('../src/run/job.js');
+    const ev = await env('x');
+    await expect(setOutputs(ev, { node_version: '20\nhas_node=false' })).rejects.toThrow(/newline/);
+    await expect(setOutputs(ev, { a: 'x\ry' })).rejects.toThrow(/newline/);
+  });
+});

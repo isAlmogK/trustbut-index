@@ -34,14 +34,16 @@ function json(files: RepoFiles, path: string): Record<string, unknown> | null {
   }
 }
 
+const VERSION_OK = /^[0-9][0-9A-Za-z.+-]*$/;
+
 export function nodeVersion(files: RepoFiles): string {
   for (const f of ['.nvmrc', '.node-version']) {
     const v = files.read(f)?.trim().replace(/^v/, '');
-    if (v) return /^\d/.test(v) ? v : '22';
+    if (v) return VERSION_OK.test(v) ? v : '22';
   }
   const pkg = json(files, 'package.json') ?? {};
   const volta = (pkg.volta as { node?: string } | undefined)?.node;
-  if (volta) return volta;
+  if (volta) return VERSION_OK.test(volta) ? volta : '22';
   const range = (pkg.engines as { node?: string } | undefined)?.node;
   if (range && semver.validRange(range)) {
     const hit = NODE_MAJORS.find((m) => semver.satisfies(`${m}.0.0`, range));
@@ -108,7 +110,7 @@ function pyproject(files: RepoFiles): Record<string, any> | null {
 
 export function pythonVersion(files: RepoFiles): string {
   const pinned = files.read('.python-version')?.split('\n')[0]?.trim();
-  if (pinned) return pinned;
+  if (pinned && VERSION_OK.test(pinned)) return pinned;
   const spec = pyproject(files)?.project?.['requires-python'];
   if (typeof spec === 'string') {
     const hit = PY_MINORS.find((m) => pySatisfies(m, spec));

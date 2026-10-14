@@ -27,4 +27,32 @@ describe('ingest', () => {
     const r3 = JSON.parse(await readFile(join(out, 'o__r__3.run.json'), 'utf8'));
     expect(r3).toMatchObject({ status: 'trustbut-error', stage: 'verify', note: 'receipt failed trustbut validate' });
   });
+
+  it('treats an unparseable receipt as a validation failure', async () => {
+    const arts = await mkdtemp(join(tmpdir(), 'arts-'));
+    const out = await mkdtemp(join(tmpdir(), 'res-'));
+    await artifact(arts, 'result-a__b__1', { 'run.json': run('a__b__1'), 'receipt.json': '{not json' });
+    await ingest(arts, out, async () => true);
+    expect(JSON.parse(await readFile(join(out, 'a__b__1.run.json'), 'utf8'))).toMatchObject({ status: 'trustbut-error', stage: 'verify', note: 'receipt failed trustbut validate' });
+    expect(await readdir(out)).toEqual(['a__b__1.run.json']);
+  });
+  it('downgrades ran without a receipt', async () => {
+    const arts = await mkdtemp(join(tmpdir(), 'arts-'));
+    const out = await mkdtemp(join(tmpdir(), 'res-'));
+    await artifact(arts, 'result-a__b__2', { 'run.json': run('a__b__2') });
+    await ingest(arts, out, async () => true);
+    expect(JSON.parse(await readFile(join(out, 'a__b__2.run.json'), 'utf8'))).toMatchObject({ status: 'trustbut-error', stage: 'verify', note: 'ran without a valid receipt' });
+  });
+  it('writes only known RunRecord fields', async () => {
+    const arts = await mkdtemp(join(tmpdir(), 'arts-'));
+    const out = await mkdtemp(join(tmpdir(), 'res-'));
+    await artifact(arts, 'result-a__b__3', { 'run.json': { ...run('a__b__3'), evil: 'x' }, 'receipt.json': receipt });
+    await ingest(arts, out, async () => true);
+    expect(Object.keys(JSON.parse(await readFile(join(out, 'a__b__3.run.json'), 'utf8'))).sort()).toEqual(
+      ['durations', 'exitCodes', 'id', 'recipe', 'runnerImage', 'stage', 'status', 'trustbutVersion']);
+  });
+  it('returns zero when the artifacts directory does not exist', async () => {
+    const out = await mkdtemp(join(tmpdir(), 'res-'));
+    expect(await ingest(join(out, 'nope'), out, async () => true)).toEqual({ written: 0, rejected: [] });
+  });
 });
