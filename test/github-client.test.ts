@@ -74,7 +74,7 @@ describe('GitHub client', () => {
     const gh = new GitHub({ fetch: f, now: () => t, sleep: async (ms) => { sleeps.push(ms); t += ms; } });
     expect(await gh.search('is:pr a')).toEqual([{ repo: 'o/r', number: 7 }]);
     await gh.search('is:pr b');
-    expect(sleeps).toEqual([2100]);
+    expect(sleeps).toEqual([3000]);
   });
 
   it('reads base64 file contents and returns null for missing files', async () => {
@@ -93,5 +93,33 @@ describe('apiCacheDir', () => {
   it('gives each collection its own cache folder', () => {
     expect(apiCacheDir('2026-11-02')).toBe(join('cache', 'github', '2026-11-02'));
     expect(apiCacheDir('2026-11-02')).not.toBe(apiCacheDir('2026-12-01'));
+  });
+
+  it('backs off exponentially on a secondary rate limit without headers', async () => {
+    let n = 0;
+    const secondary = () => json({ message: 'You have exceeded a secondary rate limit. Please wait a few minutes.' }, 403);
+    const { f } = fakeFetch(() => (n++ < 2 ? secondary() : json({ ok: true })));
+    const sleeps: number[] = [];
+    const gh = new GitHub({ fetch: f, sleep: async (ms) => void sleeps.push(ms) });
+    expect(await gh.get('/x')).toEqual({ ok: true });
+    expect(sleeps).toEqual([60_000, 120_000]);
+  });
+
+  it('does not retry a 403 that is not a rate limit', async () => {
+    const { f, calls } = fakeFetch(() => json({ message: 'Resource not accessible by personal access token' }, 403));
+    const sleeps: number[] = [];
+    await expect(new GitHub({ fetch: f, sleep: async (ms) => void sleeps.push(ms) }).get('/x')).rejects.toThrow(/GitHub 403/);
+    expect(calls.length).toBe(1);
+    expect(sleeps).toEqual([]);
+  });
+
+  it('ignores a non-numeric retry-after header', async () => {
+    let n = 0;
+    const { f } = fakeFetch(() =>
+      n++ === 0 ? json({ message: 'secondary rate limit' }, 429, { 'retry-after': 'soon' }) : json({ ok: true }),
+    );
+    const sleeps: number[] = [];
+    await new GitHub({ fetch: f, sleep: async (ms) => void sleeps.push(ms) }).get('/x');
+    expect(sleeps).toEqual([60_000]);
   });
 });
