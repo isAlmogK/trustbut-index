@@ -13,5 +13,13 @@ describe('verdict', () => {
     expect(v.coverage).toMatchObject({ value: 0.6, target: 0.5, pass: true });
     expect(v.hitRate).toMatchObject({ value: 0.08, target: 0.1, pass: false });
     expect(v.pass).toBe(false);
+    expect(v.precision.n).toBe(100);
+  });
+  it('records n=0 when a threshold has no data', () => {
+    const agg = { groups: [{ key: 'all', coverage: wilson(0, 0) }] } as Aggregate;
+    const stats = [{ family: 'all', group: 'all', precision: wilson(0, 0) }] as LabelStats[];
+    const v = verdict(agg, stats, { p: 0, lo: 0, hi: 0, anyCounted: wilson(3, 10), prsWithReal: wilson(0, 0) });
+    expect([v.precision.n, v.hitRate.n, v.coverage.n]).toEqual([0, 0, 0]);
+    expect(v.pass).toBe(false);
   });
 });

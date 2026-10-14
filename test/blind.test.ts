@@ -62,3 +62,20 @@ describe('scrub line drops', () => {
     expect(out[5]).toBe('c');
   });
 });
+
+describe('scrub words joined by underscores', () => {
+  it.each([
+    ['src/cursor_rules.ts', 'src/[agent]_rules.ts'],
+    ['copilot_helper', '[agent]_helper'],
+    ['test_claude_flow', 'test_[agent]_flow'],
+    ['my_codex_task.py', 'my_[agent]_task.py'],
+    ['devin_bot', '[agent]_bot'],
+    ['jules_2', '[agent]_2'],
+  ])('replaces %s', (input, expected) => {
+    expect(scrub(input)).toBe(expected);
+  });
+
+  it('still leaves longer words alone', () => {
+    expect(scrub('cursory recursor codexes')).toBe('cursory recursor codexes');
+  });
+});

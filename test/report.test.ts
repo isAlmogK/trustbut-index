@@ -81,6 +81,11 @@ describe('renderReport', () => {
   it('states that receipts were checked against each PR head commit', () => {
     expect(html).toContain("A test suite could in principle forge its own receipt, or another PR's in the same run; receipts were validated against the spec and against each PR's head commit.");
   });
+  it('labels the funnel stage that still includes install timeouts honestly', () => {
+    const funnel = html.slice(html.indexOf('id="coverage"'), html.indexOf('id="labels"'));
+    expect(funnel).toContain('>Set up or timed out<');
+    expect(funnel).not.toContain('>Set up<');
+  });
   it('states the clustering caveat', () => {
     expect(html).toContain('Intervals treat tests (proof rate) and findings (precision) as independent; tests and findings from the same PR are correlated, so the true uncertainty is somewhat wider.');
   });
@@ -108,6 +113,18 @@ describe('label detail', () => {
     expect(section).toContain('Agent findings: precision 50.0% (n=2, 95% interval 9.5%–90.5%)');
     expect(section).toContain('Human findings: precision 50.0% (n=2, 95% interval 9.5%–90.5%)');
     expect(section).toContain('1 finding labeled unclear');
+  });
+});
+
+describe('empty samples', () => {
+  it('shows "no data" on a verdict tile with n=0, in the page and the share card', () => {
+    const d = data();
+    const empty = { ...d, verdict: { ...d.verdict, precision: { value: 0, lo: 0, hi: 0, n: 0, target: 0.8, pass: false } } };
+    const tiles = renderReport(empty).split('<div class="tile ').slice(1);
+    expect(tiles[0]).toContain('no data');
+    expect(tiles[0]).not.toContain('0.0%–0.0%');
+    expect(tiles[1]).not.toContain('no data');
+    expect(shareSvg(empty)).toContain('no data');
   });
 });
 

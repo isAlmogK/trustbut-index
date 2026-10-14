@@ -33,8 +33,10 @@ const FAMILY_NAMES: Record<string, string> = {
 const group = (d: ReportData, key: string) => d.agg.groups.find((g) => g.key === key)!;
 
 function tile(name: string, c: Check, unit: string, interval: string): string {
-  return `<div class="tile ${c.pass ? 'pass' : 'miss'}"><div class="tname">${esc(name)}</div><div class="tval">${pct(c.value)}</div>
-<div class="tci">${esc(interval)} ${pct(c.lo)}–${pct(c.hi)}</div><div class="ttarget">Target ≥ ${pct(c.target)} ${esc(unit)} · <b>${c.pass ? 'met' : 'missed'}</b></div></div>`;
+  const value = c.n === 0 ? 'no data' : pct(c.value);
+  const ci = c.n === 0 ? 'n=0' : `${esc(interval)} ${pct(c.lo)}–${pct(c.hi)}`;
+  return `<div class="tile ${c.pass ? 'pass' : 'miss'}"><div class="tname">${esc(name)}</div><div class="tval">${value}</div>
+<div class="tci">${ci}</div><div class="ttarget">Target ≥ ${pct(c.target)} ${esc(unit)} · <b>${c.pass ? 'met' : 'missed'}</b></div></div>`;
 }
 
 function proofChart(d: ReportData, pal: Palette): string {
@@ -57,7 +59,8 @@ function coverageChart(d: ReportData): string {
   return funnel([
     { label: 'Selected', count: all.selected },
     { label: 'Results returned', count: all.selected - (s.missing ?? 0) },
-    { label: 'Set up', count: all.selected - (s.missing ?? 0) - (s['setup-failed'] ?? 0) - (s['no-runner'] ?? 0) },
+    // The aggregate counts timeouts by status, not stage, so install timeouts stay in this bar; the label says so.
+    { label: 'Set up or timed out', count: all.selected - (s.missing ?? 0) - (s['setup-failed'] ?? 0) - (s['no-runner'] ?? 0) },
     { label: 'Ran', count: s.ran ?? 0 },
   ], CSS_PALETTE);
 }
@@ -155,7 +158,7 @@ export function shareSvg(d: ReportData): string {
   const pal = LIGHT_PALETTE;
   const t = (x: number, label: string, c: Check) =>
     `<g transform="translate(${x},150)"><rect width="360" height="170" rx="14" fill="#f4f4f4"/><rect width="8" height="170" fill="${c.pass ? pal.pass : pal.miss}"/>
-<text x="28" y="44" font-size="26" font-weight="600">${esc(label)}</text><text x="28" y="112" font-size="60" font-weight="700">${pct(c.value)}</text>
+<text x="28" y="44" font-size="26" font-weight="600">${esc(label)}</text><text x="28" y="112" font-size="60" font-weight="700">${c.n === 0 ? 'no data' : pct(c.value)}</text>
 <text x="28" y="150" font-size="20" fill="${pal.muted}">target ≥ ${pct(c.target)} · ${c.pass ? 'met' : 'missed'}</text></g>`;
   const chart = proofChart(d, pal).replace(' width="100%"', '').replace('font-family="system-ui, sans-serif"', 'font-family="DejaVu Sans, Arial, sans-serif"').replace('<svg ', '<svg x="120" y="350" width="960" height="230" ');
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" font-family="DejaVu Sans, Arial, sans-serif" fill="${pal.fg}">

@@ -11,6 +11,12 @@ describe('wilson', () => {
     expect(z.lo).toBe(0);
     expect(z.hi).toBeCloseTo(0.2775, 3);
   });
+  it('snaps lo to exactly 0 when k=0 and hi to exactly 1 when k=n', () => {
+    for (let n = 1; n <= 500; n++) {
+      expect(wilson(0, n).lo).toBe(0);
+      expect(wilson(n, n).hi).toBe(1);
+    }
+  });
   it('returns zeros for an empty sample', () => {
     expect(wilson(0, 0)).toEqual({ k: 0, n: 0, p: 0, lo: 0, hi: 0 });
   });

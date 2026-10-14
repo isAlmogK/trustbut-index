@@ -15,4 +15,8 @@ describe('families', () => {
     ]);
     expect([...familiesOf(rec)].sort()).toEqual(['escapes', 'proof-gap', 'red-at-head', 'test-weakening']);
   });
+  it('does not count ids that name Object.prototype members', () => {
+    const rec = r(['constructor', 'toString', '__proto__', 'hasOwnProperty', 'escape-added']);
+    expect(countedFindings(rec).map((c) => [c.index, c.family])).toEqual([[4, 'escapes']]);
+  });
 });

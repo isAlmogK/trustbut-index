@@ -11,7 +11,7 @@ export interface DiffCI {
   hi: number;
 }
 
-/** Wilson score interval for k successes out of n. */
+/** Wilson score interval for k successes out of n. Bounds are exactly 0 when k=0 and exactly 1 when k=n; n=0 gives all zeros (callers show it as "no data"). */
 export function wilson(k: number, n: number, z = 1.96): RateCI {
   if (n === 0) return { k: 0, n: 0, p: 0, lo: 0, hi: 0 };
   const p = k / n;
@@ -19,7 +19,7 @@ export function wilson(k: number, n: number, z = 1.96): RateCI {
   const denom = 1 + z2 / n;
   const centre = (p + z2 / (2 * n)) / denom;
   const half = (z * Math.sqrt((p * (1 - p)) / n + z2 / (4 * n * n))) / denom;
-  return { k, n, p, lo: Math.max(0, centre - half), hi: Math.min(1, centre + half) };
+  return { k, n, p, lo: k === 0 ? 0 : Math.max(0, centre - half), hi: k === n ? 1 : Math.min(1, centre + half) };
 }
 
 /** Newcombe's hybrid score interval (method 10) for the difference a.p - b.p. */

@@ -82,8 +82,11 @@ export async function collectBatch(
   }
   const drafts: Draft[] = [];
   for await (const r of await client.messages.batches.results(batchId)) {
-    const key = ids[r.custom_id];
+    const key = Object.hasOwn(ids, r.custom_id) ? ids[r.custom_id] : undefined;
     if (key) drafts.push(parseResult(key, r.result));
   }
+  // Every submitted key gets a line, so a lost result shows up as an error instead of silently vanishing.
+  const got = new Set(drafts.map((d) => d.key));
+  for (const key of Object.values(ids)) if (!got.has(key)) drafts.push(empty(key, 'missing'));
   return drafts.sort((a, b) => byCodeUnit(a.key, b.key));
 }

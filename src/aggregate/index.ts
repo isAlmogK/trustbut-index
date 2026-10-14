@@ -47,7 +47,10 @@ export async function loadResults(manifestPath: string, resultsDir: string): Pro
 
 export function groupStats(key: string, prs: PrResult[], insufficient: boolean): GroupStats {
   const byStatus: Record<string, number> = { ran: 0, 'no-runner': 0, 'setup-failed': 0, timeout: 0, 'trustbut-error': 0, missing: 0 };
-  for (const p of prs) byStatus[p.run?.status ?? 'missing']! += 1;
+  for (const p of prs) {
+    const s = p.run?.status ?? 'missing';
+    if (Object.hasOwn(byStatus, s)) byStatus[s]! += 1; // ingest only writes known statuses; anything else is ignored
+  }
   const ran = prs.filter((p) => p.run?.status === 'ran' && p.receipt);
   const fams = ran.map((p) => familiesOf(p.receipt!));
   const families = Object.fromEntries(FAMILIES.map((f) => [f, wilson(fams.filter((s) => s.has(f)).length, ran.length)])) as Record<Family, RateCI>;

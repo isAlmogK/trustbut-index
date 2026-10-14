@@ -32,6 +32,10 @@ export async function startReview(dir: string, port = 4317): Promise<{ url: stri
   const sample = await readJsonlStrict<SampleItem>(join(dir, 'sample.jsonl'));
   const drafts = new Map((await readJsonl<Draft>(join(dir, 'drafts.jsonl'))).map((d) => [d.key, d]));
   const finalsPath = join(dir, 'final.jsonl');
+  const sampleKeys = new Set(sample.map((s) => s.key));
+  // A relabel appends another line for the same key; progress counts keys, not lines.
+  const doneCount = (finals: FinalLabel[]) => new Set(finals.map((f) => f.key).filter((k) => sampleKeys.has(k))).size;
+  let boundPort = 0;
 
   const server = createServer(async (req, res) => {
     const send = (status: number, type: string, payload: string) => {
@@ -43,14 +47,27 @@ export async function startReview(dir: string, port = 4317): Promise<{ url: stri
       if (req.method === 'GET' && req.url === '/api/next') {
         const finals = await readJsonl<FinalLabel>(finalsPath);
         const item = nextItem(sample, finals);
-        if (!item) return send(200, 'application/json', JSON.stringify({ done: true, progress: { done: finals.length, total: sample.length } }));
+        const progress = { done: doneCount(finals), total: sample.length };
+        if (!item) return send(200, 'application/json', JSON.stringify({ done: true, progress }));
         const packet = await readJsonOr(join(dir, 'packets', packetFile(item.key)), null);
         const draft = item.blind ? null : (drafts.get(item.key) ?? null);
         const { key, family, finding, order, blind } = item;
-        return send(200, 'application/json', JSON.stringify({ item: { key, family, finding, order, blind }, packet, draft, progress: { done: finals.length, total: sample.length } }));
+        return send(200, 'application/json', JSON.stringify({ item: { key, family, finding, order, blind }, packet, draft, progress }));
       }
       if (req.method === 'POST' && req.url === '/api/label') {
-        const j = JSON.parse(await body(req)) as { key?: string; label?: string; note?: string };
+        // Only the review page itself may write: a JSON request to this server's own local Host (blocks cross-site form posts and DNS rebinding).
+        const type = (req.headers['content-type'] ?? '').split(';')[0]!.trim().toLowerCase();
+        const host = req.headers.host ?? '';
+        if (type !== 'application/json' || (host !== `127.0.0.1:${boundPort}` && host !== `localhost:${boundPort}`)) {
+          return send(403, 'application/json', '{"error":"forbidden"}');
+        }
+        let j: { key?: string; label?: string; note?: string };
+        try {
+          j = JSON.parse(await body(req));
+        } catch {
+          return send(400, 'application/json', '{"error":"malformed JSON"}');
+        }
+        if (!j || typeof j !== 'object') return send(400, 'application/json', '{"error":"malformed JSON"}');
         const item = sample.find((s) => s.key === j.key);
         if (!item || !LABELS.includes(j.label as Label)) return send(400, 'application/json', '{"error":"bad key or label"}');
         const final: FinalLabel = {
@@ -66,8 +83,8 @@ export async function startReview(dir: string, port = 4317): Promise<{ url: stri
     }
   });
   await new Promise<void>((r) => server.listen(port, '127.0.0.1', r));
-  const { port: actual } = server.address() as AddressInfo;
-  return { url: `http://127.0.0.1:${actual}`, close: () => new Promise((r) => server.close(() => r())) };
+  boundPort = (server.address() as AddressInfo).port;
+  return { url: `http://127.0.0.1:${boundPort}`, close: () => new Promise((r) => server.close(() => r())) };
 }
 
 export const REVIEW_PAGE = `<!doctype html>
@@ -107,7 +124,7 @@ async function load(){
     '<h2>Note (optional)</h2><textarea id="note"></textarea>';
   bar.innerHTML=LABELS.map((l)=>'<button data-l="'+l+'" class="'+(d&&d.label===l?'draft':'')+'">'+l+'</button>').join('');
   bar.querySelectorAll('button').forEach((b)=>b.onclick=async()=>{
-    await fetch('/api/label',{method:'POST',body:JSON.stringify({key:r.item.key,label:b.dataset.l,note:document.getElementById('note').value})});
+    await fetch('/api/label',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({key:r.item.key,label:b.dataset.l,note:document.getElementById('note').value})});
     window.scrollTo(0,0);load();
   });
 }

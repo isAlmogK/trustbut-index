@@ -80,4 +80,15 @@ describe('batch round trip', () => {
     expect(f.polls()).toBe(2);
     expect(sleep).toHaveBeenCalledTimes(1);
   });
+
+  it('collectBatch emits a missing draft for every submitted key without a result', async () => {
+    const ids = { [customId('b:1')]: 'b:1', [customId('a:2')]: 'a:2', [customId('c:0')]: 'c:0' };
+    const f = fake([ok(customId('b:1'), 'real')]);
+    const err = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const drafts = await collectBatch(f.client, 'b1', ids, async () => {});
+    err.mockRestore();
+    expect(drafts.map((d) => [d.key, d.label, d.error ?? null])).toEqual([['a:2', null, 'missing'], ['b:1', 'real', null], ['c:0', null, 'missing']]);
+    expect(drafts[0]).toMatchObject({ rationale: '', confidence: null, model: 'claude-opus-5-5', promptVersion: 'v1' });
+  });
 });
+

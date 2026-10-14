@@ -53,6 +53,11 @@ export function ciBars(rows: { label: string; value: RateCI; color: string }[], 
   rows.forEach((row, i) => {
     const y = top + i * rowH, mid = y + rowH / 2;
     body += `<text x="${left - 8}" y="${mid + 4}" text-anchor="end">${esc(row.label)}</text>`;
+    if (row.value.n === 0) {
+      // No data is not a measured 0%: no bar, no whisker.
+      body += `<text x="${width - right + 8}" y="${mid + 4}" fill="${pal.muted}">n=0</text>`;
+      return;
+    }
     body += `<rect x="${left}" y="${y + 8}" width="${r1(row.value.p * plot)}" height="${rowH - 16}" fill="${row.color}" rx="2"/>`;
     body += `<g class="whisker" stroke="${pal.fg}"><line x1="${x(row.value.lo)}" x2="${x(row.value.hi)}" y1="${mid}" y2="${mid}"/><line x1="${x(row.value.lo)}" x2="${x(row.value.lo)}" y1="${mid - 5}" y2="${mid + 5}"/><line x1="${x(row.value.hi)}" x2="${x(row.value.hi)}" y1="${mid - 5}" y2="${mid + 5}"/></g>`;
     body += `<text x="${width - right + 8}" y="${mid + 4}">${pct(row.value.p)}</text>`;
@@ -72,7 +77,7 @@ export function dotPlot(rows: { label: string; dimmed: boolean }[], cols: string
       const c = cells[i]?.[j];
       const x0 = left + j * colW + 10, w = colW - 20;
       body += `<line x1="${x0}" x2="${x0 + w}" y1="${y}" y2="${y}" stroke="${pal.grid}"/>`;
-      if (!c) return;
+      if (!c || c.n === 0) return;
       body += `<line x1="${r1(x0 + c.lo * w)}" x2="${r1(x0 + c.hi * w)}" y1="${y}" y2="${y}" stroke="${color(i)}" stroke-width="2"/>`;
       body += `<circle cx="${r1(x0 + c.p * w)}" cy="${y}" r="4" fill="${color(i)}"><title>${esc(`${row.label} · ${cols[j]}: ${pct(c.p)} (${pct(c.lo)}–${pct(c.hi)}), n=${c.n}`)}</title></circle>`;
     });

@@ -17,7 +17,8 @@ export const FAMILY_OF: Record<string, Family> = {
 
 export function countedFindings(r: Receipt): { finding: Finding; index: number; family: Family }[] {
   return r.findings.flatMap((finding, index) => {
-    const family = FAMILY_OF[finding.id];
+    // Own keys only: an id like "constructor" must not resolve to an Object.prototype member.
+    const family = Object.hasOwn(FAMILY_OF, finding.id) ? FAMILY_OF[finding.id] : undefined;
     return family ? [{ finding, index, family }] : [];
   });
 }
