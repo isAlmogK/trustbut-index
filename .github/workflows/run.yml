@@ -126,23 +126,23 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
         with:
           node-version: 22
-          cache: npm
       - run: npm ci
       - run: |
           npm install --prefix "$RUNNER_TEMP/tb" "trustbut@$TRUSTBUT_SPEC"
           echo "TB_CLI=$RUNNER_TEMP/tb/node_modules/trustbut/dist/cli.js" >> "$GITHUB_ENV"
           echo "NODE22=$(which node)" >> "$GITHUB_ENV"
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093 # v4.3.0
         with:
           pattern: result-*
           path: artifacts
       - env:
           DATE: ${{ inputs.date }}
-        run: npx tsx src/cli.ts ingest --artifacts artifacts --date "$DATE"
+          MANIFEST: ${{ inputs.manifest }}
+        run: npx tsx src/cli.ts ingest --artifacts artifacts --date "$DATE" --manifest "$MANIFEST"
       - name: Commit results
         env:
           DATE: ${{ inputs.date }}

@@ -13,13 +13,13 @@ On real, merged pull requests in established JS/TS and Python projects, does tru
 - Agents with fewer than 30 selected PRs are reported as "insufficient data" and excluded from the "all agents" group.
 
 ## Attribution markers
-Checked by hand on the pilot (Task 20). Each row records the share of pilot PRs confirmed.
+Checked by hand on the pilot (Task 20). Each row records the share of pilot PRs confirmed. Author logins match case-insensitively. A Claude trailer counts only with Anthropic's noreply address, so a human co-author named Claude is not a marker. The model is recorded only for claude-code PRs whose trailer names one (for example `Claude Opus 4.8`); otherwise it is `unknown`.
 
 | Agent | Markers | Pilot check |
 |---|---|---|
 | copilot | author `Copilot` / `copilot-swe-agent[bot]`; branch `copilot/` | to fill in after the pilot |
 | codex | author `chatgpt-codex-connector[bot]`; branch `codex/`; body links `chatgpt.com/codex` | to fill in after the pilot |
-| claude-code | author `claude[bot]`; body "Generated with Claude Code"; trailer `Co-Authored-By: Claude` | to fill in after the pilot |
+| claude-code | author `claude[bot]`; body "Generated with Claude Code"; trailer `Co-Authored-By: Claude… <noreply@anthropic.com>` | to fill in after the pilot |
 | cursor | author `cursor[bot]`; branch `cursor/`; trailer `Co-authored-by: Cursor Agent` | to fill in after the pilot |
 | devin | author `devin-ai-integration[bot]` | to fill in after the pilot |
 | jules | author `google-labs-jules[bot]` | to fill in after the pilot |
@@ -37,11 +37,11 @@ Each PR runs on a fresh GitHub-hosted `ubuntu-24.04` VM with a 60-minute limit. 
 8. at least one test passed at head → `ran`
 9. otherwise (zero passing tests) → `setup-failed`
 
-Results that never arrive count as `missing` and as not run.
+A receipt is valid when it passes `trustbut validate` and its `subject.head` is the PR's head commit from the manifest; results for PRs not in the manifest are discarded. Results that never arrive count as `missing` and as not run.
 
 ### Collection limits
 - Distinct commit authors (used for the repo's contributor count) are counted over at most 300 commits from the past 365 days.
-- At most 10 workflow files are read per repo.
+- At most 10 workflow files are read per repo. A workflow runs tests when it contains a test command (`npm`, `pnpm`, `yarn` or `bun` `[run] test`; `pnpm -r test`; `make test`; `turbo [run] test`; `nx test`; `node --test`) or a runner name standing alone (`vitest`, `jest`, `mocha`, `pytest`, `tox`, `nox`), not as part of a longer or hyphenated name such as `eslint-plugin-jest`.
 - Human candidates come from the 500 most recently updated closed PRs per repo (merged or not); only merged, non-agent User PRs are matched.
 - A repo that can't supply enough human PRs is recorded as a shortfall (`humanShortfall` in the collection summary). The report page does not show it.
 

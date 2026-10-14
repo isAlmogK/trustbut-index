@@ -2,7 +2,7 @@ import { mkdtemp } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { addPaths, excludedPrIds } from '../src/collect/command.js';
+import { addPaths, excludedPrIds, parsePositiveInt, parseYmd } from '../src/collect/command.js';
 import { writeJsonl } from '../src/jsonl.js';
 import { collect, weekSlices } from '../src/collect/index.js';
 import { NotFoundError, type GitHubApi, type SearchItem } from '../src/github/client.js';
@@ -90,6 +90,55 @@ describe('excluded manifests', () => {
     await writeJsonl(join(dir, 'pilot.jsonl'), [{ id: 'o/r#1' }, { id: 'o/r#2' }]);
     expect([...(await excludedPrIds([join(dir, 'pilot.jsonl')]))]).toEqual(['o/r#1', 'o/r#2']);
     await expect(excludedPrIds([join(dir, 'nope.jsonl')])).rejects.toThrow(/does not exist/);
+  });
+});
+
+describe('collect edge cases', () => {
+  const base = { until: now, days: 90, perAgent: 80, perRepo: 3, seed: 's', now, excluded: new Set<string>(), minPerAgent: 30 };
+
+  it('counts a PR with markers of two agents as ambiguous and does not select it', async () => {
+    const r = {
+      ...routes,
+      '/repos/big/repo/pulls/2': pull(2, { head: { ref: 'codex/fix', sha: 'head2' }, body: 'Generated with Claude Code' }),
+      '/repos/big/repo/pulls/2/files': [{ filename: 'src/c.ts' }],
+      '/repos/big/repo/pulls/2/commits': [{ commit: { message: 'fix' } }],
+    };
+    const gh = fakeApi(r, (q) => (q.startsWith('head:codex') ? [{ repo: 'big/repo', number: 2 }] : []));
+    const { entries, summary } = await collect(gh, base);
+    expect(summary.ambiguous).toBe(1);
+    expect(entries).toEqual([]);
+    expect(summary.candidates.codex).toBe(0);
+    expect(summary.candidates['claude-code']).toBe(0);
+  });
+
+  it('rejects a User-authored PR on a codex/ branch from the human pool', async () => {
+    const r = {
+      ...routes,
+      '/repos/big/repo/pulls': [
+        { number: 1, user: { login: 'Copilot', type: 'Bot' }, merged_at: '2026-10-10T00:00:00Z' },
+        { number: 7, user: { login: 'carol', type: 'User' }, merged_at: '2026-10-12T00:00:00Z' },
+      ],
+      '/repos/big/repo/pulls/7': pull(7, { user: { login: 'carol', type: 'User' }, head: { ref: 'codex/tweak', sha: 'head7' } }),
+      '/repos/big/repo/pulls/7/files': [{ filename: 'src/d.ts' }],
+      '/repos/big/repo/pulls/7/commits': [{ commit: { message: 'tweak' } }],
+    };
+    const gh = fakeApi(r, (q) => (q.startsWith('author:app/copilot-swe-agent') ? [{ repo: 'big/repo', number: 1 }] : []));
+    const { entries, summary } = await collect(gh, base);
+    expect(entries.map((e) => e.id)).toEqual(['big/repo#1']);
+    expect(summary.humansSelected).toBe(0);
+    expect(summary.humanShortfall).toBe(1);
+  });
+});
+
+describe('collect option validation', () => {
+  it('accepts positive integers only for --days, --per-agent and --per-repo', () => {
+    expect(parsePositiveInt('--days')('90')).toBe(90);
+    expect(parsePositiveInt('--per-repo')('3')).toBe(3);
+    for (const bad of ['0', '-1', '1.5', '', 'abc', '1e3', ' 7', '90days']) expect(() => parsePositiveInt('--days')(bad), bad).toThrow(/--days/);
+  });
+  it('accepts --until only as a real YYYY-MM-DD date', () => {
+    expect(parseYmd('2026-11-02')).toBe('2026-11-02');
+    for (const bad of ['2026-11-2', '2026/11/02', '2026-02-31', '2026-13-01', '../x', '2026-11-02x', '']) expect(() => parseYmd(bad), bad).toThrow(/--until/);
   });
 });
 

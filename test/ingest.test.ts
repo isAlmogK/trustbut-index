@@ -3,6 +3,14 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { ingest } from '../src/run/ingest.js';
+import type { ManifestEntry } from '../src/types.js';
+
+/** Manifest entries for file ids like "o__r__1" (repo o/r, PR 1), all with head "h". */
+const manifest = (...ids: string[]): ManifestEntry[] =>
+  ids.map((id) => {
+    const [o, r, n] = id.split('__');
+    return { id: `${o}/${r}#${n}`, repo: `${o}/${r}`, pr: Number(n), headSha: 'h' } as ManifestEntry;
+  });
 
 const run = (id: string) => ({ id, status: 'ran', stage: null, recipe: null, durations: { installMs: 1, verifyMs: 1 },
   exitCodes: { install: 0, verify: 0 }, runnerImage: 'x', trustbutVersion: '0.4.0' });
@@ -20,7 +28,7 @@ describe('ingest', () => {
     await artifact(arts, 'result-o__r__1', { 'run.json': run('o__r__1'), 'receipt.json': receipt });
     await artifact(arts, 'result-o__r__2', { 'run.json': run('o__r__9') });
     await artifact(arts, 'result-o__r__3', { 'run.json': run('o__r__3'), 'receipt.json': { ...receipt, verdict: 'bogus' } });
-    const res = await ingest(arts, out, async (p) => !(await readFile(p, 'utf8')).includes('bogus'));
+    const res = await ingest(arts, out, manifest('o__r__1', 'o__r__2', 'o__r__3'), async (p) => !(await readFile(p, 'utf8')).includes('bogus'));
     expect(res.written).toBe(2);
     expect(res.rejected).toEqual([{ dir: 'result-o__r__2', reason: 'run.json id does not match artifact' }]);
     expect((await readdir(out)).sort()).toEqual(['o__r__1.receipt.json', 'o__r__1.run.json', 'o__r__3.run.json']);
@@ -32,7 +40,7 @@ describe('ingest', () => {
     const arts = await mkdtemp(join(tmpdir(), 'arts-'));
     const out = await mkdtemp(join(tmpdir(), 'res-'));
     await artifact(arts, 'result-a__b__1', { 'run.json': run('a__b__1'), 'receipt.json': '{not json' });
-    await ingest(arts, out, async () => true);
+    await ingest(arts, out, manifest('a__b__1'), async () => true);
     expect(JSON.parse(await readFile(join(out, 'a__b__1.run.json'), 'utf8'))).toMatchObject({ status: 'trustbut-error', stage: 'verify', note: 'receipt failed trustbut validate' });
     expect(await readdir(out)).toEqual(['a__b__1.run.json']);
   });
@@ -40,19 +48,47 @@ describe('ingest', () => {
     const arts = await mkdtemp(join(tmpdir(), 'arts-'));
     const out = await mkdtemp(join(tmpdir(), 'res-'));
     await artifact(arts, 'result-a__b__2', { 'run.json': run('a__b__2') });
-    await ingest(arts, out, async () => true);
+    await ingest(arts, out, manifest('a__b__2'), async () => true);
     expect(JSON.parse(await readFile(join(out, 'a__b__2.run.json'), 'utf8'))).toMatchObject({ status: 'trustbut-error', stage: 'verify', note: 'ran without a valid receipt' });
   });
   it('writes only known RunRecord fields', async () => {
     const arts = await mkdtemp(join(tmpdir(), 'arts-'));
     const out = await mkdtemp(join(tmpdir(), 'res-'));
     await artifact(arts, 'result-a__b__3', { 'run.json': { ...run('a__b__3'), evil: 'x' }, 'receipt.json': receipt });
-    await ingest(arts, out, async () => true);
+    await ingest(arts, out, manifest('a__b__3'), async () => true);
     expect(Object.keys(JSON.parse(await readFile(join(out, 'a__b__3.run.json'), 'utf8'))).sort()).toEqual(
       ['durations', 'exitCodes', 'id', 'recipe', 'runnerImage', 'stage', 'status', 'trustbutVersion']);
   });
+  it('rebuilds the recipe from known fields only', async () => {
+    const arts = await mkdtemp(join(tmpdir(), 'arts-'));
+    const out = await mkdtemp(join(tmpdir(), 'res-'));
+    const recipe = { node: { version: '22', pm: 'npm', install: 'npm ci', evil: 1 }, python: { version: '3.12', install: ['uv pip install pytest'], evil: 2 }, evil: 3 };
+    await artifact(arts, 'result-a__b__4', { 'run.json': { ...run('a__b__4'), recipe }, 'receipt.json': receipt });
+    await ingest(arts, out, manifest('a__b__4'), async () => true);
+    expect(JSON.parse(await readFile(join(out, 'a__b__4.run.json'), 'utf8')).recipe).toEqual({
+      node: { version: '22', pm: 'npm', install: 'npm ci' }, python: { version: '3.12', install: ['uv pip install pytest'] },
+    });
+  });
+  it('rejects an artifact whose id is not in the manifest', async () => {
+    const arts = await mkdtemp(join(tmpdir(), 'arts-'));
+    const out = await mkdtemp(join(tmpdir(), 'res-'));
+    await artifact(arts, 'result-x__y__1', { 'run.json': run('x__y__1'), 'receipt.json': receipt });
+    const res = await ingest(arts, out, manifest('a__b__1'), async () => true);
+    expect(res).toEqual({ written: 0, rejected: [{ dir: 'result-x__y__1', reason: 'artifact is not in the manifest' }] });
+    expect(await readdir(out)).toEqual([]);
+  });
+  it('downgrades a receipt whose subject head is not the manifest head commit', async () => {
+    const arts = await mkdtemp(join(tmpdir(), 'arts-'));
+    const out = await mkdtemp(join(tmpdir(), 'res-'));
+    await artifact(arts, 'result-a__b__5', { 'run.json': run('a__b__5'), 'receipt.json': { ...receipt, subject: { base: 'b', head: 'other' } } });
+    await ingest(arts, out, manifest('a__b__5'), async () => true);
+    expect(await readdir(out)).toEqual(['a__b__5.run.json']);
+    expect(JSON.parse(await readFile(join(out, 'a__b__5.run.json'), 'utf8'))).toMatchObject({
+      status: 'trustbut-error', stage: 'verify', note: 'receipt subject does not match manifest',
+    });
+  });
   it('returns zero when the artifacts directory does not exist', async () => {
     const out = await mkdtemp(join(tmpdir(), 'res-'));
-    expect(await ingest(join(out, 'nope'), out, async () => true)).toEqual({ written: 0, rejected: [] });
+    expect(await ingest(join(out, 'nope'), out, manifest('a__b__1'), async () => true)).toEqual({ written: 0, rejected: [] });
   });
 });

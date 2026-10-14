@@ -47,9 +47,11 @@ export function registerRun(program: Command): void {
     .description('Validate downloaded run artifacts and write results/<date>/')
     .requiredOption('--artifacts <dir>')
     .requiredOption('--date <date>')
-    .action(async (o: { artifacts: string; date: string }) => {
+    .requiredOption('--manifest <path>', 'the manifest the run used; artifacts and receipts are checked against it')
+    .action(async (o: { artifacts: string; date: string; manifest: string }) => {
       const env = jobEnv();
-      const res = await ingest(o.artifacts, `results/${parseDate(o.date)}`, async (p) =>
+      const manifest = await readJsonlStrict<ManifestEntry>(o.manifest);
+      const res = await ingest(o.artifacts, `results/${parseDate(o.date)}`, manifest, async (p) =>
         (await execa(env.node22, [env.tbCli, 'validate', p], { reject: false })).exitCode === 0,
       );
       console.log(JSON.stringify(res, null, 2));

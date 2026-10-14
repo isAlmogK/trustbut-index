@@ -10,11 +10,15 @@ export interface AgentDef {
   evidence(pr: PrFacts): string[];
 }
 
-const authorIn = (pr: PrFacts, logins: string[]) => (logins.includes(pr.author) ? [`author:${pr.author}`] : []);
+const authorIn = (pr: PrFacts, logins: string[]) =>
+  logins.some((l) => l.toLowerCase() === pr.author.toLowerCase()) ? [`author:${pr.author}`] : [];
 const branchPrefix = (pr: PrFacts, prefix: string) => (pr.branch.startsWith(prefix) ? [`branch:${prefix}`] : []);
 const bodyHas = (pr: PrFacts, re: RegExp, label: string) => (re.test(pr.body) ? [`body:${label}`] : []);
 const trailer = (pr: PrFacts, re: RegExp, label: string) =>
   pr.commitMessages.some((m) => re.test(m)) ? [`trailer:${label}`] : [];
+
+const CLAUDE_TRAILER = /^Co-Authored-By:[ \t]*Claude[^\n<]*<noreply@anthropic\.com>/im;
+const CLAUDE_MODEL = /^Co-Authored-By:[ \t]*(Claude[^\n<]*?)[ \t]*<noreply@anthropic\.com>/im;
 
 export const AGENTS: AgentDef[] = [
   {
@@ -37,7 +41,8 @@ export const AGENTS: AgentDef[] = [
     evidence: (p) => [
       ...authorIn(p, ['claude[bot]']),
       ...bodyHas(p, /Generated with \[?Claude Code/i, 'Generated with Claude Code'),
-      ...trailer(p, /^Co-Authored-By:\s*Claude\b/im, 'Co-Authored-By: Claude'),
+      // Only Claude Code's own trailer, which uses Anthropic's noreply address; not a human co-author named Claude.
+      ...trailer(p, CLAUDE_TRAILER, 'Co-Authored-By: Claude'),
     ],
   },
   {
@@ -68,10 +73,12 @@ export function attribute(pr: PrFacts): { agent: AgentId; evidence: string[] } |
   return hits[0]!;
 }
 
-export function extractModel(pr: PrFacts): string {
+/** The model named by a Claude Code trailer ("Claude Opus 4.8"), for claude-code PRs only; otherwise "unknown". */
+export function extractModel(pr: PrFacts, agent: AgentId): string {
+  if (agent !== 'claude-code') return 'unknown';
   for (const m of pr.commitMessages) {
-    const match = /^Co-Authored-By:\s*(Claude[^<\n]*?)\s*</im.exec(m);
-    if (match && match[1]!.trim() !== 'Claude') return match[1]!.trim();
+    const name = CLAUDE_MODEL.exec(m)?.[1]?.trim();
+    if (name && !['claude', 'claude code'].includes(name.toLowerCase())) return name;
   }
   return 'unknown';
 }

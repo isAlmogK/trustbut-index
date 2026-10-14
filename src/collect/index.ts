@@ -159,7 +159,7 @@ export async function collect(gh: GitHubApi, o: CollectOptions): Promise<{ entri
       ambiguous++;
       continue;
     }
-    candidates.push({ pr, agent: a.agent, evidence: a.evidence, model: extractModel(pr), repoStars: facts.stars, repoLanguage: facts.language });
+    candidates.push({ pr, agent: a.agent, evidence: a.evidence, model: extractModel(pr, a.agent), repoStars: facts.stars, repoLanguage: facts.language });
   }
 
   const selected = selectAgentPrs(candidates, { perAgent: o.perAgent, perRepo: o.perRepo, seed: o.seed });

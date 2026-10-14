@@ -34,5 +34,15 @@ describe('run.yml', () => {
     expect(ingestJob).toMatch(/git pull --rebase && git push/);
     expect(ingestJob).toMatch(/sleep /);
   });
+  it('ingest checks results against the manifest and pins its actions to commit SHAs', async () => {
+    const yml = await readFile('.github/workflows/run.yml', 'utf8');
+    const ingestJob = yml.slice(yml.indexOf('\n  ingest:'));
+    expect(ingestJob).toMatch(/ingest --artifacts artifacts --date "\$DATE" --manifest "\$MANIFEST"/);
+    expect(ingestJob).toMatch(/^\s+MANIFEST: \$\{\{ inputs\.manifest \}\}$/m);
+    const uses = ingestJob.match(/uses: .*/g)!;
+    expect(uses.length).toBe(3);
+    for (const u of uses) expect(u).toMatch(/^uses: actions\/(checkout|setup-node|download-artifact)@[0-9a-f]{40} # v\d+\.\d+\.\d+$/);
+    expect(ingestJob).not.toMatch(/cache: npm/);
+  });
 });
 

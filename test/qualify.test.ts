@@ -58,6 +58,16 @@ describe('test setup detection', () => {
     expect(ciRunsTests(['- run: python -m pytest -q'])).toBe(true);
     expect(ciRunsTests(['- run: npm run lint'])).toBe(false);
   });
+  it('does not match a runner name inside a longer word or a hyphenated package name', () => {
+    for (const t of ['- run: npm i -D eslint-plugin-jest', '- run: npx jestify', '- run: npm i jest-junit', '- run: pip install pytest-cov-report', '- uses: foo/mocha-action@v1'])
+      expect(ciRunsTests([t]), t).toBe(false);
+    for (const t of ['- run: npx jest --ci', '- run: npm run test-ci', '- run: python -m pytest', '- run: yarn vitest run'])
+      expect(ciRunsTests([t]), t).toBe(true);
+  });
+  it('finds make, turbo, recursive pnpm and nx test commands', () => {
+    for (const t of ['- run: make test', '- run: turbo run test', '- run: npx turbo test', '- run: pnpm -r test', '- run: npx nx test app'])
+      expect(ciRunsTests([t]), t).toBe(true);
+  });
   it('detects JS test runners from package.json', () => {
     expect(detectJsTests({ devDependencies: { vitest: '^3' } })).toBe(true);
     expect(detectJsTests({ scripts: { test: 'node --test' } })).toBe(true);

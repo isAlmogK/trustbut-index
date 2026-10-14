@@ -62,8 +62,11 @@ export function isSourceFile(p: string): boolean {
   return CODE_EXT.test(p) && !p.endsWith('.d.ts') && !isTestPath(p) && !/(^|\/)(docs?|examples?)\//.test(p);
 }
 
-const CI_TEST =
-  /\b(npm (run )?test|pnpm (run )?test|yarn (run )?test|bun (run )?test|vitest|jest|mocha|node --test|pytest|tox|nox)\b/;
+// Test commands, or a runner name standing alone: not inside a longer word or a hyphenated name like eslint-plugin-jest.
+const CI_TEST = new RegExp(
+  String.raw`(?<![\w-])(?:(?:npm|pnpm|yarn|bun)(?: run)? test|pnpm -r test|make test|turbo (?:run )?test|nx test|node --test)\b` +
+    String.raw`|(?<![\w-])(?:vitest|jest|mocha|pytest|tox|nox)(?![\w-])`,
+);
 
 export function ciRunsTests(workflowTexts: string[]): boolean {
   return workflowTexts.some((t) => CI_TEST.test(t));

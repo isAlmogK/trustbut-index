@@ -36,6 +36,28 @@ describe('shape checks', () => {
     expect(isRunRecord({ ...run, status: 'great' })).toBe(false);
     expect(isRunRecord('x')).toBe(false);
   });
+  it('checks exit codes, durations and the recipe in depth', () => {
+    const run = { id: 'o__r__1', status: 'ran', stage: null, recipe, durations: { installMs: 1, verifyMs: 2 },
+      exitCodes: { install: 0, verify: null }, runnerImage: 'ubuntu24', trustbutVersion: '0.4.0' };
+    const py = { version: '3.12', install: ['uv pip install pytest'] };
+    expect(isRunRecord(run)).toBe(true);
+    expect(isRunRecord({ ...run, recipe: { node: null, python: py } })).toBe(true);
+    expect(isRunRecord({ ...run, recipe: null })).toBe(true);
+    const bad: unknown[] = [
+      { ...run, exitCodes: undefined },
+      { ...run, exitCodes: { install: '0', verify: 0 } },
+      { ...run, exitCodes: { install: 0 } },
+      { ...run, durations: { installMs: Infinity, verifyMs: 1 } },
+      { ...run, durations: JSON.parse('{"installMs":1e999,"verifyMs":1}') },
+      { ...run, recipe: 'npm ci' },
+      { ...run, recipe: { node: { version: '22', pm: 'npm' }, python: null } },
+      { ...run, recipe: { node: { version: 22, pm: 'npm', install: 'npm ci' }, python: null } },
+      { ...run, recipe: { node: null, python: { version: '3.12', install: 'pip install' } } },
+      { ...run, recipe: { node: null, python: { version: '3.12', install: [1] } } },
+      { ...run, recipe: { node: null } },
+    ];
+    for (const b of bad) expect(isRunRecord(b), JSON.stringify(b)).toBe(false);
+  });
   it('accepts a receipt-shaped object', () => {
     expect(looksLikeReceipt(receipt())).toBe(true);
     expect(looksLikeReceipt({ findings: 'no' })).toBe(false);

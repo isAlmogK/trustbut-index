@@ -25,17 +25,32 @@ export function classify(o: Outcome): { status: RunStatus; stage: FailureStage }
 const STATUSES: RunStatus[] = ['ran', 'no-runner', 'setup-failed', 'timeout', 'trustbut-error'];
 const STAGES: FailureStage[] = ['fetch', 'recipe', 'install', 'verify', 'no-passing-tests', null];
 
+const isObj = (x: unknown): x is Record<string, any> => typeof x === 'object' && x !== null && !Array.isArray(x);
+const isStr = (x: unknown): x is string => typeof x === 'string';
+const finite = (x: unknown): x is number => typeof x === 'number' && Number.isFinite(x);
+const exitCode = (x: unknown) => x === null || finite(x);
+
+function isRecipe(x: unknown): x is Recipe | null {
+  if (x === null) return true;
+  if (!isObj(x) || !('node' in x) || !('python' in x)) return false;
+  const { node, python } = x;
+  const nodeOk = node === null || (isObj(node) && isStr(node.version) && isStr(node.pm) && isStr(node.install));
+  const pyOk = python === null || (isObj(python) && isStr(python.version) && Array.isArray(python.install) && python.install.every(isStr));
+  return nodeOk && pyOk;
+}
+
 export function isRunRecord(x: unknown): x is RunRecord {
-  if (!x || typeof x !== 'object') return false;
-  const r = x as Record<string, any>;
+  if (!isObj(x)) return false;
+  const r = x;
   return (
-    typeof r.id === 'string' &&
+    isStr(r.id) &&
     STATUSES.includes(r.status) &&
     STAGES.includes(r.stage) &&
-    typeof r.durations?.installMs === 'number' &&
-    typeof r.durations?.verifyMs === 'number' &&
-    typeof r.runnerImage === 'string' &&
-    typeof r.trustbutVersion === 'string'
+    isRecipe(r.recipe) &&
+    isObj(r.durations) && finite(r.durations.installMs) && finite(r.durations.verifyMs) &&
+    isObj(r.exitCodes) && exitCode(r.exitCodes.install) && exitCode(r.exitCodes.verify) &&
+    isStr(r.runnerImage) &&
+    isStr(r.trustbutVersion)
   );
 }
 

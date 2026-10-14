@@ -78,6 +78,9 @@ describe('renderReport', () => {
     expect(tiles[1]).not.toContain('95% interval');
     expect(tiles[2]).toContain('95% interval');
   });
+  it('states that receipts were checked against each PR head commit', () => {
+    expect(html).toContain("A test suite could in principle forge its own receipt, or another PR's in the same run; receipts were validated against the spec and against each PR's head commit.");
+  });
   it('states the clustering caveat', () => {
     expect(html).toContain('Intervals treat tests (proof rate) and findings (precision) as independent; tests and findings from the same PR are correlated, so the true uncertainty is somewhat wider.');
   });
