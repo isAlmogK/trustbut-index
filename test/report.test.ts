@@ -66,6 +66,7 @@ describe('renderReport', () => {
     expect(html).toContain('Precision');
     expect(html).toContain('roughly 90% joint coverage');
     expect(html).toContain('Some structural tells may remain');
+    expect(html).toContain('so it would tend to shrink measured differences');
     expect(html).not.toMatch(/o\/r#1/);
     expect(html).not.toContain('<code>adds</code>');
     expect(html).toContain('pass before the change, pass after');

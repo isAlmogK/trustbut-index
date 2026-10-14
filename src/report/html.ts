@@ -143,7 +143,7 @@ ${labelDetail(d)}
 <section id="method"><h2>Method and limitations</h2>
 <p>Selection rules, metrics and thresholds were fixed before the first run: <a href="${esc(d.preregUrl)}">pre-registration</a>.</p>
 ${d.deviations.length ? `<p>Deviations:</p><ul>${d.deviations.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p>No deviations from the pre-registration.</p>'}
-<ul><li>Agents are identified by public markers (bot accounts, branch prefixes, PR text, commit trailers). Undisclosed agent use in the human group makes the groups look more alike, so it can only shrink measured differences.</li>
+<ul><li>Agents are identified by public markers (bot accounts, branch prefixes, PR text, commit trailers). Undisclosed agent use in the human group makes the groups look more alike, so it would tend to shrink measured differences.</li>
 <li>A test suite could in principle forge its own receipt, or another PR's in the same run; receipts were validated against the spec and against each PR's head commit. Labeled findings were checked against the real diff.</li>
 <li>The hit-rate interval multiplies the bounds of two independent 95% intervals. It is an envelope with roughly 90% joint coverage, not a 95% interval.</li>
 <li>Intervals treat tests (proof rate) and findings (precision) as independent; tests and findings from the same PR are correlated, so the true uncertainty is somewhat wider.</li>
