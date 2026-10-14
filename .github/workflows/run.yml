@@ -143,6 +143,13 @@ jobs:
           DATE: ${{ inputs.date }}
           MANIFEST: ${{ inputs.manifest }}
         run: npx tsx src/cli.ts ingest --artifacts artifacts --date "$DATE" --manifest "$MANIFEST"
+      - name: Aggregate and, for a pilot, write the checklist
+        env:
+          DATE: ${{ inputs.date }}
+          MANIFEST: ${{ inputs.manifest }}
+        run: |
+          npx tsx src/cli.ts aggregate --manifest "$MANIFEST" --date "$DATE"
+          case "$DATE" in pilot-*) npx tsx src/cli.ts checklist --manifest "$MANIFEST" --date "$DATE" ;; esac
       - name: Commit results
         env:
           DATE: ${{ inputs.date }}
