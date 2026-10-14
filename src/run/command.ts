@@ -1,6 +1,6 @@
 import type { Command } from 'commander';
 import { execa } from 'execa';
-import { readJsonl } from '../jsonl.js';
+import { readJsonlStrict } from '../jsonl.js';
 import type { ManifestEntry } from '../types.js';
 import { ingest } from './ingest.js';
 import { install, jobEnv, prepare, record, verify } from './job.js';
@@ -23,7 +23,7 @@ export function registerRun(program: Command): void {
     .requiredOption('--manifest <path>')
     .option('--batch <n>', 'batch index', '0')
     .action(async (o: { manifest: string; batch: string }) => {
-      const entries = await readJsonl<ManifestEntry>(o.manifest);
+      const entries = await readJsonlStrict<ManifestEntry>(o.manifest);
       process.stdout.write(JSON.stringify(batchMatrix(entries, parseBatch(o.batch))));
     });
 

@@ -18,6 +18,8 @@ export interface ReportData {
   examples: Example[];
   preregUrl: string;
   deviations: string[];
+  /** Where site/ is published, e.g. https://isalmogk.github.io/trustbut-index/ (social cards need absolute URLs). */
+  baseUrl: string;
 }
 
 const FAMILY_NAMES: Record<string, string> = {
@@ -30,9 +32,9 @@ const FAMILY_NAMES: Record<string, string> = {
 
 const group = (d: ReportData, key: string) => d.agg.groups.find((g) => g.key === key)!;
 
-function tile(name: string, c: Check, unit: string): string {
+function tile(name: string, c: Check, unit: string, interval: string): string {
   return `<div class="tile ${c.pass ? 'pass' : 'miss'}"><div class="tname">${esc(name)}</div><div class="tval">${pct(c.value)}</div>
-<div class="tci">95% interval ${pct(c.lo)}–${pct(c.hi)}</div><div class="ttarget">Target ≥ ${pct(c.target)} ${esc(unit)} · <b>${c.pass ? 'met' : 'missed'}</b></div></div>`;
+<div class="tci">${esc(interval)} ${pct(c.lo)}–${pct(c.hi)}</div><div class="ttarget">Target ≥ ${pct(c.target)} ${esc(unit)} · <b>${c.pass ? 'met' : 'missed'}</b></div></div>`;
 }
 
 function proofChart(d: ReportData, pal: Palette): string {
@@ -58,6 +60,17 @@ function coverageChart(d: ReportData): string {
     { label: 'Set up', count: all.selected - (s.missing ?? 0) - (s['setup-failed'] ?? 0) - (s['no-runner'] ?? 0) },
     { label: 'Ran', count: s.ran ?? 0 },
   ], CSS_PALETTE);
+}
+
+function precisionLine(name: string, s: LabelStats): string {
+  const p = s.precision;
+  return p.n === 0 ? `${name}: precision no data (n=0).` : `${name}: precision ${pct(p.p)} (n=${p.n}, 95% interval ${pct(p.lo)}–${pct(p.hi)}).`;
+}
+
+function labelDetail(d: ReportData): string {
+  const stat = (g: 'agent' | 'human' | 'all') => d.labels.find((l) => l.family === 'all' && l.group === g)!;
+  const unclear = stat('all').unclear;
+  return `<p>${esc(precisionLine('Agent findings', stat('agent')))} ${esc(precisionLine('Human findings', stat('human')))} ${unclear} finding${unclear === 1 ? '' : 's'} labeled unclear, excluded from precision.</p>`;
 }
 
 function labelChart(d: ReportData): string {
@@ -88,18 +101,25 @@ export function renderReport(d: ReportData): string {
   const human = group(d, 'human');
   const pg = d.agg.comparisons.find((c) => c.metric === 'proof-rate')!;
   const examples = d.examples.length
-    ? d.examples.map((e) => `<div class="ex"><b>${esc(FAMILY_NAMES[e.family]!)}</b> in ${esc(e.description)}: ${esc(e.title)}${e.testName ? `. Test <code>${esc(e.testName)}</code>: ${esc(e.before ?? '?')} before the change, ${esc(e.after ?? '?')} after.` : '.'}</div>`).join('')
+    ? d.examples.map((e) => `<div class="ex"><b>${esc(FAMILY_NAMES[e.family]!)}</b> in ${esc(e.description)}: ${esc(e.title)}${e.before !== null && e.after !== null ? `. The test: ${esc(e.before)} before the change, ${esc(e.after)} after.` : '.'}</div>`).join('')
     : '<p class="muted">No confirmed-real examples.</p>';
+  const page = `${d.baseUrl.endsWith('/') ? d.baseUrl : `${d.baseUrl}/`}${d.date}/`;
+  const title = `Agent test honesty ${d.date}`;
+  const description = 'trustbut receipts on real agent and human pull requests, scored against pre-registered thresholds.';
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Agent test honesty ${esc(d.date)}</title>
-<meta name="description" content="trustbut receipts on real agent and human pull requests, scored against pre-registered thresholds.">
-<meta property="og:image" content="share.png"><style>${STYLE}</style></head><body><main>
+<title>${esc(title)}</title>
+<meta name="description" content="${esc(description)}">
+<meta property="og:title" content="${esc(title)}">
+<meta property="og:description" content="${esc(description)}">
+<meta property="og:url" content="${esc(page)}">
+<meta property="og:image" content="${esc(`${page}share.png`)}">
+<meta name="twitter:card" content="summary_large_image"><style>${STYLE}</style></head><body><main>
 <h1>Do AI agents' tests prove their changes?</h1>
 <p class="muted">Study of ${d.agg.groups.find((g) => g.key === 'all')!.selected} merged pull requests in established open-source projects, ${esc(d.date)}. trustbut ${esc(d.agg.trustbutVersions.join(', '))}.</p>
 
 <section id="verdict"><h2>Verdict</h2><p>${d.verdict.pass ? 'All three pre-registered thresholds were met.' : 'Not every pre-registered threshold was met.'}</p>
-<div class="tiles">${tile('Precision', d.verdict.precision, 'of labeled findings real')}${tile('Hit rate', d.verdict.hitRate, 'of agent PRs with a real finding')}${tile('Run coverage', d.verdict.coverage, 'of selected PRs ran')}</div></section>
+<div class="tiles">${tile('Precision', d.verdict.precision, 'of labeled findings real', '95% interval')}${tile('Hit rate', d.verdict.hitRate, 'of agent PRs with a real finding', '≈90% envelope')}${tile('Run coverage', d.verdict.coverage, 'of selected PRs ran', '95% interval')}</div></section>
 
 <section id="proof"><h2>Do new tests prove the change?</h2>
 <p>Of the new or changed tests in agent PRs, ${pct(agents.proofs.proofRate.p)} failed before the change and passed after it, compared with ${pct(human.proofs.proofRate.p)} in human PRs from the same projects (difference ${pct(pg.diff.d)}, 95% interval ${pct(pg.diff.lo)} to ${pct(pg.diff.hi)}).</p>
@@ -111,6 +131,7 @@ export function renderReport(d: ReportData): string {
 <section id="coverage"><h2>Can trustbut run on real projects?</h2><figure>${coverageChart(d)}</figure></section>
 
 <section id="labels"><h2>Are the findings right?</h2><p>A random sample of findings was labeled by hand from blinded evidence, with Claude drafting a label and the author confirming each one. On the first ${d.calibration.blind.n} items, labeled without seeing drafts, the draft matched the author's label ${pct(d.calibration.blind.p)} of the time. Afterwards the author changed ${pct(d.calibration.overruled.p)} of the drafts.</p>
+${labelDetail(d)}
 <p class="legend"><span><i style="background:var(--real)"></i>real</span><span><i style="background:var(--benign)"></i>true but benign</span><span><i style="background:var(--false)"></i>false</span></p>
 <figure>${labelChart(d)}</figure></section>
 
@@ -122,6 +143,7 @@ ${d.deviations.length ? `<p>Deviations:</p><ul>${d.deviations.map((x) => `<li>${
 <ul><li>Agents are identified by public markers (bot accounts, branch prefixes, PR text, commit trailers). Undisclosed agent use in the human group makes the groups look more alike, so it can only shrink measured differences.</li>
 <li>A test suite could in principle forge its own receipt. Receipts were validated against the spec, and labeled findings were checked against the real diff.</li>
 <li>The hit-rate interval multiplies the bounds of two independent 95% intervals. It is an envelope with roughly 90% joint coverage, not a 95% interval.</li>
+<li>Intervals treat tests (proof rate) and findings (precision) as independent; tests and findings from the same PR are correlated, so the true uncertainty is somewhat wider.</li>
 <li>Evidence shown to labelers was blinded (agent names, bots, branches, trailers and vendor or model names removed, replaced by [agent]/[link] placeholders). Some structural tells may remain, such as a title prefix like [WIP] or an agent's habitual PR section layout.</li>
 <li>Conflict of interest: the study is run by trustbut's author. The pre-registration and the public data exist so anyone can check it.</li></ul></section>
 </main></body></html>

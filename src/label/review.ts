@@ -1,7 +1,7 @@
 import { createServer, type IncomingMessage } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { join } from 'node:path';
-import { appendJsonl, readJsonOr, readJsonl } from '../jsonl.js';
+import { appendJsonl, readJsonOr, readJsonl, readJsonlStrict } from '../jsonl.js';
 import { LABELS, type Label } from '../types.js';
 import type { Draft } from './draft.js';
 import type { SampleItem } from './sample.js';
@@ -29,7 +29,7 @@ async function body(req: IncomingMessage): Promise<string> {
 }
 
 export async function startReview(dir: string, port = 4317): Promise<{ url: string; close: () => Promise<void> }> {
-  const sample = await readJsonl<SampleItem>(join(dir, 'sample.jsonl'));
+  const sample = await readJsonlStrict<SampleItem>(join(dir, 'sample.jsonl'));
   const drafts = new Map((await readJsonl<Draft>(join(dir, 'drafts.jsonl'))).map((d) => [d.key, d]));
   const finalsPath = join(dir, 'final.jsonl');
 

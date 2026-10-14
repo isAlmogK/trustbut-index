@@ -1,4 +1,9 @@
+import { mkdtemp } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { addPaths, excludedPrIds } from '../src/collect/command.js';
+import { writeJsonl } from '../src/jsonl.js';
 import { collect, weekSlices } from '../src/collect/index.js';
 import { NotFoundError, type GitHubApi, type SearchItem } from '../src/github/client.js';
 
@@ -63,4 +68,28 @@ describe('collect', () => {
     expect(summary.selected.copilot).toBe(1);
     expect(summary.insufficient).toContain('copilot');
   });
+
+  it('skips PRs listed in an excluded (pilot) manifest, as candidates and as human matches', async () => {
+    const gh = fakeApi(routes, (q) => (q.startsWith('author:app/copilot-swe-agent') ? [{ repo: 'big/repo', number: 1 }] : []));
+    const base = { until: now, days: 90, perAgent: 80, perRepo: 3, seed: 's', now, excluded: new Set<string>(), minPerAgent: 30 };
+    const noHuman = await collect(gh, { ...base, excludedPrs: new Set(['big/repo#5']) });
+    expect(noHuman.entries.map((e) => e.id)).toEqual(['big/repo#1']);
+    expect(noHuman.summary.humanShortfall).toBe(1);
+    const noAgent = await collect(gh, { ...base, excludedPrs: new Set(['big/repo#1']) });
+    expect(noAgent.entries).toEqual([]);
+  });
 });
+
+describe('excluded manifests', () => {
+  it('accepts --exclude-manifest repeated or comma-separated', () => {
+    expect(addPaths('a.jsonl,b.jsonl', ['p.jsonl'])).toEqual(['p.jsonl', 'a.jsonl', 'b.jsonl']);
+    expect(addPaths(' c.jsonl ', [])).toEqual(['c.jsonl']);
+  });
+  it('reads the PR ids of every excluded manifest, and fails on a missing one', async () => {
+    const dir = await mkdtemp(join(tmpdir(), 'excl-'));
+    await writeJsonl(join(dir, 'pilot.jsonl'), [{ id: 'o/r#1' }, { id: 'o/r#2' }]);
+    expect([...(await excludedPrIds([join(dir, 'pilot.jsonl')]))]).toEqual(['o/r#1', 'o/r#2']);
+    await expect(excludedPrIds([join(dir, 'nope.jsonl')])).rejects.toThrow(/does not exist/);
+  });
+});
+

@@ -39,7 +39,8 @@ export function buildRequest(packet: Packet, prompt: string): { custom_id: strin
       model: DRAFT_MODEL,
       max_tokens: 16000,
       system: prompt,
-      messages: [{ role: 'user', content: JSON.stringify(packet) }],
+      // The key names the repo and PR; custom_id maps results back, so the drafter never sees it.
+      messages: [{ role: 'user', content: JSON.stringify({ ...packet, key: undefined }) }],
       output_config: { effort: 'high', format: { type: 'json_schema', schema: SCHEMA } },
     },
   };

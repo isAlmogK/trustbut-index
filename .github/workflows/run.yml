@@ -19,7 +19,7 @@ on:
 permissions: {}
 
 env:
-  TRUSTBUT_SPEC: '0.4'
+  TRUSTBUT_SPEC: '0.4.0'
 
 jobs:
   plan:
@@ -125,9 +125,6 @@ jobs:
     runs-on: ubuntu-24.04
     permissions:
       contents: write
-    concurrency:
-      group: ingest
-      cancel-in-progress: false
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -156,5 +153,10 @@ jobs:
           git add results
           git diff --cached --quiet && exit 0
           git commit -m "data: results $DATE batch $BATCH"
-          git pull --rebase
-          git push
+          # Batches ingest in parallel and write different files, so a rejected push only needs a rebase.
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase && git push; then exit 0; fi
+            git rebase --abort 2>/dev/null || true
+            sleep "$((attempt * 5))"
+          done
+          exit 1

@@ -1,5 +1,5 @@
 import { join } from 'node:path';
-import { readJsonOr, readJsonl } from '../jsonl.js';
+import { readJsonOr, readJsonlStrict } from '../jsonl.js';
 import { byCodeUnit } from '../rng.js';
 import { AGENT_IDS, fileId, type Family, type ManifestEntry, type Receipt, type RunRecord } from '../types.js';
 import { FAMILIES, familiesOf } from './families.js';
@@ -35,7 +35,7 @@ export interface Aggregate {
 }
 
 export async function loadResults(manifestPath: string, resultsDir: string): Promise<PrResult[]> {
-  const entries = await readJsonl<ManifestEntry>(manifestPath);
+  const entries = await readJsonlStrict<ManifestEntry>(manifestPath);
   return Promise.all(
     entries.map(async (entry) => ({
       entry,

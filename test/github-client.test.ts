@@ -2,7 +2,7 @@ import { mkdtemp } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
-import { GitHub, NotFoundError, readRepoFile } from '../src/github/client.js';
+import { GitHub, NotFoundError, apiCacheDir, readRepoFile } from '../src/github/client.js';
 
 function fakeFetch(routes: (url: string) => Response) {
   const calls: string[] = [];
@@ -86,5 +86,12 @@ describe('GitHub client', () => {
     const gh = new GitHub({ fetch: f });
     expect(await readRepoFile(gh, 'o/r', 'package.json')).toBe('{"a":1}');
     expect(await readRepoFile(gh, 'o/r', 'pytest.ini')).toBeNull();
+  });
+});
+
+describe('apiCacheDir', () => {
+  it('gives each collection its own cache folder', () => {
+    expect(apiCacheDir('2026-11-02')).toBe(join('cache', 'github', '2026-11-02'));
+    expect(apiCacheDir('2026-11-02')).not.toBe(apiCacheDir('2026-12-01'));
   });
 });

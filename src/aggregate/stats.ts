@@ -32,7 +32,7 @@ export function newcombe(a: RateCI, b: RateCI): DiffCI {
   };
 }
 
-/** Product of two independent rates; bounds multiply (a conservative envelope, stated in the report). */
+/** Product of two independent rates; bounds multiply. The result is an envelope with roughly 90% joint coverage, not a 95% interval (stated in the report). */
 export function product(a: RateCI, b: RateCI): { p: number; lo: number; hi: number } {
   const r = (x: number) => Math.round(x * 1e12) / 1e12;
   return { p: r(a.p * b.p), lo: r(a.lo * b.lo), hi: r(a.hi * b.hi) };

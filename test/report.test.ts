@@ -27,6 +27,7 @@ function data(): ReportData {
   return {
     date: '2026-11-02', agg, labels, hit, calibration: calibration(sample, finals, []), verdict: verdict(agg, labels, hit),
     examples: pickExamples(sample, finals, results), preregUrl: 'https://github.com/isAlmogK/trustbut-index/blob/prereg-v1/PREREGISTRATION.md', deviations: [],
+    baseUrl: 'https://isalmogk.github.io/trustbut-index/',
   };
 }
 
@@ -35,10 +36,20 @@ describe('examples', () => {
     expect(describeRepo(12_400, 'TypeScript')).toBe('a 12k-star TypeScript project');
     expect(describeRepo(1_500, null)).toBe('a 1.5k-star project');
   });
-  it('picks real-labelled findings with their before/after', () => {
+  it('picks real-labelled findings with their before/after, never the test name', () => {
     expect(pickExamples(sample, finals, results)).toEqual([{
-      description: 'a 12k-star TypeScript project', family: 'proof-gap', title: 'Test passes without the change', testName: 'adds', before: 'pass', after: 'pass',
+      description: 'a 12k-star TypeScript project', family: 'proof-gap', title: 'Test passes without the change', before: 'pass', after: 'pass',
     }]);
+  });
+  it('uses the latest label per finding', () => {
+    const relabelled = [...finals, { key: 'o__r__1:0', label: 'false', draftLabel: 'real', blind: true } as FinalLabel];
+    expect(pickExamples(sample, relabelled, results)).toEqual([]);
+  });
+  it('attaches before/after only to a proof-gap finding whose detail names the proof', () => {
+    const mismatch = [{ ...sample[0]!, finding: { ...sample[0]!.finding, detail: 'other test' } }];
+    expect(pickExamples(mismatch, finals, results)[0]).toMatchObject({ before: null, after: null });
+    const escape = [{ ...sample[0]!, family: 'escapes', finding: { ...sample[0]!.finding, id: 'escape-added' } } as SampleItem];
+    expect(pickExamples(escape, finals, results)[0]).toMatchObject({ family: 'escapes', before: null, after: null });
   });
 });
 
@@ -56,9 +67,44 @@ describe('renderReport', () => {
     expect(html).toContain('roughly 90% joint coverage');
     expect(html).toContain('Some structural tells may remain');
     expect(html).not.toMatch(/o\/r#1/);
+    expect(html).not.toContain('<code>adds</code>');
+    expect(html).toContain('pass before the change, pass after');
+  });
+  it('labels the hit-rate tile as an envelope and the other tiles as 95% intervals', () => {
+    const tiles = html.split('<div class="tile ').slice(1);
+    expect(tiles).toHaveLength(3);
+    expect(tiles[0]).toContain('95% interval');
+    expect(tiles[1]).toContain('≈90% envelope');
+    expect(tiles[1]).not.toContain('95% interval');
+    expect(tiles[2]).toContain('95% interval');
+  });
+  it('states the clustering caveat', () => {
+    expect(html).toContain('Intervals treat tests (proof rate) and findings (precision) as independent; tests and findings from the same PR are correlated, so the true uncertainty is somewhat wider.');
+  });
+  it('has absolute social-card tags', () => {
+    expect(html).toContain('<meta property="og:image" content="https://isalmogk.github.io/trustbut-index/2026-11-02/share.png">');
+    expect(html).toContain('<meta property="og:url" content="https://isalmogk.github.io/trustbut-index/2026-11-02/">');
+    expect(html).toMatch(/<meta property="og:title" content="[^"]+">/);
+    expect(html).toMatch(/<meta property="og:description" content="[^"]+">/);
+    expect(html).toContain('<meta name="twitter:card" content="summary_large_image">');
+    expect(html).not.toContain('content="share.png"');
+    expect(renderReport({ ...data(), baseUrl: 'https://example.org/x' })).toContain('content="https://example.org/x/2026-11-02/share.png"');
   });
   it('is deterministic', () => {
     expect(renderReport(data())).toBe(html);
+  });
+});
+
+describe('label detail', () => {
+  it('shows agent and human precision with n and 95% interval, and the unclear count', () => {
+    const it2 = (key: string, group: 'agent' | 'human') => ({ ...sample[0]!, key, group }) as SampleItem;
+    const s2 = [it2('a1', 'agent'), it2('a2', 'agent'), it2('a3', 'agent'), it2('h1', 'human'), it2('h2', 'human')];
+    const f2 = (['real', 'false', 'unclear', 'real', 'true-but-benign'] as const).map((label, i) => ({ key: s2[i]!.key, label }) as FinalLabel);
+    const html = renderReport({ ...data(), labels: labelStats(s2, f2) });
+    const section = html.slice(html.indexOf('id="labels"'), html.indexOf('id="examples"'));
+    expect(section).toContain('Agent findings: precision 50.0% (n=2, 95% interval 9.5%–90.5%)');
+    expect(section).toContain('Human findings: precision 50.0% (n=2, 95% interval 9.5%–90.5%)');
+    expect(section).toContain('1 finding labeled unclear');
   });
 });
 

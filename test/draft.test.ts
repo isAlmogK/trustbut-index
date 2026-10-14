@@ -13,12 +13,15 @@ describe('draft requests', () => {
     expect(customId('o__r__1:0')).not.toBe(customId('o__r__1:1'));
   });
 
-  it('builds a structured-output request on the draft model', () => {
+  it('builds a structured-output request on the draft model, without the finding key', () => {
     const r = buildRequest(packet, 'PROMPT');
     expect(r.params.model).toBe('claude-opus-5-5');
     expect(r.params.system).toBe('PROMPT');
     expect(r.params.output_config).toMatchObject({ effort: 'high', format: { type: 'json_schema' } });
-    expect(JSON.parse((r.params.messages[0]!.content as string))).toMatchObject({ key: 'o__r__1:0' });
+    const content = r.params.messages[0]!.content as string;
+    expect(JSON.parse(content)).toEqual({ family: 'proof-gap' });
+    expect(content).not.toContain('o__r__1');
+    expect(r.custom_id).toBe(customId('o__r__1:0'));
   });
 });
 

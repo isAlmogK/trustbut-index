@@ -1,12 +1,24 @@
 import { readFile } from 'node:fs/promises';
 import type { Command } from 'commander';
-import { GitHub } from '../github/client.js';
-import { writeJson, writeJsonl } from '../jsonl.js';
+import { GitHub, apiCacheDir } from '../github/client.js';
+import { readJsonlStrict, writeJson, writeJsonl } from '../jsonl.js';
 import { collect } from './index.js';
 
 async function excludedRepos(): Promise<Set<string>> {
   const text = await readFile('excluded-repos.txt', 'utf8').catch(() => '');
   return new Set(text.split('\n').map((l) => l.trim().toLowerCase()).filter((l) => l && !l.startsWith('#')));
+}
+
+/** Commander collector: --exclude-manifest may repeat and may hold comma-separated paths. */
+export function addPaths(value: string, previous: string[]): string[] {
+  return [...previous, ...value.split(',').map((p) => p.trim()).filter(Boolean)];
+}
+
+/** The PR ids in the excluded manifests. A missing or empty manifest is an error. */
+export async function excludedPrIds(paths: string[]): Promise<Set<string>> {
+  const ids = new Set<string>();
+  for (const p of paths) for (const e of await readJsonlStrict<{ id: string }>(p)) ids.add(e.id);
+  return ids;
 }
 
 export function registerCollect(program: Command): void {
@@ -19,15 +31,17 @@ export function registerCollect(program: Command): void {
     .option('--per-repo <n>', 'max agent PRs per repo', '3')
     .option('--seed <s>', 'selection seed', 'prereg-v1')
     .option('--pilot', 'pilot: 20 per agent, name pilot-<until>')
-    .action(async (o: { until: string; days: string; perAgent: string; perRepo: string; seed: string; pilot?: boolean }) => {
+    .option('--exclude-manifest <path>', 'skip the PRs in this manifest (repeatable or comma-separated), e.g. the pilot', addPaths, [] as string[])
+    .action(async (o: { until: string; days: string; perAgent: string; perRepo: string; seed: string; pilot?: boolean; excludeManifest: string[] }) => {
       const token = process.env.GITHUB_TOKEN;
       if (!token) throw new Error('Set GITHUB_TOKEN, e.g. GITHUB_TOKEN=$(gh auth token)');
-      const gh = new GitHub({ token, cacheDir: 'cache/github' });
+      const gh = new GitHub({ token, cacheDir: apiCacheDir(o.until) });
       const until = new Date(`${o.until}T00:00:00Z`);
       const name = o.pilot ? `pilot-${o.until}` : o.until;
       const { entries, summary } = await collect(gh, {
         until, days: Number(o.days), perAgent: o.pilot ? 20 : Number(o.perAgent), perRepo: Number(o.perRepo),
-        seed: o.seed, now: new Date(), excluded: await excludedRepos(), minPerAgent: o.pilot ? 0 : 30, log: console.error,
+        seed: o.seed, now: new Date(), excluded: await excludedRepos(), excludedPrs: await excludedPrIds(o.excludeManifest),
+        minPerAgent: o.pilot ? 0 : 30, log: console.error,
       });
       await writeJsonl(`manifests/${name}.jsonl`, entries);
       await writeJson(`manifests/${name}.summary.json`, summary);

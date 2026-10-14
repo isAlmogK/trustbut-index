@@ -21,4 +21,18 @@ describe('run.yml', () => {
     const lines = yml.split('\n').filter((l) => /\$\{\{\s*inputs\./.test(l));
     expect(lines.filter((l) => !/^\s+(MANIFEST|BATCH|DATE): \$\{\{ inputs\.\w+ \}\}$/.test(l))).toEqual([]);
   });
+  it('pins trustbut to exactly 0.4.0, as the pre-registration states', async () => {
+    const yml = await readFile('.github/workflows/run.yml', 'utf8');
+    expect(yml).toMatch(/^  TRUSTBUT_SPEC: '0\.4\.0'$/m);
+    expect(await readFile('PREREGISTRATION.md', 'utf8')).toContain('trustbut 0.4.0 exactly; any other version is a deviation');
+  });
+  it('lets ingest jobs run concurrently and retries the push', async () => {
+    const yml = await readFile('.github/workflows/run.yml', 'utf8');
+    const ingestJob = yml.slice(yml.indexOf('\n  ingest:'));
+    expect(ingestJob).not.toMatch(/concurrency:/);
+    expect(ingestJob).toMatch(/for attempt in 1 2 3 4 5; do/);
+    expect(ingestJob).toMatch(/git pull --rebase && git push/);
+    expect(ingestJob).toMatch(/sleep /);
+  });
 });
+

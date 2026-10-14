@@ -30,6 +30,11 @@ export class NotFoundError extends Error {
 
 const API = 'https://api.github.com';
 
+/** One API cache per collection (collect: the --until date; packets: the results date), so a later collection never reads stale answers. */
+export function apiCacheDir(name: string): string {
+  return join('cache', 'github', name);
+}
+
 export class GitHub implements GitHubApi {
   private readonly fetchFn: FetchLike;
   private readonly sleep: (ms: number) => Promise<void>;

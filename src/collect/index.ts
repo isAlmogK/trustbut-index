@@ -17,6 +17,8 @@ export interface CollectOptions {
   now: Date;
   excluded: Set<string>;
   minPerAgent: number;
+  /** PR ids ("owner/name#123") never selected, as agent PRs or as human matches (e.g. the pilot manifest). */
+  excludedPrs?: Set<string>;
   log?: (m: string) => void;
 }
 export interface CollectSummary {
@@ -108,6 +110,7 @@ async function loadFacts(gh: GitHubApi, meta: RepoMeta, now: Date): Promise<Repo
 
 export async function collect(gh: GitHubApi, o: CollectOptions): Promise<{ entries: ManifestEntry[]; summary: CollectSummary }> {
   const log = o.log ?? (() => {});
+  const excludedPrs = o.excludedPrs ?? new Set<string>();
   const since = new Date(o.until.getTime() - o.days * DAY);
   const window = { since, until: new Date(o.until.getTime() + DAY - 1) };
 
@@ -144,6 +147,7 @@ export async function collect(gh: GitHubApi, o: CollectOptions): Promise<{ entri
   const candidates: Candidate[] = [];
   let ambiguous = 0;
   for (const k of [...hits.keys()].sort(byCodeUnit)) {
+    if (excludedPrs.has(k)) continue;
     const { repo, number } = hits.get(k)!;
     const facts = await qualifiedRepo(repo);
     if (!facts) continue;
@@ -164,7 +168,9 @@ export async function collect(gh: GitHubApi, o: CollectOptions): Promise<{ entri
     const rows = await gh.paginate<{ number: number; user: { login: string; type: string }; merged_at: string | null }>(
       `/repos/${repo}/pulls?state=closed&sort=updated&direction=desc`, 5,
     );
-    pools.set(repo, rows.map((r) => ({ number: r.number, author: r.user.login, authorType: r.user.type, mergedAt: r.merged_at })));
+    pools.set(repo, rows
+      .filter((r) => !excludedPrs.has(`${repo}#${r.number}`))
+      .map((r) => ({ number: r.number, author: r.user.login, authorType: r.user.type, mergedAt: r.merged_at })));
   }
   const { humans, shortfall } = await matchHumans(selected, pools, async (repo, p) => {
     const d = await loadPr(gh, repo, p.number);

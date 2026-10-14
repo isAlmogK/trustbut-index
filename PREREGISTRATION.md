@@ -3,12 +3,13 @@
 **Status:** draft until tagged `prereg-v1`. After the tag, changes require a new version, and the report lists them under "Deviations".
 
 ## Question
-On real, merged pull requests in established JS/TS and Python projects, does trustbut (pinned `0.4.x`) produce findings that are right, that matter, and can it run at all? How do agent-written PRs compare with human PRs from the same projects?
+On real, merged pull requests in established JS/TS and Python projects, does trustbut (trustbut 0.4.0 exactly; any other version is a deviation) produce findings that are right, that matter, and can it run at all? How do agent-written PRs compare with human PRs from the same projects?
 
 ## Sample
 - Repos: public, not forks, not archived; ≥ 1,000 stars; ≥ 10 distinct commit authors in the past 365 days; pushed within 30 days; a GitHub Actions workflow that runs tests; a JS/TS (Vitest, Jest, node:test, Mocha) or Python (pytest) test setup on the default branch; not in `excluded-repos.txt`.
 - Agent PRs: merged within the 90 days before the collection date, merged by someone other than the author, changing at least one source file, and attributed to exactly one agent by the markers below. A source file is a path ending in `.js .jsx .ts .tsx .mjs .cjs .mts .cts .vue .svelte .py`, excluding `.d.ts` files, paths containing a `doc/`, `docs/`, `example/` or `examples/` directory, and test paths: directories `test/`, `tests/`, `__tests__/`, `spec/`, `__mocks__/`, `fixture/` or `fixtures/`; JS/TS files named `*.test.*` or `*.spec.*`; Python files named `test_*.py`, `*_test.py` or `conftest.py`. Window: the default is 90 days (`collect --days`), and the collection summary records the window used. If any agent has fewer than 30 selected PRs, the whole collection is rerun once with a 180-day window for all agents, and the report states the window used. This rerun is a manual step; the code does not widen the window by itself. At most 3 agent PRs per repo and 80 per agent, chosen by seeded round-robin across agents.
 - Human PRs: from the same repos and window, author type User, no agent marker and not a bot, same PR rules. As many per repo as that repo's selected agent PRs, chosen at random (seeded).
+- PRs in the pilot manifest are excluded from the full study. The full collection passes the pilot manifest to `collect --exclude-manifest`, so its PRs are never selected, as agent PRs or as human matches.
 - Agents with fewer than 30 selected PRs are reported as "insufficient data" and excluded from the "all agents" group.
 
 ## Attribution markers
@@ -53,7 +54,7 @@ Results that never arrive count as `missing` and as not run.
   - red at head: `suite-failing`, `test-failing`
   - Context only, not counted: `deps-changed`, `deps-not-installed`, `base-run-failed`, `proofs-unmatched`, `no-test-results`, `no-runner`, `snapshot-changed`.
 - Per agent and for humans: the share of `ran` PRs with at least one finding per family and with any counted finding. The proof rate: `proves-change` / (`proves-change` + `does-not-constrain`) over all new or changed tests. Run coverage.
-- Comparisons (the only ones made): all agents with sufficient data versus humans, for each family, for any counted finding, and for the proof rate. Wilson 95% intervals for rates; Newcombe hybrid-score intervals for differences.
+- Comparisons (the only ones made): all agents with sufficient data versus humans, for each family, for any counted finding, and for the proof rate. Wilson 95% intervals for rates; Newcombe hybrid-score intervals for differences. Intervals treat tests (proof rate) and findings (precision) as independent; tests and findings from the same PR are correlated, so the true uncertainty is somewhat wider.
 
 ## Labeling
 - Eligible items are findings of `ran` PRs that have at least one counted finding. Agents with insufficient data (fewer than 30 selected PRs) are not sampled. Agent findings are drawn round-robin across the remaining agents (each agent's PRs shuffled with the seed), a whole PR at a time, up to 5 findings per PR, until at least 150 agent findings are drawn. Human findings are drawn from randomly ordered (seeded) human PRs, up to 5 per PR, until exactly 50 are drawn (fewer only if the eligible human PRs run out).
