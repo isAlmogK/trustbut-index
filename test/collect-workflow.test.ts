@@ -21,8 +21,28 @@ describe('collect.yml', () => {
   });
   it('pins every action to a commit SHA', async () => {
     const uses = (await load('collect.yml')).match(/uses: .*/g)!;
-    expect(uses.length).toBe(3);
-    for (const u of uses) expect(u).toMatch(/^uses: actions\/(checkout|setup-node|cache)@[0-9a-f]{40} # v\d+\.\d+\.\d+$/);
+    expect(uses.length).toBe(4);
+    for (const u of uses) expect(u).toMatch(/^uses: actions\/(checkout|setup-node|cache\/restore|cache\/save)@[0-9a-f]{40} # v\d+\.\d+\.\d+$/);
+  });
+  it('restores the API cache by date and saves it even when collect fails or times out', async () => {
+    const yml = await load('collect.yml');
+    const key = 'key: github-api-${{ env.UNTIL }}-${{ github.run_id }}-${{ github.run_attempt }}';
+    expect(yml.split(key).length - 1).toBe(2);
+    expect(yml).toContain('restore-keys: github-api-${{ env.UNTIL }}-');
+    const restoreAt = yml.indexOf('name: Restore the API cache');
+    const collectAt = yml.indexOf('name: Collect');
+    const saveAt = yml.indexOf('name: Save the API cache');
+    expect(restoreAt).toBeGreaterThan(-1);
+    expect(restoreAt).toBeLessThan(collectAt);
+    expect(saveAt).toBeGreaterThan(collectAt);
+    expect(saveAt).toBeLessThan(yml.indexOf('name: Commit the manifest'));
+    expect(yml.slice(saveAt, saveAt + 200)).toMatch(/\n\s+if: always\(\) && env\.UNTIL != ''\n/);
+  });
+  it('gives the collect step its own timeout inside the job timeout', async () => {
+    const yml = await load('collect.yml');
+    expect(yml).toMatch(/^ {4}timeout-minutes: 350$/m);
+    const step = yml.slice(yml.indexOf('name: Collect'), yml.indexOf('name: Save the API cache'));
+    expect(step).toMatch(/^ {8}timeout-minutes: 320$/m);
   });
   it('uses the same checkout and setup-node pins as the ingest job in run.yml', async () => {
     const ingest = (await load('run.yml')).match(/uses: actions\/(?:checkout|setup-node)@[0-9a-f]{40}/g)!;

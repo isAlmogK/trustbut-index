@@ -42,7 +42,7 @@ Then:
 
 Optional inputs: `-f until=YYYY-MM-DD` (last merge date, default today UTC), `-f days=N` (window length, default 90).
 
-A failed collect run can be rerun. Rerun with the same `until`, because the stale and window checks use the current time, so a rerun on a different day can select a different manifest. Delete a partial `results/<name>/` only if you intend to start that collection over.
+A failed collect run can be rerun. Every run saves its GitHub API cache, even when it fails or times out, so a rerun with the same `until` on the same UTC day resumes fully, because the repo list and the 365-day author window are computed by UTC day. A pilot collect takes about 1.5 hours and a full one about 3 to 3.5 hours. Rerun with the same `until`, because the stale and window checks use the current time, so a rerun on a different day can select a different manifest. Delete a partial `results/<name>/` only if you intend to start that collection over.
 
 ## Run the full study
 
@@ -72,7 +72,7 @@ Then commit and push `labels/` and `site/`. Pages deploys.
 
 ## Data layout
 
-- `manifests/<name>.jsonl`: the selected PRs. `manifests/<name>.summary.json`: counts from collection.
+- `manifests/<name>.jsonl`: the selected PRs. `manifests/<name>.summary.json`: counts from collection (repos listed, search hits, PRs examined and selected per agent, human matches and shortfall).
 - `results/<date>/`: per-PR run records and receipts, `aggregate.json`, and for a pilot `pilot-check.md`.
 - `labels/<date>/`: the sample, packets, drafts and final labels.
 - `site/<date>/`: the published report.

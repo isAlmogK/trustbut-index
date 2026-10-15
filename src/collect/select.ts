@@ -12,17 +12,35 @@ export interface Candidate {
 
 const key = (repo: string, n: number) => `${repo}#${n}`;
 
-/** Round-robin across agents so no agent uses up the per-repo cap first. */
-export function selectAgentPrs(cands: Candidate[], opts: { perAgent: number; perRepo: number; seed: string }): Candidate[] {
-  const queues = new Map<AgentId, Candidate[]>();
+export interface SelectOptions {
+  perAgent: number;
+  perRepo: number;
+  seed: string;
+  /** PR keys never selected, e.g. the pilot manifest. */
+  excludedPrs?: Set<string>;
+}
+
+const repoOf = (k: string) => k.slice(0, k.lastIndexOf('#'));
+
+/**
+ * Round-robin across agents so no agent uses up the per-repo cap first. Each agent's hits are shuffled with the seed
+ * and evaluated in that order, only as needed: a hit is accepted for an agent only when `evaluate` attributes it to
+ * that agent. Excluded hits and hits in a full repo are skipped without evaluating them; each key is evaluated once.
+ */
+export async function selectAgentPrs(
+  hits: Map<AgentId, Set<string>>,
+  evaluate: (key: string) => Promise<Candidate | null>,
+  opts: SelectOptions,
+  onExamine?: (agent: AgentId) => void,
+): Promise<Candidate[]> {
+  const queues = new Map<AgentId, string[]>();
   for (const agent of AGENT_IDS) {
-    const mine = cands
-      .filter((c) => c.agent === agent)
-      .sort((a, b) => byCodeUnit(key(a.pr.repo, a.pr.number), key(b.pr.repo, b.pr.number)));
-    queues.set(agent, shuffle(mine, rngFor(`${opts.seed}:${agent}`)));
+    queues.set(agent, shuffle([...(hits.get(agent) ?? [])].sort(byCodeUnit), rngFor(`${opts.seed}:${agent}`)));
   }
+  const memo = new Map<string, Promise<Candidate | null>>();
   const perAgent = new Map<AgentId, number>();
   const perRepo = new Map<string, number>();
+  const chosen = new Set<string>();
   const out: Candidate[] = [];
   let progressed = true;
   while (progressed) {
@@ -31,11 +49,17 @@ export function selectAgentPrs(cands: Candidate[], opts: { perAgent: number; per
       if ((perAgent.get(agent) ?? 0) >= opts.perAgent) continue;
       const q = queues.get(agent)!;
       while (q.length > 0) {
-        const c = q.shift()!;
-        if ((perRepo.get(c.pr.repo) ?? 0) >= opts.perRepo) continue;
+        const k = q.shift()!;
+        const repo = repoOf(k);
+        if (opts.excludedPrs?.has(k) || chosen.has(k) || (perRepo.get(repo) ?? 0) >= opts.perRepo) continue;
+        if (!memo.has(k)) memo.set(k, evaluate(k));
+        onExamine?.(agent);
+        const c = await memo.get(k)!;
+        if (!c || c.agent !== agent) continue;
         out.push(c);
+        chosen.add(k);
         perAgent.set(agent, (perAgent.get(agent) ?? 0) + 1);
-        perRepo.set(c.pr.repo, (perRepo.get(c.pr.repo) ?? 0) + 1);
+        perRepo.set(repo, (perRepo.get(repo) ?? 0) + 1);
         progressed = true;
         break;
       }

@@ -28,7 +28,7 @@ concurrency:
 jobs:
   collect:
     runs-on: ubuntu-24.04
-    timeout-minutes: 330
+    timeout-minutes: 350
     permissions:
       contents: write   # commit the manifest
       actions: write    # start run.yml batches
@@ -57,16 +57,20 @@ jobs:
           if [ "$PILOT" = "true" ]; then NAME="pilot-$UNTIL"; else NAME="$UNTIL"; fi
           echo "UNTIL=$UNTIL" >> "$GITHUB_ENV"
           echo "NAME=$NAME" >> "$GITHUB_ENV"
-      - uses: actions/cache@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
+      # One cache per run; a rerun with the same until restores the newest one, so a failed or timed-out run resumes.
+      - name: Restore the API cache
+        uses: actions/cache/restore@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
         with:
           path: cache/github
-          key: github-api-${{ env.UNTIL }}
+          key: github-api-${{ env.UNTIL }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: github-api-${{ env.UNTIL }}-
       - name: Check the token secret
         env:
           GITHUB_TOKEN: ${{ secrets.INDEX_GH_TOKEN }}
         run: |
           if [ -z "$GITHUB_TOKEN" ]; then echo "::error::Add the INDEX_GH_TOKEN secret (see README)"; exit 1; fi
       - name: Collect
+        timeout-minutes: 320
         env:
           GITHUB_TOKEN: ${{ secrets.INDEX_GH_TOKEN }}
           PILOT: ${{ inputs.pilot }}
@@ -77,6 +81,12 @@ jobs:
           if [ "$PILOT" = "true" ]; then args+=(--pilot); fi
           if [ -n "$EXCLUDE" ]; then args+=(--exclude-manifest "$EXCLUDE"); fi
           npx tsx src/cli.ts "${args[@]}"
+      - name: Save the API cache
+        if: always() && env.UNTIL != ''
+        uses: actions/cache/save@0400d5f644dc74513175e3cd8d07132dd4860809 # v4.2.4
+        with:
+          path: cache/github
+          key: github-api-${{ env.UNTIL }}-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Commit the manifest
         run: |
           git config user.name "trustbut-index"

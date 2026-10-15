@@ -1,11 +1,11 @@
-import { NotFoundError, readRepoFile, type GitHubApi } from '../github/client.js';
+import type { GitHubApi } from '../github/client.js';
 import { byCodeUnit } from '../rng.js';
-import { AGENT_IDS, type ManifestEntry, type PrDetail } from '../types.js';
-import { AGENTS, attribute, extractModel, hasAgentMarker } from './agents.js';
-import {
-  PY_TEST_FILES, ciRunsTests, detectJsTests, detectPyTests, prReasons, repoMetaReasons, repoReasons,
-  type RepoFacts, type RepoMeta,
-} from './qualify.js';
+import { AGENT_IDS, type AgentId, type ManifestEntry, type PrDetail } from '../types.js';
+import { attribute, extractModel, hasAgentMarker } from './agents.js';
+import { loadFacts } from './facts.js';
+import { prReasons, repoReasons, type RepoFacts } from './qualify.js';
+import { listRepos } from './repos.js';
+import { searchAgentPrs } from './search.js';
 import { matchHumans, selectAgentPrs, toEntry, type BasicPull, type Candidate } from './select.js';
 
 export interface CollectOptions {
@@ -23,12 +23,18 @@ export interface CollectOptions {
 }
 export interface CollectSummary {
   window: { since: string; until: string };
-  searchHits: number;
-  uniqueRepos: number;
+  /** Repos that pass the star, fork, archive, push and language rules. */
+  reposListed: number;
+  /** PRs each agent's search queries found. */
+  searchHits: Record<AgentId, number>;
+  uniqueHits: number;
+  /** Hits evaluated on each agent's turn (repo, PR rules and attribution). */
+  examined: Record<AgentId, number>;
+  /** Repos whose facts were loaded. */
+  reposChecked: number;
   reposQualified: number;
-  candidates: Record<string, number>;
-  selected: Record<string, number>;
   ambiguous: number;
+  selected: Record<AgentId, number>;
   humansSelected: number;
   humanShortfall: number;
   insufficient: string[];
@@ -36,15 +42,7 @@ export interface CollectSummary {
 
 const DAY = 86_400_000;
 const ymd = (d: Date) => d.toISOString().slice(0, 10);
-
-export function weekSlices(since: Date, until: Date): [string, string][] {
-  const out: [string, string][] = [];
-  for (let t = since.getTime(); t <= until.getTime(); t += 7 * DAY) {
-    const end = Math.min(t + 6 * DAY, until.getTime());
-    out.push([ymd(new Date(t)), ymd(new Date(end))]);
-  }
-  return out;
-}
+const perAgentZero = () => Object.fromEntries(AGENT_IDS.map((a) => [a, 0])) as Record<AgentId, number>;
 
 interface PullJson {
   number: number;
@@ -68,103 +66,69 @@ export async function loadPr(gh: GitHubApi, repo: string, n: number): Promise<Pr
   };
 }
 
-async function loadMeta(gh: GitHubApi, repo: string): Promise<RepoMeta> {
-  const r = await gh.get<{ full_name: string; stargazers_count: number; fork: boolean; archived: boolean; pushed_at: string; language: string | null }>(
-    `/repos/${repo}`,
-  );
-  return { fullName: r.full_name, stars: r.stargazers_count, fork: r.fork, archived: r.archived, pushedAt: r.pushed_at, language: r.language };
-}
-
-async function loadFacts(gh: GitHubApi, meta: RepoMeta, now: Date): Promise<RepoFacts> {
-  const repo = meta.fullName;
-  const since = new Date(now.getTime() - 365 * DAY).toISOString();
-  const commits = await gh.paginate<{ author: { login: string } | null; commit?: { author?: { email?: string } } }>(
-    `/repos/${repo}/commits?since=${since}`, 3,
-  );
-  const authors = new Set(commits.map((c) => c.author?.login ?? c.commit?.author?.email ?? '').filter(Boolean));
-  let workflowTexts: string[] = [];
-  try {
-    const dir = await gh.get<{ path: string; type: string }[]>(`/repos/${repo}/contents/.github/workflows`);
-    const files = dir.filter((f) => f.type === 'file' && /\.ya?ml$/.test(f.path)).slice(0, 10);
-    workflowTexts = (await Promise.all(files.map((f) => readRepoFile(gh, repo, f.path)))).filter((t): t is string => t !== null);
-  } catch (e) {
-    if (!(e instanceof NotFoundError)) throw e;
-  }
-  let hasJsTests = false;
-  const pkg = await readRepoFile(gh, repo, 'package.json');
-  if (pkg) {
-    try {
-      hasJsTests = detectJsTests(JSON.parse(pkg));
-    } catch {
-      hasJsTests = false;
-    }
-  }
-  let hasPyTests = false;
-  if (!hasJsTests) {
-    const files: Record<string, string | null> = {};
-    for (const f of PY_TEST_FILES) files[f] = await readRepoFile(gh, repo, f);
-    hasPyTests = detectPyTests(files);
-  }
-  return { ...meta, contributorsLastYear: authors.size, ciRunsTests: ciRunsTests(workflowTexts), hasJsTests, hasPyTests };
-}
-
 export async function collect(gh: GitHubApi, o: CollectOptions): Promise<{ entries: ManifestEntry[]; summary: CollectSummary }> {
   const log = o.log ?? (() => {});
   const excludedPrs = o.excludedPrs ?? new Set<string>();
   const since = new Date(o.until.getTime() - o.days * DAY);
   const window = { since, until: new Date(o.until.getTime() + DAY - 1) };
 
-  const hits = new Map<string, { repo: string; number: number }>();
-  let searchHits = 0;
-  for (const agent of AGENTS) {
-    for (const q of agent.queries) {
-      for (const [s, e] of weekSlices(since, o.until)) {
-        const items = await gh.search(`${q} is:pr is:merged is:public merged:${s}..${e}`);
-        searchHits += items.length;
-        for (const it of items) hits.set(`${it.repo}#${it.number}`, it);
-      }
-    }
-    log(`searched ${agent.id}: ${hits.size} unique PRs so far`);
-  }
+  const repos = await listRepos(gh, { now: o.now, excluded: o.excluded });
+  log(`listed ${repos.length} repos that pass the star, fork, archive, push and language rules`);
+  const metaByRepo = new Map(repos.map((m) => [m.fullName, m]));
+  const hits = await searchAgentPrs(gh, repos.map((m) => m.fullName), { since: ymd(since), until: ymd(o.until) }, log);
+  const searchHits = perAgentZero();
+  for (const a of AGENT_IDS) searchHits[a] = hits.get(a)!.size;
+  const uniqueHits = new Set(AGENT_IDS.flatMap((a) => [...hits.get(a)!])).size;
 
   const repoCache = new Map<string, RepoFacts | null>();
+  let reposChecked = 0;
   async function qualifiedRepo(repo: string): Promise<RepoFacts | null> {
     if (repoCache.has(repo)) return repoCache.get(repo)!;
+    const meta = metaByRepo.get(repo);
     let facts: RepoFacts | null = null;
-    try {
-      const meta = await loadMeta(gh, repo);
-      if (repoMetaReasons(meta, o.now, o.excluded).length === 0) {
-        const f = await loadFacts(gh, meta, o.now);
-        if (repoReasons(f, o.now, o.excluded).length === 0) facts = f;
-      }
-    } catch (e) {
-      if (!(e instanceof NotFoundError)) throw e;
+    if (meta) {
+      reposChecked++;
+      const f = await loadFacts(gh, meta, o.now);
+      if (f && repoReasons(f, o.now, o.excluded).length === 0) facts = f;
     }
     repoCache.set(repo, facts);
     return facts;
   }
 
-  const candidates: Candidate[] = [];
   let ambiguous = 0;
-  for (const k of [...hits.keys()].sort(byCodeUnit)) {
-    if (excludedPrs.has(k)) continue;
-    const { repo, number } = hits.get(k)!;
+  async function evaluate(k: string): Promise<Candidate | null> {
+    const at = k.lastIndexOf('#');
+    const repo = k.slice(0, at);
     const facts = await qualifiedRepo(repo);
-    if (!facts) continue;
-    const pr = await loadPr(gh, repo, number);
-    if (prReasons(pr, window).length > 0) continue;
+    if (!facts) return null;
+    const pr = await loadPr(gh, repo, Number(k.slice(at + 1)));
+    if (prReasons(pr, window).length > 0) return null;
     const a = attribute(pr);
-    if (!a) continue;
+    if (!a) return null;
     if ('ambiguous' in a) {
       ambiguous++;
-      continue;
+      return null;
     }
-    candidates.push({ pr, agent: a.agent, evidence: a.evidence, model: extractModel(pr, a.agent), repoStars: facts.stars, repoLanguage: facts.language });
+    return { pr, agent: a.agent, evidence: a.evidence, model: extractModel(pr, a.agent), repoStars: facts.stars, repoLanguage: facts.language };
   }
 
-  const selected = selectAgentPrs(candidates, { perAgent: o.perAgent, perRepo: o.perRepo, seed: o.seed });
+  const examined = perAgentZero();
+  let total = 0;
+  const selected = await selectAgentPrs(
+    hits, evaluate, { perAgent: o.perAgent, perRepo: o.perRepo, seed: o.seed, excludedPrs },
+    (agent) => {
+      examined[agent]++;
+      if (++total % 25 === 0) {
+        const counts = AGENT_IDS.map((a) => `${a} ${examined[a]}`).join(', ');
+        log(`examined ${total} PRs (${counts}); REST remaining ${gh.rateRemaining?.().rest ?? 'unknown'}`);
+      }
+    },
+  );
+
+  const humanRepos = [...new Set(selected.map((c) => c.pr.repo))];
+  log(`selected ${selected.length} agent PRs; matching human PRs in ${humanRepos.length} repos`);
   const pools = new Map<string, BasicPull[]>();
-  for (const repo of new Set(selected.map((c) => c.pr.repo))) {
+  for (const repo of humanRepos) {
     const rows = await gh.paginate<{ number: number; user: { login: string; type: string }; merged_at: string | null }>(
       `/repos/${repo}/pulls?state=closed&sort=updated&direction=desc`, 5,
     );
@@ -176,6 +140,7 @@ export async function collect(gh: GitHubApi, o: CollectOptions): Promise<{ entri
     const d = await loadPr(gh, repo, p.number);
     return d.authorType === 'User' && !hasAgentMarker(d) && prReasons(d, window).length === 0 ? d : null;
   }, o.seed);
+  log(`matched ${humans.length} human PRs (shortfall ${shortfall})`);
 
   const selectedAt = o.now.toISOString();
   const entries = [
@@ -186,21 +151,23 @@ export async function collect(gh: GitHubApi, o: CollectOptions): Promise<{ entri
     }),
   ].sort((a, b) => byCodeUnit(a.id, b.id));
 
-  const count = (xs: { agent: string }[]) => Object.fromEntries(AGENT_IDS.map((a) => [a, xs.filter((x) => x.agent === a).length]));
-  const selectedCounts = count(selected);
+  const selectedCounts = perAgentZero();
+  for (const c of selected) selectedCounts[c.agent]++;
   return {
     entries,
     summary: {
       window: { since: ymd(since), until: ymd(o.until) },
+      reposListed: repos.length,
       searchHits,
-      uniqueRepos: new Set([...hits.values()].map((h) => h.repo)).size,
+      uniqueHits,
+      examined,
+      reposChecked,
       reposQualified: [...repoCache.values()].filter(Boolean).length,
-      candidates: count(candidates),
-      selected: selectedCounts,
       ambiguous,
+      selected: selectedCounts,
       humansSelected: humans.length,
       humanShortfall: shortfall,
-      insufficient: AGENT_IDS.filter((a) => selectedCounts[a]! < o.minPerAgent),
+      insufficient: AGENT_IDS.filter((a) => selectedCounts[a] < o.minPerAgent),
     },
   };
 }

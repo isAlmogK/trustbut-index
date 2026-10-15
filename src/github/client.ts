@@ -3,14 +3,13 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 export type FetchLike = (url: string, init?: RequestInit) => Promise<Response>;
-export interface SearchItem {
-  repo: string;
-  number: number;
-}
 export interface GitHubApi {
   get<T>(path: string): Promise<T>;
   paginate<T>(path: string, maxPages: number): Promise<T[]>;
-  search(q: string, maxPages?: number): Promise<SearchItem[]>;
+  /** GraphQL query or search. `search: true` spaces uncached calls by the search interval. */
+  graphql<T>(query: string, variables: Record<string, unknown>, opts?: { search?: boolean }): Promise<T>;
+  /** Last seen remaining budget per API, for progress logs only. */
+  rateRemaining?(): { rest?: number; graphql?: number };
 }
 export interface GitHubOptions {
   token?: string;
@@ -29,6 +28,8 @@ export class NotFoundError extends Error {
 }
 
 const API = 'https://api.github.com';
+/** Waits before retrying a GraphQL timeout or empty response. */
+const TRANSIENT_BACKOFF_MS = [2000, 10_000, 30_000];
 
 /** One API cache per collection (collect: the --until date; packets: the results date), so a later collection never reads stale answers. */
 export function apiCacheDir(name: string): string {
@@ -40,6 +41,7 @@ export class GitHub implements GitHubApi {
   private readonly sleep: (ms: number) => Promise<void>;
   private readonly now: () => number;
   private lastSearch = Number.NEGATIVE_INFINITY;
+  private readonly rate = new Map<string, { remaining: number; reset: number }>();
 
   constructor(private readonly opts: GitHubOptions = {}) {
     this.fetchFn = opts.fetch ?? ((u, i) => fetch(u, i));
@@ -66,48 +68,85 @@ export class GitHub implements GitHubApi {
     return out;
   }
 
-  async search(q: string, maxPages = 10): Promise<SearchItem[]> {
-    const out: SearchItem[] = [];
-    for (let page = 1; page <= maxPages; page++) {
-      const path = `/search/issues?q=${encodeURIComponent(q)}&per_page=100&page=${page}`;
-      let res = (await this.readCache(path)) as { items: { number: number; repository_url: string }[] } | undefined;
-      if (res === undefined) {
-        await this.throttleSearch();
-        res = (await this.request(path)) as { items: { number: number; repository_url: string }[] };
-        await this.writeCache(path, res);
+  async graphql<T>(query: string, variables: Record<string, unknown>, opts: { search?: boolean } = {}): Promise<T> {
+    const key = `POST /graphql ${query} ${JSON.stringify(variables)}`;
+    const cached = await this.readCache(key);
+    if (cached !== undefined) return cached as T;
+    const max = this.opts.maxRetries ?? 5;
+    let rateAttempts = 0;
+    let transientAttempts = 0;
+    for (;;) {
+      if (opts.search) await this.throttleSearch();
+      const res = (await this.request('/graphql', { query, variables })) as {
+        data?: unknown;
+        errors?: { type?: string; message: string }[];
+      };
+      const errors = res.errors ?? [];
+      // A missing repo comes back as NOT_FOUND with the field set to null; that is an answer, not a failure.
+      if (res.data !== undefined && errors.every((e) => e.type === 'NOT_FOUND')) {
+        await this.writeCache(key, res.data);
+        return res.data as T;
       }
-      for (const it of res.items) out.push({ repo: it.repository_url.replace(`${API}/repos/`, ''), number: it.number });
-      if (res.items.length < 100) break;
+      if (errors.some((e) => e.type === 'RATE_LIMITED') && rateAttempts < max) {
+        rateAttempts++;
+        const reset = this.rate.get('graphql')?.reset ?? 0;
+        await this.sleep(reset > 0 ? Math.max(reset * 1000 - this.now(), 0) + 1000 : 60_000);
+        continue;
+      }
+      // GitHub reports query timeouts as HTTP 200 with untyped errors, and sometimes sends an empty body.
+      const transient =
+        (res.data === undefined && errors.length === 0) ||
+        (errors.length > 0 && errors.every((e) => !e.type)) ||
+        errors.some((e) => /something went wrong|timeout/i.test(e.message));
+      if (transient && transientAttempts < TRANSIENT_BACKOFF_MS.length) {
+        await this.sleep(TRANSIENT_BACKOFF_MS[transientAttempts++]!);
+        continue;
+      }
+      throw new Error(`GitHub GraphQL: ${errors.length > 0 ? errors.map((e) => e.message).join('; ') : 'no data'}`);
     }
-    return out;
+  }
+
+  rateRemaining(): { rest?: number; graphql?: number } {
+    return { rest: this.rate.get('core')?.remaining, graphql: this.rate.get('graphql')?.remaining };
   }
 
   private async throttleSearch(): Promise<void> {
-    const wait = this.lastSearch + (this.opts.searchIntervalMs ?? 3000) - this.now();
+    const wait = this.lastSearch + (this.opts.searchIntervalMs ?? 1000) - this.now();
     if (wait > 0) await this.sleep(wait);
     this.lastSearch = this.now();
   }
 
-  private async request(path: string): Promise<unknown> {
+  private async request(path: string, body?: unknown): Promise<unknown> {
     const max = this.opts.maxRetries ?? 5;
     for (let attempt = 0; ; attempt++) {
       const res = await this.fetchFn(`${API}${path}`, {
+        ...(body === undefined ? {} : { method: 'POST', body: JSON.stringify(body) }),
         headers: {
           accept: 'application/vnd.github+json',
           'x-github-api-version': '2022-11-28',
+          ...(body === undefined ? {} : { 'content-type': 'application/json' }),
           ...(this.opts.token ? { authorization: `Bearer ${this.opts.token}` } : {}),
         },
       });
+      this.noteRate(res);
       if (res.ok) return res.json();
       if (res.status === 404) throw new NotFoundError(path);
-      const body = await res.text();
-      const wait = this.retryWait(res, body, attempt);
+      const text = await res.text();
+      const wait = this.retryWait(res, text, attempt);
       if (wait !== null && attempt < max) {
         await this.sleep(wait);
         continue;
       }
-      throw new Error(`GitHub ${res.status} for ${path}: ${body}`);
+      throw new Error(`GitHub ${res.status} for ${path}: ${text}`);
     }
+  }
+
+  private noteRate(res: Response): void {
+    const resource = res.headers.get('x-ratelimit-resource');
+    const remaining = res.headers.get('x-ratelimit-remaining');
+    if (!resource || remaining === null || !Number.isFinite(Number(remaining))) return;
+    const reset = Number(res.headers.get('x-ratelimit-reset'));
+    this.rate.set(resource, { remaining: Number(remaining), reset: Number.isFinite(reset) ? reset : 0 });
   }
 
   private retryWait(res: Response, body: string, attempt: number): number | null {
