@@ -104,4 +104,4 @@ The study runs on GitHub Actions and API credit, and I run it in my own time. If
 
 ## About me
 
-I'm Almog Koren, a software engineer in Tallinn and the author of [trustbut](https://github.com/isAlmogK/trustbut). I'm the founder and CTO of [DogBase](https://www.dogbase.co), and I build AI agents and the systems around them. **I'm open to work:** full-time roles, fractional CTO work and AI agent projects. See [almog.io](https://almog.io).
+I'm Almog Koren, a software engineer in Tallinn and the author of [trustbut](https://github.com/isAlmogK/trustbut). I founded and built [DogBase](https://www.dogbase.co), which won the main pitch competition at Latitude59 2026, and I build AI agents and the systems around them. **I'm open to work:** full-time roles, fractional CTO work and AI agent projects. See [almog.io](https://almog.io).
