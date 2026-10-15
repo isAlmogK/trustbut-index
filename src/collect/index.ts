@@ -1,6 +1,6 @@
 import { NotFoundError, readRepoFile, type GitHubApi } from '../github/client.js';
 import { byCodeUnit } from '../rng.js';
-import { AGENT_IDS, type ManifestEntry, type PrDetail } from '../types.js';
+import { AGENT_IDS, type AgentId, type ManifestEntry, type PrDetail } from '../types.js';
 import { AGENTS, attribute, extractModel, hasAgentMarker } from './agents.js';
 import {
   PY_TEST_FILES, ciRunsTests, detectJsTests, detectPyTests, prReasons, repoMetaReasons, repoReasons,
@@ -162,7 +162,12 @@ export async function collect(gh: GitHubApi, o: CollectOptions): Promise<{ entri
     candidates.push({ pr, agent: a.agent, evidence: a.evidence, model: extractModel(pr, a.agent), repoStars: facts.stars, repoLanguage: facts.language });
   }
 
-  const selected = selectAgentPrs(candidates, { perAgent: o.perAgent, perRepo: o.perRepo, seed: o.seed });
+  const byKey = new Map(candidates.map((c) => [`${c.pr.repo}#${c.pr.number}`, c]));
+  const candidateHits = new Map<AgentId, Set<string>>(AGENT_IDS.map((a) => [a, new Set<string>()]));
+  for (const [k, c] of byKey) candidateHits.get(c.agent)!.add(k);
+  const selected = await selectAgentPrs(candidateHits, async (k) => byKey.get(k) ?? null, {
+    perAgent: o.perAgent, perRepo: o.perRepo, seed: o.seed,
+  });
   const pools = new Map<string, BasicPull[]>();
   for (const repo of new Set(selected.map((c) => c.pr.repo))) {
     const rows = await gh.paginate<{ number: number; user: { login: string; type: string }; merged_at: string | null }>(
