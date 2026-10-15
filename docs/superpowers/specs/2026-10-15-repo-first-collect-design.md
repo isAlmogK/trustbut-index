@@ -1,6 +1,6 @@
 # Repo-first collect
 
-**Status:** Approved (2026-10-15)
+**Status:** Implemented (2026-10-15)
 **Study design:** [agent test-honesty index design](https://github.com/isAlmogK/trustbut/blob/main/docs/superpowers/specs/2026-10-14-agent-test-honesty-index-design.md) in trustbut. This spec changes only how `collect` builds its candidate pool and how the collect workflow runs.
 
 ## Problem
@@ -215,3 +215,12 @@ All tests come first and run against fakes. There are no network calls.
 
 - Human matching, `loadPr`, attribution markers, PR rules and every later stage (`run`, `ingest`, `aggregate`, `label`, `report`).
 - Making the repo list reproducible across days. The live search reflects current star counts, as before; the per-`until` cache keeps a rerun on the same date stable.
+
+## As built
+
+- The progress line every 25 evaluations reports PRs examined per agent and REST remaining, not selected per agent.
+- `listRepos` reads the first page of a star range before deciding to split it, so each split costs one extra search call.
+- Live check on 2026-10-15 (read-only, about 120 GraphQL points):
+  - The repo list returned 9,242 repos.
+  - One 40-repo batch found hits for copilot (3), codex (369), claude-code (116) and cursor (16).
+  - Repo facts matched REST for vitest-dev/vitest (the first 10 workflow files in the same order) and 0no-co/gql.tada (8 distinct commit authors either way).
