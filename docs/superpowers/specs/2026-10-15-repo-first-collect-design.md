@@ -224,3 +224,9 @@ All tests come first and run against fakes. There are no network calls.
   - The repo list returned 9,242 repos.
   - One 40-repo batch found hits for copilot (3), codex (369), claude-code (116) and cursor (16).
   - Repo facts matched REST for vitest-dev/vitest (the first 10 workflow files in the same order) and 0no-co/gql.tada (8 distinct commit authors either way).
+- Added after the final review:
+  - GraphQL responses with untyped errors, a timeout message, or no data are retried after 2, 10 and 30 seconds before the run fails.
+  - A `RATE_LIMITED` response with no known reset waits 60 seconds.
+  - The facts query's `since` is cut to the UTC day, so a rerun on the same day reuses cached facts.
+  - `listRepos` checks the primary language in code as well as in the search qualifier.
+- A `repo:` qualifier for a repo that no longer exists is ignored by GitHub search: the result count is unchanged, with no error (checked live).
