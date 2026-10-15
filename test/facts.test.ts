@@ -34,7 +34,15 @@ describe('loadFacts', () => {
   it('reads CI, the test setup and contributors in one query', async () => {
     const { gh, calls } = fakeFacts(repo());
     expect(await loadFacts(gh, meta, now)).toEqual({ ...meta, contributorsLastYear: 12, ciRunsTests: true, hasJsTests: true, hasPyTests: false });
-    expect(calls).toEqual([{ owner: 'big', name: 'repo', since: '2025-11-01T00:00:00.000Z' }]);
+    expect(calls).toEqual([{ owner: 'big', name: 'repo', since: '2025-11-01T00:00:00Z' }]);
+  });
+
+  it('uses the same query variables for any time on the same UTC day', async () => {
+    const a = fakeFacts(repo());
+    const b = fakeFacts(repo());
+    await loadFacts(a.gh, meta, new Date('2026-11-01T00:00:00.000Z'));
+    await loadFacts(b.gh, meta, new Date('2026-11-01T23:59:59.999Z'));
+    expect(b.calls).toEqual(a.calls);
   });
 
   it('detects a pytest setup when there is no JS test setup', async () => {
@@ -62,7 +70,7 @@ describe('loadFacts', () => {
     });
     expect(await loadFacts(gh, meta, now)).toMatchObject({ contributorsLastYear: 23 });
     expect(calls.length).toBe(2);
-    expect(calls[1]).toEqual({ owner: 'big', name: 'repo', since: '2025-11-01T00:00:00.000Z', after: 'c1' });
+    expect(calls[1]).toEqual({ owner: 'big', name: 'repo', since: '2025-11-01T00:00:00Z', after: 'c1' });
   });
 
   it('stops after 300 commits', async () => {

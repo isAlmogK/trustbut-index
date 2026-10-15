@@ -44,7 +44,8 @@ const textOf = (b: Blob): string | null => (typeof b?.text === 'string' ? b.text
 /** Repo facts for the repo rules, from one GraphQL query (plus history pages when fewer than 10 authors are seen). */
 export async function loadFacts(gh: GitHubApi, meta: RepoMeta, now: Date): Promise<RepoFacts | null> {
   const [owner, name] = meta.fullName.split('/') as [string, string];
-  const since = new Date(now.getTime() - 365 * DAY).toISOString();
+  // Whole UTC days, so a rerun on the same day builds identical queries and hits the cache.
+  const since = `${new Date(now.getTime() - 365 * DAY).toISOString().slice(0, 10)}T00:00:00Z`;
   const r = (await gh.graphql<{ repository: FactsRepo | null }>(FACTS, { owner, name, since })).repository;
   if (!r) return null;
 

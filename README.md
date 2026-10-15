@@ -42,7 +42,7 @@ Then:
 
 Optional inputs: `-f until=YYYY-MM-DD` (last merge date, default today UTC), `-f days=N` (window length, default 90).
 
-A failed collect run can be rerun. Every run saves its GitHub API cache, even when it fails or times out, so a rerun with the same `until` picks up where the last one stopped. A pilot collect takes about 1.5 hours and a full one about 3 to 3.5 hours. Rerun with the same `until`, because the stale and window checks use the current time, so a rerun on a different day can select a different manifest. Delete a partial `results/<name>/` only if you intend to start that collection over.
+A failed collect run can be rerun. Every run saves its GitHub API cache, even when it fails or times out, so a rerun with the same `until` on the same UTC day resumes fully, because the repo list and the 365-day author window are computed by UTC day. A pilot collect takes about 1.5 hours and a full one about 3 to 3.5 hours. Rerun with the same `until`, because the stale and window checks use the current time, so a rerun on a different day can select a different manifest. Delete a partial `results/<name>/` only if you intend to start that collection over.
 
 ## Run the full study
 
