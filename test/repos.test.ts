@@ -76,4 +76,16 @@ describe('listRepos', () => {
     });
     expect(repos.find((r) => r.fullName === 'o/r000')!.stars).toBe(2001);
   });
+
+  it('drops repos whose primary language is outside the list or missing', async () => {
+    const { gh } = fakeSearch({
+      '>=1000': [
+        node('o/ts'),
+        { ...node('o/go'), primaryLanguage: { name: 'Go' } },
+        { ...node('o/none'), primaryLanguage: null },
+      ] as ReturnType<typeof node>[],
+    });
+    const repos = await listRepos(gh, { now, excluded: new Set() });
+    expect(repos.map((r) => r.fullName)).toEqual(['o/ts']);
+  });
 });

@@ -69,6 +69,6 @@ export async function listRepos(gh: GitHubApi, o: { now: Date; excluded: Set<str
     }
   }
   return [...found.values()]
-    .filter((m) => repoMetaReasons(m, o.now, o.excluded).length === 0)
+    .filter((m) => m.language !== null && LANGUAGES.includes(m.language) && repoMetaReasons(m, o.now, o.excluded).length === 0)
     .sort((a, b) => byCodeUnit(a.fullName, b.fullName));
 }
