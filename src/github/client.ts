@@ -28,6 +28,8 @@ export class NotFoundError extends Error {
 }
 
 const API = 'https://api.github.com';
+/** Waits before retrying a GraphQL timeout or empty response. */
+const TRANSIENT_BACKOFF_MS = [2000, 10_000, 30_000];
 
 /** One API cache per collection (collect: the --until date; packets: the results date), so a later collection never reads stale answers. */
 export function apiCacheDir(name: string): string {
@@ -71,7 +73,9 @@ export class GitHub implements GitHubApi {
     const cached = await this.readCache(key);
     if (cached !== undefined) return cached as T;
     const max = this.opts.maxRetries ?? 5;
-    for (let attempt = 0; ; attempt++) {
+    let rateAttempts = 0;
+    let transientAttempts = 0;
+    for (;;) {
       if (opts.search) await this.throttleSearch();
       const res = (await this.request('/graphql', { query, variables })) as {
         data?: unknown;
@@ -79,16 +83,26 @@ export class GitHub implements GitHubApi {
       };
       const errors = res.errors ?? [];
       // A missing repo comes back as NOT_FOUND with the field set to null; that is an answer, not a failure.
-      if (errors.every((e) => e.type === 'NOT_FOUND')) {
+      if (res.data !== undefined && errors.every((e) => e.type === 'NOT_FOUND')) {
         await this.writeCache(key, res.data);
         return res.data as T;
       }
-      if (errors.some((e) => e.type === 'RATE_LIMITED') && attempt < max) {
-        const reset = (this.rate.get('graphql')?.reset ?? 0) * 1000;
-        await this.sleep(Math.max(reset - this.now(), 0) + 1000);
+      if (errors.some((e) => e.type === 'RATE_LIMITED') && rateAttempts < max) {
+        rateAttempts++;
+        const reset = this.rate.get('graphql')?.reset ?? 0;
+        await this.sleep(reset > 0 ? Math.max(reset * 1000 - this.now(), 0) + 1000 : 60_000);
         continue;
       }
-      throw new Error(`GitHub GraphQL: ${errors.map((e) => e.message).join('; ')}`);
+      // GitHub reports query timeouts as HTTP 200 with untyped errors, and sometimes sends an empty body.
+      const transient =
+        (res.data === undefined && errors.length === 0) ||
+        (errors.length > 0 && errors.every((e) => !e.type)) ||
+        errors.some((e) => /something went wrong|timeout/i.test(e.message));
+      if (transient && transientAttempts < TRANSIENT_BACKOFF_MS.length) {
+        await this.sleep(TRANSIENT_BACKOFF_MS[transientAttempts++]!);
+        continue;
+      }
+      throw new Error(`GitHub GraphQL: ${errors.length > 0 ? errors.map((e) => e.message).join('; ') : 'no data'}`);
     }
   }
 

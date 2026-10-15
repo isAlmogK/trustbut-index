@@ -1,4 +1,4 @@
-import { mkdtemp } from 'node:fs/promises';
+import { mkdtemp, readdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
@@ -166,6 +166,50 @@ describe('GitHub GraphQL', () => {
     await expect(new GitHub({ cacheDir, fetch: f }).graphql(Q, {})).rejects.toThrow('GitHub GraphQL: Field x does not exist');
     await expect(new GitHub({ cacheDir, fetch: f }).graphql(Q, {})).rejects.toThrow('GitHub GraphQL');
     expect(calls.length).toBe(2);
+  });
+
+  it('retries an untyped timeout error with backoff, then returns the data', async () => {
+    let n = 0;
+    const { f } = fakeFetch(() =>
+      n++ === 0
+        ? json({ errors: [{ message: 'Something went wrong while executing your query. This may be the result of a timeout' }] })
+        : json({ data: { ok: true } }),
+    );
+    const sleeps: number[] = [];
+    const gh = new GitHub({ fetch: f, sleep: async (ms) => void sleeps.push(ms) });
+    expect(await gh.graphql(Q, {})).toEqual({ ok: true });
+    expect(sleeps).toEqual([2000]);
+  });
+
+  it('gives up on a persistent untyped error after three retries', async () => {
+    const { f, calls } = fakeFetch(() => json({ errors: [{ message: 'boom' }] }));
+    const sleeps: number[] = [];
+    const gh = new GitHub({ fetch: f, sleep: async (ms) => void sleeps.push(ms) });
+    await expect(gh.graphql(Q, {})).rejects.toThrow('GitHub GraphQL: boom');
+    expect(sleeps).toEqual([2000, 10_000, 30_000]);
+    expect(calls.length).toBe(4);
+  });
+
+  it('retries a body with neither data nor errors and never caches it', async () => {
+    const cacheDir = await mkdtemp(join(tmpdir(), 'gh-'));
+    let n = 0;
+    const { f } = fakeFetch(() => (n++ === 0 ? json({}) : json({ data: { ok: true } })));
+    const sleeps: number[] = [];
+    const gh = new GitHub({ cacheDir, fetch: f, sleep: async (ms) => void sleeps.push(ms) });
+    expect(await gh.graphql(Q, {})).toEqual({ ok: true });
+    expect(sleeps).toEqual([2000]);
+    expect(await readdir(cacheDir)).toHaveLength(1);
+  });
+
+  it('waits at least a minute on RATE_LIMITED when no reset is known', async () => {
+    let n = 0;
+    const { f } = fakeFetch(() =>
+      n++ === 0 ? json({ errors: [{ type: 'RATE_LIMITED', message: 'API rate limit exceeded' }] }) : json({ data: { ok: true } }),
+    );
+    const sleeps: number[] = [];
+    const gh = new GitHub({ fetch: f, now: () => 1_000_000, sleep: async (ms) => void sleeps.push(ms) });
+    expect(await gh.graphql(Q, {})).toEqual({ ok: true });
+    expect(sleeps[0]).toBe(60_000);
   });
 
   it('spaces uncached search calls one second apart, and only search calls', async () => {
