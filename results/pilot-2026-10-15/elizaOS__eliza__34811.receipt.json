@@ -1,0 +1,48 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "ed4ec955cde07ef084a541d5bec748e883b1e464",
+    "head": "db1292849864c652dd8825c6a5ac0f653a6ef85b"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 900 s"
+    },
+    {
+      "id": "no-tests-changed",
+      "severity": "warn",
+      "title": "Source changed but no tests were added or changed"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 900163,
+      "timedOut": true,
+      "cases": []
+    }
+  }
+}

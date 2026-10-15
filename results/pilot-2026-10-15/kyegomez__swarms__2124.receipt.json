@@ -1,0 +1,116 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "1e02becbb92b3425bb76a1d2aad2ad779c37fecb",
+    "head": "74d3be628148e827729797c91c230905891f163b"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 900 s"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 900229,
+      "timedOut": true,
+      "cases": []
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 8672,
+      "cases": [
+        {
+          "id": "tests.structs.test_moa::test_mixture_of_agents_basic_initialization",
+          "file": "tests.structs.test_moa",
+          "name": "test_mixture_of_agents_basic_initialization",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.structs.test_moa::test_mixture_of_agents_execution",
+          "file": "tests.structs.test_moa",
+          "name": "test_mixture_of_agents_execution",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.structs.test_moa::test_mixture_of_agents_multiple_layers",
+          "file": "tests.structs.test_moa",
+          "name": "test_mixture_of_agents_multiple_layers",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.structs.test_moa::test_mixture_of_agents_error_handling",
+          "file": "tests.structs.test_moa",
+          "name": "test_mixture_of_agents_error_handling",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.structs.test_moa::test_mixture_of_agents_real_world_scenario",
+          "file": "tests.structs.test_moa",
+          "name": "test_mixture_of_agents_real_world_scenario",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.structs.test_moa.TestWorkerContributions::test_workers_record_only_their_answer",
+          "file": "tests.structs.test_moa.TestWorkerContributions",
+          "name": "test_workers_record_only_their_answer",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.structs.test_moa.TestWorkerContributions::test_the_task_is_not_re_injected_by_workers",
+          "file": "tests.structs.test_moa.TestWorkerContributions",
+          "name": "test_the_task_is_not_re_injected_by_workers",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.structs.test_moa.TestWorkerContributions::test_the_conversation_starts_clean",
+          "file": "tests.structs.test_moa.TestWorkerContributions",
+          "name": "test_the_conversation_starts_clean",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.structs.test_moa::test_aggregator_receives_typed_turns_per_worker",
+          "file": "tests.structs.test_moa",
+          "name": "test_aggregator_receives_typed_turns_per_worker",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.structs.test_moa::test_team_roster_does_not_reach_aggregator_as_user_prose",
+          "file": "tests.structs.test_moa",
+          "name": "test_team_roster_does_not_reach_aggregator_as_user_prose",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.structs.test_moa::test_aggregator_can_tell_which_layer_produced_each_answer",
+          "file": "tests.structs.test_moa",
+          "name": "test_aggregator_can_tell_which_layer_produced_each_answer",
+          "outcome": "fail",
+          "message": "AssertionError: layer 1 not attributed: Question? W1: W1-answer-1 W2: W2-answer-1 W1: W1-answer-2 W2: W2-answer-2 W1: W1-answer-3 W2: W2-answer-3&#10;assert 'layer 1/3' in 'Question? W1: W1-answer-1 W2: W2-answer-1 W1: W1-answer-2 W2: W2-answer-2 W1: W1-answer-3 W2: W2-answer-3'"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "cf373d9a5b9bc3b50f84d658443bf3b58a5b19b6",
+    "head": "f15d30cba36db486b774a6a63ca086878384f364"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 900 s"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 903109,
+      "timedOut": true,
+      "cases": []
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 38916,
+      "cases": [
+        {
+          "id": "tests/features/schema-generator/composite-foreign-key.mssql.test.ts::composite foreign key columns keep their pairing after introspection",
+          "file": "tests/features/schema-generator/composite-foreign-key.mssql.test.ts",
+          "name": "composite foreign key columns keep their pairing after introspection",
+          "outcome": "skip"
+        },
+        {
+          "id": "tests/features/schema-generator/composite-foreign-key.mssql.test.ts::composite foreign key produces no diff once created",
+          "file": "tests/features/schema-generator/composite-foreign-key.mssql.test.ts",
+          "name": "composite foreign key produces no diff once created",
+          "outcome": "skip"
+        },
+        {
+          "id": "tests/features/schema-generator/composite-foreign-key.mssql.test.ts::tests/features/schema-generator/composite-foreign-key.mssql.test.ts",
+          "file": "tests/features/schema-generator/composite-foreign-key.mssql.test.ts",
+          "name": "tests/features/schema-generator/composite-foreign-key.mssql.test.ts",
+          "outcome": "fail",
+          "message": "Failed to connect to localhost:1433 - Could not connect (sequence)"
+        }
+      ]
+    }
+  }
+}

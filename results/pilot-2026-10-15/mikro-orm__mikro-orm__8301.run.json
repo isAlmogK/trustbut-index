@@ -1,0 +1,23 @@
+{
+  "id": "mikro-orm__mikro-orm__8301",
+  "status": "setup-failed",
+  "stage": "no-passing-tests",
+  "recipe": {
+    "node": {
+      "version": "24",
+      "pm": "yarn-berry",
+      "install": "yarn install --immutable"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 19711,
+    "verifyMs": 910084
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.4.0"
+}

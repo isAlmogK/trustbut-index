@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "239f9c68b7cbeb7fa9d6995b62a03ff124b5b16b",
+    "head": "b84af2ed520e0e4b6a42383ccd89a1e1c2a3df8f"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "pytest.PytestConfigWarning: Failed to import filter module 'prefect': ignore:Runner\\.execute_flow_run has been deprecated:prefect._internal.compatibility.deprecated.PrefectDeprecationWarning"
+    },
+    {
+      "id": "base-run-failed",
+      "severity": "warn",
+      "title": "Changed tests could not run at base; fail-before evidence unavailable (exit 4)"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 2219,
+      "cases": []
+    },
+    "before": {
+      "exitCode": 4,
+      "durationMs": 519,
+      "cases": []
+    }
+  }
+}

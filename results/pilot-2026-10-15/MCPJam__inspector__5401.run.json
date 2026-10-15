@@ -1,0 +1,16 @@
+{
+  "id": "MCPJam__inspector__5401",
+  "status": "no-runner",
+  "stage": "recipe",
+  "recipe": null,
+  "durations": {
+    "installMs": 0,
+    "verifyMs": 0
+  },
+  "exitCodes": {
+    "install": null,
+    "verify": null
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "unknown"
+}

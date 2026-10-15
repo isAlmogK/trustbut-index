@@ -1,0 +1,23 @@
+{
+  "id": "primer__react__8477",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "26.4.0",
+      "pm": "npm",
+      "install": "npm ci"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 42564,
+    "verifyMs": 16927
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.4.0"
+}

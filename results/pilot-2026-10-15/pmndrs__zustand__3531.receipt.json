@@ -1,0 +1,1772 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "beca84e600e4e250f6b244d22878e72948f331c7",
+    "head": "a9e0896bfa5e0dd84755e9961e0211232e123c69"
+  },
+  "verdict": "pass",
+  "tests": {
+    "passed": 219,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [
+    {
+      "file": "tests/devtools.test.tsx",
+      "name": "When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'webpack namespace with space'",
+      "before": "fail",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "tests/devtools.test.tsx",
+      "name": "When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'Windows path with space'",
+      "before": "fail",
+      "after": "pass",
+      "verdict": "proves-change"
+    }
+  ],
+  "findings": [
+    {
+      "id": "deps-changed",
+      "severity": "info",
+      "title": "Dependencies changed; both runs use the currently installed dependencies"
+    }
+  ],
+  "risks": [
+    {
+      "file": "package-lock.json",
+      "score": 3,
+      "reasons": [
+        "dependencies",
+        "large change (9056 lines)"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 0,
+      "durationMs": 4846,
+      "cases": [
+        {
+          "id": "tests/basic.test.tsx::creates a store hook and api object",
+          "file": "tests/basic.test.tsx",
+          "name": "creates a store hook and api object",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::uses the store with no args",
+          "file": "tests/basic.test.tsx",
+          "name": "uses the store with no args",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::uses the store with selectors",
+          "file": "tests/basic.test.tsx",
+          "name": "uses the store with selectors",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::uses the store with a selector and equality checker",
+          "file": "tests/basic.test.tsx",
+          "name": "uses the store with a selector and equality checker",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::only re-renders if selected state has changed",
+          "file": "tests/basic.test.tsx",
+          "name": "only re-renders if selected state has changed",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::can batch updates",
+          "file": "tests/basic.test.tsx",
+          "name": "can batch updates",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::can update the selector",
+          "file": "tests/basic.test.tsx",
+          "name": "can update the selector",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::can update the equality checker",
+          "file": "tests/basic.test.tsx",
+          "name": "can update the equality checker",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::can call useBoundStore with progressively more arguments",
+          "file": "tests/basic.test.tsx",
+          "name": "can call useBoundStore with progressively more arguments",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::can throw an error in selector",
+          "file": "tests/basic.test.tsx",
+          "name": "can throw an error in selector",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::can throw an error in equality checker",
+          "file": "tests/basic.test.tsx",
+          "name": "can throw an error in equality checker",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::can get the store",
+          "file": "tests/basic.test.tsx",
+          "name": "can get the store",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::can set the store",
+          "file": "tests/basic.test.tsx",
+          "name": "can set the store",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::both NaN should not update",
+          "file": "tests/basic.test.tsx",
+          "name": "both NaN should not update",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::can set the store without merging",
+          "file": "tests/basic.test.tsx",
+          "name": "can set the store without merging",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::only calls selectors when necessary with static selector",
+          "file": "tests/basic.test.tsx",
+          "name": "only calls selectors when necessary with static selector",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::only calls selectors when necessary (traditional)",
+          "file": "tests/basic.test.tsx",
+          "name": "only calls selectors when necessary (traditional)",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::ensures parent components subscribe before children",
+          "file": "tests/basic.test.tsx",
+          "name": "ensures parent components subscribe before children",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::ensures the correct subscriber is removed on unmount",
+          "file": "tests/basic.test.tsx",
+          "name": "ensures the correct subscriber is removed on unmount",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::ensures a subscriber is not mistakenly overwritten",
+          "file": "tests/basic.test.tsx",
+          "name": "ensures a subscriber is not mistakenly overwritten",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::works with non-object state",
+          "file": "tests/basic.test.tsx",
+          "name": "works with non-object state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/basic.test.tsx::works with \"undefined\" state",
+          "file": "tests/basic.test.tsx",
+          "name": "works with \"undefined\" state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::connects to the extension by passing the options and initializes",
+          "file": "tests/devtools.test.tsx",
+          "name": "connects to the extension by passing the options and initializes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::If there is no extension installed... > does not throw",
+          "file": "tests/devtools.test.tsx",
+          "name": "If there is no extension installed... > does not throw",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::If there is no extension installed... > does not warn",
+          "file": "tests/devtools.test.tsx",
+          "name": "If there is no extension installed... > does not warn",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes... > sends { type: setStateName || 'anonymous`, ...rest } as the action with current state",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes... > sends { type: setStateName || 'anonymous`, ...rest } as the action with current state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes with automatic setter inferring... > sends { type: setStateName || 'setCount`, ...rest } as the action with current state",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes with automatic setter inferring... > sends { type: setStateName || 'setCount`, ...rest } as the action with current state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'webpack namespace with space'",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'webpack namespace with space'",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'Windows path with space'",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'Windows path with space'",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'space-free path (regression)'",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'space-free path (regression)'",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'async function — strips async keyword'",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'async function — strips async keyword'",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'constructor — strips new keyword'",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'constructor — strips new keyword'",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes with automatic setter inferring... > infers caller name from Firefox/SpiderMonkey stack format",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes with automatic setter inferring... > infers caller name from Firefox/SpiderMonkey stack format",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > ACTION... > does nothing",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > ACTION... > does nothing",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > ACTION... > unless action type is __setState",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > ACTION... > unless action type is __setState",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > ACTION... > does nothing even if there is `api.dispatch`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > ACTION... > does nothing even if there is `api.dispatch`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > ACTION... > dispatches with `api.dispatch` when `api.dispatchFromDevtools` is set to true",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > ACTION... > dispatches with `api.dispatch` when `api.dispatchFromDevtools` is set to true",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > ACTION... > does not throw for unsupported payload",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > ACTION... > does not throw for unsupported payload",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > RESET, it inits with initial state",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > RESET, it inits with initial state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > COMMIT, it inits with current state",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > COMMIT, it inits with current state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > ROLLBACK... > updates state without recording and inits with `message.state`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > ROLLBACK... > updates state without recording and inits with `message.state`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > ROLLBACK... > does not throw for unparsable `message.state`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > ROLLBACK... > does not throw for unparsable `message.state`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_STATE... > updates state without recording with `message.state`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_STATE... > updates state without recording with `message.state`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_STATE... > does not throw for unparsable `message.state`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_STATE... > does not throw for unparsable `message.state`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_ACTION... > updates state without recording with `message.state`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_ACTION... > updates state without recording with `message.state`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_ACTION... > does not throw for unparsable `message.state`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_ACTION... > does not throw for unparsable `message.state`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > IMPORT_STATE, it updates state without recording and inits the last computedState",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > IMPORT_STATE, it updates state without recording and inits the last computedState",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > PAUSE_RECORDING, it toggles the sending of actions",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > PAUSE_RECORDING, it toggles the sending of actions",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::with redux middleware > works as expected",
+          "file": "tests/devtools.test.tsx",
+          "name": "with redux middleware > works as expected",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::with redux middleware > [DEV-ONLY] warns about misusage",
+          "file": "tests/devtools.test.tsx",
+          "name": "with redux middleware > [DEV-ONLY] warns about misusage",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::different envs > works in non-browser env",
+          "file": "tests/devtools.test.tsx",
+          "name": "different envs > works in non-browser env",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::different envs > works in react native env",
+          "file": "tests/devtools.test.tsx",
+          "name": "different envs > works in react native env",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::preserves isRecording after setting from devtools",
+          "file": "tests/devtools.test.tsx",
+          "name": "preserves isRecording after setting from devtools",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` undefined in `devtools` options > should create separate connection for each devtools store with .connect call",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` undefined in `devtools` options > should create separate connection for each devtools store with .connect call",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` undefined in `devtools` options > should call .init on each different connection object",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` undefined in `devtools` options > should call .init on each different connection object",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` undefined in `devtools` options > when `store` property was provided in `devtools` call in options > should create single connection for all internal calls of .connect and `store` is not passed to .connect",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` undefined in `devtools` options > when `store` property was provided in `devtools` call in options > should create single connection for all internal calls of .connect and `store` is not passed to .connect",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` undefined in `devtools` options > when `store` property was provided in `devtools` call in options > should call `.init` on single connection with combined states after each `create(devtools` call",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` undefined in `devtools` options > when `store` property was provided in `devtools` call in options > should call `.init` on single connection with combined states after each `create(devtools` call",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` provided in `devtools` options > when same `name` is provided to all stores in devtools options > should call .connect of redux extension with `name` that was passed from `devtools` options",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` provided in `devtools` options > when same `name` is provided to all stores in devtools options > should call .connect of redux extension with `name` that was passed from `devtools` options",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > should call .connect of redux extension with `name` that was passed from `devtools` options",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > should call .connect of redux extension with `name` that was passed from `devtools` options",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > should call `.init` on single connection with combined states after each `create(devtools` call",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > should call `.init` on single connection with combined states after each `create(devtools` call",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > preserves isRecording after setting from devtools on proper connection subscriber",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > preserves isRecording after setting from devtools on proper connection subscriber",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > with redux middleware > works as expected",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > with redux middleware > works as expected",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > When state changes... > sends { type: setStateName || 'anonymous`, ...rest } as the action with current state, isolated from other connections",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > When state changes... > sends { type: setStateName || 'anonymous`, ...rest } as the action with current state, isolated from other connections",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > does nothing, connections isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > does nothing, connections isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > unless action type is __setState, connections isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > unless action type is __setState, connections isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > does nothing even if there is `api.dispatch`, connections isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > does nothing even if there is `api.dispatch`, connections isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > dispatches with `api.dispatch` when `api.dispatchFromDevtools` is set to true, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > dispatches with `api.dispatch` when `api.dispatchFromDevtools` is set to true, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > does not throw for unsupported payload, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > does not throw for unsupported payload, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > DISPATCH and payload of type... > RESET, it inits with initial state, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > DISPATCH and payload of type... > RESET, it inits with initial state, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > DISPATCH and payload of type... > COMMIT, it inits with current state, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > DISPATCH and payload of type... > COMMIT, it inits with current state, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ROLLBACK... > updates state without recording and inits with `message.state, connections are isolated from each other`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ROLLBACK... > updates state without recording and inits with `message.state, connections are isolated from each other`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ROLLBACK... > does not throw for unparsable `message.state`, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ROLLBACK... > does not throw for unparsable `message.state`, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_STATE... > updates state without recording with `message.state`, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_STATE... > updates state without recording with `message.state`, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_STATE... > does not throw for unparsable `message.state`, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_STATE... > does not throw for unparsable `message.state`, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > updates state without recording with `message.state`, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > updates state without recording with `message.state`, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > does not throw for unparsable `message.state`, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > does not throw for unparsable `message.state`, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > IMPORT_STATE, it updates state without recording and inits the last computedState, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > IMPORT_STATE, it updates state without recording and inits the last computedState, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > PAUSE_RECORDING, it toggles the sending of actions, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > PAUSE_RECORDING, it toggles the sending of actions, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > When state changes... > sends { type: setStateName || 'anonymous`, ...rest } as the action with current state",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > When state changes... > sends { type: setStateName || 'anonymous`, ...rest } as the action with current state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > does nothing, connections isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > does nothing, connections isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > unless action type is __setState, connections isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > unless action type is __setState, connections isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > does nothing even if there is `api.dispatch`, connections isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > does nothing even if there is `api.dispatch`, connections isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > dispatches with `api.dispatch` when `api.dispatchFromDevtools` is set to true, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > dispatches with `api.dispatch` when `api.dispatchFromDevtools` is set to true, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::cleanup > should unsubscribe from devtools when cleanup is called",
+          "file": "tests/devtools.test.tsx",
+          "name": "cleanup > should unsubscribe from devtools when cleanup is called",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::cleanup > should remove store from tracked connection after cleanup",
+          "file": "tests/devtools.test.tsx",
+          "name": "cleanup > should remove store from tracked connection after cleanup",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::actionsDenylist > should pass actionsDenylist option to Redux DevTools",
+          "file": "tests/devtools.test.tsx",
+          "name": "actionsDenylist > should pass actionsDenylist option to Redux DevTools",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/immer.test.tsx::immer middleware > should mutate state via an immer draft (function updater)",
+          "file": "tests/immer.test.tsx",
+          "name": "immer middleware > should mutate state via an immer draft (function updater)",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/immer.test.tsx::immer middleware > should not apply produce when updater is not a function",
+          "file": "tests/immer.test.tsx",
+          "name": "immer middleware > should not apply produce when updater is not a function",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/immer.test.tsx::immer middleware > should replace the entire state when replace flag is true",
+          "file": "tests/immer.test.tsx",
+          "name": "immer middleware > should replace the entire state when replace flag is true",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/immer.test.tsx::immer middleware > should produce nested state updates via a draft without mutating the previous state",
+          "file": "tests/immer.test.tsx",
+          "name": "immer middleware > should produce nested state updates via a draft without mutating the previous state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/immer.test.tsx::immer middleware > should work with vanilla createStore",
+          "file": "tests/immer.test.tsx",
+          "name": "immer middleware > should work with vanilla createStore",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (no middleware) > no middleware",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (no middleware) > no middleware",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (single middleware) > immer",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (single middleware) > immer",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (single middleware) > redux",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (single middleware) > redux",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (single middleware) > devtools",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (single middleware) > devtools",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (single middleware) > devtools #2700",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (single middleware) > devtools #2700",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (single middleware) > devtools #3510",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (single middleware) > devtools #3510",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (single middleware) > subscribeWithSelector",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (single middleware) > subscribeWithSelector",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (single middleware) > combine",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (single middleware) > combine",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (single middleware) > persist",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (single middleware) > persist",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (single middleware) > persist with partialize",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (single middleware) > persist with partialize",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (single middleware) > persist without custom api (#638)",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (single middleware) > persist without custom api (#638)",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (double middleware) > immer & devtools",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (double middleware) > immer & devtools",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (double middleware) > devtools & redux",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (double middleware) > devtools & redux",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (double middleware) > devtools & combine",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (double middleware) > devtools & combine",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (double middleware) > subscribeWithSelector & combine",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (double middleware) > subscribeWithSelector & combine",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (double middleware) > devtools & subscribeWithSelector",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (double middleware) > devtools & subscribeWithSelector",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (double middleware) > devtools & persist",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (double middleware) > devtools & persist",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (triple middleware) > devtools & persist & immer",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (triple middleware) > devtools & persist & immer",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (triple middleware) > devtools & subscribeWithSelector & combine",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (triple middleware) > devtools & subscribeWithSelector & combine",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (triple middleware) > devtools & subscribeWithSelector & persist",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (triple middleware) > devtools & subscribeWithSelector & persist",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::counter state spec (quadruple middleware) > devtools & subscribeWithSelector & persist & immer (#616)",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "counter state spec (quadruple middleware) > devtools & subscribeWithSelector & persist & immer (#616)",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::more complex state spec with subscribeWithSelector > #619, #632",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "more complex state spec with subscribeWithSelector > #619, #632",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::more complex state spec with subscribeWithSelector > #631",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "more complex state spec with subscribeWithSelector > #631",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::more complex state spec with subscribeWithSelector > #650",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "more complex state spec with subscribeWithSelector > #650",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::create with explicitly annotated mutators > subscribeWithSelector & persist",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "create with explicitly annotated mutators > subscribeWithSelector & persist",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/middlewareTypes.test.tsx::single middleware with sliced store > immer with slices where slice type differs from store (#3371)",
+          "file": "tests/middlewareTypes.test.tsx",
+          "name": "single middleware with sliced store > immer with slices where slice type differs from store (#3371)",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > can rehydrate state",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > can rehydrate state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > can throw rehydrate error",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > can throw rehydrate error",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > can persist state",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > can persist state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > can async migrate persisted state",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > can async migrate persisted state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > can merge partial persisted state",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > can merge partial persisted state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > can correctly handle a missing migrate function",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > can correctly handle a missing migrate function",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > can throw migrate error",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > can throw migrate error",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > passes the latest state to onRehydrateStorage and onHydrate on first hydrate",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > passes the latest state to onRehydrateStorage and onHydrate on first hydrate",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > gives the merged state to onRehydrateStorage",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > gives the merged state to onRehydrateStorage",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > can custom merge the stored state",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > can custom merge the stored state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > can merge the state when the storage item doesn't have a version",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > can merge the state when the storage item doesn't have a version",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > can manually rehydrate through the api",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > can manually rehydrate through the api",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > can check if the store has been hydrated through the api",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > can check if the store has been hydrated through the api",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > can skip initial hydration",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > can skip initial hydration",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > handles state updates during onRehydrateStorage",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > handles state updates during onRehydrateStorage",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > passes latest state to post-rehydration callback after hydration-triggered updates",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > passes latest state to post-rehydration callback after hydration-triggered updates",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > can rehydrate state with custom deserialized Map",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > can rehydrate state with custom deserialized Map",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > can persist state with custom serialization of Map",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > can persist state with custom serialization of Map",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > should handle multiple concurrent rehydrate calls (only last one wins)",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > should handle multiple concurrent rehydrate calls (only last one wins)",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > should not overwrite user state changes made during async hydration",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > should not overwrite user state changes made during async hydration",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistAsync.test.tsx::persist middleware with async configuration > should abort hydration with async migration when newer hydration starts",
+          "file": "tests/persistAsync.test.tsx",
+          "name": "persist middleware with async configuration > should abort hydration with async migration when newer hydration starts",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can rehydrate state",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can rehydrate state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can throw rehydrate error",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can throw rehydrate error",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can persist state",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can persist state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can non-async migrate persisted state",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can non-async migrate persisted state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can correctly handle a missing migrate function",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can correctly handle a missing migrate function",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can throw migrate error",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can throw migrate error",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > passes the latest state to onRehydrateStorage and onHydrate on first hydrate",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > passes the latest state to onRehydrateStorage and onHydrate on first hydrate",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > gives the merged state to onRehydrateStorage",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > gives the merged state to onRehydrateStorage",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can custom merge the stored state",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can custom merge the stored state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can merge the state when the storage item doesn't have a version",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can merge the state when the storage item doesn't have a version",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can filter the persisted value",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can filter the persisted value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can access the options through the api",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can access the options through the api",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can change the options through the api",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can change the options through the api",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can clear the storage through the api",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can clear the storage through the api",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can manually rehydrate through the api",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can manually rehydrate through the api",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can check if the store has been hydrated through the api",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can check if the store has been hydrated through the api",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can wait for rehydration through the api",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can wait for rehydration through the api",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can skip initial hydration",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can skip initial hydration",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > handles state updates during onRehydrateStorage",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > handles state updates during onRehydrateStorage",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can rehydrate state with custom deserialized Map",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can rehydrate state with custom deserialized Map",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > can persist state with custom serialization of Map",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > can persist state with custom serialization of Map",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/persistSync.test.tsx::persist middleware with sync configuration > does not call setItem when hydrating from its own storage",
+          "file": "tests/persistSync.test.tsx",
+          "name": "persist middleware with sync configuration > does not call setItem when hydrating from its own storage",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallow.test.tsx::types > works with useBoundStore and array selector (#1107)",
+          "file": "tests/shallow.test.tsx",
+          "name": "types > works with useBoundStore and array selector (#1107)",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallow.test.tsx::types > works with useBoundStore and string selector (#1107)",
+          "file": "tests/shallow.test.tsx",
+          "name": "types > works with useBoundStore and string selector (#1107)",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallow.test.tsx::useShallow > input and output selectors always return shallow equal values",
+          "file": "tests/shallow.test.tsx",
+          "name": "useShallow > input and output selectors always return shallow equal values",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallow.test.tsx::useShallow > returns the previously computed instance when possible",
+          "file": "tests/shallow.test.tsx",
+          "name": "useShallow > returns the previously computed instance when possible",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallow.test.tsx::useShallow > only re-renders if selector output has changed according to shallow",
+          "file": "tests/shallow.test.tsx",
+          "name": "useShallow > only re-renders if selector output has changed according to shallow",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallow.test.tsx::useShallow > does not cause stale closure issues",
+          "file": "tests/shallow.test.tsx",
+          "name": "useShallow > does not cause stale closure issues",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/ssr.test.tsx::ssr behavior with react 18+ > should handle different states between server and client correctly",
+          "file": "tests/ssr.test.tsx",
+          "name": "ssr behavior with react 18+ > should handle different states between server and client correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/ssr.test.tsx::ssr behavior with react 18+ > should not have hydration errors",
+          "file": "tests/ssr.test.tsx",
+          "name": "ssr behavior with react 18+ > should not have hydration errors",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/subscribe.test.tsx::subscribe() > should correctly have access to subscribe",
+          "file": "tests/subscribe.test.tsx",
+          "name": "subscribe() > should correctly have access to subscribe",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/subscribe.test.tsx::subscribe() > should not be called if new state identity is the same",
+          "file": "tests/subscribe.test.tsx",
+          "name": "subscribe() > should not be called if new state identity is the same",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/subscribe.test.tsx::subscribe() > should be called if new state identity is different",
+          "file": "tests/subscribe.test.tsx",
+          "name": "subscribe() > should be called if new state identity is different",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/subscribe.test.tsx::subscribe() > should not be called when state slice is the same",
+          "file": "tests/subscribe.test.tsx",
+          "name": "subscribe() > should not be called when state slice is the same",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/subscribe.test.tsx::subscribe() > should be called when state slice changes",
+          "file": "tests/subscribe.test.tsx",
+          "name": "subscribe() > should be called when state slice changes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/subscribe.test.tsx::subscribe() > should not be called when equality checker returns true",
+          "file": "tests/subscribe.test.tsx",
+          "name": "subscribe() > should not be called when equality checker returns true",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/subscribe.test.tsx::subscribe() > should be called when equality checker returns false",
+          "file": "tests/subscribe.test.tsx",
+          "name": "subscribe() > should be called when equality checker returns false",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/subscribe.test.tsx::subscribe() > should unsubscribe correctly",
+          "file": "tests/subscribe.test.tsx",
+          "name": "subscribe() > should unsubscribe correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/subscribe.test.tsx::subscribe() > should call listener immediately when fireImmediately is true",
+          "file": "tests/subscribe.test.tsx",
+          "name": "subscribe() > should call listener immediately when fireImmediately is true",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/subscribe.test.tsx::subscribe() > should pass previous and current state to listener",
+          "file": "tests/subscribe.test.tsx",
+          "name": "subscribe() > should pass previous and current state to listener",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/subscribe.test.tsx::subscribe() > should handle multiple subscribers",
+          "file": "tests/subscribe.test.tsx",
+          "name": "subscribe() > should handle multiple subscribers",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/subscribe.test.tsx::subscribe() > should not notify unsubscribed listener while other listeners remain",
+          "file": "tests/subscribe.test.tsx",
+          "name": "subscribe() > should not notify unsubscribed listener while other listeners remain",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/types.test.tsx::can use exposed types",
+          "file": "tests/types.test.tsx",
+          "name": "can use exposed types",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/types.test.tsx::should have correct (partial) types for setState",
+          "file": "tests/types.test.tsx",
+          "name": "should have correct (partial) types for setState",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/types.test.tsx::should allow for different partial keys to be returnable from setState",
+          "file": "tests/types.test.tsx",
+          "name": "should allow for different partial keys to be returnable from setState",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/types.test.tsx::state is covariant",
+          "file": "tests/types.test.tsx",
+          "name": "state is covariant",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/types.test.tsx::StateCreator<T, [StoreMutatorIdentfier, unknown][]> is StateCreator<T, []>",
+          "file": "tests/types.test.tsx",
+          "name": "StateCreator<T, [StoreMutatorIdentfier, unknown][]> is StateCreator<T, []>",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/types.test.tsx::StateCreator subtyping",
+          "file": "tests/types.test.tsx",
+          "name": "StateCreator subtyping",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/types.test.tsx::set state exists on store with readonly store",
+          "file": "tests/types.test.tsx",
+          "name": "set state exists on store with readonly store",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/basic.test.ts::create a store",
+          "file": "tests/vanilla/basic.test.ts",
+          "name": "create a store",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/basic.test.ts::uses the store",
+          "file": "tests/vanilla/basic.test.ts",
+          "name": "uses the store",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/basic.test.ts::can get the store",
+          "file": "tests/vanilla/basic.test.ts",
+          "name": "can get the store",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/basic.test.ts::can get the initial state",
+          "file": "tests/vanilla/basic.test.ts",
+          "name": "can get the initial state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/basic.test.ts::can set the store",
+          "file": "tests/vanilla/basic.test.ts",
+          "name": "can set the store",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/basic.test.ts::both NaN should not update",
+          "file": "tests/vanilla/basic.test.ts",
+          "name": "both NaN should not update",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/basic.test.ts::can set the store without merging",
+          "file": "tests/vanilla/basic.test.ts",
+          "name": "can set the store without merging",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/basic.test.ts::can set the object store to null",
+          "file": "tests/vanilla/basic.test.ts",
+          "name": "can set the object store to null",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/basic.test.ts::can set the non-object store to null",
+          "file": "tests/vanilla/basic.test.ts",
+          "name": "can set the non-object store to null",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/basic.test.ts::works with non-object state",
+          "file": "tests/vanilla/basic.test.ts",
+          "name": "works with non-object state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/shallow.test.tsx::shallow > compares primitive values",
+          "file": "tests/vanilla/shallow.test.tsx",
+          "name": "shallow > compares primitive values",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/shallow.test.tsx::shallow > compares objects",
+          "file": "tests/vanilla/shallow.test.tsx",
+          "name": "shallow > compares objects",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/shallow.test.tsx::shallow > compares arrays",
+          "file": "tests/vanilla/shallow.test.tsx",
+          "name": "shallow > compares arrays",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/shallow.test.tsx::shallow > compares Maps",
+          "file": "tests/vanilla/shallow.test.tsx",
+          "name": "shallow > compares Maps",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/shallow.test.tsx::shallow > compares Sets",
+          "file": "tests/vanilla/shallow.test.tsx",
+          "name": "shallow > compares Sets",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/shallow.test.tsx::shallow > compares functions",
+          "file": "tests/vanilla/shallow.test.tsx",
+          "name": "shallow > compares functions",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/shallow.test.tsx::shallow > compares URLSearchParams",
+          "file": "tests/vanilla/shallow.test.tsx",
+          "name": "shallow > compares URLSearchParams",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/shallow.test.tsx::shallow > should work with nested arrays (#2794)",
+          "file": "tests/vanilla/shallow.test.tsx",
+          "name": "shallow > should work with nested arrays (#2794)",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/shallow.test.tsx::shallow > should work with undefined (#3204)",
+          "file": "tests/vanilla/shallow.test.tsx",
+          "name": "shallow > should work with undefined (#3204)",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/shallow.test.tsx::mixed cases > compares different data structures",
+          "file": "tests/vanilla/shallow.test.tsx",
+          "name": "mixed cases > compares different data structures",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/shallow.test.tsx::generators > pure iterable",
+          "file": "tests/vanilla/shallow.test.tsx",
+          "name": "generators > pure iterable",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/shallow.test.tsx::generators > pure iterable with different values returns false",
+          "file": "tests/vanilla/shallow.test.tsx",
+          "name": "generators > pure iterable with different values returns false",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/shallow.test.tsx::unsupported cases > date",
+          "file": "tests/vanilla/shallow.test.tsx",
+          "name": "unsupported cases > date",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/subscribe.test.tsx::subscribe() > should not be called if new state identity is the same",
+          "file": "tests/vanilla/subscribe.test.tsx",
+          "name": "subscribe() > should not be called if new state identity is the same",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/subscribe.test.tsx::subscribe() > should be called if new state identity is different",
+          "file": "tests/vanilla/subscribe.test.tsx",
+          "name": "subscribe() > should be called if new state identity is different",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/subscribe.test.tsx::subscribe() > should not be called when state slice is the same",
+          "file": "tests/vanilla/subscribe.test.tsx",
+          "name": "subscribe() > should not be called when state slice is the same",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/subscribe.test.tsx::subscribe() > should be called when state slice changes",
+          "file": "tests/vanilla/subscribe.test.tsx",
+          "name": "subscribe() > should be called when state slice changes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/subscribe.test.tsx::subscribe() > should not be called when equality checker returns true",
+          "file": "tests/vanilla/subscribe.test.tsx",
+          "name": "subscribe() > should not be called when equality checker returns true",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/subscribe.test.tsx::subscribe() > should be called when equality checker returns false",
+          "file": "tests/vanilla/subscribe.test.tsx",
+          "name": "subscribe() > should be called when equality checker returns false",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/subscribe.test.tsx::subscribe() > should unsubscribe correctly",
+          "file": "tests/vanilla/subscribe.test.tsx",
+          "name": "subscribe() > should unsubscribe correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/subscribe.test.tsx::subscribe() > should keep consistent behavior with equality check",
+          "file": "tests/vanilla/subscribe.test.tsx",
+          "name": "subscribe() > should keep consistent behavior with equality check",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vanilla/subscribe.test.tsx::subscribe() > should call listener immediately when fireImmediately is true",
+          "file": "tests/vanilla/subscribe.test.tsx",
+          "name": "subscribe() > should call listener immediately when fireImmediately is true",
+          "outcome": "pass"
+        }
+      ]
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 1089,
+      "cases": [
+        {
+          "id": "tests/devtools.test.tsx::connects to the extension by passing the options and initializes",
+          "file": "tests/devtools.test.tsx",
+          "name": "connects to the extension by passing the options and initializes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::If there is no extension installed... > does not throw",
+          "file": "tests/devtools.test.tsx",
+          "name": "If there is no extension installed... > does not throw",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::If there is no extension installed... > does not warn",
+          "file": "tests/devtools.test.tsx",
+          "name": "If there is no extension installed... > does not warn",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes... > sends { type: setStateName || 'anonymous`, ...rest } as the action with current state",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes... > sends { type: setStateName || 'anonymous`, ...rest } as the action with current state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes with automatic setter inferring... > sends { type: setStateName || 'setCount`, ...rest } as the action with current state",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes with automatic setter inferring... > sends { type: setStateName || 'setCount`, ...rest } as the action with current state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'webpack namespace with space'",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'webpack namespace with space'",
+          "outcome": "fail",
+          "message": "Error.captureStackTrace is not a function"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'Windows path with space'",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'Windows path with space'",
+          "outcome": "fail",
+          "message": "Error.captureStackTrace is not a function"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'space-free path (regression)'",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'space-free path (regression)'",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'async function — strips async keyword'",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'async function — strips async keyword'",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'constructor — strips new keyword'",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes with automatic setter inferring... > infers caller name from V8 stack format — 'constructor — strips new keyword'",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::When state changes with automatic setter inferring... > infers caller name from Firefox/SpiderMonkey stack format",
+          "file": "tests/devtools.test.tsx",
+          "name": "When state changes with automatic setter inferring... > infers caller name from Firefox/SpiderMonkey stack format",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > ACTION... > does nothing",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > ACTION... > does nothing",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > ACTION... > unless action type is __setState",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > ACTION... > unless action type is __setState",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > ACTION... > does nothing even if there is `api.dispatch`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > ACTION... > does nothing even if there is `api.dispatch`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > ACTION... > dispatches with `api.dispatch` when `api.dispatchFromDevtools` is set to true",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > ACTION... > dispatches with `api.dispatch` when `api.dispatchFromDevtools` is set to true",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > ACTION... > does not throw for unsupported payload",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > ACTION... > does not throw for unsupported payload",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > RESET, it inits with initial state",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > RESET, it inits with initial state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > COMMIT, it inits with current state",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > COMMIT, it inits with current state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > ROLLBACK... > updates state without recording and inits with `message.state`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > ROLLBACK... > updates state without recording and inits with `message.state`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > ROLLBACK... > does not throw for unparsable `message.state`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > ROLLBACK... > does not throw for unparsable `message.state`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_STATE... > updates state without recording with `message.state`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_STATE... > updates state without recording with `message.state`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_STATE... > does not throw for unparsable `message.state`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_STATE... > does not throw for unparsable `message.state`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_ACTION... > updates state without recording with `message.state`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_ACTION... > updates state without recording with `message.state`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_ACTION... > does not throw for unparsable `message.state`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > JUMP_TO_ACTION... > does not throw for unparsable `message.state`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > IMPORT_STATE, it updates state without recording and inits the last computedState",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > IMPORT_STATE, it updates state without recording and inits the last computedState",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when it receives a message of type... > DISPATCH and payload of type... > PAUSE_RECORDING, it toggles the sending of actions",
+          "file": "tests/devtools.test.tsx",
+          "name": "when it receives a message of type... > DISPATCH and payload of type... > PAUSE_RECORDING, it toggles the sending of actions",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::with redux middleware > works as expected",
+          "file": "tests/devtools.test.tsx",
+          "name": "with redux middleware > works as expected",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::with redux middleware > [DEV-ONLY] warns about misusage",
+          "file": "tests/devtools.test.tsx",
+          "name": "with redux middleware > [DEV-ONLY] warns about misusage",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::different envs > works in non-browser env",
+          "file": "tests/devtools.test.tsx",
+          "name": "different envs > works in non-browser env",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::different envs > works in react native env",
+          "file": "tests/devtools.test.tsx",
+          "name": "different envs > works in react native env",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::preserves isRecording after setting from devtools",
+          "file": "tests/devtools.test.tsx",
+          "name": "preserves isRecording after setting from devtools",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` undefined in `devtools` options > should create separate connection for each devtools store with .connect call",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` undefined in `devtools` options > should create separate connection for each devtools store with .connect call",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` undefined in `devtools` options > should call .init on each different connection object",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` undefined in `devtools` options > should call .init on each different connection object",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` undefined in `devtools` options > when `store` property was provided in `devtools` call in options > should create single connection for all internal calls of .connect and `store` is not passed to .connect",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` undefined in `devtools` options > when `store` property was provided in `devtools` call in options > should create single connection for all internal calls of .connect and `store` is not passed to .connect",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` undefined in `devtools` options > when `store` property was provided in `devtools` call in options > should call `.init` on single connection with combined states after each `create(devtools` call",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` undefined in `devtools` options > when `store` property was provided in `devtools` call in options > should call `.init` on single connection with combined states after each `create(devtools` call",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` provided in `devtools` options > when same `name` is provided to all stores in devtools options > should call .connect of redux extension with `name` that was passed from `devtools` options",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` provided in `devtools` options > when same `name` is provided to all stores in devtools options > should call .connect of redux extension with `name` that was passed from `devtools` options",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > should call .connect of redux extension with `name` that was passed from `devtools` options",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > should call .connect of redux extension with `name` that was passed from `devtools` options",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > should call `.init` on single connection with combined states after each `create(devtools` call",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > should call `.init` on single connection with combined states after each `create(devtools` call",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > preserves isRecording after setting from devtools on proper connection subscriber",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > preserves isRecording after setting from devtools on proper connection subscriber",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > with redux middleware > works as expected",
+          "file": "tests/devtools.test.tsx",
+          "name": "when redux connection was called on multiple stores with `name` provided in `devtools` options > when different `name` props were provided for different group of stores in devtools options > with redux middleware > works as expected",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > When state changes... > sends { type: setStateName || 'anonymous`, ...rest } as the action with current state, isolated from other connections",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > When state changes... > sends { type: setStateName || 'anonymous`, ...rest } as the action with current state, isolated from other connections",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > does nothing, connections isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > does nothing, connections isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > unless action type is __setState, connections isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > unless action type is __setState, connections isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > does nothing even if there is `api.dispatch`, connections isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > does nothing even if there is `api.dispatch`, connections isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > dispatches with `api.dispatch` when `api.dispatchFromDevtools` is set to true, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > dispatches with `api.dispatch` when `api.dispatchFromDevtools` is set to true, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > does not throw for unsupported payload, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ACTION... > does not throw for unsupported payload, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > DISPATCH and payload of type... > RESET, it inits with initial state, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > DISPATCH and payload of type... > RESET, it inits with initial state, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > DISPATCH and payload of type... > COMMIT, it inits with current state, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > DISPATCH and payload of type... > COMMIT, it inits with current state, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ROLLBACK... > updates state without recording and inits with `message.state, connections are isolated from each other`",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ROLLBACK... > updates state without recording and inits with `message.state, connections are isolated from each other`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ROLLBACK... > does not throw for unparsable `message.state`, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > ROLLBACK... > does not throw for unparsable `message.state`, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_STATE... > updates state without recording with `message.state`, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_STATE... > updates state without recording with `message.state`, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_STATE... > does not throw for unparsable `message.state`, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_STATE... > does not throw for unparsable `message.state`, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > updates state without recording with `message.state`, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > updates state without recording with `message.state`, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > does not throw for unparsable `message.state`, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > does not throw for unparsable `message.state`, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > IMPORT_STATE, it updates state without recording and inits the last computedState, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > IMPORT_STATE, it updates state without recording and inits the last computedState, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > PAUSE_RECORDING, it toggles the sending of actions, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` option undefined > when it receives a message of type... > JUMP_TO_ACTION... > PAUSE_RECORDING, it toggles the sending of actions, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > When state changes... > sends { type: setStateName || 'anonymous`, ...rest } as the action with current state",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > When state changes... > sends { type: setStateName || 'anonymous`, ...rest } as the action with current state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > does nothing, connections isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > does nothing, connections isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > unless action type is __setState, connections isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > unless action type is __setState, connections isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > does nothing even if there is `api.dispatch`, connections isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > does nothing even if there is `api.dispatch`, connections isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > dispatches with `api.dispatch` when `api.dispatchFromDevtools` is set to true, connections are isolated from each other",
+          "file": "tests/devtools.test.tsx",
+          "name": "when create devtools was called multiple times with `name` and `store` options defined > when `type` was provided in store state methods as option > when it receives a message of type... > ACTION... > dispatches with `api.dispatch` when `api.dispatchFromDevtools` is set to true, connections are isolated from each other",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::cleanup > should unsubscribe from devtools when cleanup is called",
+          "file": "tests/devtools.test.tsx",
+          "name": "cleanup > should unsubscribe from devtools when cleanup is called",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::cleanup > should remove store from tracked connection after cleanup",
+          "file": "tests/devtools.test.tsx",
+          "name": "cleanup > should remove store from tracked connection after cleanup",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/devtools.test.tsx::actionsDenylist > should pass actionsDenylist option to Redux DevTools",
+          "file": "tests/devtools.test.tsx",
+          "name": "actionsDenylist > should pass actionsDenylist option to Redux DevTools",
+          "outcome": "pass"
+        }
+      ]
+    }
+  }
+}

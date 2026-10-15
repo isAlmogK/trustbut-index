@@ -1,0 +1,260 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "02d9198fde7e012257c65b6529a9e05f02a2fb1a",
+    "head": "ef2f5576556838683c68085208125a28aa68ef9c"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 900 s"
+    }
+  ],
+  "risks": [
+    {
+      "file": "src/lib/onboard/experimental/hermes-portable-lifecycle.test.ts",
+      "score": 1,
+      "reasons": [
+        "large change (442 lines)"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 901285,
+      "timedOut": true,
+      "cases": []
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 2877,
+      "cases": [
+        {
+          "id": "src/lib/adapters/openshell/forward-service.test.ts::src/lib/adapters/openshell/forward-service.test.ts",
+          "file": "src/lib/adapters/openshell/forward-service.test.ts",
+          "name": "src/lib/adapters/openshell/forward-service.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module './operation-deadline' imported from /tmp/trustbut-wt-aAm9kl/src/lib/adapters/openshell/forward-service.test.ts"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::Hermes portable direct forward authority > preserves the endpoint 'http://127.0.0.1:19080' and ownership allowance (#11652)",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "Hermes portable direct forward authority > preserves the endpoint 'http://127.0.0.1:19080' and ownership allowance (#11652)",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::Hermes portable direct forward authority > preserves the endpoint 'https://[::1]:19080' and ownership allowance (#11652)",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "Hermes portable direct forward authority > preserves the endpoint 'https://[::1]:19080' and ownership allowance (#11652)",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::Hermes portable direct forward authority > rejects full gateway-owner drift after composition",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "Hermes portable direct forward authority > rejects full gateway-owner drift after composition",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::ensureDeclaredAgentForwardPortsHealthy > accepts an already-reachable remote direct service during gateway recovery",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "ensureDeclaredAgentForwardPortsHealthy > accepts an already-reachable remote direct service during gateway recovery",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::ensureDeclaredAgentForwardPortsHealthy > fails closed without a launch attempt when reachable direct service ownership cannot be proved (#11149)",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "ensureDeclaredAgentForwardPortsHealthy > fails closed without a launch attempt when reachable direct service ownership cannot be proved (#11149)",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::ensureDeclaredAgentForwardPortsHealthy > does not demand the manifest dashboard port from a sandbox that owns a different dashboard port (#8543)",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "ensureDeclaredAgentForwardPortsHealthy > does not demand the manifest dashboard port from a sandbox that owns a different dashboard port (#8543)",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::ensureDeclaredAgentForwardPortsHealthy > recovers the sandbox's own API port rather than the sibling sandbox's (#8543)",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "ensureDeclaredAgentForwardPortsHealthy > recovers the sandbox's own API port rather than the sibling sandbox's (#8543)",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::ensureDeclaredAgentForwardPortsHealthy > pins declared forward inspection and recovery to the selected OpenShell target (#10514)",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "ensureDeclaredAgentForwardPortsHealthy > pins declared forward inspection and recovery to the selected OpenShell target (#10514)",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::ensureDeclaredAgentForwardPortsHealthy > uses the revalidated external gateway endpoint 'http://127.0.0.1:19080' for recovery",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "ensureDeclaredAgentForwardPortsHealthy > uses the revalidated external gateway endpoint 'http://127.0.0.1:19080' for recovery",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::ensureDeclaredAgentForwardPortsHealthy > uses the revalidated external gateway endpoint 'https://[::1]:19080' for recovery",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "ensureDeclaredAgentForwardPortsHealthy > uses the revalidated external gateway endpoint 'https://[::1]:19080' for recovery",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::ensureDeclaredAgentForwardPortsHealthy > keeps the default API port for a sandbox registered without one (#8543)",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "ensureDeclaredAgentForwardPortsHealthy > keeps the default API port for a sandbox registered without one (#8543)",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::a dashboard port held by a listener the sandbox does not own (#11149) > describes the listener when nothing listens",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "a dashboard port held by a listener the sandbox does not own (#11149) > describes the listener when nothing listens",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::a dashboard port held by a listener the sandbox does not own (#11149) > describes the listener when an unverified legacy SSH listener answers",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "a dashboard port held by a listener the sandbox does not own (#11149) > describes the listener when an unverified legacy SSH listener answers",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::a dashboard port held by a listener the sandbox does not own (#11149) > describes the listener when the sandbox's own ForwardTcp service listens",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "a dashboard port held by a listener the sandbox does not own (#11149) > describes the listener when the sandbox's own ForwardTcp service listens",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::a dashboard port held by a listener the sandbox does not own (#11149) > describes the listener when an unrelated process listens",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "a dashboard port held by a listener the sandbox does not own (#11149) > describes the listener when an unrelated process listens",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::a dashboard port held by a listener the sandbox does not own (#11149) > refuses to relaunch onto it, names the port and leaves it running",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "a dashboard port held by a listener the sandbox does not own (#11149) > refuses to relaunch onto it, names the port and leaves it running",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::a dashboard port held by a listener the sandbox does not own (#11149) > never accepts legacy registry metadata as listener ownership evidence",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "a dashboard port held by a listener the sandbox does not own (#11149) > never accepts legacy registry metadata as listener ownership evidence",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::a dashboard port held by a listener the sandbox does not own (#11149) > relaunches with a sanitized default target when nothing listens",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "a dashboard port held by a listener the sandbox does not own (#11149) > relaunches with a sanitized default target when nothing listens",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::a dashboard port held by a listener the sandbox does not own (#11149) > rejects a foreign listener that wins the bind after the vacancy check",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "a dashboard port held by a listener the sandbox does not own (#11149) > rejects a foreign listener that wins the bind after the vacancy check",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::a dashboard port held by a listener the sandbox does not own (#11149) > rejects gateway endpoint drift after the forward binds",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "a dashboard port held by a listener the sandbox does not own (#11149) > rejects gateway endpoint drift after the forward binds",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::a dashboard port held by a listener the sandbox does not own (#11149) > rejects TLS authority drift after exact ownership succeeds",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "a dashboard port held by a listener the sandbox does not own (#11149) > rejects TLS authority drift after exact ownership succeeds",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::a dashboard port held by a listener the sandbox does not own (#11149) > does not accept ownership when gateway authority drifts during the proof",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "a dashboard port held by a listener the sandbox does not own (#11149) > does not accept ownership when gateway authority drifts during the proof",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::a dashboard port held by a listener the sandbox does not own (#11149) > classifies a reachable listener as unverified when gateway authority resolution fails",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "a dashboard port held by a listener the sandbox does not own (#11149) > classifies a reachable listener as unverified when gateway authority resolution fails",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::a dashboard port held by a listener the sandbox does not own (#11149) > classifies a reachable listener as unverified when ownership proof fails",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "a dashboard port held by a listener the sandbox does not own (#11149) > classifies a reachable listener as unverified when ownership proof fails",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts::a dashboard port held by a listener the sandbox does not own (#11149) > fails cleanly when vacant-port launch authority cannot be resolved",
+          "file": "src/lib/actions/sandbox/forward-recovery-declared-ports.test.ts",
+          "name": "a dashboard port held by a listener the sandbox does not own (#11149) > fails cleanly when vacant-port launch authority cannot be resolved",
+          "outcome": "fail",
+          "message": "[vitest] There was an error when mocking a module. If you are using \"vi.mock\" factory, make sure there are no top level variables inside, since this call is hoisted to top of the file. Read more: https://vitest.dev/api/vi.html#vi-mock"
+        },
+        {
+          "id": "src/lib/onboard/experimental/hermes-portable-lifecycle.test.ts::src/lib/onboard/experimental/hermes-portable-lifecycle.test.ts",
+          "file": "src/lib/onboard/experimental/hermes-portable-lifecycle.test.ts",
+          "name": "src/lib/onboard/experimental/hermes-portable-lifecycle.test.ts",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-aAm9kl/dist/managed-inference/catalog.json'"
+        },
+        {
+          "id": "src/lib/actions/sandbox/probe/hermes-portable-forward-deadlines.test.ts::src/lib/actions/sandbox/probe/hermes-portable-forward-deadlines.test.ts",
+          "file": "src/lib/actions/sandbox/probe/hermes-portable-forward-deadlines.test.ts",
+          "name": "src/lib/actions/sandbox/probe/hermes-portable-forward-deadlines.test.ts",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-aAm9kl/dist/managed-inference/catalog.json'"
+        },
+        {
+          "id": "src/lib/actions/sandbox/probe/hermes-portable-forward-recovery.test.ts::src/lib/actions/sandbox/probe/hermes-portable-forward-recovery.test.ts",
+          "file": "src/lib/actions/sandbox/probe/hermes-portable-forward-recovery.test.ts",
+          "name": "src/lib/actions/sandbox/probe/hermes-portable-forward-recovery.test.ts",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-aAm9kl/dist/managed-inference/catalog.json'"
+        }
+      ]
+    }
+  }
+}

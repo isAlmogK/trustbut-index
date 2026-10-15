@@ -1,0 +1,23 @@
+{
+  "id": "microsoft__vscode__339456",
+  "status": "setup-failed",
+  "stage": "install",
+  "recipe": {
+    "node": {
+      "version": "24.18.0",
+      "pm": "npm",
+      "install": "npm ci"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 42868,
+    "verifyMs": 0
+  },
+  "exitCodes": {
+    "install": 1,
+    "verify": null
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "unknown"
+}

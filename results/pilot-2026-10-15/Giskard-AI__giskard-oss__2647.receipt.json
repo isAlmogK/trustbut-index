@@ -1,0 +1,213 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "065a99aab309849aff20c5d40cef998e4b94cf03",
+    "head": "8456d938bf7d0dca656557325070bcc395be7f08"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 3,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 2"
+    },
+    {
+      "id": "proofs-unmatched",
+      "severity": "warn",
+      "title": "No test results matched the changed test files; fail-before/pass-after evidence unavailable"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 2,
+      "durationMs": 12764,
+      "cases": [
+        {
+          "id": "::libs.giskard-core.tests",
+          "file": "",
+          "name": "libs.giskard-core.tests",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::libs.giskard-llm.tests",
+          "file": "",
+          "name": "libs.giskard-llm.tests",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::libs.giskard-scan.tests",
+          "file": "",
+          "name": "libs.giskard-scan.tests",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ]
+    },
+    "before": {
+      "exitCode": 0,
+      "durationMs": 2082,
+      "cases": [
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_single_user_message",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_single_user_message",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_single_user_message_with_text_content",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_single_user_message_with_text_content",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_single_user_message_with_text_contents",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_single_user_message_with_text_contents",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_instruction_then_user[system]",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_instruction_then_user[system]",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_instruction_then_user[developer]",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_instruction_then_user[developer]",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_system_then_developer_then_user",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_system_then_developer_then_user",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_two_instructions_then_user[system]",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_two_instructions_then_user[system]",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_two_instructions_then_user[developer]",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_two_instructions_then_user[developer]",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_user_assistant_user",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_user_assistant_user",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_assistant_refusal_replayed_as_text_block",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_assistant_refusal_replayed_as_text_block",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_assistant_structured_refusal_parts_as_text",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_assistant_structured_refusal_parts_as_text",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_user_tool_call_and_result_with_tools",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_user_tool_call_and_result_with_tools",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_user_two_parallel_tool_calls_and_results_with_tools",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_user_two_parallel_tool_calls_and_results_with_tools",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_user_assistant_text_two_parallel_tool_calls_and_results_with_tools",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_user_assistant_text_two_parallel_tool_calls_and_results_with_tools",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_function_message_raises",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_function_message_raises",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat::test_unknown_completion_params_warn",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat",
+          "name": "test_unknown_completion_params_warn",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat_return::test_from_anthropic_assistant_text",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat_return",
+          "name": "test_from_anthropic_assistant_text",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat_return::test_from_anthropic_refusal_stop",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat_return",
+          "name": "test_from_anthropic_refusal_stop",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat_return::test_from_anthropic_multiple_text_blocks_joined",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat_return",
+          "name": "test_from_anthropic_multiple_text_blocks_joined",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat_return::test_from_anthropic_text_and_tool_use",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat_return",
+          "name": "test_from_anthropic_text_and_tool_use",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat_return::test_from_anthropic_tool_use_only",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat_return",
+          "name": "test_from_anthropic_tool_use_only",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat_return::test_from_anthropic_refusal_without_details",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat_return",
+          "name": "test_from_anthropic_refusal_without_details",
+          "outcome": "pass"
+        },
+        {
+          "id": "libs.giskard-llm.tests.translators.test_anthropic_chat_return::test_from_anthropic_refusal_category_only",
+          "file": "libs.giskard-llm.tests.translators.test_anthropic_chat_return",
+          "name": "test_from_anthropic_refusal_category_only",
+          "outcome": "pass"
+        }
+      ]
+    }
+  }
+}

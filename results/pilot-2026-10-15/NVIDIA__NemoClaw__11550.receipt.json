@@ -1,0 +1,1464 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "31dc5b467008c6f5519c014bea81612c99653333",
+    "head": "c9e6185488b3fc05bb0b125ca2f42280bd9cb555"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "tests-removed",
+      "severity": "warn",
+      "title": "4 tests removed",
+      "file": "src/lib/adapters/config/live-export-source.test.ts"
+    },
+    {
+      "id": "assertions-removed",
+      "severity": "warn",
+      "title": "14 assertions removed",
+      "file": "src/lib/adapters/config/live-export-source.test.ts"
+    },
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 900 s"
+    }
+  ],
+  "risks": [
+    {
+      "file": "src/lib/adapters/config/live-export-source.test.ts",
+      "score": 3,
+      "reasons": [
+        "has findings",
+        "large change (254 lines)"
+      ]
+    },
+    {
+      "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+      "score": 1,
+      "reasons": [
+        "large change (246 lines)"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 901083,
+      "timedOut": true,
+      "cases": []
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 6594,
+      "cases": [
+        {
+          "id": "test/e2e/support/gpu-e2e-helpers.test.ts::test/e2e/support/gpu-e2e-helpers.test.ts",
+          "file": "test/e2e/support/gpu-e2e-helpers.test.ts",
+          "name": "test/e2e/support/gpu-e2e-helpers.test.ts",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-tQqyUk/dist/managed-inference/catalog.json'"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > exports the 'legacy workspace without a user crede…' binding without reading gateway credentials (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > exports the 'legacy workspace without a user crede…' binding without reading gateway credentials (#11435)",
+          "outcome": "fail",
+          "message": "expected { ok: false, failure: { …(3) } } to deeply equal { ok: true, …(1) }"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > exports the 'legacy global without a user credenti…' binding without reading gateway credentials (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > exports the 'legacy global without a user credenti…' binding without reading gateway credentials (#11435)",
+          "outcome": "fail",
+          "message": "expected { ok: false, failure: { …(3) } } to deeply equal { ok: true, …(1) }"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > exports the 'qualified workspace' binding without reading gateway credentials (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > exports the 'qualified workspace' binding without reading gateway credentials (#11435)",
+          "outcome": "fail",
+          "message": "expected { ok: false, failure: { …(3) } } to deeply equal { ok: true, …(1) }"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > exports the 'explicit internal proxy credential' binding without reading gateway credentials (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > exports the 'explicit internal proxy credential' binding without reading gateway credentials (#11435)",
+          "outcome": "fail",
+          "message": "expected { ok: false, failure: { …(3) } } to deeply equal { ok: true, …(1) }"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > refuses 'missing' gateway proxy credentials without user credentials (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > refuses 'missing' gateway proxy credentials without user credentials (#11435)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > refuses 'different' gateway proxy credentials without user credentials (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > refuses 'different' gateway proxy credentials without user credentials (#11435)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > refuses 'additional' gateway proxy credentials without user credentials (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > refuses 'additional' gateway proxy credentials without user credentials (#11435)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > sanitizes a failed or legacy proxy observation and publishes nothing (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > sanitizes a failed or legacy proxy observation and publishes nothing (#11435)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > refuses unsupported or drifted local route intent 0 (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > refuses unsupported or drifted local route intent 0 (#11435)",
+          "outcome": "fail",
+          "message": "expected { ok: false, failure: { …(3) } } to match object { ok: false, failure: { …(2) } } (1 matching property omitted from actual)"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > refuses unsupported or drifted local route intent 1 (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > refuses unsupported or drifted local route intent 1 (#11435)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > refuses unsupported or drifted local route intent 2 (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > refuses unsupported or drifted local route intent 2 (#11435)",
+          "outcome": "fail",
+          "message": "expected { ok: false, failure: { …(3) } } to match object { ok: false, failure: { …(2) } } (1 matching property omitted from actual)"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > refuses unsupported or drifted local route intent 3 (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > refuses unsupported or drifted local route intent 3 (#11435)",
+          "outcome": "fail",
+          "message": "expected { ok: false, failure: { …(3) } } to match object { ok: false, failure: { …(2) } } (1 matching property omitted from actual)"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > refuses an absent provider attachment (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > refuses an absent provider attachment (#11435)",
+          "outcome": "fail",
+          "message": "expected { ok: false, failure: { …(3) } } to match object { ok: false, failure: { …(2) } } (1 matching property omitted from actual)"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > refuses a continuously changing active proxy identity (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > refuses a continuously changing active proxy identity (#11435)",
+          "outcome": "fail",
+          "message": "expected { ok: false, failure: { …(3) } } to match object { ok: false, failure: { …(2) } } (1 matching property omitted from actual)"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > refuses a profile that appears in \"\" between export snapshots (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > refuses a profile that appears in \"\" between export snapshots (#11435)",
+          "outcome": "fail",
+          "message": "expected { ok: false, failure: { …(3) } } to match object { ok: false, failure: { …(2) } } (1 matching property omitted from actual)"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source-ollama.test.ts::attached Ollama export pipeline > refuses a profile that appears in \"default\" between export snapshots (#11435)",
+          "file": "src/lib/adapters/config/live-export-source-ollama.test.ts",
+          "name": "attached Ollama export pipeline > refuses a profile that appears in \"default\" between export snapshots (#11435)",
+          "outcome": "fail",
+          "message": "expected { ok: false, failure: { …(3) } } to match object { ok: false, failure: { …(2) } } (1 matching property omitted from actual)"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > exports Brave through SDK metadata without reading its credential value (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > exports Brave through SDK metadata without reading its credential value (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects unsupported Brave provider metadata without output {\"type\":\"generic\"} (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects unsupported Brave provider metadata without output {\"type\":\"generic\"} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects unsupported Brave provider metadata without output {} (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects unsupported Brave provider metadata without output {} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects unsupported Brave provider metadata without output {\"profileWorkspace\":\"foreign\"} (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects unsupported Brave provider metadata without output {\"profileWorkspace\":\"foreign\"} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects unsupported Brave provider metadata without output {\"credentials\":{\"OTHER_API_KEY\":\"credential-canary-value\"}} (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects unsupported Brave provider metadata without output {\"credentials\":{\"OTHER_API_KEY\":\"credential-canary-value\"}} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects unsupported Brave provider metadata without output {\"config\":{\"BASE_URL\":\"credential-canary-value\"}} (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects unsupported Brave provider metadata without output {\"config\":{\"BASE_URL\":\"credential-canary-value\"}} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > sanitizes a failed Brave metadata read before publication (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > sanitizes a failed Brave metadata read before publication (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects a shadowed or changed Brave profile 0 (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects a shadowed or changed Brave profile 0 (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects a shadowed or changed Brave profile 1 (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects a shadowed or changed Brave profile 1 (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects a shadowed or changed Brave profile 2 (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects a shadowed or changed Brave profile 2 (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects a shadowed or changed Brave profile 3 (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects a shadowed or changed Brave profile 3 (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects a shadowed or changed Brave profile 4 (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects a shadowed or changed Brave profile 4 (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects a shadowed or changed Brave profile 5 (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects a shadowed or changed Brave profile 5 (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > sanitizes a failed Brave profile read before publication (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > sanitizes a failed Brave profile read before publication (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects a changing managed Brave profile revision without output (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects a changing managed Brave profile revision without output (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects changing Brave provider id without output (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects changing Brave provider id without output (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects changing Brave provider resourceVersion without output (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects changing Brave provider resourceVersion without output (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > tags a sanitized 'registry' read failure",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > tags a sanitized 'registry' read failure",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > tags a sanitized 'gateway-binding' read failure",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > tags a sanitized 'gateway-binding' read failure",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > tags a sanitized 'sandbox-inventory' read failure",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > tags a sanitized 'sandbox-inventory' read failure",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > tags a sanitized 'sandbox-identity' read failure",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > tags a sanitized 'sandbox-identity' read failure",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > tags a sanitized 'inference-route' read failure",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > tags a sanitized 'inference-route' read failure",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > tags a sanitized 'provider-metadata' read failure",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > tags a sanitized 'provider-metadata' read failure",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > tags a sanitized 'effective-policy' read failure",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > tags a sanitized 'effective-policy' read failure",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > does not fall back to the selected gateway after an inference read failure",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > does not fall back to the selected gateway after an inference read failure",
+          "outcome": "fail",
+          "message": "Cannot find module '../../../../nemoclaw/dist/shared/openshell-gateway-endpoint-boundary.cjs' imported from /tmp/trustbut-wt-tQqyUk/src/lib/adapters/openshell/client.ts"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > retains direct tool selection through the live reader and stable verifier",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > retains direct tool selection through the live reader and stable verifier",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > returns a complete non-secret raw snapshot",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > returns a complete non-secret raw snapshot",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > preserves live revision fields for structural stability checks",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > preserves live revision fields for structural stability checks",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > sanitizes credential-bearing policy failures",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > sanitizes credential-bearing policy failures",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > maps inconsistent provider metadata to a controlled read failure",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > maps inconsistent provider metadata to a controlled read failure",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > preserves global policy revision agreement for revision 0",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > preserves global policy revision agreement for revision 0",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > preserves global policy revision agreement for revision 3",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > preserves global policy revision agreement for revision 3",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects a global policy revision that differs from the sandbox revision",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects a global policy revision that differs from the sandbox revision",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > maps route and policy revision drift to controlled read failures",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > maps route and policy revision drift to controlled read failures",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > exports canonical YAML for the native NVIDIA hosted provider (#11154)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > exports canonical YAML for the native NVIDIA hosted provider (#11154)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects native NVIDIA 'endpoint override' without publishing YAML",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects native NVIDIA 'endpoint override' without publishing YAML",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects native NVIDIA 'credential mismatch' without publishing YAML",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects native NVIDIA 'credential mismatch' without publishing YAML",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects native NVIDIA 'missing credentials' without publishing YAML",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects native NVIDIA 'missing credentials' without publishing YAML",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects native NVIDIA 'unverified profile scope' without publishing YAML",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects native NVIDIA 'unverified profile scope' without publishing YAML",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects NVIDIA endpoint drift between the registry and builtin profile",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects NVIDIA endpoint drift between the registry and builtin profile",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects a native NVIDIA provider that changes during both observations",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects a native NVIDIA provider that changes during both observations",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > exports retained OTLP settings at sample +0 without changing policy",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > exports retained OTLP settings at sample +0 without changing policy",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > exports retained OTLP settings at sample 0.5 without changing policy",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > exports retained OTLP settings at sample 0.5 without changing policy",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > exports retained OTLP settings at sample 1 without changing policy",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > exports retained OTLP settings at sample 1 without changing policy",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects telemetry 'credential-bearing endpoint' before any output",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects telemetry 'credential-bearing endpoint' before any output",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects telemetry 'collector query' before any output",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects telemetry 'collector query' before any output",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects telemetry 'remote collector' before any output",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects telemetry 'remote collector' before any output",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects telemetry 'invalid service' before any output",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects telemetry 'invalid service' before any output",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects telemetry 'Unicode service' before any output",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects telemetry 'Unicode service' before any output",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects telemetry 'oversized service' before any output",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects telemetry 'oversized service' before any output",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects telemetry 'out-of-range sample' before any output",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects telemetry 'out-of-range sample' before any output",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects telemetry 'disabled nondefault settings' before any output",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects telemetry 'disabled nondefault settings' before any output",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects telemetry 'invalid agent timeout' before any output",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects telemetry 'invalid agent timeout' before any output",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects telemetry 'conflicting agent' before any output",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects telemetry 'conflicting agent' before any output",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects telemetry 'DCode observability marker' before any output",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects telemetry 'DCode observability marker' before any output",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects telemetry 'stale workload' before any output",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects telemetry 'stale workload' before any output",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects telemetry 'missing workload' before any output",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects telemetry 'missing workload' before any output",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > does not publish telemetry that changes during both observation pairs",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > does not publish telemetry that changes during both observation pairs",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > exports a stable SDK endpoint with verified policy and workload evidence",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > exports a stable SDK endpoint with verified policy and workload evidence",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > exports a secondary agent through SDK observations without copying provider credentials (#11434)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > exports a secondary agent through SDK observations without copying provider credentials (#11434)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects live 'endpoint' drift",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects live 'endpoint' drift",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects live 'image' drift",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects live 'image' drift",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > rejects live 'provider attachments' drift",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > rejects live 'provider attachments' drift",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > detects repeated provider revision changes",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > detects repeated provider revision changes",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > detects repeated configRevision changes",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > detects repeated configRevision changes",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > detects repeated providerEnvRevision changes",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > detects repeated providerEnvRevision changes",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::live export snapshot reader > does not expose concrete reader exceptions",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "live export snapshot reader > does not expose concrete reader exceptions",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::managed vLLM export pipeline > refuses an absent OpenAI profile without publishing (#11435)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "managed vLLM export pipeline > refuses an absent OpenAI profile without publishing (#11435)",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-tQqyUk/dist/managed-inference/catalog.json'"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::managed vLLM export pipeline > exports the real fixed onboarding profile and reparses its managed provider",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "managed vLLM export pipeline > exports the real fixed onboarding profile and reparses its managed provider",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-tQqyUk/dist/managed-inference/catalog.json'"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::managed vLLM export pipeline > exports direct tools, managed vLLM, Brave and retained OTLP with qualified profile bindings",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "managed vLLM export pipeline > exports direct tools, managed vLLM, Brave and retained OTLP with qualified profile bindings",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-tQqyUk/dist/managed-inference/catalog.json'"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::managed vLLM export pipeline > rejects unrepresented NEMOCLAW_MAX_TOKENS instead of losing it",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "managed vLLM export pipeline > rejects unrepresented NEMOCLAW_MAX_TOKENS instead of losing it",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-tQqyUk/dist/managed-inference/catalog.json'"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::managed vLLM export pipeline > rejects unrepresented NEMOCLAW_AGENT_TIMEOUT instead of losing it",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "managed vLLM export pipeline > rejects unrepresented NEMOCLAW_AGENT_TIMEOUT instead of losing it",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-tQqyUk/dist/managed-inference/catalog.json'"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::managed vLLM export pipeline > rejects a changed managed route and keeps publication unreachable",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "managed vLLM export pipeline > rejects a changed managed route and keeps publication unreachable",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-tQqyUk/dist/managed-inference/catalog.json'"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::managed vLLM export pipeline > detects managed container restart between complete snapshots",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "managed vLLM export pipeline > detects managed container restart between complete snapshots",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-tQqyUk/dist/managed-inference/catalog.json'"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::managed vLLM export pipeline > rejects a shadowed OpenAI profile with additional endpoint behavior",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "managed vLLM export pipeline > rejects a shadowed OpenAI profile with additional endpoint behavior",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-tQqyUk/dist/managed-inference/catalog.json'"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::managed vLLM export pipeline > detects resolved provider profile revision changes",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "managed vLLM export pipeline > detects resolved provider profile revision changes",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-tQqyUk/dist/managed-inference/catalog.json'"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::managed vLLM export pipeline > contains runtime failures before provider metadata or publication",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "managed vLLM export pipeline > contains runtime failures before provider metadata or publication",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-tQqyUk/dist/managed-inference/catalog.json'"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::dashboard export observation > projects registered dashboard and direct tools through complete live observation (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "dashboard export observation > projects registered dashboard and direct tools through complete live observation (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::dashboard export observation > refuses dashboard registry changes without publishing (#10904)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "dashboard export observation > refuses dashboard registry changes without publishing (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/config/live-export-source.test.ts::Hermes interface export observation > reads only retained interface fields and includes allocation changes in stability (#11433)",
+          "file": "src/lib/adapters/config/live-export-source.test.ts",
+          "name": "Hermes interface export observation > reads only retained interface fields and includes allocation changes in stability (#11433)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > returns requested config values and credential names without secret material",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > returns requested config values and credential names without secret material",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > never evaluates credential or unrequested configuration values (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > never evaluates credential or unrequested configuration values (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > qualifies exact managed Brave profile semantics at its binding 0 (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > qualifies exact managed Brave profile semantics at its binding 0 (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > qualifies exact managed Brave profile semantics at its binding 1 (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > qualifies exact managed Brave profile semantics at its binding 1 (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > qualifies exact managed Brave profile semantics at its binding 2 (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > qualifies exact managed Brave profile semantics at its binding 2 (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave profiles with 'wrong identity' (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave profiles with 'wrong identity' (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave profiles with 'unknown profile semantics' (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave profiles with 'unknown profile semantics' (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave profiles with 'unknown binary semantics' (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave profiles with 'unknown binary semantics' (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave profiles with 'unknown source' (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave profiles with 'unknown source' (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave profiles with 'platform shadow' (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave profiles with 'platform shadow' (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave profiles with 'builtin shadow' (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave profiles with 'builtin shadow' (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave profiles with 'missing revision' (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave profiles with 'missing revision' (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave profiles with 'zero custom revision' (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave profiles with 'zero custom revision' (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave profiles with 'inference enabled' (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave profiles with 'inference enabled' (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave profiles with 'missing credentials' (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave profiles with 'missing credentials' (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave profiles with 'missing binaries' (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave profiles with 'missing binaries' (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave profiles with 'discovery override' (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave profiles with 'discovery override' (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > records a confirmed absent OpenAI profile in \"\" (#11435)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > records a confirmed absent OpenAI profile in \"\" (#11435)",
+          "outcome": "fail",
+          "message": "OpenShell read failed (transport)."
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > records a confirmed absent OpenAI profile in \"default\" (#11435)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > records a confirmed absent OpenAI profile in \"default\" (#11435)",
+          "outcome": "fail",
+          "message": "OpenShell read failed (transport)."
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects unverified OpenAI profile absence {\"workspace\":\"foreign\",\"code\":5,\"kind\":\"schema\"} (#11435)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects unverified OpenAI profile absence {\"workspace\":\"foreign\",\"code\":5,\"kind\":\"schema\"} (#11435)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects unverified OpenAI profile absence {\"workspace\":\"default\",\"code\":7,\"kind\":\"authentication\"} (#11435)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects unverified OpenAI profile absence {\"workspace\":\"default\",\"code\":7,\"kind\":\"authentication\"} (#11435)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects unverified OpenAI profile absence {\"workspace\":\"default\",\"code\":4,\"kind\":\"timeout\"} (#11435)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects unverified OpenAI profile absence {\"workspace\":\"default\",\"code\":4,\"kind\":\"timeout\"} (#11435)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects unverified OpenAI profile absence {\"workspace\":\"default\",\"code\":13,\"kind\":\"transport\"} (#11435)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects unverified OpenAI profile absence {\"workspace\":\"default\",\"code\":13,\"kind\":\"transport\"} (#11435)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects unverified OpenAI profile absence {\"workspace\":\"\",\"code\":7,\"kind\":\"authentication\"} (#11435)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects unverified OpenAI profile absence {\"workspace\":\"\",\"code\":7,\"kind\":\"authentication\"} (#11435)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects unverified OpenAI profile absence {\"workspace\":\"\",\"code\":4,\"kind\":\"timeout\"} (#11435)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects unverified OpenAI profile absence {\"workspace\":\"\",\"code\":4,\"kind\":\"timeout\"} (#11435)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects unverified OpenAI profile absence {\"workspace\":\"\",\"code\":13,\"kind\":\"transport\"} (#11435)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects unverified OpenAI profile absence {\"workspace\":\"\",\"code\":13,\"kind\":\"transport\"} (#11435)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"$unknown\":[{}]} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"$unknown\":[{}]} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"host\":\"foreign.example\"} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"host\":\"foreign.example\"} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"port\":80} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"port\":80} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"ports\":[80]} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"ports\":[80]} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"protocol\":\"\"} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"protocol\":\"\"} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"access\":\"full\"} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"access\":\"full\"} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"enforcement\":\"audit\"} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"enforcement\":\"audit\"} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"allowedIps\":[\"10.0.0.1\"]} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"allowedIps\":[\"10.0.0.1\"]} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"requestBodyCredentialRewrite\":true} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"requestBodyCredentialRewrite\":true} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"credentialSigning\":\"sigv4\"} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"credentialSigning\":\"sigv4\"} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"signingService\":\"bedrock\"} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"signingService\":\"bedrock\"} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"signingRegion\":\"us-east-1\"} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"signingRegion\":\"us-east-1\"} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"jsonRpcMaxBodyBytes\":100} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"jsonRpcMaxBodyBytes\":100} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"mcp\":{}} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"mcp\":{}} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"credentialBinding\":{\"provider\":\"foreign\",\"credential\":\"OTHER_KEY\"}} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"credentialBinding\":{\"provider\":\"foreign\",\"credential\":\"OTHER_KEY\"}} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"websocketCredentialRewrite\":true} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"websocketCredentialRewrite\":true} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"allowEncodedSlash\":true} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"allowEncodedSlash\":true} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave endpoint drift {\"path\":\"/other\"} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave endpoint drift {\"path\":\"/other\"} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave credential declaration drift {\"$unknown\":[{}]} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave credential declaration drift {\"$unknown\":[{}]} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave credential declaration drift {\"envVars\":[\"OTHER_KEY\"]} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave credential declaration drift {\"envVars\":[\"OTHER_KEY\"]} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave credential declaration drift {\"authStyle\":\"bearer\"} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave credential declaration drift {\"authStyle\":\"bearer\"} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave credential declaration drift {\"headerName\":\"Authorization\"} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave credential declaration drift {\"headerName\":\"Authorization\"} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave credential declaration drift {\"queryParam\":\"token\"} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave credential declaration drift {\"queryParam\":\"token\"} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave credential declaration drift {\"pathTemplate\":\"/token/{token}\"} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave credential declaration drift {\"pathTemplate\":\"/token/{token}\"} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave credential declaration drift {\"refresh\":{}} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave credential declaration drift {\"refresh\":{}} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed Brave credential declaration drift {\"tokenGrant\":{}} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed Brave credential declaration drift {\"tokenGrant\":{}} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > qualifies the endpointless managed OpenAI profile only when requested (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > qualifies the endpointless managed OpenAI profile only when requested (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed OpenAI profile drift {\"$unknown\":[{}]} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed OpenAI profile drift {\"$unknown\":[{}]} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed OpenAI profile drift {\"credentials\":[{}]} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed OpenAI profile drift {\"credentials\":[{}]} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed OpenAI profile drift {\"endpoints\":[{\"host\":\"foreign.example\",\"port\":443}]} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed OpenAI profile drift {\"endpoints\":[{\"host\":\"foreign.example\",\"port\":443}]} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed OpenAI profile drift {\"binaries\":[{\"path\":\"/usr/bin/curl\"}]} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed OpenAI profile drift {\"binaries\":[{\"path\":\"/usr/bin/curl\"}]} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed OpenAI profile drift {\"inferenceCapable\":false} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed OpenAI profile drift {\"inferenceCapable\":false} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects managed OpenAI profile drift {\"discovery\":{}} (#10904)",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects managed OpenAI profile drift {\"discovery\":{}} (#10904)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > verifies the native NVIDIA endpoint through the named gateway profile",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > verifies the native NVIDIA endpoint through the named gateway profile",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects NVIDIA profile evidence with 'wrong identity'",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects NVIDIA profile evidence with 'wrong identity'",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects NVIDIA profile evidence with 'custom source'",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects NVIDIA profile evidence with 'custom source'",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects NVIDIA profile evidence with 'interceptor source'",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects NVIDIA profile evidence with 'interceptor source'",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects NVIDIA profile evidence with 'workspace scope'",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects NVIDIA profile evidence with 'workspace scope'",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects NVIDIA profile evidence with 'custom revision'",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects NVIDIA profile evidence with 'custom revision'",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects NVIDIA profile evidence with 'missing revision'",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects NVIDIA profile evidence with 'missing revision'",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects NVIDIA profile evidence with 'disabled inference'",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects NVIDIA profile evidence with 'disabled inference'",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects NVIDIA profile evidence with 'missing endpoint'",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects NVIDIA profile evidence with 'missing endpoint'",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects NVIDIA profile evidence with 'changed host'",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects NVIDIA profile evidence with 'changed host'",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects NVIDIA profile evidence with 'changed port'",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects NVIDIA profile evidence with 'changed port'",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects NVIDIA profile evidence with 'multiple endpoints'",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects NVIDIA profile evidence with 'multiple endpoints'",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > does not infer a builtin endpoint for NVIDIA overrides 0",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > does not infer a builtin endpoint for NVIDIA overrides 0",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > does not infer a builtin endpoint for NVIDIA overrides 1",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > does not infer a builtin endpoint for NVIDIA overrides 1",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > does not infer a builtin endpoint for NVIDIA overrides 2",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > does not infer a builtin endpoint for NVIDIA overrides 2",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > does not infer a builtin endpoint for NVIDIA overrides 3",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > does not infer a builtin endpoint for NVIDIA overrides 3",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > stops when NVIDIA profile verification fails with status 5",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > stops when NVIDIA profile verification fails with status 5",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > stops when NVIDIA profile verification fails with status 7",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > stops when NVIDIA profile verification fails with status 7",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > stops when NVIDIA profile verification fails with status 4",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > stops when NVIDIA profile verification fails with status 4",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > stops when NVIDIA profile verification fails with status 14",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > stops when NVIDIA profile verification fails with status 14",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects 'empty text' without exposing the response",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects 'empty text' without exposing the response",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects 'control character' without exposing the response",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects 'control character' without exposing the response",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects 'format character' without exposing the response",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects 'format character' without exposing the response",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects 'oversized ASCII' without exposing the response",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects 'oversized ASCII' without exposing the response",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects 'oversized UTF-16' without exposing the response",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects 'oversized UTF-16' without exposing the response",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > accepts bounded Unicode text and leaves unrequested values opaque",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > accepts bounded Unicode text and leaves unrequested values opaque",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > preserves a supported resource revision 0",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > preserves a supported resource revision 0",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > preserves a supported resource revision 18446744073709551615",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > preserves a supported resource revision 18446744073709551615",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > preserves a supported resource revision 0n",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > preserves a supported resource revision 0n",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects an invalid resource revision 18446744073709551616",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects an invalid resource revision 18446744073709551616",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects an invalid resource revision 18446744073709551616n",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects an invalid resource revision 18446744073709551616n",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects an invalid resource revision -1n",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects an invalid resource revision -1n",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects an invalid resource revision 01",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects an invalid resource revision 01",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects an invalid resource revision 1",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects an invalid resource revision 1",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects an invalid resource revision no-version",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects an invalid resource revision no-version",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects malformed consumed provider fields 0",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects malformed consumed provider fields 0",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects malformed consumed provider fields 1",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects malformed consumed provider fields 1",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects malformed consumed provider fields 2",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects malformed consumed provider fields 2",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects malformed consumed provider fields 3",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects malformed consumed provider fields 3",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects malformed consumed provider fields 4",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects malformed consumed provider fields 4",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects malformed consumed provider fields 5",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects malformed consumed provider fields 5",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects malformed consumed provider fields 6",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects malformed consumed provider fields 6",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects malformed consumed provider fields 7",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects malformed consumed provider fields 7",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > returns null only for a confirmed missing provider",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > returns null only for a confirmed missing provider",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > reports a sanitized 'authentication' failure for status 7",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > reports a sanitized 'authentication' failure for status 7",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > reports a sanitized 'authentication' failure for status 16",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > reports a sanitized 'authentication' failure for status 16",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > reports a sanitized 'timeout' failure for status 4",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > reports a sanitized 'timeout' failure for status 4",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > reports a sanitized 'transport' failure for status 14",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > reports a sanitized 'transport' failure for status 14",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects a wrong 'workspace'",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects a wrong 'workspace'",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects a wrong 'name'",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects a wrong 'name'",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects a wrong 'revision'",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects a wrong 'revision'",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > rejects an absent provider envelope without treating it as not found",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > rejects an absent provider envelope without treating it as not found",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > cancels a pending read even if the transport ignores cancellation",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > cancels a pending read even if the transport ignores cancellation",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > does not start a request after cancellation",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > does not start a request after cancellation",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell provider evidence > requires an explicit gateway before a connection",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell provider evidence > requires an explicit gateway before a connection",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > projects image and identity without environment values",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > projects image and identity without environment values",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > rejects malformed sandbox evidence 0",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > rejects malformed sandbox evidence 0",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > rejects malformed sandbox evidence 1",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > rejects malformed sandbox evidence 1",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > rejects malformed sandbox evidence 2",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > rejects malformed sandbox evidence 2",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > rejects malformed sandbox evidence 3",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > rejects malformed sandbox evidence 3",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > rejects malformed sandbox evidence 4",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > rejects malformed sandbox evidence 4",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > distinguishes a missing sandbox from a failed read",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > distinguishes a missing sandbox from a failed read",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > reads source 1 configuration by verified ID without settings values",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > reads source 1 configuration by verified ID without settings values",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > reads source 2 configuration by verified ID without settings values",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > reads source 2 configuration by verified ID without settings values",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > does not serialize a configuration response that arrives after abort",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > does not serialize a configuration response that arrives after abort",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > rejects inconclusive configuration metadata 0",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > rejects inconclusive configuration metadata 0",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > rejects inconclusive configuration metadata 1",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > rejects inconclusive configuration metadata 1",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > rejects inconclusive configuration metadata 2",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > rejects inconclusive configuration metadata 2",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > rejects inconclusive configuration metadata 3",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > rejects inconclusive configuration metadata 3",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > rejects inconclusive configuration metadata 4",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > rejects inconclusive configuration metadata 4",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/adapters/openshell/providers.test.ts::OpenShell sandbox export evidence > rejects inconclusive configuration metadata 5",
+          "file": "src/lib/adapters/openshell/providers.test.ts",
+          "name": "OpenShell sandbox export evidence > rejects inconclusive configuration metadata 5",
+          "outcome": "pass"
+        }
+      ]
+    }
+  }
+}

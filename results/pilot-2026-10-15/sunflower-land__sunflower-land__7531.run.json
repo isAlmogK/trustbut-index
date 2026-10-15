@@ -1,0 +1,23 @@
+{
+  "id": "sunflower-land__sunflower-land__7531",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "22",
+      "pm": "yarn",
+      "install": "yarn install --frozen-lockfile"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 108675,
+    "verifyMs": 77435
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.4.0"
+}

@@ -1,0 +1,25 @@
+{
+  "id": "loopx-project__loopx__6308",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.13",
+      "install": [
+        "uv pip install -e \".[test]\"",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 1779,
+    "verifyMs": 914871
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.4.0"
+}

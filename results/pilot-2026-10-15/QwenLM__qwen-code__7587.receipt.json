@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "22cd9c7d7acb2029d0c756d0b4669a01ff908b7d",
+    "head": "e0b30141fafe45c81956264b8526e2472b436bb2"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 900 s"
+    }
+  ],
+  "risks": [
+    {
+      "file": "packages/web-shell/client/e2e/web-shell.composer.mobile.spec.ts",
+      "score": 1,
+      "reasons": [
+        "large change (230 lines)"
+      ]
+    },
+    {
+      "file": "packages/web-shell/client/hooks/useComposerCore.mobile.dom.test.tsx",
+      "score": 1,
+      "reasons": [
+        "large change (358 lines)"
+      ]
+    },
+    {
+      "file": "packages/web-shell/client/hooks/useComposerCore.ts",
+      "score": 1,
+      "reasons": [
+        "large change (612 lines)"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 900164,
+      "timedOut": true,
+      "cases": []
+    },
+    "before": {
+      "exitCode": 0,
+      "durationMs": 729,
+      "cases": []
+    }
+  }
+}

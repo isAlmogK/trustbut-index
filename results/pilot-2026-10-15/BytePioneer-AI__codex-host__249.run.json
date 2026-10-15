@@ -1,0 +1,23 @@
+{
+  "id": "BytePioneer-AI__codex-host__249",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "22.22.0",
+      "pm": "npm",
+      "install": "npm ci"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 8985,
+    "verifyMs": 32141
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.4.0"
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "eddc76d77344d8b4dea66e67858326cbd07d5d11",
+    "head": "8992074fdf40bcffbfe69961714b8451bce62fa2"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 900 s"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 901242,
+      "timedOut": true,
+      "cases": []
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 1037,
+      "cases": [
+        {
+          "id": "test/install/installer-homebrew-formula-reuse-trust.test.ts::installer Homebrew formula reuse trust > accepts the reviewed dev MUSL sandbox OpenShell 0.0.106 installer template",
+          "file": "test/install/installer-homebrew-formula-reuse-trust.test.ts",
+          "name": "installer Homebrew formula reuse trust > accepts the reviewed dev MUSL sandbox OpenShell 0.0.106 installer template",
+          "outcome": "pass"
+        },
+        {
+          "id": "test/install/installer-homebrew-formula-reuse-trust.test.ts::installer Homebrew formula reuse trust > accepts the reviewed dev MUSL sandbox with flat test paths OpenShell 0.0.106 installer template",
+          "file": "test/install/installer-homebrew-formula-reuse-trust.test.ts",
+          "name": "installer Homebrew formula reuse trust > accepts the reviewed dev MUSL sandbox with flat test paths OpenShell 0.0.106 installer template",
+          "outcome": "pass"
+        },
+        {
+          "id": "test/install/installer-homebrew-formula-reuse-trust.test.ts::installer Homebrew formula reuse trust > accepts the reviewed method-bound dev MUSL sandbox OpenShell 0.0.106 installer template",
+          "file": "test/install/installer-homebrew-formula-reuse-trust.test.ts",
+          "name": "installer Homebrew formula reuse trust > accepts the reviewed method-bound dev MUSL sandbox OpenShell 0.0.106 installer template",
+          "outcome": "fail",
+          "message": "Installer pin extraction failed: installer operational template is not base-trusted; expected_sha256=[5d4cdb2db60df7539193b486ac15bb9be96ec1d40fc0f739a94d4d2f0bf597a0, e850e927aab619d52c5de72967137569d65dd7fa669920c7c5b558f0770140d1, e7d51536442b217e3d5e77c4ba3b7c25e6a74898bf22523f7fb58627d34329cb,…"
+        },
+        {
+          "id": "test/install/installer-homebrew-formula-reuse-trust.test.ts::installer Homebrew formula reuse trust > rejects the unreviewed method-bound dev MUSL sandbox with flat test paths OpenShell 0.0.106 installer template",
+          "file": "test/install/installer-homebrew-formula-reuse-trust.test.ts",
+          "name": "installer Homebrew formula reuse trust > rejects the unreviewed method-bound dev MUSL sandbox with flat test paths OpenShell 0.0.106 installer template",
+          "outcome": "pass"
+        },
+        {
+          "id": "test/install/installer-homebrew-formula-reuse-trust.test.ts::installer Homebrew formula reuse trust > rejects the unreviewed mutated dev MUSL sandbox OpenShell 0.0.106 installer template",
+          "file": "test/install/installer-homebrew-formula-reuse-trust.test.ts",
+          "name": "installer Homebrew formula reuse trust > rejects the unreviewed mutated dev MUSL sandbox OpenShell 0.0.106 installer template",
+          "outcome": "pass"
+        }
+      ]
+    }
+  }
+}

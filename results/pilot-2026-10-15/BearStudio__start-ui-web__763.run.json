@@ -1,0 +1,23 @@
+{
+  "id": "BearStudio__start-ui-web__763",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "24",
+      "pm": "pnpm",
+      "install": "pnpm install --frozen-lockfile"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 11516,
+    "verifyMs": 4742
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.4.0"
+}

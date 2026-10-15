@@ -1,0 +1,187 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "f9def9978d3f758bab9652271d445f31789738c1",
+    "head": "c10c43f5ec57673ebe6d1017986b4ff4fd59fc8a"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 12,
+    "skipped": 7,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 2"
+    },
+    {
+      "id": "proofs-unmatched",
+      "severity": "warn",
+      "title": "No test results matched the changed test files; fail-before/pass-after evidence unavailable"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 2,
+      "durationMs": 10543,
+      "cases": [
+        {
+          "id": "::tests.integration.test_cached_tokens",
+          "file": "",
+          "name": "tests.integration.test_cached_tokens",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.unit.providers.test_aws_provider",
+          "file": "",
+          "name": "tests.unit.providers.test_aws_provider",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.unit.providers.test_azure_provider",
+          "file": "",
+          "name": "tests.unit.providers.test_azure_provider",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.unit.providers.test_cerebras_provider",
+          "file": "",
+          "name": "tests.unit.providers.test_cerebras_provider",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.unit.providers.test_cohere_exceptions",
+          "file": "",
+          "name": "tests.unit.providers.test_cohere_exceptions",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.unit.providers.test_cohere_provider",
+          "file": "",
+          "name": "tests.unit.providers.test_cohere_provider",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.unit.providers.test_env_api_base",
+          "file": "",
+          "name": "tests.unit.providers.test_env_api_base",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.unit.providers.test_gemini_exceptions",
+          "file": "",
+          "name": "tests.unit.providers.test_gemini_exceptions",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.unit.providers.test_gemini_provider",
+          "file": "",
+          "name": "tests.unit.providers.test_gemini_provider",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.unit.providers.test_groq_provider",
+          "file": "",
+          "name": "tests.unit.providers.test_groq_provider",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.unit.providers.test_huggingface_provider",
+          "file": "",
+          "name": "tests.unit.providers.test_huggingface_provider",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.unit.providers.test_mistral_exceptions",
+          "file": "",
+          "name": "tests.unit.providers.test_mistral_exceptions",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.unit.providers.test_mistral_provider",
+          "file": "",
+          "name": "tests.unit.providers.test_mistral_provider",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.unit.providers.test_ollama_provider",
+          "file": "",
+          "name": "tests.unit.providers.test_ollama_provider",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.unit.providers.test_otari_batch",
+          "file": "",
+          "name": "tests.unit.providers.test_otari_batch",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.unit.providers.test_otari_provider",
+          "file": "",
+          "name": "tests.unit.providers.test_otari_provider",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.unit.providers.test_together_batch",
+          "file": "",
+          "name": "tests.unit.providers.test_together_batch",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.unit.providers.test_together_provider",
+          "file": "",
+          "name": "tests.unit.providers.test_together_provider",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.unit.providers.test_vertexai_provider",
+          "file": "",
+          "name": "tests.unit.providers.test_vertexai_provider",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ]
+    },
+    "before": {
+      "exitCode": 2,
+      "durationMs": 2862,
+      "cases": [
+        {
+          "id": "::tests.unit.providers.test_gemini_provider",
+          "file": "",
+          "name": "tests.unit.providers.test_gemini_provider",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ]
+    }
+  }
+}

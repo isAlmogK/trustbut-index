@@ -1,0 +1,23 @@
+{
+  "id": "NVIDIA__NemoClaw__11550",
+  "status": "setup-failed",
+  "stage": "no-passing-tests",
+  "recipe": {
+    "node": {
+      "version": "24",
+      "pm": "npm",
+      "install": "npm ci"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 45516,
+    "verifyMs": 914731
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.4.0"
+}

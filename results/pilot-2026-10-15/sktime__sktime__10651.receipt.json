@@ -1,0 +1,69 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "7188a92a3986aec8bc84cff31c22757e3722f5e4",
+    "head": "1c60cc473effb5d0de502e1770d44371a4261279"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 3,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 1"
+    },
+    {
+      "id": "no-tests-changed",
+      "severity": "warn",
+      "title": "Source changed but no tests were added or changed"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 223324,
+      "cases": [
+        {
+          "id": "::gw3",
+          "file": "",
+          "name": "gw3",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::gw2",
+          "file": "",
+          "name": "gw2",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::gw1",
+          "file": "",
+          "name": "gw1",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "id": "e2b-dev__E2B__1790",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "22",
+      "pm": "pnpm",
+      "install": "pnpm install --frozen-lockfile"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 8145,
+    "verifyMs": 10787
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.4.0"
+}

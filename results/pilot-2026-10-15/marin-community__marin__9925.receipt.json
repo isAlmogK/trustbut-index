@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "942f23705ce6ef05d7827c2ced798c950368eb2a",
+    "head": "da8f82575cbc8488edaf53ba29ad6e98693ac6a2"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "rootdir: /tmp/trustbut-wt-7fPYxU"
+    }
+  ],
+  "risks": [
+    {
+      "file": "infra/marina/applets/rl_data_catalog/server/catalog.py",
+      "score": 3,
+      "reasons": [
+        "infrastructure",
+        "large change (221 lines)"
+      ]
+    },
+    {
+      "file": "infra/marina/tests/test_rl_data_catalog.py",
+      "score": 1,
+      "reasons": [
+        "large change (223 lines)"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 4,
+      "durationMs": 5602,
+      "cases": []
+    },
+    "before": {
+      "exitCode": 2,
+      "durationMs": 4917,
+      "cases": [
+        {
+          "id": "::infra.marina.tests.test_rl_data_catalog",
+          "file": "",
+          "name": "infra.marina.tests.test_rl_data_catalog",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,425 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "c4189aa896eaf53b7ce41a71150df10d757732f1",
+    "head": "f70ed1229cc1c40e8b85041a19e89159b13ff4c9"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 56,
+    "failed": 3,
+    "errored": 1,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 1"
+    },
+    {
+      "id": "proofs-unmatched",
+      "severity": "warn",
+      "title": "No test results matched the changed test files; fail-before/pass-after evidence unavailable"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 11606,
+      "cases": [
+        {
+          "id": "packages/doc-gen/src/__tests__/index.test.ts::compareProps > Marks props that match as the same",
+          "file": "packages/doc-gen/src/__tests__/index.test.ts",
+          "name": "compareProps > Marks props that match as the same",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/doc-gen/src/__tests__/index.test.ts::compareProps > Marks prop missing in TS",
+          "file": "packages/doc-gen/src/__tests__/index.test.ts",
+          "name": "compareProps > Marks prop missing in TS",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/doc-gen/src/__tests__/index.test.ts::compareProps > Marks prop missing in Docs",
+          "file": "packages/doc-gen/src/__tests__/index.test.ts",
+          "name": "compareProps > Marks prop missing in Docs",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/doc-gen/src/__tests__/index.test.ts::compareProps > Detects mismatched type",
+          "file": "packages/doc-gen/src/__tests__/index.test.ts",
+          "name": "compareProps > Detects mismatched type",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/doc-gen/src/__tests__/index.test.ts::compareProps > Detects mismatched required",
+          "file": "packages/doc-gen/src/__tests__/index.test.ts",
+          "name": "compareProps > Detects mismatched required",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/doc-gen/src/__tests__/index.test.ts::compareProps > Detects mismatched default value",
+          "file": "packages/doc-gen/src/__tests__/index.test.ts",
+          "name": "compareProps > Detects mismatched default value",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/doc-gen/src/__tests__/index.test.ts::compareProps > Detects missing JSDoc",
+          "file": "packages/doc-gen/src/__tests__/index.test.ts",
+          "name": "compareProps > Detects missing JSDoc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/doc-gen/src/__tests__/ts-utils.patterns.test.ts::getPropTypeForComponent > extracts props for FunctionComponent",
+          "file": "packages/doc-gen/src/__tests__/ts-utils.patterns.test.ts",
+          "name": "getPropTypeForComponent > extracts props for FunctionComponent",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/doc-gen/src/__tests__/ts-utils.patterns.test.ts::getPropTypeForComponent > extracts props for ArrowComponent",
+          "file": "packages/doc-gen/src/__tests__/ts-utils.patterns.test.ts",
+          "name": "getPropTypeForComponent > extracts props for ArrowComponent",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/doc-gen/src/__tests__/ts-utils.patterns.test.ts::getPropTypeForComponent > extracts props for DefaultExportComponent",
+          "file": "packages/doc-gen/src/__tests__/ts-utils.patterns.test.ts",
+          "name": "getPropTypeForComponent > extracts props for DefaultExportComponent",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/doc-gen/src/__tests__/ts-utils.patterns.test.ts::getPropTypeForComponent > extracts props for ArrowComponent w/ indirection",
+          "file": "packages/doc-gen/src/__tests__/ts-utils.patterns.test.ts",
+          "name": "getPropTypeForComponent > extracts props for ArrowComponent w/ indirection",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/doc-gen/src/__tests__/ts-utils.patterns.test.ts::getPropTypeForComponent > extracts props for NestedComponent",
+          "file": "packages/doc-gen/src/__tests__/ts-utils.patterns.test.ts",
+          "name": "getPropTypeForComponent > extracts props for NestedComponent",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/doc-gen/src/__tests__/ts-utils.test.ts::generateJSDocString > basic props",
+          "file": "packages/doc-gen/src/__tests__/ts-utils.test.ts",
+          "name": "generateJSDocString > basic props",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/doc-gen/src/__tests__/ts-utils.test.ts::generateJSDocString > string escaping",
+          "file": "packages/doc-gen/src/__tests__/ts-utils.test.ts",
+          "name": "generateJSDocString > string escaping",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/doc-gen/src/__tests__/ts-utils.test.ts::generateJSDocString > deprecated",
+          "file": "packages/doc-gen/src/__tests__/ts-utils.test.ts",
+          "name": "generateJSDocString > deprecated",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/mcp/src/server.test.ts::src/server.test.ts",
+          "file": "packages/mcp/src/server.test.ts",
+          "name": "src/server.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@primer/react/generated/components.json' imported from /tmp/trustbut-wt-ZFbm4I/packages/mcp/src/primer.ts"
+        },
+        {
+          "id": "packages/postcss-preset-primer/src/__tests__/preset.test.ts::postcss-preset-primer > css nesting",
+          "file": "packages/postcss-preset-primer/src/__tests__/preset.test.ts",
+          "name": "postcss-preset-primer > css nesting",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/postcss-preset-primer/src/__tests__/preset.test.ts::postcss-preset-primer > mixins > @mixin activeIndicatorLine",
+          "file": "packages/postcss-preset-primer/src/__tests__/preset.test.ts",
+          "name": "postcss-preset-primer > mixins > @mixin activeIndicatorLine",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/postcss-preset-primer/src/__tests__/preset.test.ts::postcss-preset-primer > mixins > @mixin focusOutline",
+          "file": "packages/postcss-preset-primer/src/__tests__/preset.test.ts",
+          "name": "postcss-preset-primer > mixins > @mixin focusOutline",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/postcss-preset-primer/src/__tests__/preset.test.ts::postcss-preset-primer > mixins > @mixin focusOutlineOnEmphasis",
+          "file": "packages/postcss-preset-primer/src/__tests__/preset.test.ts",
+          "name": "postcss-preset-primer > mixins > @mixin focusOutlineOnEmphasis",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/postcss-preset-primer/src/__tests__/preset.test.ts::postcss-preset-primer > mixins > @mixin buttonReset",
+          "file": "packages/postcss-preset-primer/src/__tests__/preset.test.ts",
+          "name": "postcss-preset-primer > mixins > @mixin buttonReset",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/react-compiler-check/src/index.test.ts::checkFile > returns ok for files that compile successfully",
+          "file": "packages/react-compiler-check/src/index.test.ts",
+          "name": "checkFile > returns ok for files that compile successfully",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/react-compiler-check/src/index.test.ts::checkFile > does not fail on recoverable compiler diagnostics for successfully compiled files",
+          "file": "packages/react-compiler-check/src/index.test.ts",
+          "name": "checkFile > does not fail on recoverable compiler diagnostics for successfully compiled files",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/react-compiler-check/src/index.test.ts::checkFile > returns compiler errors with source locations",
+          "file": "packages/react-compiler-check/src/index.test.ts",
+          "name": "checkFile > returns compiler errors with source locations",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/react-compiler-check/src/index.test.ts::checkFile > returns compile skips as errors",
+          "file": "packages/react-compiler-check/src/index.test.ts",
+          "name": "checkFile > returns compile skips as errors",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/react-compiler-check/src/index.test.ts::checkFile > returns compiler descriptions and suggestions",
+          "file": "packages/react-compiler-check/src/index.test.ts",
+          "name": "checkFile > returns compiler descriptions and suggestions",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/react-compiler-check/src/index.test.ts::checkFile > rethrows errors that do not come from the React Compiler",
+          "file": "packages/react-compiler-check/src/index.test.ts",
+          "name": "checkFile > rethrows errors that do not come from the React Compiler",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/react/src/__tests__/exports.test.ts::@primer/react > should not update exports without a semver change",
+          "file": "packages/react/src/__tests__/exports.test.ts",
+          "name": "@primer/react > should not update exports without a semver change",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/react/src/__tests__/exports.test.ts::@primer/react/experimental > should not update exports without a semver change",
+          "file": "packages/react/src/__tests__/exports.test.ts",
+          "name": "@primer/react/experimental > should not update exports without a semver change",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/react/src/__tests__/exports.test.ts::@primer/react/deprecated > should not update exports without a semver change",
+          "file": "packages/react/src/__tests__/exports.test.ts",
+          "name": "@primer/react/deprecated > should not update exports without a semver change",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/react/src/__tests__/exports.test.ts::@primer/react/next > should not update exports without a semver change",
+          "file": "packages/react/src/__tests__/exports.test.ts",
+          "name": "@primer/react/next > should not update exports without a semver change",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/react/src/__tests__/ssr.test.tsx::server rendering > has no DOM available",
+          "file": "packages/react/src/__tests__/ssr.test.tsx",
+          "name": "server rendering > has no DOM available",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/react/src/__tests__/ssr.test.tsx::server rendering > renders Portal without touching the DOM",
+          "file": "packages/react/src/__tests__/ssr.test.tsx",
+          "name": "server rendering > renders Portal without touching the DOM",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/react/src/__tests__/storybook.test.tsx::src/__tests__/storybook.test.tsx",
+          "file": "packages/react/src/__tests__/storybook.test.tsx",
+          "name": "src/__tests__/storybook.test.tsx",
+          "outcome": "fail",
+          "message": "Cannot find package '@oddbird/popover-polyfill/fn' imported from /tmp/trustbut-wt-ZFbm4I/packages/react/src/TooltipV2/Tooltip.tsx"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > ThemeProvider export > deprecated",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > ThemeProvider export > deprecated",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > ThemeProvider export > has deprecation comment",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > ThemeProvider export > has deprecation comment",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > ThemeProviderProps export > deprecated",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > ThemeProviderProps export > deprecated",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > ThemeProviderProps export > has deprecation comment",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > ThemeProviderProps export > has deprecation comment",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > useTheme export > deprecated",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > useTheme export > deprecated",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > useTheme export > has deprecation comment",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > useTheme export > has deprecation comment",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > useColorSchemeVar export > deprecated",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > useColorSchemeVar export > deprecated",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > useColorSchemeVar export > has deprecation comment",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > useColorSchemeVar export > has deprecation comment",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > BaseStyles export > deprecated",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > BaseStyles export > deprecated",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > BaseStyles export > has deprecation comment",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > BaseStyles export > has deprecation comment",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > BaseStylesProps export > deprecated",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > BaseStylesProps export > deprecated",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > BaseStylesProps export > has deprecation comment",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > BaseStylesProps export > has deprecation comment",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > theme export > deprecated",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > theme export > deprecated",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > theme export > has deprecation comment",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > theme export > has deprecation comment",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > themeGet export > deprecated",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > themeGet export > deprecated",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > themeGet export > has deprecation comment",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > themeGet export > has deprecation comment",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > merge export > deprecated",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > merge export > deprecated",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > merge export > has deprecation comment",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > merge export > has deprecation comment",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > sx export > deprecated",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > sx export > deprecated",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > sx export > has deprecation comment",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > sx export > has deprecation comment",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > SxProp export > deprecated",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > SxProp export > deprecated",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > SxProp export > has deprecation comment",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > SxProp export > has deprecation comment",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > BetterSystemStyleObject export > deprecated",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > BetterSystemStyleObject export > deprecated",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/deprecated-exports.test.ts::@primer/styled-react > BetterSystemStyleObject export > has deprecation comment",
+          "file": "packages/styled-react/src/__tests__/deprecated-exports.test.ts",
+          "name": "@primer/styled-react > BetterSystemStyleObject export > has deprecation comment",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/styled-react/src/__tests__/exports.test.ts::src/__tests__/exports.test.ts",
+          "file": "packages/styled-react/src/__tests__/exports.test.ts",
+          "name": "src/__tests__/exports.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve entry for package \"@primer/react\". The package may have incorrect main/module/exports specified in its package.json."
+        },
+        {
+          "id": "vitest unhandled errors::Unhandled Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+          "file": "vitest unhandled errors",
+          "name": "Unhandled Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+          "outcome": "error",
+          "message": "browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the…"
+        }
+      ]
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 2377,
+      "cases": [
+        {
+          "id": "vitest unhandled errors::Unhandled Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+          "file": "vitest unhandled errors",
+          "name": "Unhandled Error: browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝",
+          "outcome": "error",
+          "message": "browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell ╔════════════════════════════════════════════════════════════╗ ║ Looks like Playwright was just installed or updated. ║ ║ Please run the…"
+        }
+      ]
+    }
+  }
+}

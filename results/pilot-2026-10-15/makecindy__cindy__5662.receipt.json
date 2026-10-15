@@ -1,0 +1,628 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "9ab1ca4842b8b2e08676112eba538504cc7e4452",
+    "head": "e3ad76a5280179b3bc3d7099f700e2a4b8d87d1a"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 900 s"
+    }
+  ],
+  "risks": [
+    {
+      "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+      "score": 1,
+      "reasons": [
+        "large change (401 lines)"
+      ]
+    },
+    {
+      "file": "apps/desktop/src/renderer/state/providerModelMemory.ts",
+      "score": 1,
+      "reasons": [
+        "large change (267 lines)"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 900285,
+      "timedOut": true,
+      "cases": []
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 1445,
+      "cases": [
+        {
+          "id": "apps/desktop/src/renderer/__tests__/deviceLinkModelMirror.test.ts::apps/desktop/src/renderer/__tests__/deviceLinkModelMirror.test.ts",
+          "file": "apps/desktop/src/renderer/__tests__/deviceLinkModelMirror.test.ts",
+          "name": "apps/desktop/src/renderer/__tests__/deviceLinkModelMirror.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/deviceLinkModelMirror' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/deviceLinkModelMirror.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > 默认无记录:getProviderModelChoice 返回 undefined",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > 默认无记录:getProviderModelChoice 返回 undefined",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > 仅有 effort 或 Fast 记忆也视为既有模型自定义",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > 仅有 effort 或 Fast 记忆也视为既有模型自定义",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > 按 dataOwnerId 隔离 override，旧全局快照只由首个 owner 认领",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > 按 dataOwnerId 隔离 override，旧全局快照只由首个 owner 认领",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > 同 owner 的外部写入刷新空缓存并通知订阅者，其他 owner 事件不串入",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > 同 owner 的外部写入刷新空缓存并通知订阅者，其他 owner 事件不串入",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > 写入前重读 owner 分区，不用空缓存覆盖外部 effort/Fast",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > 写入前重读 owner 分区，不用空缓存覆盖外部 effort/Fast",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > 写前读到外部同值时也刷新本窗口缓存和订阅者",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > 写前读到外部同值时也刷新本窗口缓存和订阅者",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > 写盘失败后继续保留当前 owner 的新 override，可写时完整补落盘",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > 写盘失败后继续保留当前 owner 的新 override，可写时完整补落盘",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > 写盘失败的旧操作不覆盖另一窗口后来写入的同字段",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > 写盘失败的旧操作不覆盖另一窗口后来写入的同字段",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > thinking 写盘失败后,另一窗口改了权威槽也必须让旧操作退休",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > thinking 写盘失败后,另一窗口改了权威槽也必须让旧操作退休",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > 选模写盘失败后再调 effort，不会丢失独立的 lastModel 意图",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > 选模写盘失败后再调 effort，不会丢失独立的 lastModel 意图",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > 冲突退休的旧 lastModel 基线不阻断后来更新的本地选模",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > 冲突退休的旧 lastModel 基线不阻断后来更新的本地选模",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > set/get 往返 + 跨重启持久化",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > set/get 往返 + 跨重启持久化",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > 按 (agent, providerId) 分槽:xd 在 cc / codex 下互不覆盖",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > 按 (agent, providerId) 分槽:xd 在 cc / codex 下互不覆盖",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > 覆盖写:同一槽再次写入用新值",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > 覆盖写:同一槽再次写入用新值",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > 同值写入短路:值保持不变,不抛",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > 同值写入短路:值保持不变,不抛",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > 空 providerId / model / effort 入参被忽略",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > 空 providerId / model / effort 入参被忽略",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory store > schema 损坏的 localStorage → 静默回退空表,不抛",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory store > schema 损坏的 localStorage → 静默回退空表,不抛",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 同一来源不同模型各记各的 effort,lastModel 切换不覆盖旧模型 effort",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 同一来源不同模型各记各的 effort,lastModel 切换不覆盖旧模型 effort",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 同一 agent/model 的 effort 跨来源共享(切来源不再换回旧档位)",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 同一 agent/model 的 effort 跨来源共享(切来源不再换回旧档位)",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 只编辑非选中模型的 effort 不会篡改该来源 lastModel",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 只编辑非选中模型的 effort 不会篡改该来源 lastModel",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > getProviderModelEffort:未记录模型 / 空参 → undefined,其它来源读到同一份",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > getProviderModelEffort:未记录模型 / 空参 → undefined,其它来源读到同一份",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 权威槽优先于来源兼容副本(两处分歧时读权威)",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 权威槽优先于来源兼容副本(两处分歧时读权威)",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 历史回填同时补齐 effort / fast / thinking 三个维度(逐个合并,不被链式短路漏掉)",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 历史回填同时补齐 effort / fast / thinking 三个维度(逐个合并,不被链式短路漏掉)",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > v2 历史数据(只有来源槽)首次读取即回填权威槽,不丢任何既有预设",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > v2 历史数据(只有来源槽)首次读取即回填权威槽,不丢任何既有预设",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 来源槽已是目标值时,权威槽陈旧也要补写(双写不被半短路)",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 来源槽已是目标值时,权威槽陈旧也要补写(双写不被半短路)",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > snapshot 同时含权威槽与来源兼容副本",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > snapshot 同时含权威槽与来源兼容副本",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > snapshot 带上思考开关",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > snapshot 带上思考开关",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 多模型 effort 跨重启持久化(v2)",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 多模型 effort 跨重启持久化(v2)",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 迁移历史 v1 单槽 → v2(lastModel + 该模型 effort 都可恢复)",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > 迁移历史 v1 单槽 → v2(lastModel + 该模型 effort 都可恢复)",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > v2 在场时忽略 v1(不回退迁移)",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > v2 在场时忽略 v1(不回退迁移)",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > v2 脏数据:非法 effort 条目过滤 / 保留无深度模型的 lastModel / 缺 lastModel 仍可查 effort",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory v2 —— (agent, model) 全局 effort + provider lastModel > v2 脏数据:非法 effort 条目过滤 / 保留无深度模型的 lastModel / 缺 lastModel 仍可查 effort",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory —— (agent, model) fast 全局预设 > 同一 model id 的 fast 跨来源共享(显式 false 也是有效值)",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory —— (agent, model) fast 全局预设 > 同一 model id 的 fast 跨来源共享(显式 false 也是有效值)",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory —— (agent, model) fast 全局预设 > fast 写入不动同槽 effort / lastModel;effort 写入不动 fast",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory —— (agent, model) fast 全局预设 > fast 写入不动同槽 effort / lastModel;effort 写入不动 fast",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory —— (agent, model) fast 全局预设 > getProviderModelFast:未记录模型 / 空参 → undefined,显式 false 跨来源保留",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory —— (agent, model) fast 全局预设 > getProviderModelFast:未记录模型 / 空参 → undefined,显式 false 跨来源保留",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory —— (agent, model) fast 全局预设 > fast 跨重启持久化(v2)",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory —— (agent, model) fast 全局预设 > fast 跨重启持久化(v2)",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory —— clear:恢复推荐删键(不写默认快照) > clearEffort 把全局槽与来源兼容副本两处一起删掉(只删一处会被另一处顶回来)",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory —— clear:恢复推荐删键(不写默认快照) > clearEffort 把全局槽与来源兼容副本两处一起删掉(只删一处会被另一处顶回来)",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory —— clear:恢复推荐删键(不写默认快照) > clearEffort 之后,别的来源留下的副本不会把旧值回填回权威槽",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory —— clear:恢复推荐删键(不写默认快照) > clearEffort 之后,别的来源留下的副本不会把旧值回填回权威槽",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory —— clear:恢复推荐删键(不写默认快照) > 全来源清除写盘失败后,另一窗口刚设的新值不被旧清除删掉",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory —— clear:恢复推荐删键(不写默认快照) > 全来源清除写盘失败后,另一窗口刚设的新值不被旧清除删掉",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory —— clear:恢复推荐删键(不写默认快照) > clearFast 同理;删的是键而不是写一份显式 false",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory —— clear:恢复推荐删键(不写默认快照) > clearFast 同理;删的是键而不是写一份显式 false",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory —— clear:恢复推荐删键(不写默认快照) > 全来源清除写盘失败后,只有权威槽变化也让旧清除退休",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory —— clear:恢复推荐删键(不写默认快照) > 全来源清除写盘失败后,只有权威槽变化也让旧清除退休",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory —— clear:恢复推荐删键(不写默认快照) > clearFast 的写盘失败重放,同样不删别的来源刚设的新值",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory —— clear:恢复推荐删键(不写默认快照) > clearFast 的写盘失败重放,同样不删别的来源刚设的新值",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory —— clear:恢复推荐删键(不写默认快照) > clear 只删点名那个模型键,不动同槽其它模型 / 另一维 / lastModel",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory —— clear:恢复推荐删键(不写默认快照) > clear 只删点名那个模型键,不动同槽其它模型 / 另一维 / lastModel",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::providerModelMemory —— clear:恢复推荐删键(不写默认快照) > 无记录 / 非法入参 → 静默短路,不落盘不通知",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "providerModelMemory —— clear:恢复推荐删键(不写默认快照) > 无记录 / 非法入参 → 静默短路,不落盘不通知",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::last-model-only history is evidence of an existing user configuration",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "last-model-only history is evidence of an existing user configuration",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts::does not stamp previous-owner model tuning during the auth handoff",
+          "file": "apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts",
+          "name": "does not stamp previous-owner model tuning during the auth handoff",
+          "outcome": "fail",
+          "message": "Cannot find package '@/state/providerModelMemory' imported from '/tmp/trustbut-wt-ZC2Ytn/apps/desktop/src/renderer/__tests__/providerModelMemory.test.ts'"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::getRemoteNewMakerDefaults (device-link 远程草稿镜像) > 返回该 vendor 当前草稿的完整选择(model/effort/fast/permission/source)+ 整张 per-model 记忆表",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "getRemoteNewMakerDefaults (device-link 远程草稿镜像) > 返回该 vendor 当前草稿的完整选择(model/effort/fast/permission/source)+ 整张 per-model 记忆表",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::getRemoteNewMakerDefaults (device-link 远程草稿镜像) > codex vendor 缺 permission/source → 带 undefined / null,不串 cc 的值;两张 map 跨 vendor 整表透传",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "getRemoteNewMakerDefaults (device-link 远程草稿镜像) > codex vendor 缺 permission/source → 带 undefined / null,不串 cc 的值;两张 map 跨 vendor 整表透传",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::getRemoteNewMakerDefaults (device-link 远程草稿镜像) > effort 缺 lastByVendor 值时退回 effortByModel",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "getRemoteNewMakerDefaults (device-link 远程草稿镜像) > effort 缺 lastByVendor 值时退回 effortByModel",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::getRemoteNewMakerDefaults (device-link 远程草稿镜像) > 该 vendor 无草稿 model → 只回 vendor 无关字段(控制端按 capabilities 默认兜底)",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "getRemoteNewMakerDefaults (device-link 远程草稿镜像) > 该 vendor 无草稿 model → 只回 vendor 无关字段(控制端按 capabilities 默认兜底)",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::getRemoteNewMakerDefaults (device-link 远程草稿镜像) > worktreeEnabled 勾选记忆:vendor 无关,该 vendor 无草稿 model 的早返回也必须携带",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "getRemoteNewMakerDefaults (device-link 远程草稿镜像) > worktreeEnabled 勾选记忆:vendor 无关,该 vendor 无草稿 model 的早返回也必须携带",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::getRemoteNewMakerDefaults (device-link 远程草稿镜像) > 镜像每个 vendor 的显式模型选择状态，供控制端决定是否应用区域默认",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "getRemoteNewMakerDefaults (device-link 远程草稿镜像) > 镜像每个 vendor 的显式模型选择状态，供控制端决定是否应用区域默认",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::getRemoteNewMakerDefaults (device-link 远程草稿镜像) > 草稿变更广播快照始终包含 claude-code、codex、pi 三个槽",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "getRemoteNewMakerDefaults (device-link 远程草稿镜像) > 草稿变更广播快照始终包含 claude-code、codex、pi 三个槽",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::getRemoteNewMakerDefaults (device-link 远程草稿镜像) > reads thinkingEnabled from the provider model memory mirror",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "getRemoteNewMakerDefaults (device-link 远程草稿镜像) > reads thinkingEnabled from the provider model memory mirror",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::getRemoteNewMakerDefaults (device-link 远程草稿镜像) > providerModelMemory 镜像就绪时随返回(device-link 草稿列表行的真实读源)",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "getRemoteNewMakerDefaults (device-link 远程草稿镜像) > providerModelMemory 镜像就绪时随返回(device-link 草稿列表行的真实读源)",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::getRemoteNewMakerDefaults (device-link 远程草稿镜像) > collab worker 默认读取会保留 model/effort/fast/provider 路由组合",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "getRemoteNewMakerDefaults (device-link 远程草稿镜像) > collab worker 默认读取会保留 model/effort/fast/provider 路由组合",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::does not reuse the selected default route across owners or older snapshots",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "does not reuse the selected default route across owners or older snapshots",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::owner-fenced new task and Bot default mirror > uses one accepted snapshot for ordinary task and Bot defaults",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "owner-fenced new task and Bot default mirror > uses one accepted snapshot for ordinary task and Bot defaults",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::owner-fenced new task and Bot default mirror > rejects unstamped or late account snapshots: undefined",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "owner-fenced new task and Bot default mirror > rejects unstamped or late account snapshots: undefined",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::owner-fenced new task and Bot default mirror > rejects unstamped or late account snapshots: {\"dataOwnerId\":\"A\",\"ownerGeneration\":3}",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "owner-fenced new task and Bot default mirror > rejects unstamped or late account snapshots: {\"dataOwnerId\":\"A\",\"ownerGeneration\":3}",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::owner-fenced new task and Bot default mirror > rejects unstamped or late account snapshots: {\"dataOwnerId\":\"B\",\"ownerGeneration\":2}",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "owner-fenced new task and Bot default mirror > rejects unstamped or late account snapshots: {\"dataOwnerId\":\"B\",\"ownerGeneration\":2}",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::owner-fenced new task and Bot default mirror > rejects a snapshot while the account boundary is pending",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "owner-fenced new task and Bot default mirror > rejects a snapshot while the account boundary is pending",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::owner-fenced new task and Bot default mirror > clears the selected route when the current owner clears the default",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "owner-fenced new task and Bot default mirror > clears the selected route when the current owner clears the default",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts::reads remembered tuning only from the matching owner snapshot, with preset-first and source fallbacks",
+          "file": "apps/desktop/src/main/maker-host/__tests__/newMakerDefaultsCache.test.ts",
+          "name": "reads remembered tuning only from the matching owner snapshot, with preset-first and source fallbacks",
+          "outcome": "fail",
+          "message": "expected { effort: 'low', fastMode: false } to deeply equal { effort: 'high', fastMode: true }"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > 被控端草稿值在清单内 → 原样镜像(model/effort/fast/permission/source)",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > 被控端草稿值在清单内 → 原样镜像(model/effort/fast/permission/source)",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > remoteDraft=null(旧版被控端/拉取失败)→ 回落被控端 capabilities 默认,绝不取本地",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > remoteDraft=null(旧版被控端/拉取失败)→ 回落被控端 capabilities 默认,绝不取本地",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > 被控端草稿 model 不在清单 → reconcile 到 availableModels[0] + 其默认 effort",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > 被控端草稿 model 不在清单 → reconcile 到 availableModels[0] + 其默认 effort",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > 被控端明确未选过模型 → 初始 seed 优先采用其区域目录默认",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > 被控端明确未选过模型 → 初始 seed 优先采用其区域目录默认",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > 显式选择或旧端未知选择状态 → 保留被控端当前模型",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > 显式选择或旧端未知选择状态 → 保留被控端当前模型",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > 被控端已有来源偏好时不应用可能丢失该来源的区域默认",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > 被控端已有来源偏好时不应用可能丢失该来源的区域默认",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > 控制端本次显式 targetModel 优先于远端未选择标记",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > 控制端本次显式 targetModel 优先于远端未选择标记",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > Pi 的远程新任务默认接受 v3 的 pi 标记",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > Pi 的远程新任务默认接受 v3 的 pi 标记",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > Pi 的远程新任务不借用 claude-code 默认标记",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > Pi 的远程新任务不借用 claude-code 默认标记",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > effort 不被目标模型支持 → 落该模型 defaultEffort",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > effort 不被目标模型支持 → 落该模型 defaultEffort",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > 模型不支持 fast(或被控端 agent 无 fast 能力)→ fastMode 强制 false",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > 模型不支持 fast(或被控端 agent 无 fast 能力)→ fastMode 强制 false",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > 被控端不支持的 permission 档 → undefined(交 ChatInput 回落)",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > 被控端不支持的 permission 档 → undefined(交 ChatInput 回落)",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > 切到非当前选中模型 → 用被控端 per-model 记忆,而非沿用上一个模型",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > 切到非当前选中模型 → 用被控端 per-model 记忆,而非沿用上一个模型",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > 切到的模型被控端无 per-model 记忆 → 回落该模型 capabilities 默认",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > 切到的模型被控端无 per-model 记忆 → 回落该模型 capabilities 默认",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > 切回被控端当前选中模型 → 用草稿激活值(authoritative),不被 per-model 记忆覆盖",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > 切回被控端当前选中模型 → 用草稿激活值(authoritative),不被 per-model 记忆覆盖",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > 首页当前显示模型也采用被控端全局模型预设",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > 首页当前显示模型也采用被控端全局模型预设",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::resolveDeviceLinkDraftDefaults > * 权威槽优先于 provider 兼容副本",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "resolveDeviceLinkDraftDefaults > * 权威槽优先于 provider 兼容副本",
+          "outcome": "fail",
+          "message": "expected 'high' to be 'xhigh' // Object.is equality"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::shouldReseedDeviceLinkDraftDefaults > recalibrates the same untouched target when the remote explicitly has no model choice",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "shouldReseedDeviceLinkDraftDefaults > recalibrates the same untouched target when the remote explicitly has no model choice",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::shouldReseedDeviceLinkDraftDefaults > preserves controller edits and remote explicit or legacy-unknown choices",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "shouldReseedDeviceLinkDraftDefaults > preserves controller edits and remote explicit or legacy-unknown choices",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::shouldReseedDeviceLinkDraftDefaults > always seeds a new device or agent target",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "shouldReseedDeviceLinkDraftDefaults > always seeds a new device or agent target",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::shouldReseedDeviceLinkDraftDefaults > treats a cross-engine pick as its own seed once the key was advanced",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "shouldReseedDeviceLinkDraftDefaults > treats a cross-engine pick as its own seed once the key was advanced",
+          "outcome": "pass"
+        },
+        {
+          "id": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts::capabilities refresh clamp contract > 保留仍合法的控制端选择，但会夹紧已失效的模型与运行参数",
+          "file": "apps/desktop/src/renderer/features/cc-agent/__tests__/deviceLinkDraftDefaults.test.ts",
+          "name": "capabilities refresh clamp contract > 保留仍合法的控制端选择，但会夹紧已失效的模型与运行参数",
+          "outcome": "pass"
+        }
+      ]
+    }
+  }
+}

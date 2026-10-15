@@ -1,0 +1,52 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "dce49ae038b89b8bb83ea93a5f37e4747d3e181c",
+    "head": "1b4f9d20f64dcd12fbeef4e4278cb656a9d5577b"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "at async Object.run (/home/runner/work/_temp/work/repo/node_modules/.pnpm/jest-cli@30.3.0_@types+node@22.19.3_ts-node@10.9.2_@types+node@22.19.3_typescript@5.7.3_/node_modules/jest-cli/build/index.js:656:9)"
+    },
+    {
+      "id": "base-run-failed",
+      "severity": "warn",
+      "title": "Changed tests could not run at base; fail-before evidence unavailable (exit 1)"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "jest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 2520,
+      "cases": []
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 2420,
+      "cases": []
+    }
+  }
+}

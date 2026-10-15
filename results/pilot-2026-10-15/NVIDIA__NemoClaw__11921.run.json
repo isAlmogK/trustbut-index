@@ -1,0 +1,23 @@
+{
+  "id": "NVIDIA__NemoClaw__11921",
+  "status": "setup-failed",
+  "stage": "install",
+  "recipe": {
+    "node": {
+      "version": "24",
+      "pm": "npm",
+      "install": "npm ci"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 23455,
+    "verifyMs": 0
+  },
+  "exitCodes": {
+    "install": 152,
+    "verify": null
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "unknown"
+}

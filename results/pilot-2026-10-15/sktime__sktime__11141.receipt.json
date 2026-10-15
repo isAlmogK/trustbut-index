@@ -1,0 +1,117 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "3d650dd8c24a696f06c0343bd8730a5b94f2d784",
+    "head": "2ebdcc61e3287ac016d89368f7eeb9c351e841fa"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 3,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 1"
+    },
+    {
+      "id": "proofs-unmatched",
+      "severity": "warn",
+      "title": "No test results matched the changed test files; fail-before/pass-after evidence unavailable"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 198612,
+      "cases": [
+        {
+          "id": "::gw2",
+          "file": "",
+          "name": "gw2",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::gw0",
+          "file": "",
+          "name": "gw0",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::gw3",
+          "file": "",
+          "name": "gw3",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ]
+    },
+    "before": {
+      "exitCode": 0,
+      "durationMs": 7257,
+      "cases": [
+        {
+          "id": "sktime.detection.tests.test_lof::test_cut_into_intervals[x2-interval_size2-expected_intervals2]",
+          "file": "sktime.detection.tests.test_lof",
+          "name": "test_cut_into_intervals[x2-interval_size2-expected_intervals2]",
+          "outcome": "skip"
+        },
+        {
+          "id": "sktime.detection.tests.test_lof::test_cut_into_intervals[x0-1-expected_intervals0]",
+          "file": "sktime.detection.tests.test_lof",
+          "name": "test_cut_into_intervals[x0-1-expected_intervals0]",
+          "outcome": "skip"
+        },
+        {
+          "id": "sktime.detection.tests.test_lof::test_cut_into_intervals[_month_end_datetime_case-2-None]",
+          "file": "sktime.detection.tests.test_lof",
+          "name": "test_cut_into_intervals[_month_end_datetime_case-2-None]",
+          "outcome": "skip"
+        },
+        {
+          "id": "sktime.detection.tests.test_lof::test_cut_into_intervals[_daily_datetime_case-1-None]",
+          "file": "sktime.detection.tests.test_lof",
+          "name": "test_cut_into_intervals[_daily_datetime_case-1-None]",
+          "outcome": "skip"
+        },
+        {
+          "id": "sktime.detection.tests.test_lof::test_cut_into_intervals[x1-1.5-expected_intervals1]",
+          "file": "sktime.detection.tests.test_lof",
+          "name": "test_cut_into_intervals[x1-1.5-expected_intervals1]",
+          "outcome": "skip"
+        },
+        {
+          "id": "sktime.detection.tests.test_lof::test_sublof_does_not_mutate_input",
+          "file": "sktime.detection.tests.test_lof",
+          "name": "test_sublof_does_not_mutate_input",
+          "outcome": "skip"
+        },
+        {
+          "id": "sktime.detection.tests.test_lof::test_predict[X0-y_expected0]",
+          "file": "sktime.detection.tests.test_lof",
+          "name": "test_predict[X0-y_expected0]",
+          "outcome": "skip"
+        }
+      ]
+    }
+  }
+}

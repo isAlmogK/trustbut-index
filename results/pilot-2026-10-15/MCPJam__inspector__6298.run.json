@@ -1,0 +1,23 @@
+{
+  "id": "MCPJam__inspector__6298",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "22",
+      "pm": "npm",
+      "install": "npm ci"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 48779,
+    "verifyMs": 442680
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.4.0"
+}

@@ -1,0 +1,47 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "a3b4dc89faeabbfae801ae33205006ce496adaea",
+    "head": "b599f61488945e06a5c51a3ed725434ec9f149f0"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "at async Object.run (/home/runner/work/_temp/work/repo/node_modules/.pnpm/jest-cli@30.3.0_@types+node@22.19.3_ts-node@10.9.2_@types+node@22.19.3_typescript@5.7.3_/node_modules/jest-cli/build/index.js:656:9)"
+    },
+    {
+      "id": "no-tests-changed",
+      "severity": "warn",
+      "title": "Source changed but no tests were added or changed"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "jest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 2665,
+      "cases": []
+    }
+  }
+}

@@ -1,0 +1,669 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "8944cd72320cb7a90896e6c041a2953d8458275e",
+    "head": "a09f652f1541625119547550aa388a6a4be1c308"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 82,
+    "failed": 14,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [
+    {
+      "file": "packages/core/src/app/lib/use-document-title.test.ts",
+      "name": "packages/core/src/app/lib/use-document-title.test.ts",
+      "before": "fail",
+      "after": "fail",
+      "verdict": "failing"
+    }
+  ],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 1"
+    },
+    {
+      "id": "test-failing",
+      "severity": "fail",
+      "title": "Test fails at head",
+      "file": "packages/core/src/app/lib/use-document-title.test.ts",
+      "detail": "packages/core/src/app/lib/use-document-title.test.ts"
+    }
+  ],
+  "risks": [
+    {
+      "file": "packages/core/src/app/lib/use-document-title.test.ts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 1995,
+      "cases": [
+        {
+          "id": "packages/cli/src/init.test.ts::sanitizeDirName > leaves safe names untouched",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "sanitizeDirName > leaves safe names untouched",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/init.test.ts::sanitizeDirName > preserves \".\" and \"..\"",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "sanitizeDirName > preserves \".\" and \"..\"",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/init.test.ts::sanitizeDirName > replaces spaces with hyphens",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "sanitizeDirName > replaces spaces with hyphens",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/init.test.ts::sanitizeDirName > collapses runs of whitespace into a single hyphen",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "sanitizeDirName > collapses runs of whitespace into a single hyphen",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/init.test.ts::sanitizeDirName > replaces shell-unfriendly characters",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "sanitizeDirName > replaces shell-unfriendly characters",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/init.test.ts::sanitizeDirName > trims leading and trailing hyphens",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "sanitizeDirName > trims leading and trailing hyphens",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/init.test.ts::sanitizeDirName > falls back to \"my-slides\" when nothing usable remains",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "sanitizeDirName > falls back to \"my-slides\" when nothing usable remains",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/init.test.ts::sanitizeDirName > keeps path separators intact",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "sanitizeDirName > keeps path separators intact",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/init.test.ts::sanitizeDirName > is idempotent",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "sanitizeDirName > is idempotent",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/init.test.ts::sanitizeDirName > preserves a trailing path separator",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "sanitizeDirName > preserves a trailing path separator",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/init.test.ts::sanitizeDirName > collapses hyphens on both sides of a path separator",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "sanitizeDirName > collapses hyphens on both sides of a path separator",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/init.test.ts::sanitizeDirName > preserves non-ASCII letters and digits",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "sanitizeDirName > preserves non-ASCII letters and digits",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/init.test.ts::sanitizeDirName > preserves Windows backslash separators",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "sanitizeDirName > preserves Windows backslash separators",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/init.test.ts::sanitizeDirName > falls back when sanitization would produce a root-like path",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "sanitizeDirName > falls back when sanitization would produce a root-like path",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/package-manager.test.ts::PACKAGE_MANAGERS > lists every supported package manager",
+          "file": "packages/cli/src/package-manager.test.ts",
+          "name": "PACKAGE_MANAGERS > lists every supported package manager",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/package-manager.test.ts::detectPackageManager > detects pnpm from the user agent",
+          "file": "packages/cli/src/package-manager.test.ts",
+          "name": "detectPackageManager > detects pnpm from the user agent",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/package-manager.test.ts::detectPackageManager > detects yarn from the user agent",
+          "file": "packages/cli/src/package-manager.test.ts",
+          "name": "detectPackageManager > detects yarn from the user agent",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/package-manager.test.ts::detectPackageManager > detects bun from the user agent",
+          "file": "packages/cli/src/package-manager.test.ts",
+          "name": "detectPackageManager > detects bun from the user agent",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/package-manager.test.ts::detectPackageManager > falls back to npm when the user agent is unset",
+          "file": "packages/cli/src/package-manager.test.ts",
+          "name": "detectPackageManager > falls back to npm when the user agent is unset",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/package-manager.test.ts::detectPackageManager > falls back to npm when the user agent is unrecognized",
+          "file": "packages/cli/src/package-manager.test.ts",
+          "name": "detectPackageManager > falls back to npm when the user agent is unrecognized",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/cli/preflight.test.ts::findViteMismatch > flags a hoisted plugin that resolves a different vite than core",
+          "file": "packages/core/src/cli/preflight.test.ts",
+          "name": "findViteMismatch > flags a hoisted plugin that resolves a different vite than core",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/cli/preflight.test.ts::findViteMismatch > passes when the plugin is nested next to core vite",
+          "file": "packages/core/src/cli/preflight.test.ts",
+          "name": "findViteMismatch > passes when the plugin is nested next to core vite",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/cli/preflight.test.ts::findViteMismatch > passes when everything is hoisted onto a single vite",
+          "file": "packages/core/src/cli/preflight.test.ts",
+          "name": "findViteMismatch > passes when everything is hoisted onto a single vite",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/cli/preflight.test.ts::findViteMismatch > passes when two copies of the same vite version coexist",
+          "file": "packages/core/src/cli/preflight.test.ts",
+          "name": "findViteMismatch > passes when two copies of the same vite version coexist",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/cli/preflight.test.ts::findViteMismatch > checks every consumer, not just the first",
+          "file": "packages/core/src/cli/preflight.test.ts",
+          "name": "findViteMismatch > checks every consumer, not just the first",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/cli/preflight.test.ts::findViteMismatch > passes when vite cannot be located at all",
+          "file": "packages/core/src/cli/preflight.test.ts",
+          "name": "findViteMismatch > passes when vite cannot be located at all",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/cli/preflight.test.ts::formatViteMismatch > names both copies relative to the workspace and links the guide",
+          "file": "packages/core/src/cli/preflight.test.ts",
+          "name": "formatViteMismatch > names both copies relative to the workspace and links the guide",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/cli/run.test.ts::packages/core/src/cli/run.test.ts",
+          "file": "packages/core/src/cli/run.test.ts",
+          "name": "packages/core/src/cli/run.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package 'chalk' imported from /tmp/trustbut-wt-nV2Tqd/packages/core/src/cli/run.ts"
+        },
+        {
+          "id": "packages/core/src/cli/ui.test.ts::packages/core/src/cli/ui.test.ts",
+          "file": "packages/core/src/cli/ui.test.ts",
+          "name": "packages/core/src/cli/ui.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package 'chalk' imported from /tmp/trustbut-wt-nV2Tqd/packages/core/src/cli/ui.ts"
+        },
+        {
+          "id": "packages/core/src/editing/comments.test.ts::packages/core/src/editing/comments.test.ts",
+          "file": "packages/core/src/editing/comments.test.ts",
+          "name": "packages/core/src/editing/comments.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@babel/types' imported from /tmp/trustbut-wt-nV2Tqd/packages/core/src/editing/comments.ts"
+        },
+        {
+          "id": "packages/core/src/editing/edit-ops.test.ts::packages/core/src/editing/edit-ops.test.ts",
+          "file": "packages/core/src/editing/edit-ops.test.ts",
+          "name": "packages/core/src/editing/edit-ops.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@babel/types' imported from /tmp/trustbut-wt-nV2Tqd/packages/core/src/editing/edit-ops.ts"
+        },
+        {
+          "id": "packages/core/src/editing/revert-asset.test.ts::packages/core/src/editing/revert-asset.test.ts",
+          "file": "packages/core/src/editing/revert-asset.test.ts",
+          "name": "packages/core/src/editing/revert-asset.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@babel/types' imported from /tmp/trustbut-wt-nV2Tqd/packages/core/src/editing/revert-asset.ts"
+        },
+        {
+          "id": "packages/core/src/editing/slide-ops.test.ts::packages/core/src/editing/slide-ops.test.ts",
+          "file": "packages/core/src/editing/slide-ops.test.ts",
+          "name": "packages/core/src/editing/slide-ops.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@babel/parser' imported from /tmp/trustbut-wt-nV2Tqd/packages/core/src/editing/slide-ops.ts"
+        },
+        {
+          "id": "packages/core/src/files/assets.test.ts::packages/core/src/files/assets.test.ts",
+          "file": "packages/core/src/files/assets.test.ts",
+          "name": "packages/core/src/files/assets.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@babel/parser' imported from /tmp/trustbut-wt-nV2Tqd/packages/core/src/editing/slide-ops.ts"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateName > trims whitespace and accepts non-empty strings",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateName > trims whitespace and accepts non-empty strings",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateName > rejects non-strings",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateName > rejects non-strings",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateName > rejects empty / whitespace-only / overlong strings",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateName > rejects empty / whitespace-only / overlong strings",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateName > accepts a 40-character name (boundary)",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateName > accepts a 40-character name (boundary)",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateIcon > accepts a valid emoji icon",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateIcon > accepts a valid emoji icon",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateIcon > accepts a valid color icon",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateIcon > accepts a valid color icon",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateIcon > rejects malformed colors",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateIcon > rejects malformed colors",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateIcon > rejects empty or overlong emoji values",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateIcon > rejects empty or overlong emoji values",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateIcon > rejects unknown types and non-objects",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateIcon > rejects unknown types and non-objects",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateReorder > accepts a permutation of the current ids",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateReorder > accepts a permutation of the current ids",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateReorder > rejects non-arrays and wrong-length arrays",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateReorder > rejects non-arrays and wrong-length arrays",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateReorder > rejects duplicate ids, unknown ids, and malformed ids",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateReorder > rejects duplicate ids, unknown ids, and malformed ids",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/http/request-guard.test.ts::validateMutationRequest > accepts same-origin JSON mutation requests",
+          "file": "packages/core/src/http/request-guard.test.ts",
+          "name": "validateMutationRequest > accepts same-origin JSON mutation requests",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/http/request-guard.test.ts::validateMutationRequest > accepts forwarded host/proto when origin matches",
+          "file": "packages/core/src/http/request-guard.test.ts",
+          "name": "validateMutationRequest > accepts forwarded host/proto when origin matches",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/http/request-guard.test.ts::validateMutationRequest > rejects non-JSON mutation bodies when required",
+          "file": "packages/core/src/http/request-guard.test.ts",
+          "name": "validateMutationRequest > rejects non-JSON mutation bodies when required",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/http/request-guard.test.ts::validateMutationRequest > rejects cross-site browser requests",
+          "file": "packages/core/src/http/request-guard.test.ts",
+          "name": "validateMutationRequest > rejects cross-site browser requests",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/http/request-guard.test.ts::validateMutationRequest > rejects opaque origin values",
+          "file": "packages/core/src/http/request-guard.test.ts",
+          "name": "validateMutationRequest > rejects opaque origin values",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/http/request-guard.test.ts::validateMutationRequest > rejects mismatched origin/host combinations",
+          "file": "packages/core/src/http/request-guard.test.ts",
+          "name": "validateMutationRequest > rejects mismatched origin/host combinations",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/http/request-guard.test.ts::validateMutationRequest > allows trusted requests even when origin is missing",
+          "file": "packages/core/src/http/request-guard.test.ts",
+          "name": "validateMutationRequest > allows trusted requests even when origin is missing",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/vite/design-plugin.test.ts::packages/core/src/vite/design-plugin.test.ts",
+          "file": "packages/core/src/vite/design-plugin.test.ts",
+          "name": "packages/core/src/vite/design-plugin.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@babel/parser' imported from /tmp/trustbut-wt-nV2Tqd/packages/core/src/editing/babel-walk.ts"
+        },
+        {
+          "id": "packages/core/src/vite/loc-tags-plugin.test.ts::packages/core/src/vite/loc-tags-plugin.test.ts",
+          "file": "packages/core/src/vite/loc-tags-plugin.test.ts",
+          "name": "packages/core/src/vite/loc-tags-plugin.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@babel/types' imported from /tmp/trustbut-wt-nV2Tqd/packages/core/src/vite/loc-tags-plugin.ts"
+        },
+        {
+          "id": "packages/core/src/vite/notes-plugin.test.ts::packages/core/src/vite/notes-plugin.test.ts",
+          "file": "packages/core/src/vite/notes-plugin.test.ts",
+          "name": "packages/core/src/vite/notes-plugin.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@babel/types' imported from /tmp/trustbut-wt-nV2Tqd/packages/core/src/vite/notes-plugin.ts"
+        },
+        {
+          "id": "packages/core/src/vite/open-slide-plugin.test.ts::packages/core/src/vite/open-slide-plugin.test.ts",
+          "file": "packages/core/src/vite/open-slide-plugin.test.ts",
+          "name": "packages/core/src/vite/open-slide-plugin.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package 'fast-glob' imported from /tmp/trustbut-wt-nV2Tqd/packages/core/src/vite/open-slide-plugin.ts"
+        },
+        {
+          "id": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts::getThumbnailOffscreenDirection > reports a thumbnail fully above the visible area",
+          "file": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts",
+          "name": "getThumbnailOffscreenDirection > reports a thumbnail fully above the visible area",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts::getThumbnailOffscreenDirection > reports a thumbnail fully below the visible area",
+          "file": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts",
+          "name": "getThumbnailOffscreenDirection > reports a thumbnail fully below the visible area",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts::getThumbnailOffscreenDirection > keeps the control hidden while a thumbnail is fully visible",
+          "file": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts",
+          "name": "getThumbnailOffscreenDirection > keeps the control hidden while a thumbnail is fully visible",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts::getThumbnailOffscreenDirection > keeps the control hidden while either edge remains visible",
+          "file": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts",
+          "name": "getThumbnailOffscreenDirection > keeps the control hidden while either edge remains visible",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts::getCenteredThumbnailScrollTop > centers the thumbnail inside the unobscured viewport",
+          "file": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts",
+          "name": "getCenteredThumbnailScrollTop > centers the thumbnail inside the unobscured viewport",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts::getCenteredThumbnailScrollTop > does not scroll before the start of the list",
+          "file": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts",
+          "name": "getCenteredThumbnailScrollTop > does not scroll before the start of the list",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > filters assets by usage",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > filters assets by usage",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > filters image MIME types",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > filters image MIME types",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > filters font MIME types",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > filters font MIME types",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > filters video MIME types",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > filters video MIME types",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > filters other MIME types",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > filters other MIME types",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > matches trimmed filename searches case-insensitively",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > matches trimmed filename searches case-insensitively",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > applies usage, type, and search filters together",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > applies usage, type, and search filters together",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > returns all assets when every filter is inactive",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > returns all assets when every filter is inactive",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by name asc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by name asc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by name desc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by name desc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by modified asc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by modified asc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by modified desc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by modified desc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by size asc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by size asc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by size desc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by size desc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by type asc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by type asc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by type desc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by type desc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts names naturally and case-insensitively",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts names naturally and case-insensitively",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > breaks primary-value ties by name ascending for both directions",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > breaks primary-value ties by name ascending for both directions",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > does not mutate the input",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > does not mutate the input",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/print-ready.test.ts::waitForFonts > awaits document.fonts.ready without force-loading any face",
+          "file": "packages/core/src/app/lib/print-ready.test.ts",
+          "name": "waitForFonts > awaits document.fonts.ready without force-loading any face",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/print-ready.test.ts::waitForFonts > resolves when the FontFaceSet API is unavailable",
+          "file": "packages/core/src/app/lib/print-ready.test.ts",
+          "name": "waitForFonts > resolves when the FontFaceSet API is unavailable",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/sdk.test.ts::canvas constants > targets a 1920x1080 canvas",
+          "file": "packages/core/src/app/lib/sdk.test.ts",
+          "name": "canvas constants > targets a 1920x1080 canvas",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/sdk.test.ts::canvas constants > preserves a 16:9 aspect ratio",
+          "file": "packages/core/src/app/lib/sdk.test.ts",
+          "name": "canvas constants > preserves a 16:9 aspect ratio",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/use-document-title.test.ts::packages/core/src/app/lib/use-document-title.test.ts",
+          "file": "packages/core/src/app/lib/use-document-title.test.ts",
+          "name": "packages/core/src/app/lib/use-document-title.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package 'react' imported from /tmp/trustbut-wt-nV2Tqd/packages/core/src/app/lib/use-document-title.ts"
+        },
+        {
+          "id": "packages/core/src/app/lib/utils.test.ts::packages/core/src/app/lib/utils.test.ts",
+          "file": "packages/core/src/app/lib/utils.test.ts",
+          "name": "packages/core/src/app/lib/utils.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package 'clsx' imported from /tmp/trustbut-wt-nV2Tqd/packages/core/src/app/lib/utils.ts"
+        },
+        {
+          "id": "packages/core/src/vite/routes/update.test.ts::packages/core/src/vite/routes/update.test.ts",
+          "file": "packages/core/src/vite/routes/update.test.ts",
+          "name": "packages/core/src/vite/routes/update.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@babel/parser' imported from /tmp/trustbut-wt-nV2Tqd/packages/core/src/editing/slide-ops.ts"
+        },
+        {
+          "id": "packages/core/src/app/lib/inspector/fiber.test.ts::findSlideSource primary path > reads line:column from data-slide-loc",
+          "file": "packages/core/src/app/lib/inspector/fiber.test.ts",
+          "name": "findSlideSource primary path > reads line:column from data-slide-loc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/inspector/fiber.test.ts::findSlideSource fallback > matches a POSIX fileName",
+          "file": "packages/core/src/app/lib/inspector/fiber.test.ts",
+          "name": "findSlideSource fallback > matches a POSIX fileName",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/inspector/fiber.test.ts::findSlideSource fallback > matches a Windows-backslash fileName",
+          "file": "packages/core/src/app/lib/inspector/fiber.test.ts",
+          "name": "findSlideSource fallback > matches a Windows-backslash fileName",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/inspector/fiber.test.ts::findSlideSource fallback > matches a fileName carrying an HMR ?t= query",
+          "file": "packages/core/src/app/lib/inspector/fiber.test.ts",
+          "name": "findSlideSource fallback > matches a fileName carrying an HMR ?t= query",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/inspector/fiber.test.ts::findSlideSource fallback > matches a Windows fileName with an HMR query",
+          "file": "packages/core/src/app/lib/inspector/fiber.test.ts",
+          "name": "findSlideSource fallback > matches a Windows fileName with an HMR query",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/inspector/fiber.test.ts::findSlideSource fallback > returns null when the fiber fileName points at a different slideId",
+          "file": "packages/core/src/app/lib/inspector/fiber.test.ts",
+          "name": "findSlideSource fallback > returns null when the fiber fileName points at a different slideId",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/inspector/fiber.test.ts::findSlideSource fallback > walks up the fiber chain until it finds a matching source",
+          "file": "packages/core/src/app/lib/inspector/fiber.test.ts",
+          "name": "findSlideSource fallback > walks up the fiber chain until it finds a matching source",
+          "outcome": "pass"
+        }
+      ]
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 698,
+      "cases": [
+        {
+          "id": "packages/core/src/app/lib/use-document-title.test.ts::packages/core/src/app/lib/use-document-title.test.ts",
+          "file": "packages/core/src/app/lib/use-document-title.test.ts",
+          "name": "packages/core/src/app/lib/use-document-title.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module './use-document-title.ts' imported from /tmp/trustbut-wt-dyrAkm/packages/core/src/app/lib/use-document-title.test.ts"
+        }
+      ]
+    }
+  }
+}

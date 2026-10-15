@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "1eb370f20530bd1312ac86a27782ef8501b28ade",
+    "head": "522762068a378290e2627c17165c612bf114fa2f"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 900 s"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 901127,
+      "timedOut": true,
+      "cases": []
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 3042,
+      "cases": [
+        {
+          "id": "src/lib/actions/sandbox/connect-probe-observe.test.ts::src/lib/actions/sandbox/connect-probe-observe.test.ts",
+          "file": "src/lib/actions/sandbox/connect-probe-observe.test.ts",
+          "name": "src/lib/actions/sandbox/connect-probe-observe.test.ts",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-BRGUbY/dist/managed-inference/catalog.json'"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "id": "kyegomez__swarms__2590",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.12",
+      "install": [
+        "uv pip install -e .",
+        "uv pip install -r requirements.txt",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 2149,
+    "verifyMs": 437713
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.4.0"
+}

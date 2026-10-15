@@ -1,0 +1,23 @@
+{
+  "id": "vbenjs__vue-vben-admin__8393",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "24.16.0",
+      "pm": "pnpm",
+      "install": "pnpm install --frozen-lockfile"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 46257,
+    "verifyMs": 19365
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.4.0"
+}

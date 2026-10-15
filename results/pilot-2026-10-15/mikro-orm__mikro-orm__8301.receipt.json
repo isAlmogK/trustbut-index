@@ -1,0 +1,187 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "4cb1ce31f60f7a225b5462edf9db9975a8ca356a",
+    "head": "b96b717aed335beafe2db74627efc25c00ac1654"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 900 s"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 903104,
+      "timedOut": true,
+      "cases": []
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 5309,
+      "cases": [
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::SqliteDriver > find explicitly selects an embedded formula",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "SqliteDriver > find explicitly selects an embedded formula",
+          "outcome": "fail",
+          "message": "no such column: i0.unsettled_amount"
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::SqliteDriver > findAndCount selects an embedded formula with a narrow populated relation",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "SqliteDriver > findAndCount selects an embedded formula with a narrow populated relation",
+          "outcome": "fail",
+          "message": "no such column: i0.unsettled_amount"
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::SqliteDriver > selects formulas when selecting the whole embeddable",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "SqliteDriver > selects formulas when selecting the whole embeddable",
+          "outcome": "fail",
+          "message": "no such column: i0.unsettled_amount"
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::SqliteDriver > query builder expands the whole embeddable including its formula",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "SqliteDriver > query builder expands the whole embeddable including its formula",
+          "outcome": "fail",
+          "message": "expected { Object (finalPrice, settledAmount) } to deeply equal { finalPrice: 100, …(2) }"
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::SqliteDriver > root wildcard evaluates the embedded formula",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "SqliteDriver > root wildcard evaluates the embedded formula",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::SqliteDriver > selects an embedded formula through a joined populated relation",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "SqliteDriver > selects an embedded formula through a joined populated relation",
+          "outcome": "fail",
+          "message": "no such column: i0.unsettled_amount"
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::SqliteDriver > selects an embedded formula through a select-in populated relation",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "SqliteDriver > selects an embedded formula through a select-in populated relation",
+          "outcome": "fail",
+          "message": "no such column: i0.unsettled_amount"
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::SqliteDriver > query builder resolves an embedded formula in having",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "SqliteDriver > query builder resolves an embedded formula in having",
+          "outcome": "fail",
+          "message": "no such column: inv.unsettled_amount"
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::SqliteDriver > query builder preserves a custom formula result alias",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "SqliteDriver > query builder preserves a custom formula result alias",
+          "outcome": "fail",
+          "message": "no such column: inv.unsettled_amount"
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::SqliteDriver > query builder selects the formula with the table and column aliases",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "SqliteDriver > query builder selects the formula with the table and column aliases",
+          "outcome": "fail",
+          "message": "expected 'select \"inv\".\"invoice_sequence\", \"inv…' to be 'select \"inv\".\"invoice_sequence\", roun…' // Object.is equality"
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::PgliteDriver > find explicitly selects an embedded formula",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "PgliteDriver > find explicitly selects an embedded formula",
+          "outcome": "fail",
+          "message": "column i0.unsettled_amount does not exist - hint: Perhaps you meant to reference the column \"i0.settled_amount\"."
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::PgliteDriver > findAndCount selects an embedded formula with a narrow populated relation",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "PgliteDriver > findAndCount selects an embedded formula with a narrow populated relation",
+          "outcome": "fail",
+          "message": "column i0.unsettled_amount does not exist - hint: Perhaps you meant to reference the column \"i0.settled_amount\"."
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::PgliteDriver > selects formulas when selecting the whole embeddable",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "PgliteDriver > selects formulas when selecting the whole embeddable",
+          "outcome": "fail",
+          "message": "column i0.unsettled_amount does not exist - hint: Perhaps you meant to reference the column \"i0.settled_amount\"."
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::PgliteDriver > query builder expands the whole embeddable including its formula",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "PgliteDriver > query builder expands the whole embeddable including its formula",
+          "outcome": "fail",
+          "message": "expected { Object (finalPrice, settledAmount) } to deeply equal { finalPrice: 100, …(2) }"
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::PgliteDriver > root wildcard evaluates the embedded formula",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "PgliteDriver > root wildcard evaluates the embedded formula",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::PgliteDriver > selects an embedded formula through a joined populated relation",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "PgliteDriver > selects an embedded formula through a joined populated relation",
+          "outcome": "fail",
+          "message": "column i0.unsettled_amount does not exist - hint: Perhaps you meant to reference the column \"i0.settled_amount\"."
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::PgliteDriver > selects an embedded formula through a select-in populated relation",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "PgliteDriver > selects an embedded formula through a select-in populated relation",
+          "outcome": "fail",
+          "message": "column i0.unsettled_amount does not exist - hint: Perhaps you meant to reference the column \"i0.settled_amount\"."
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::PgliteDriver > query builder resolves an embedded formula in having",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "PgliteDriver > query builder resolves an embedded formula in having",
+          "outcome": "fail",
+          "message": "column inv.unsettled_amount does not exist"
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::PgliteDriver > query builder preserves a custom formula result alias",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "PgliteDriver > query builder preserves a custom formula result alias",
+          "outcome": "fail",
+          "message": "column inv.unsettled_amount does not exist"
+        },
+        {
+          "id": "tests/features/embeddables/embedded-formula-fields.test.ts::PgliteDriver > query builder selects the formula with the table and column aliases",
+          "file": "tests/features/embeddables/embedded-formula-fields.test.ts",
+          "name": "PgliteDriver > query builder selects the formula with the table and column aliases",
+          "outcome": "fail",
+          "message": "expected 'select \"inv\".\"invoice_sequence\", \"inv…' to be 'select \"inv\".\"invoice_sequence\", roun…' // Object.is equality"
+        }
+      ]
+    }
+  }
+}

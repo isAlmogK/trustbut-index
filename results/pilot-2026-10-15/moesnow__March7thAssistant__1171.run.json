@@ -1,0 +1,27 @@
+{
+  "id": "moesnow__March7thAssistant__1171",
+  "status": "setup-failed",
+  "stage": "install",
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.13",
+      "install": [
+        "uv pip install -e .",
+        "uv pip install --group dev",
+        "uv pip install -r requirements.txt",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 5258,
+    "verifyMs": 0
+  },
+  "exitCodes": {
+    "install": 1,
+    "verify": null
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "unknown"
+}

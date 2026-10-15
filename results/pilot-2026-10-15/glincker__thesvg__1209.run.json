@@ -1,0 +1,23 @@
+{
+  "id": "glincker__thesvg__1209",
+  "status": "setup-failed",
+  "stage": "install",
+  "recipe": {
+    "node": {
+      "version": "22",
+      "pm": "pnpm",
+      "install": "pnpm install --frozen-lockfile"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 2252,
+    "verifyMs": 0
+  },
+  "exitCodes": {
+    "install": 1,
+    "verify": null
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "unknown"
+}

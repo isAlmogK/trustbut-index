@@ -1,0 +1,23 @@
+{
+  "id": "binaricat__Netcatty__3411",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "24",
+      "pm": "npm",
+      "install": "npm ci"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 51548,
+    "verifyMs": 203843
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.4.0"
+}

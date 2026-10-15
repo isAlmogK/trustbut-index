@@ -1,0 +1,60 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "8c8809169686dc61ac146cb15f1ba9b0478a58c9",
+    "head": "ab3ba2feac9cb079dcd8d1708bbaf9a5bbc15df0"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "}"
+    },
+    {
+      "id": "base-run-failed",
+      "severity": "warn",
+      "title": "Changed tests could not run at base; fail-before evidence unavailable (exit 1)"
+    }
+  ],
+  "risks": [
+    {
+      "file": "packages/@sanity/vision/src/components/VisionGui.test.tsx",
+      "score": 1,
+      "reasons": [
+        "large change (330 lines)"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 590,
+      "cases": []
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 533,
+      "cases": []
+    }
+  }
+}

@@ -1,0 +1,217 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "f633b8a8bca427ee426ff22b182a9dc2cc50e1d4",
+    "head": "faa8c1b54495c2843ea68fae0a0ba3676ad27e0f"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 900 s"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 900037,
+      "timedOut": true,
+      "cases": []
+    },
+    "before": {
+      "exitCode": 0,
+      "durationMs": 5042,
+      "cases": [
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria::test_default_path_points_at_agent_dir[trajectory_tool_used]",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria",
+          "name": "test_default_path_points_at_agent_dir[trajectory_tool_used]",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria::test_default_path_points_at_agent_dir[trajectory_turn_count]",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria",
+          "name": "test_default_path_points_at_agent_dir[trajectory_turn_count]",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria::test_default_path_points_at_agent_dir[trajectory_tool_not_used]",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria",
+          "name": "test_default_path_points_at_agent_dir[trajectory_tool_not_used]",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestLoadTrajectory::test_valid_file",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestLoadTrajectory",
+          "name": "test_valid_file",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestLoadTrajectory::test_missing_file",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestLoadTrajectory",
+          "name": "test_missing_file",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestLoadTrajectory::test_invalid_json",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestLoadTrajectory",
+          "name": "test_invalid_json",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestCountAgentTurns::test_mixed_sources",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestCountAgentTurns",
+          "name": "test_mixed_sources",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestCountAgentTurns::test_empty_steps",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestCountAgentTurns",
+          "name": "test_empty_steps",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestCountAgentTurns::test_no_steps_key",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestCountAgentTurns",
+          "name": "test_no_steps_key",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestCollectToolCalls::test_collects_across_steps",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestCollectToolCalls",
+          "name": "test_collects_across_steps",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestCollectToolCalls::test_no_tool_calls",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestCollectToolCalls",
+          "name": "test_no_tool_calls",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryTurnCount::test_within_budget",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryTurnCount",
+          "name": "test_within_budget",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryTurnCount::test_exactly_at_budget",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryTurnCount",
+          "name": "test_exactly_at_budget",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryTurnCount::test_over_budget_partial",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryTurnCount",
+          "name": "test_over_budget_partial",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryTurnCount::test_double_budget_zero",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryTurnCount",
+          "name": "test_double_budget_zero",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryTurnCount::test_over_double_budget_clamped",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryTurnCount",
+          "name": "test_over_double_budget_clamped",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryTurnCount::test_missing_trajectory",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryTurnCount",
+          "name": "test_missing_trajectory",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryTurnCount::test_ignores_non_agent_steps",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryTurnCount",
+          "name": "test_ignores_non_agent_steps",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolUsed::test_tool_present",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolUsed",
+          "name": "test_tool_present",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolUsed::test_tool_absent",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolUsed",
+          "name": "test_tool_absent",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolUsed::test_min_count",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolUsed",
+          "name": "test_min_count",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolUsed::test_min_count_not_met",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolUsed",
+          "name": "test_min_count_not_met",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolUsed::test_missing_trajectory",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolUsed",
+          "name": "test_missing_trajectory",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolUsed::test_no_tool_calls",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolUsed",
+          "name": "test_no_tool_calls",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolNotUsed::test_tool_absent",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolNotUsed",
+          "name": "test_tool_absent",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolNotUsed::test_tool_present",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolNotUsed",
+          "name": "test_tool_present",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolNotUsed::test_missing_trajectory",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolNotUsed",
+          "name": "test_missing_trajectory",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolNotUsed::test_empty_steps",
+          "file": "packages.rewardkit.tests.unit.test_trajectory_criteria.TestTrajectoryToolNotUsed",
+          "name": "test_empty_steps",
+          "outcome": "pass"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,534 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "aebff173410b4c85f06e7d9d6018dd4ff3a01d02",
+    "head": "74e2540d3bf464d9e9086a8241972e72d35adb21"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 35,
+    "failed": 35,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [
+    {
+      "file": "tests/events.test.ts",
+      "name": "tests/events.test.ts",
+      "before": "fail",
+      "after": "fail",
+      "verdict": "failing"
+    }
+  ],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 1"
+    },
+    {
+      "id": "test-failing",
+      "severity": "fail",
+      "title": "Test fails at head",
+      "file": "tests/events.test.ts",
+      "detail": "tests/events.test.ts"
+    }
+  ],
+  "risks": [
+    {
+      "file": "tests/events.test.ts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 8512,
+      "cases": [
+        {
+          "id": "tests/async_fifo_queue.test.ts::AsyncFIFOQueue > empty queue",
+          "file": "tests/async_fifo_queue.test.ts",
+          "name": "AsyncFIFOQueue > empty queue",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/async_fifo_queue.test.ts::AsyncFIFOQueue > handles a promise that rejects",
+          "file": "tests/async_fifo_queue.test.ts",
+          "name": "AsyncFIFOQueue > handles a promise that rejects",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/async_fifo_queue.test.ts::AsyncFIFOQueue > add several promises and wait for them to complete",
+          "file": "tests/async_fifo_queue.test.ts",
+          "name": "AsyncFIFOQueue > add several promises and wait for them to complete",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/async_fifo_queue.test.ts::AsyncFIFOQueue > add several promises and wait for them to complete in order",
+          "file": "tests/async_fifo_queue.test.ts",
+          "name": "AsyncFIFOQueue > add several promises and wait for them to complete in order",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/async_fifo_queue.test.ts::AsyncFIFOQueue > add several promises with random delays and wait for them to complete in order",
+          "file": "tests/async_fifo_queue.test.ts",
+          "name": "AsyncFIFOQueue > add several promises with random delays and wait for them to complete in order",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/async_fifo_queue.test.ts::AsyncFIFOQueue > add several promises while fetching them concurrently",
+          "file": "tests/async_fifo_queue.test.ts",
+          "name": "AsyncFIFOQueue > add several promises while fetching them concurrently",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/async_fifo_queue.test.ts::AsyncFIFOQueue > should handle promises that get rejected and don't block the queue",
+          "file": "tests/async_fifo_queue.test.ts",
+          "name": "AsyncFIFOQueue > should handle promises that get rejected and don't block the queue",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/bulk.test.ts::tests/bulk.test.ts",
+          "file": "tests/bulk.test.ts",
+          "name": "tests/bulk.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/child-pool.test.ts::tests/child-pool.test.ts",
+          "file": "tests/child-pool.test.ts",
+          "name": "tests/child-pool.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/child_stdio_null.test.ts::Child.init with null stdout/stderr > keeps the inlined enum values in the mock in sync with the real enums",
+          "file": "tests/child_stdio_null.test.ts",
+          "name": "Child.init with null stdout/stderr > keeps the inlined enum values in the mock in sync with the real enums",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/child_stdio_null.test.ts::Child.init with null stdout/stderr > does not throw a TypeError when parent.stdout and parent.stderr are null",
+          "file": "tests/child_stdio_null.test.ts",
+          "name": "Child.init with null stdout/stderr > does not throw a TypeError when parent.stdout and parent.stderr are null",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/clean.redis.test.ts::tests/clean.redis.test.ts",
+          "file": "tests/clean.redis.test.ts",
+          "name": "tests/clean.redis.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/clean.test.ts::tests/clean.test.ts",
+          "file": "tests/clean.test.ts",
+          "name": "tests/clean.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/concurrency.test.ts::tests/concurrency.test.ts",
+          "file": "tests/concurrency.test.ts",
+          "name": "tests/concurrency.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/connection-closed-error.test.ts::ConnectionClosedError > exposes a local connection closed message matching ioredis",
+          "file": "tests/connection-closed-error.test.ts",
+          "name": "ConnectionClosedError > exposes a local connection closed message matching ioredis",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/connection-closed-error.test.ts::ConnectionClosedError > treats a ConnectionClosedError as a connection error",
+          "file": "tests/connection-closed-error.test.ts",
+          "name": "ConnectionClosedError > treats a ConnectionClosedError as a connection error",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/connection-closed-error.test.ts::ConnectionClosedError > treats the connection closed message as a connection error",
+          "file": "tests/connection-closed-error.test.ts",
+          "name": "ConnectionClosedError > treats the connection closed message as a connection error",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/connection-closed-error.test.ts::ConnectionClosedError > treats an unrelated error as not a connection error",
+          "file": "tests/connection-closed-error.test.ts",
+          "name": "ConnectionClosedError > treats an unrelated error as not a connection error",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/deduplication.test.ts::tests/deduplication.test.ts",
+          "file": "tests/deduplication.test.ts",
+          "name": "tests/deduplication.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/delay.redis.test.ts::tests/delay.redis.test.ts",
+          "file": "tests/delay.redis.test.ts",
+          "name": "tests/delay.redis.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/delay.test.ts::tests/delay.test.ts",
+          "file": "tests/delay.test.ts",
+          "name": "tests/delay.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/events.redis.test.ts::tests/events.redis.test.ts",
+          "file": "tests/events.redis.test.ts",
+          "name": "tests/events.redis.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/events.test.ts::tests/events.test.ts",
+          "file": "tests/events.test.ts",
+          "name": "tests/events.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/flow.redis.test.ts::tests/flow.redis.test.ts",
+          "file": "tests/flow.redis.test.ts",
+          "name": "tests/flow.redis.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/flow.test.ts::tests/flow.test.ts",
+          "file": "tests/flow.test.ts",
+          "name": "tests/flow.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/getters.redis.test.ts::tests/getters.redis.test.ts",
+          "file": "tests/getters.redis.test.ts",
+          "name": "tests/getters.redis.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/getters.test.ts::tests/getters.test.ts",
+          "file": "tests/getters.test.ts",
+          "name": "tests/getters.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/ioredis-client.test.ts::createIORedisClient duplicate routing > should route duplicate({ connectionName }) through redisOptions for Cluster",
+          "file": "tests/ioredis-client.test.ts",
+          "name": "createIORedisClient duplicate routing > should route duplicate({ connectionName }) through redisOptions for Cluster",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/ioredis-client.test.ts::createIORedisClient duplicate routing > should pass options directly for non-Cluster Redis",
+          "file": "tests/ioredis-client.test.ts",
+          "name": "createIORedisClient duplicate routing > should pass options directly for non-Cluster Redis",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/ioredis-client.test.ts::createIORedisClient does not mutate the raw client > should not add bullmq markers or override methods on the raw ioredis instance",
+          "file": "tests/ioredis-client.test.ts",
+          "name": "createIORedisClient does not mutate the raw client > should not add bullmq markers or override methods on the raw ioredis instance",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/ioredis-client.test.ts::createIORedisClient does not mutate the raw client > should return the same proxy when wrapping the same raw client twice",
+          "file": "tests/ioredis-client.test.ts",
+          "name": "createIORedisClient does not mutate the raw client > should return the same proxy when wrapping the same raw client twice",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/ioredis-client.test.ts::createIORedisClient does not mutate the raw client > should be idempotent when called with an already-wrapped client",
+          "file": "tests/ioredis-client.test.ts",
+          "name": "createIORedisClient does not mutate the raw client > should be idempotent when called with an already-wrapped client",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/job.redis.test.ts::tests/job.redis.test.ts",
+          "file": "tests/job.redis.test.ts",
+          "name": "tests/job.redis.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/job.test.ts::tests/job.test.ts",
+          "file": "tests/job.test.ts",
+          "name": "tests/job.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/job_cancellation.test.ts::tests/job_cancellation.test.ts",
+          "file": "tests/job_cancellation.test.ts",
+          "name": "tests/job_cancellation.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/job_cancellation_advanced.test.ts::tests/job_cancellation_advanced.test.ts",
+          "file": "tests/job_cancellation_advanced.test.ts",
+          "name": "tests/job_cancellation_advanced.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/job_scheduler.redis.test.ts::tests/job_scheduler.redis.test.ts",
+          "file": "tests/job_scheduler.redis.test.ts",
+          "name": "tests/job_scheduler.redis.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/job_scheduler.test.ts::tests/job_scheduler.test.ts",
+          "file": "tests/job_scheduler.test.ts",
+          "name": "tests/job_scheduler.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/job_scheduler_stress.test.ts::tests/job_scheduler_stress.test.ts",
+          "file": "tests/job_scheduler_stress.test.ts",
+          "name": "tests/job_scheduler_stress.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/lock_manager.test.ts::tests/lock_manager.test.ts",
+          "file": "tests/lock_manager.test.ts",
+          "name": "tests/lock_manager.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/metrics.test.ts::tests/metrics.test.ts",
+          "file": "tests/metrics.test.ts",
+          "name": "tests/metrics.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/obliterate.redis.test.ts::tests/obliterate.redis.test.ts",
+          "file": "tests/obliterate.redis.test.ts",
+          "name": "tests/obliterate.redis.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/obliterate.test.ts::tests/obliterate.test.ts",
+          "file": "tests/obliterate.test.ts",
+          "name": "tests/obliterate.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/pause.test.ts::tests/pause.test.ts",
+          "file": "tests/pause.test.ts",
+          "name": "tests/pause.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/postgres-queue-backend.test.ts::PostgresQueueBackend > batches lock renewal with the shared SQL command",
+          "file": "tests/postgres-queue-backend.test.ts",
+          "name": "PostgresQueueBackend > batches lock renewal with the shared SQL command",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/queue.redis.test.ts::tests/queue.redis.test.ts",
+          "file": "tests/queue.redis.test.ts",
+          "name": "tests/queue.redis.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/queue.test.ts::tests/queue.test.ts",
+          "file": "tests/queue.test.ts",
+          "name": "tests/queue.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/rate_limiter.test.ts::tests/rate_limiter.test.ts",
+          "file": "tests/rate_limiter.test.ts",
+          "name": "tests/rate_limiter.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/script_loader.test.ts::tests/script_loader.test.ts",
+          "file": "tests/script_loader.test.ts",
+          "name": "tests/script_loader.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/scripts.test.ts::tests/scripts.test.ts",
+          "file": "tests/scripts.test.ts",
+          "name": "tests/scripts.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/stalled_jobs.test.ts::tests/stalled_jobs.test.ts",
+          "file": "tests/stalled_jobs.test.ts",
+          "name": "tests/stalled_jobs.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/telemetry_interface.test.ts::tests/telemetry_interface.test.ts",
+          "file": "tests/telemetry_interface.test.ts",
+          "name": "tests/telemetry_interface.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > preserves the raw constructor context when duplicating clients",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > preserves the raw constructor context when duplicating clients",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > maps core commands and normalizes responses",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > maps core commands and normalizes responses",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > supports ioredis-compatible helper commands used by the test suite",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > supports ioredis-compatible helper commands used by the test suite",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > falls back from EVALSHA to EVAL on NOSCRIPT",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > falls back from EVALSHA to EVAL on NOSCRIPT",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > falls back from EVALSHA to EVAL on NoScriptError",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > falls back from EVALSHA to EVAL on NoScriptError",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > duplicates client via createClient and applies connectionName",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > duplicates client via createClient and applies connectionName",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > reconnects duplicated clients after disconnecting",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > reconnects duplicated clients after disconnecting",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > uses the string decoder for CLIENT commands",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > uses the string decoder for CLIENT commands",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > supports MULTI/pipeline style transactions",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > supports MULTI/pipeline style transactions",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > uses string decoder while queueing MULTI commands",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > uses string decoder while queueing MULTI commands",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > uses native batch execution when available",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > uses native batch execution when available",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > reports wait status until connect is called",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > reports wait status until connect is called",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > emits ready again after disconnect and reconnect",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > emits ready again after disconnect and reconnect",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > waits for in-flight commands before closing the raw client",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > waits for in-flight commands before closing the raw client",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > closes the raw client immediately for blocking commands",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > closes the raw client immediately for blocking commands",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/valkey-glide-client.test.ts::ValkeyGlideAdapter > throws ConnectionClosedError for commands issued after disconnect",
+          "file": "tests/valkey-glide-client.test.ts",
+          "name": "ValkeyGlideAdapter > throws ConnectionClosedError for commands issued after disconnect",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/worker.redis.test.ts::tests/worker.redis.test.ts",
+          "file": "tests/worker.redis.test.ts",
+          "name": "tests/worker.redis.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        },
+        {
+          "id": "tests/worker.test.ts::tests/worker.test.ts",
+          "file": "tests/worker.test.ts",
+          "name": "tests/worker.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-ODDKPF/src/classes/redis-connection.ts"
+        }
+      ]
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 1062,
+      "cases": [
+        {
+          "id": "tests/events.test.ts::tests/events.test.ts",
+          "file": "tests/events.test.ts",
+          "name": "tests/events.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../scripts' imported from /tmp/trustbut-wt-8lBblR/src/classes/redis-connection.ts"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.0",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.4.0"
+  },
+  "subject": {
+    "base": "c51ba38a830b6b85201cc632bdc8fc148380a0ff",
+    "head": "b281fa70da45e816f690e33289e1ed965f31db3d"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 900 s"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 901318,
+      "timedOut": true,
+      "cases": []
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 1458,
+      "cases": [
+        {
+          "id": "src/lib/onboard/sandbox-fresh-readiness.test.ts::src/lib/onboard/sandbox-fresh-readiness.test.ts",
+          "file": "src/lib/onboard/sandbox-fresh-readiness.test.ts",
+          "name": "src/lib/onboard/sandbox-fresh-readiness.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../../../../nemoclaw/dist/shared/openshell-gateway-endpoint-boundary.cjs' imported from /tmp/trustbut-wt-SiFwTL/src/lib/adapters/openshell/client.ts"
+        },
+        {
+          "id": "src/lib/onboard/sandbox-gpu-create-flow.test.ts::src/lib/onboard/sandbox-gpu-create-flow.test.ts",
+          "file": "src/lib/onboard/sandbox-gpu-create-flow.test.ts",
+          "name": "src/lib/onboard/sandbox-gpu-create-flow.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../../../../nemoclaw/dist/shared/openshell-gateway-endpoint-boundary.cjs' imported from /tmp/trustbut-wt-SiFwTL/src/lib/adapters/openshell/client.ts"
+        }
+      ]
+    }
+  }
+}
