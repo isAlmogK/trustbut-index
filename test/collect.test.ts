@@ -16,7 +16,7 @@ function fakeApi(routes: Record<string, unknown>, search: (q: string) => SearchI
     if (!(k in routes)) throw new NotFoundError(path);
     return routes[k] as T;
   };
-  return { get, paginate: get, search: async (q) => search(q) };
+  return { get, paginate: get, search: async (q) => search(q), graphql: async () => { throw new Error('graphql not used'); } };
 }
 
 const pull = (n: number, p: Record<string, unknown>) => ({

@@ -74,7 +74,7 @@ describe('GitHub client', () => {
     const gh = new GitHub({ fetch: f, now: () => t, sleep: async (ms) => { sleeps.push(ms); t += ms; } });
     expect(await gh.search('is:pr a')).toEqual([{ repo: 'o/r', number: 7 }]);
     await gh.search('is:pr b');
-    expect(sleeps).toEqual([3000]);
+    expect(sleeps).toEqual([1000]);
   });
 
   it('reads base64 file contents and returns null for missing files', async () => {
@@ -121,5 +121,86 @@ describe('apiCacheDir', () => {
     const sleeps: number[] = [];
     await new GitHub({ fetch: f, sleep: async (ms) => void sleeps.push(ms) }).get('/x');
     expect(sleeps).toEqual([60_000]);
+  });
+});
+
+describe('GitHub GraphQL', () => {
+  const Q = 'query($x: Int) { a(x: $x) }';
+
+  it('posts the query with auth and caches the data on disk', async () => {
+    const cacheDir = await mkdtemp(join(tmpdir(), 'gh-'));
+    const { f, calls, inits } = fakeFetch(() => json({ data: { a: 1 } }));
+    expect(await new GitHub({ token: 't', cacheDir, fetch: f }).graphql(Q, { x: 1 })).toEqual({ a: 1 });
+    expect(await new GitHub({ token: 't', cacheDir, fetch: f }).graphql(Q, { x: 1 })).toEqual({ a: 1 });
+    expect(calls).toEqual(['https://api.github.com/graphql']);
+    expect(inits[0]?.method).toBe('POST');
+    expect(JSON.parse(String(inits[0]?.body))).toEqual({ query: Q, variables: { x: 1 } });
+    const headers = inits[0]?.headers as Record<string, string>;
+    expect(headers.authorization).toBe('Bearer t');
+    expect(headers['content-type']).toBe('application/json');
+  });
+
+  it('caches per variables', async () => {
+    const cacheDir = await mkdtemp(join(tmpdir(), 'gh-'));
+    let n = 0;
+    const { f, calls } = fakeFetch(() => json({ data: { n: ++n } }));
+    const gh = new GitHub({ cacheDir, fetch: f });
+    expect(await gh.graphql(Q, { x: 1 })).toEqual({ n: 1 });
+    expect(await gh.graphql(Q, { x: 2 })).toEqual({ n: 2 });
+    expect(calls.length).toBe(2);
+  });
+
+  it('waits for the GraphQL reset on a RATE_LIMITED error, then retries', async () => {
+    let n = 0;
+    const { f } = fakeFetch(() =>
+      n++ === 0
+        ? json({ errors: [{ type: 'RATE_LIMITED', message: 'API rate limit exceeded' }] }, 200, {
+            'x-ratelimit-resource': 'graphql', 'x-ratelimit-remaining': '0', 'x-ratelimit-reset': '1010',
+          })
+        : json({ data: { ok: true } }),
+    );
+    const sleeps: number[] = [];
+    const gh = new GitHub({ fetch: f, now: () => 1_000_000, sleep: async (ms) => void sleeps.push(ms) });
+    expect(await gh.graphql(Q, {})).toEqual({ ok: true });
+    expect(sleeps).toEqual([11_000]);
+  });
+
+  it('returns the data when every error is NOT_FOUND', async () => {
+    const { f } = fakeFetch(() =>
+      json({ data: { repository: null }, errors: [{ type: 'NOT_FOUND', message: 'Could not resolve to a Repository' }] }),
+    );
+    expect(await new GitHub({ fetch: f }).graphql(Q, {})).toEqual({ repository: null });
+  });
+
+  it('throws on any other error and does not cache it', async () => {
+    const cacheDir = await mkdtemp(join(tmpdir(), 'gh-'));
+    const { f, calls } = fakeFetch(() => json({ errors: [{ type: 'INVALID', message: 'Field x does not exist' }] }));
+    await expect(new GitHub({ cacheDir, fetch: f }).graphql(Q, {})).rejects.toThrow('GitHub GraphQL: Field x does not exist');
+    await expect(new GitHub({ cacheDir, fetch: f }).graphql(Q, {})).rejects.toThrow('GitHub GraphQL');
+    expect(calls.length).toBe(2);
+  });
+
+  it('spaces uncached search calls one second apart, and only search calls', async () => {
+    const { f } = fakeFetch(() => json({ data: {} }));
+    const sleeps: number[] = [];
+    let t = 0;
+    const gh = new GitHub({ fetch: f, now: () => t, sleep: async (ms) => { sleeps.push(ms); t += ms; } });
+    await gh.graphql(Q, { x: 1 }, { search: true });
+    await gh.graphql(Q, { x: 2 }, { search: true });
+    await gh.graphql(Q, { x: 3 });
+    expect(sleeps).toEqual([1000]);
+  });
+
+  it('reports the remaining REST and GraphQL budgets from response headers', async () => {
+    const { f } = fakeFetch((url) =>
+      url.endsWith('/graphql')
+        ? json({ data: {} }, 200, { 'x-ratelimit-resource': 'graphql', 'x-ratelimit-remaining': '4000', 'x-ratelimit-reset': '1' })
+        : json({}, 200, { 'x-ratelimit-resource': 'core', 'x-ratelimit-remaining': '4990', 'x-ratelimit-reset': '1' }),
+    );
+    const gh = new GitHub({ fetch: f });
+    expect(gh.rateRemaining()).toEqual({ rest: undefined, graphql: undefined });
+    await gh.get('/x');
+    await gh.graphql(Q, {});
+    expect(gh.rateRemaining()).toEqual({ rest: 4990, graphql: 4000 });
   });
 });
