@@ -1,5 +1,7 @@
 # trustbut-index
 
+[![Sponsor](https://img.shields.io/badge/sponsor-%E2%99%A5-ea4aaa?logo=githubsponsors&logoColor=white)](https://github.com/sponsors/isAlmogK)
+
 A pre-registered study of [trustbut](https://github.com/isAlmogK/trustbut) receipts on real pull requests written by AI coding agents, compared with human pull requests from the same projects. The method is frozen in [`PREREGISTRATION.md`](PREREGISTRATION.md), and the finished report is published to GitHub Pages from [`site/`](site/).
 
 ## How it works
@@ -95,3 +97,11 @@ npx tsx src/cli.ts --help
 ## Opt-out
 
 Maintainers can opt out by opening an issue; the repo is added to [`excluded-repos.txt`](excluded-repos.txt).
+
+## Sponsor
+
+The study runs on GitHub Actions and API credit, and I run it in my own time. If the results are useful to you, [sponsoring me on GitHub](https://github.com/sponsors/isAlmogK) helps keep it going.
+
+## About me
+
+I'm Almog Koren, a software engineer in Tallinn and the author of [trustbut](https://github.com/isAlmogK/trustbut). I'm the founder and CTO of [DogBase](https://www.dogbase.co), and I build AI agents and the systems around them. **I'm open to work:** full-time roles, fractional CTO work and AI agent projects. See [almog.io](https://almog.io).
