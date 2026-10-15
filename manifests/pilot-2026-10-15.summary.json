@@ -1,0 +1,38 @@
+{
+  "window": {
+    "since": "2026-07-17",
+    "until": "2026-10-15"
+  },
+  "reposListed": 9240,
+  "searchHits": {
+    "copilot": 1418,
+    "codex": 73478,
+    "claude-code": 112648,
+    "cursor": 9680,
+    "devin": 3842,
+    "jules": 73
+  },
+  "uniqueHits": 199684,
+  "examined": {
+    "copilot": 147,
+    "codex": 183,
+    "claude-code": 359,
+    "cursor": 469,
+    "devin": 57,
+    "jules": 8
+  },
+  "reposChecked": 530,
+  "reposQualified": 190,
+  "ambiguous": 2,
+  "selected": {
+    "copilot": 20,
+    "codex": 20,
+    "claude-code": 20,
+    "cursor": 20,
+    "devin": 20,
+    "jules": 3
+  },
+  "humansSelected": 98,
+  "humanShortfall": 5,
+  "insufficient": []
+}
