@@ -91,6 +91,7 @@ This is today's algorithm applied to a lazily filtered queue. Filtering a seeded
 - **Retries:**
   - an HTTP 403 or 429 rate limit uses the existing `retryWait` rules;
   - a 200 response whose `errors` include `type: "RATE_LIMITED"` waits until `x-ratelimit-reset`;
+  - `errors` that are all `type: "NOT_FOUND"` return the data, whose missing objects are null (a renamed or deleted repo);
   - any other `errors` entry throws an error with the messages.
 - **Search throttle:** uncached calls made with `{ search: true }` (repo list and agent PR search) are spaced at least `searchIntervalMs` apart. The default changes from 3000 to 1000, because the REST search it was tuned for is removed.
 - **Rate limits:** the client keeps the last seen `x-ratelimit-remaining` for REST and GraphQL and exposes it as `rateRemaining(): { rest?: number; graphql?: number }`, used only for progress logs.
