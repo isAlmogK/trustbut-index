@@ -3,14 +3,9 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 export type FetchLike = (url: string, init?: RequestInit) => Promise<Response>;
-export interface SearchItem {
-  repo: string;
-  number: number;
-}
 export interface GitHubApi {
   get<T>(path: string): Promise<T>;
   paginate<T>(path: string, maxPages: number): Promise<T[]>;
-  search(q: string, maxPages?: number): Promise<SearchItem[]>;
   /** GraphQL query or search. `search: true` spaces uncached calls by the search interval. */
   graphql<T>(query: string, variables: Record<string, unknown>, opts?: { search?: boolean }): Promise<T>;
   /** Last seen remaining budget per API, for progress logs only. */
@@ -67,22 +62,6 @@ export class GitHub implements GitHubApi {
       const rows = await this.get<T[]>(`${path}${sep}per_page=100&page=${page}`);
       out.push(...rows);
       if (rows.length < 100) break;
-    }
-    return out;
-  }
-
-  async search(q: string, maxPages = 10): Promise<SearchItem[]> {
-    const out: SearchItem[] = [];
-    for (let page = 1; page <= maxPages; page++) {
-      const path = `/search/issues?q=${encodeURIComponent(q)}&per_page=100&page=${page}`;
-      let res = (await this.readCache(path)) as { items: { number: number; repository_url: string }[] } | undefined;
-      if (res === undefined) {
-        await this.throttleSearch();
-        res = (await this.request(path)) as { items: { number: number; repository_url: string }[] };
-        await this.writeCache(path, res);
-      }
-      for (const it of res.items) out.push({ repo: it.repository_url.replace(`${API}/repos/`, ''), number: it.number });
-      if (res.items.length < 100) break;
     }
     return out;
   }

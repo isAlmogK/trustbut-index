@@ -65,18 +65,6 @@ describe('GitHub client', () => {
     expect(calls[1]).toBe('https://api.github.com/repos/o/r/pulls?state=closed&per_page=100&page=2');
   });
 
-  it('searches issues, maps repo and number, and throttles', async () => {
-    const { f } = fakeFetch(() =>
-      json({ items: [{ number: 7, repository_url: 'https://api.github.com/repos/o/r' }] }),
-    );
-    const sleeps: number[] = [];
-    let t = 0;
-    const gh = new GitHub({ fetch: f, now: () => t, sleep: async (ms) => { sleeps.push(ms); t += ms; } });
-    expect(await gh.search('is:pr a')).toEqual([{ repo: 'o/r', number: 7 }]);
-    await gh.search('is:pr b');
-    expect(sleeps).toEqual([1000]);
-  });
-
   it('reads base64 file contents and returns null for missing files', async () => {
     const { f } = fakeFetch((url) =>
       url.includes('package.json')
