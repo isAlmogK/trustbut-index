@@ -1,6 +1,6 @@
 import { mkdtemp, readFile, writeFile, mkdir, chmod } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import { execa } from 'execa';
 import { describe, expect, it } from 'vitest';
 import { install, prepare, record, verify, type JobEnv } from '../src/run/job.js';
@@ -28,14 +28,35 @@ async function fixtureRemote() {
 async function env(gitBase: string): Promise<JobEnv> {
   const root = await mkdtemp(join(tmpdir(), 'job-'));
   const tbCli = join(root, 'fake-trustbut.mjs');
-  await writeFile(tbCli, `process.stdout.write(JSON.stringify({specVersion:'1.0',producer:{name:'trustbut',version:'0.4.0'},subject:{base:'b',head:'h'},verdict:'warn',findings:[],tests:{passed:2,failed:0,errored:0,skipped:0,scope:'full'}})); process.exit(0);`);
+  await writeFile(tbCli, `import { writeFileSync } from 'node:fs'; writeFileSync(new URL('./args.json', import.meta.url), JSON.stringify(process.argv.slice(2))); process.stdout.write(JSON.stringify({specVersion:'1.0',producer:{name:'trustbut',version:'0.4.0'},subject:{base:'b',head:'h'},verdict:'warn',findings:[],tests:{passed:2,failed:0,errored:0,skipped:0,scope:'full'}})); process.exit(0);`);
   await chmod(tbCli, 0o755);
-  return { work: join(root, 'work'), out: join(root, 'out'), gitBase, node22: process.execPath, tbCli, githubOutput: join(root, 'gh-output'), runnerImage: 'test' };
+  return { work: join(root, 'work'), out: join(root, 'out'), gitBase, node22: process.execPath, tbCli, tbConfig: join(root, 'trustbut.json'), githubOutput: join(root, 'gh-output'), runnerImage: 'test' };
 }
 
 const entry = (baseSha: string, headSha: string) => ({ id: 'o/r#1', repo: 'o/r', pr: 1, baseSha, headSha }) as ManifestEntry;
 
 describe('job steps', () => {
+  it('runs trustbut with the study config and output tails', async () => {
+    const { gitBase, baseSha, headSha } = await fixtureRemote();
+    const ev = await env(gitBase);
+    const ent = entry(baseSha, headSha);
+    await prepare(ent, ev);
+    const prep = JSON.parse(await readFile(join(ev.work, 'prep.json'), 'utf8'));
+    prep.recipe.node.install = 'true';
+    await writeFile(join(ev.work, 'prep.json'), JSON.stringify(prep));
+    await install(ev, { waitMs: 0 });
+    await verify(ent, ev);
+    const args = JSON.parse(await readFile(join(dirname(ev.tbCli), 'args.json'), 'utf8'));
+    expect(args).toEqual(['verify', '--base', baseSha, '--head', headSha, '--json', '--config', ev.tbConfig, '--output-tail']);
+  });
+
+  it('defaults the study config to config/trustbut.json in this repo, which sets the suite timeout', async () => {
+    const { jobEnv } = await import('../src/run/job.js');
+    const path = jobEnv({}).tbConfig;
+    expect(path.endsWith('/config/trustbut.json')).toBe(true);
+    expect(JSON.parse(await readFile(path, 'utf8'))).toEqual({ timeoutSec: 2400 });
+  });
+
   it('prepares, installs, verifies and records a run', async () => {
     const { gitBase, baseSha, headSha } = await fixtureRemote();
     const ev = await env(gitBase);

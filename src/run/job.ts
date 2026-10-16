@@ -1,6 +1,7 @@
 import { appendFile, mkdir } from 'node:fs/promises';
 import { join } from 'node:path';
 import { setTimeout as sleep } from 'node:timers/promises';
+import { fileURLToPath } from 'node:url';
 import { execa } from 'execa';
 import { readJsonOr, writeJson } from '../jsonl.js';
 import { fileId, type ManifestEntry, type Receipt, type Recipe, type RunRecord } from '../types.js';
@@ -20,6 +21,7 @@ export interface JobEnv {
   gitBase: string;
   node22: string;
   tbCli: string;
+  tbConfig: string;
   githubOutput?: string;
   runnerImage: string;
 }
@@ -32,6 +34,7 @@ export function jobEnv(env: NodeJS.ProcessEnv = process.env): JobEnv {
     gitBase: env.INDEX_GIT_BASE ?? 'https://github.com',
     node22: env.NODE22 ?? process.execPath,
     tbCli: env.TB_CLI ?? 'trustbut',
+    tbConfig: env.TB_CONFIG ?? fileURLToPath(new URL('../../config/trustbut.json', import.meta.url)),
     githubOutput: env.GITHUB_OUTPUT,
     runnerImage: `${env.ImageOS ?? 'unknown'}/${env.ImageVersion ?? 'unknown'}`,
   };
@@ -109,7 +112,9 @@ export async function verify(entry: ManifestEntry, env: JobEnv): Promise<void> {
   const result: StepResult = { exit: null, ms: 0 };
   if (inst.exit === 0) {
     const start = Date.now();
-    const r = await execa(env.node22, [env.tbCli, 'verify', '--base', entry.baseSha, '--head', entry.headSha, '--json'], {
+    // The study config replaces any .trustbut.json in the repo (no per-repo tuning); --output-tail keeps failure output in the receipt.
+    const args = ['verify', '--base', entry.baseSha, '--head', entry.headSha, '--json', '--config', env.tbConfig, '--output-tail'];
+    const r = await execa(env.node22, [env.tbCli, ...args], {
       cwd: repoDir(env), timeout: VERIFY_BUDGET_MS, reject: false, stderr: 'inherit',
     });
     result.exit = r.timedOut ? TIMEOUT_EXIT : (r.exitCode ?? 1);
