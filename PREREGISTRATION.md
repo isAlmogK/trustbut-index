@@ -3,7 +3,7 @@
 **Status:** draft until tagged `prereg-v1`. After the tag, changes require a new version, and the report lists them under "Deviations".
 
 ## Question
-On real, merged pull requests in established JS/TS and Python projects, does trustbut (trustbut 0.4.0 exactly; any other version is a deviation) produce findings that are right, that matter, and can it run at all? How do agent-written PRs compare with human PRs from the same projects?
+On real, merged pull requests in established JS/TS and Python projects, does trustbut (trustbut 0.5.0 exactly; any other version is a deviation) produce findings that are right, that matter, and can it run at all? How do agent-written PRs compare with human PRs from the same projects?
 
 ## Sample
 - Repos: public, not forks, not archived; ≥ 1,000 stars; primary language (as GitHub reports it) TypeScript, JavaScript, Python, Vue or Svelte; ≥ 10 distinct commit authors in the past 365 days; pushed within 30 days; a GitHub Actions workflow that runs tests; a JS/TS (Vitest, Jest, node:test, Mocha) or Python (pytest) test setup on the default branch; not in `excluded-repos.txt`.
@@ -27,7 +27,7 @@ Checked by hand on the pilot (Task 20). Each row records the share of pilot PRs 
 Search queries, each combined with `is:pr is:merged merged:<window>` and a batch of repos: copilot `author:app/copilot-swe-agent`; codex `"chatgpt.com/codex" in:body`, `head:codex`; claude-code `"Generated with Claude Code" in:body`, `author:app/claude`; cursor `head:cursor`, `"Cursor Agent" in:body`; devin `author:app/devin-ai-integration`; jules `author:app/google-labs-jules`.
 
 ## Procedure
-Each PR runs on a fresh GitHub-hosted `ubuntu-24.04` VM with a 60-minute limit. Within it, dependency installation gets 20 minutes and the trustbut run gets 35 minutes; a step that exceeds its budget is recorded as `timeout`. The setup is inferred from repo files only, with no per-repo tuning. Then trustbut runs: `verify --base <PR base SHA> --head <PR head SHA> --json`. Run status is assigned by the first matching rule, in this order:
+Each PR runs on a fresh GitHub-hosted `ubuntu-24.04` VM with a 120-minute limit. Within it, dependency installation gets 25 minutes and the trustbut run gets 85 minutes; a step that exceeds its budget is recorded as `timeout`. An install command that fails is run again up to two more times, 30 seconds apart, within the install budget; a timed-out command is not. The setup is inferred from repo files only, with no per-repo tuning. Then trustbut runs: `verify --base <PR base SHA> --head <PR head SHA> --json --config config/trustbut.json --output-tail`. `config/trustbut.json` sets a 2,400-second limit for each test run and replaces any `.trustbut.json` in the repo. Run status is assigned by the first matching rule, in this order:
 
 1. fetch failed → `setup-failed`
 2. no supported test setup inferred → `no-runner`

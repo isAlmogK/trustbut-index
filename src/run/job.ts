@@ -10,8 +10,8 @@ import { tail } from './tail.js';
 import { fsFiles, inferRecipe } from './recipe.js';
 import { TIMEOUT_EXIT, classify, looksLikeReceipt } from './status.js';
 
-export const INSTALL_BUDGET_MS = 20 * 60_000;
-export const VERIFY_BUDGET_MS = 35 * 60_000;
+export const INSTALL_BUDGET_MS = 25 * 60_000;
+export const VERIFY_BUDGET_MS = 85 * 60_000;
 export const MAX_INSTALL_ATTEMPTS = 3;
 export const RETRY_WAIT_MS = 30_000;
 
