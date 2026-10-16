@@ -102,3 +102,42 @@ describe('assemblePacket blinding gaps', () => {
     expect(p.diff[0]!.patch.toLowerCase()).not.toContain('claude');
   });
 });
+
+describe('assemblePacket for test-regressed', () => {
+  const finding = { id: 'test-regressed', severity: 'fail' as const, title: 'Test passes at base and fails at head', file: 'pkg/test/a.test.ts', detail: 'copilot adds' };
+  const reg: Receipt = {
+    specVersion: '1.1', producer: { name: 'trustbut', version: '0.5.0' }, subject: { base: 'b', head: 'h' }, verdict: 'fail',
+    findings: [finding], proofs: [],
+    'x-trustbut': {
+      after: { cases: [
+        { id: 'test/a.test.ts::copilot adds', file: 'test/a.test.ts', name: 'copilot adds', outcome: 'fail', message: 'expected 1 to be 2 (from copilot helper)' },
+        { id: 'test/b.test.ts::copilot adds', file: 'test/b.test.ts', name: 'copilot adds', outcome: 'pass' },
+      ] },
+      before: { cases: [{ id: 'test/a.test.ts::copilot adds', file: 'test/a.test.ts', name: 'copilot adds', outcome: 'pass' }] },
+    },
+  };
+  const regItem: SampleItem = { ...item, finding, family: 'red-at-head' };
+
+  it('adds the head case with its failure message and the base outcome, blinded', () => {
+    const p = assemblePacket(regItem, reg, { title: 'Fix', body: '' }, [], null);
+    expect(p.regression).toEqual({ name: '[agent] adds', before: 'pass', after: 'fail', message: 'expected 1 to be 2 (from [agent] helper)' });
+    expect(p.baseRun).toBe('[agent] adds: before pass, after fail (expected 1 to be 2 (from [agent] helper))');
+    expect(JSON.stringify(p)).not.toMatch(/copilot/i);
+  });
+
+  it('matches a case file reported as an absolute path and reports a base result that is missing', () => {
+    const abs: Receipt = { ...reg, 'x-trustbut': { after: { cases: [{ id: 'x', file: '/tmp/wt/pkg/test/a.test.ts', name: 'copilot adds', outcome: 'error' }] }, before: { cases: [] } } };
+    const p = assemblePacket(regItem, abs, { title: 'Fix', body: '' }, [], null);
+    expect(p.regression).toMatchObject({ before: 'missing', after: 'error' });
+    expect(p.regression).not.toHaveProperty('message');
+    expect(p.baseRun).toBe('[agent] adds: before missing, after error');
+  });
+
+  it('has no regression evidence when the receipt has no matching head case', () => {
+    const none: Receipt = { ...reg, 'x-trustbut': undefined };
+    const p = assemblePacket(regItem, none, { title: 'Fix', body: '' }, [], null);
+    expect(p.regression).toBeNull();
+    expect(p.baseRun).toBe('n/a');
+    expect(assemblePacket(item, receipt, { title: 'Fix', body: '' }, [], null).regression).toBeNull();
+  });
+});
