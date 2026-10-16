@@ -69,7 +69,7 @@ In `job install` (`src/run/job.ts`), a recipe command that exits non-zero is run
 
 - `runShell` (`src/run/exec.ts`) keeps streaming output to the job log and also captures it.
 - When install fails, `run.json` gains `installTail`: the last 50 lines and at most 4,000 characters of the failing command's output, ANSI codes removed.
-- Test output tails come from the receipt (`x-trustbut.after.outputTail`, `x-trustbut.before.outputTail`). The index adds no copy of its own.
+- Test output tails come from the receipt (`x-trustbut.after.outputTail`, `x-trustbut.before.outputTail`). trustbut writes them only when asked, so `job verify` passes `--output-tail`. The index adds no copy of its own.
 - `isRunRecord` accepts both new fields as optional, so `pilot-2026-10-15` results still validate.
 
 The `pr` jobs have no secrets, and the output comes from public repositories' own tests, so committing tails publicly exposes nothing the repos don't already print.
