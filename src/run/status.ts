@@ -49,6 +49,8 @@ export function isRunRecord(x: unknown): x is RunRecord {
     isRecipe(r.recipe) &&
     isObj(r.durations) && finite(r.durations.installMs) && finite(r.durations.verifyMs) &&
     isObj(r.exitCodes) && exitCode(r.exitCodes.install) && exitCode(r.exitCodes.verify) &&
+    (r.installRetries === undefined || (Number.isInteger(r.installRetries) && (r.installRetries as number) >= 0)) &&
+    (r.installTail === undefined || isStr(r.installTail)) &&
     isStr(r.runnerImage) &&
     isStr(r.trustbutVersion)
   );

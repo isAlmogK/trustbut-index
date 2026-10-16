@@ -63,6 +63,10 @@ export interface RunRecord {
   recipe: Recipe | null;
   durations: { installMs: number; verifyMs: number };
   exitCodes: { install: number | null; verify: number | null };
+  /** How many times a failed install command was run again (absent in runs before 2026-10-16). */
+  installRetries?: number;
+  /** The end of the failing install command's output (only when install failed). */
+  installTail?: string;
   runnerImage: string;
   trustbutVersion: string;
   note?: string;

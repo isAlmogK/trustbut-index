@@ -1,14 +1,18 @@
 import { appendFile, mkdir } from 'node:fs/promises';
 import { join } from 'node:path';
+import { setTimeout as sleep } from 'node:timers/promises';
 import { execa } from 'execa';
 import { readJsonOr, writeJson } from '../jsonl.js';
 import { fileId, type ManifestEntry, type Receipt, type Recipe, type RunRecord } from '../types.js';
 import { runShell } from './exec.js';
+import { tail } from './tail.js';
 import { fsFiles, inferRecipe } from './recipe.js';
 import { TIMEOUT_EXIT, classify, looksLikeReceipt } from './status.js';
 
-const INSTALL_BUDGET_MS = 20 * 60_000;
-const VERIFY_BUDGET_MS = 35 * 60_000;
+export const INSTALL_BUDGET_MS = 20 * 60_000;
+export const VERIFY_BUDGET_MS = 35 * 60_000;
+export const MAX_INSTALL_ATTEMPTS = 3;
+export const RETRY_WAIT_MS = 30_000;
 
 export interface JobEnv {
   work: string;
@@ -35,6 +39,7 @@ export function jobEnv(env: NodeJS.ProcessEnv = process.env): JobEnv {
 
 interface Prep { fetchOk: boolean; recipe: Recipe | null }
 interface StepResult { exit: number | null; ms: number }
+interface InstallResult extends StepResult { retries: number; tail?: string }
 
 const repoDir = (env: JobEnv) => join(env.work, 'repo');
 
@@ -69,18 +74,28 @@ export async function prepare(entry: ManifestEntry, env: JobEnv): Promise<void> 
   });
 }
 
-export async function install(env: JobEnv): Promise<void> {
+export async function install(env: JobEnv, opts: { waitMs?: number; budgetMs?: number } = {}): Promise<void> {
+  const { waitMs = RETRY_WAIT_MS, budgetMs = INSTALL_BUDGET_MS } = opts;
   const prep = await readJsonOr<Prep>(join(env.work, 'prep.json'), { fetchOk: false, recipe: null });
-  const result: StepResult = { exit: null, ms: 0 };
+  const result: InstallResult = { exit: null, ms: 0, retries: 0 };
   if (prep.fetchOk && prep.recipe) {
     const cmds = [...(prep.recipe.node ? [prep.recipe.node.install] : []), ...(prep.recipe.python?.install ?? [])];
     const start = Date.now();
+    const left = () => budgetMs - (Date.now() - start);
     result.exit = 0;
     for (const cmd of cmds) {
-      const left = INSTALL_BUDGET_MS - (Date.now() - start);
-      const r = left > 0 ? await runShell(cmd, repoDir(env), left) : { exit: TIMEOUT_EXIT, ms: 0 };
+      let r = { exit: TIMEOUT_EXIT, ms: 0, output: '' };
+      for (let attempt = 1; attempt <= MAX_INSTALL_ATTEMPTS; attempt++) {
+        r = left() > 0 ? await runShell(cmd, repoDir(env), left()) : { exit: TIMEOUT_EXIT, ms: 0, output: '' };
+        // A timeout is not retried; a network flake usually is.
+        if (r.exit === 0 || r.exit === TIMEOUT_EXIT || attempt === MAX_INSTALL_ATTEMPTS || left() <= waitMs) break;
+        await sleep(waitMs);
+        result.retries++;
+      }
       if (r.exit !== 0) {
         result.exit = r.exit;
+        const t = tail(r.output);
+        if (t) result.tail = t;
         break;
       }
     }
@@ -111,7 +126,7 @@ export async function verify(entry: ManifestEntry, env: JobEnv): Promise<void> {
 
 export async function record(entry: ManifestEntry, env: JobEnv): Promise<RunRecord> {
   const prep = await readJsonOr<Prep>(join(env.work, 'prep.json'), { fetchOk: false, recipe: null });
-  const inst = await readJsonOr<StepResult>(join(env.work, 'install.json'), { exit: null, ms: 0 });
+  const inst = await readJsonOr<InstallResult>(join(env.work, 'install.json'), { exit: null, ms: 0, retries: 0 });
   const ver = await readJsonOr<StepResult>(join(env.work, 'verify.json'), { exit: null, ms: 0 });
   const receipt = await readJsonOr<Receipt | null>(join(env.out, 'receipt.json'), null);
   const { status, stage } = classify({ fetchOk: prep.fetchOk, recipe: prep.recipe, installExit: inst.exit, verifyExit: ver.exit, receipt });
@@ -119,6 +134,8 @@ export async function record(entry: ManifestEntry, env: JobEnv): Promise<RunReco
     id: fileId(entry), status, stage, recipe: prep.recipe,
     durations: { installMs: inst.ms, verifyMs: ver.ms },
     exitCodes: { install: inst.exit, verify: ver.exit },
+    installRetries: inst.retries ?? 0,
+    ...(inst.exit !== 0 && inst.exit !== null && inst.tail ? { installTail: inst.tail } : {}),
     runnerImage: env.runnerImage,
     trustbutVersion: receipt?.producer.version ?? 'unknown',
   };

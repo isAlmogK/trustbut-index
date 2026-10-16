@@ -48,7 +48,7 @@ describe('job steps', () => {
 
     prep.recipe.node.install = 'true'; // don't run a real npm ci in unit tests
     await writeFile(join(ev.work, 'prep.json'), JSON.stringify(prep));
-    await install(ev);
+    await install(ev, { waitMs: 0 });
     await verify(ent, ev);
     const run = await record(ent, ev);
     expect(run).toMatchObject({ id: 'o__r__1', status: 'ran', stage: null, trustbutVersion: '0.4.0' });
@@ -61,7 +61,7 @@ describe('job steps', () => {
     const ev = await env(gitBase);
     const ent = entry('0'.repeat(40), '1'.repeat(40));
     await prepare(ent, ev);
-    await install(ev);
+    await install(ev, { waitMs: 0 });
     await verify(ent, ev);
     expect(await record(ent, ev)).toMatchObject({ status: 'setup-failed', stage: 'fetch' });
   });
@@ -72,11 +72,47 @@ describe('job steps', () => {
     const ent = entry(baseSha, headSha);
     await prepare(ent, ev);
     const prep = JSON.parse(await readFile(join(ev.work, 'prep.json'), 'utf8'));
-    prep.recipe.node.install = 'exit 3';
+    prep.recipe.node.install = 'echo boom; exit 3';
     await writeFile(join(ev.work, 'prep.json'), JSON.stringify(prep));
-    await install(ev);
+    await install(ev, { waitMs: 0 });
     await verify(ent, ev);
-    expect(await record(ent, ev)).toMatchObject({ status: 'setup-failed', stage: 'install', exitCodes: { install: 3, verify: null } });
+    expect(await record(ent, ev)).toMatchObject({
+      status: 'setup-failed', stage: 'install', exitCodes: { install: 3, verify: null }, installRetries: 2, installTail: 'boom',
+    });
+  });
+});
+
+async function preparedWith(install: string) {
+  const { gitBase, baseSha, headSha } = await fixtureRemote();
+  const ev = await env(gitBase);
+  const ent = entry(baseSha, headSha);
+  await prepare(ent, ev);
+  const prep = JSON.parse(await readFile(join(ev.work, 'prep.json'), 'utf8'));
+  prep.recipe.node.install = install;
+  await writeFile(join(ev.work, 'prep.json'), JSON.stringify(prep));
+  return { ev, ent };
+}
+
+describe('install retries', () => {
+  it('reruns a failing command and succeeds on a later attempt', async () => {
+    const { ev, ent } = await preparedWith('n=$(cat .attempts 2>/dev/null || echo 0); n=$((n+1)); echo $n > .attempts; [ "$n" -ge 3 ]');
+    await install(ev, { waitMs: 0 });
+    await verify(ent, ev);
+    const run = await record(ent, ev);
+    expect(run).toMatchObject({ status: 'ran', installRetries: 2, exitCodes: { install: 0 } });
+    expect(run).not.toHaveProperty('installTail');
+  });
+
+  it('does not retry a timeout', async () => {
+    const { ev, ent } = await preparedWith('sleep 5');
+    await install(ev, { waitMs: 0, budgetMs: 300 });
+    expect(await record(ent, ev)).toMatchObject({ status: 'timeout', stage: 'install', installRetries: 0 });
+  });
+
+  it('stops retrying when the budget has no room for the wait', async () => {
+    const { ev, ent } = await preparedWith('echo nope; exit 1');
+    await install(ev, { waitMs: 5000, budgetMs: 1000 });
+    expect(await record(ent, ev)).toMatchObject({ status: 'setup-failed', installRetries: 0, installTail: 'nope' });
   });
 });
 
