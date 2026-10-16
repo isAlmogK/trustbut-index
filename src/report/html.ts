@@ -27,7 +27,7 @@ const FAMILY_NAMES: Record<string, string> = {
   'test-weakening': 'Tests weakened',
   escapes: 'Checks silenced',
   'untested-change': 'Change without tests',
-  'red-at-head': 'Tests red at head',
+  'red-at-head': 'Tests that passed at base fail at head',
 };
 
 const group = (d: ReportData, key: string) => d.agg.groups.find((g) => g.key === key)!;
@@ -49,7 +49,11 @@ function proofChart(d: ReportData, pal: Palette): string {
 function familyChart(d: ReportData): string {
   const keys = [...AGENT_IDS, 'all-agents', 'human'];
   const rows = keys.map((k) => ({ label: k === 'all-agents' ? 'all agents' : k === 'human' ? 'humans' : k, dimmed: group(d, k).insufficient }));
-  const cells = keys.map((k) => FAMILIES.map((f) => (group(d, k).ran > 0 ? group(d, k).families[f] : null)));
+  const cells = keys.map((k) => FAMILIES.map((f) => {
+    const g = group(d, k);
+    if (g.ran === 0) return null;
+    return g.notMeasured.includes(f) ? 'not-measured' as const : g.families[f];
+  }));
   return dotPlot(rows, FAMILIES.map((f) => FAMILY_NAMES[f]!), cells, CSS_PALETTE, (i) => (keys[i] === 'human' ? CSS_PALETTE.human : CSS_PALETTE.agent));
 }
 
@@ -129,6 +133,7 @@ export function renderReport(d: ReportData): string {
 <figure>${proofChart(d, CSS_PALETTE)}</figure></section>
 
 <section id="families"><h2>Findings by family</h2><p>Share of PRs that ran with at least one finding of each kind. Dots are estimates, lines are 95% intervals. Faded rows have fewer than 30 PRs.</p>
+${d.agg.notMeasured.includes('red-at-head') ? `<p>${esc(FAMILY_NAMES['red-at-head']!)}: not measured. Some receipts come from trustbut older than 0.5.0, which does not compare failing tests with base.</p>` : ''}
 <figure>${familyChart(d)}</figure></section>
 
 <section id="coverage"><h2>Can trustbut run on real projects?</h2><figure>${coverageChart(d)}</figure></section>

@@ -11,7 +11,7 @@ const results: PrResult[] = [1, 2, 3].map((n) => ({
   entry: { id: `o/r#${n}`, repo: 'o/r', pr: n, group: n < 3 ? 'agent' : 'human', agent: n < 3 ? 'copilot' : null, repoStars: 12_400, repoLanguage: 'TypeScript' } as PrResult['entry'],
   run: { status: 'ran' } as PrResult['run'],
   receipt: {
-    specVersion: '1.0', producer: { name: 'trustbut', version: '0.4.0' }, subject: { base: 'b', head: 'h' }, verdict: 'warn',
+    specVersion: '1.1', producer: { name: 'trustbut', version: '0.5.0' }, subject: { base: 'b', head: 'h' }, verdict: 'warn',
     findings: [{ id: 'test-passes-without-change', severity: 'warn', title: 'Test passes without the change', file: 't.test.ts', detail: 'adds' }],
     proofs: [{ file: 't.test.ts', name: 'adds', before: 'pass', after: 'pass', verdict: 'does-not-constrain' }],
   },
@@ -20,13 +20,13 @@ const sample = [{ key: 'o__r__1:0', prId: 'o/r#1', fileId: 'o__r__1', group: 'ag
   finding: results[0]!.receipt!.findings[0]!, family: 'proof-gap', order: 0, blind: true } as SampleItem];
 const finals = [{ key: 'o__r__1:0', label: 'real', draftLabel: 'real', blind: true } as FinalLabel];
 
-function data(): ReportData {
-  const agg = aggregate('2026-11-02', results, 1);
+function data(rs: PrResult[] = results): ReportData {
+  const agg = aggregate('2026-11-02', rs, 1);
   const labels = labelStats(sample, finals);
   const hit = hitRate(agg.groups.find((g) => g.key === 'all-agents')!, sample, finals);
   return {
     date: '2026-11-02', agg, labels, hit, calibration: calibration(sample, finals, []), verdict: verdict(agg, labels, hit),
-    examples: pickExamples(sample, finals, results), preregUrl: 'https://github.com/isAlmogK/trustbut-index/blob/prereg-v1/PREREGISTRATION.md', deviations: [],
+    examples: pickExamples(sample, finals, rs), preregUrl: 'https://github.com/isAlmogK/trustbut-index/blob/prereg-v1/PREREGISTRATION.md', deviations: [],
     baseUrl: 'https://isalmogk.github.io/trustbut-index/',
   };
 }
@@ -134,5 +134,19 @@ describe('share card', () => {
     const png = renderPng(shareSvg(data()));
     expect(png.subarray(1, 4).toString()).toBe('PNG');
     expect(png.readUInt32BE(16)).toBe(1200);
+  });
+});
+
+describe('red at head from old receipts', () => {
+  it('shows red at head as not measured, not as a rate', () => {
+    const old = results.map((r) => ({ ...r, receipt: { ...r.receipt!, specVersion: '1.0', producer: { name: 'trustbut', version: '0.4.0' } } }));
+    const html = renderReport(data(old));
+    const section = html.slice(html.indexOf('id="families"'), html.indexOf('id="coverage"'));
+    expect(section).toContain('>not measured<');
+    expect(section).toContain('Tests that passed at base fail at head: not measured. Some receipts come from trustbut older than 0.5.0, which does not compare failing tests with base.');
+  });
+  it('shows no not-measured note when every receipt is from 0.5.0', () => {
+    const section = renderReport(data()).slice(renderReport(data()).indexOf('id="families"'), renderReport(data()).indexOf('id="coverage"'));
+    expect(section).not.toContain('not measured');
   });
 });

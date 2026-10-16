@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import type { PrResult } from '../src/aggregate/index.js';
 import { pilotChecklist } from '../src/pilot/checklist.js';
-import { fileId, type AgentId, type ManifestEntry, type RunStatus } from '../src/types.js';
+import { fileId, type AgentId, type ManifestEntry, type Receipt, type RunStatus } from '../src/types.js';
 
 function pr(repo: string, n: number, agent: AgentId | null, evidence: string[], status: RunStatus | null): PrResult {
   const entry: ManifestEntry = {
@@ -60,6 +60,23 @@ describe('pilotChecklist', () => {
   });
   it('omits the human section when there are no human PRs', () => {
     expect(pilotChecklist(results.slice(0, 4), 'd')).not.toContain('Human control');
+  });
+});
+
+describe('pilotChecklist red at head', () => {
+  const withReceipt = (r: PrResult, version: string, ids: string[], x?: Receipt['x-trustbut']): PrResult => ({
+    ...r,
+    receipt: { specVersion: version === '0.4.0' ? '1.0' : '1.1', producer: { name: 'trustbut', version }, subject: { base: 'a', head: 'b' }, verdict: 'warn',
+      findings: ids.map((id) => ({ id, severity: 'fail', title: id })), ...(x ? { 'x-trustbut': x } : {}) },
+  });
+  it('says red at head was not measured when a receipt is from trustbut older than 0.5.0', () => {
+    const rs = [withReceipt(results[0]!, '0.4.0', []), withReceipt(results[1]!, '0.5.0', ['test-regressed'])];
+    expect(pilotChecklist(rs, 'd')).toContain('Red at head (tests that passed at base fail at head): not measured. Receipts from trustbut older than 0.5.0 do not compare failing tests with base.');
+  });
+  it('gives the red-at-head rate and how many PRs had a failing test with no base result', () => {
+    const fail = { after: { cases: [{ id: 'x', file: 't', name: 'x', outcome: 'fail' }] } };
+    const rs = [withReceipt(results[0]!, '0.5.0', [], fail), withReceipt(results[1]!, '0.5.0', ['test-regressed'])];
+    expect(pilotChecklist(rs, 'd')).toContain('Red at head (tests that passed at base fail at head): 1 of 2 PRs that ran (50.0%). 1 of 2 had a failing test with no base result, so the rate is a lower bound.');
   });
 });
 

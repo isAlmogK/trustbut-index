@@ -1,4 +1,4 @@
-import type { PrResult } from '../aggregate/index.js';
+import { groupStats, type PrResult } from '../aggregate/index.js';
 import { byCodeUnit } from '../rng.js';
 import { pct } from '../report/svg.js';
 import { AGENT_IDS } from '../types.js';
@@ -16,6 +16,16 @@ function counts(rs: PrResult[]): Record<string, number> {
   return c;
 }
 
+function redAtHeadLine(results: PrResult[]): string {
+  const g = groupStats('all', results, false);
+  const head = 'Red at head (tests that passed at base fail at head):';
+  if (g.notMeasured.includes('red-at-head')) return `${head} not measured. Receipts from trustbut older than 0.5.0 do not compare failing tests with base.`;
+  if (g.ran === 0) return `${head} no data.`;
+  const r = g.families['red-at-head'];
+  const nc = g.redAtHeadNotCompared;
+  return `${head} ${r.k} of ${r.n} PRs that ran (${pct(r.p)}). ${nc.k} of ${nc.n} had a failing test with no base result, so the rate is a lower bound.`;
+}
+
 /** The hand-check sheet for a pilot: one checkbox row per agent PR, statuses only for the human control. Deterministic. */
 export function pilotChecklist(results: PrResult[], date: string): string {
   const total = counts(results);
@@ -23,6 +33,8 @@ export function pilotChecklist(results: PrResult[], date: string): string {
     `# Pilot check: ${date}`,
     '',
     `Run coverage: ${total.ran} of ${results.length} PRs ran (${pct(results.length ? total.ran! / results.length : 0)}). ${STATUSES.map((s) => `${s} ${total[s]}`).join(' · ')}`,
+    '',
+    redAtHeadLine(results),
     '',
     'How to use: open each PR. Tick the box if the PR page confirms that agent wrote it (bot author, branch, PR text or commit trailer). Then record "confirmed/total" per agent in the "Pilot check" column of PREREGISTRATION.md.',
     '',

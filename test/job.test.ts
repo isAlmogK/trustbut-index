@@ -1,6 +1,6 @@
 import { mkdtemp, readFile, writeFile, mkdir, chmod } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
-import { join } from 'node:path';
+import { dirname, join } from 'node:path';
 import { execa } from 'execa';
 import { describe, expect, it } from 'vitest';
 import { install, prepare, record, verify, type JobEnv } from '../src/run/job.js';
@@ -28,14 +28,35 @@ async function fixtureRemote() {
 async function env(gitBase: string): Promise<JobEnv> {
   const root = await mkdtemp(join(tmpdir(), 'job-'));
   const tbCli = join(root, 'fake-trustbut.mjs');
-  await writeFile(tbCli, `process.stdout.write(JSON.stringify({specVersion:'1.0',producer:{name:'trustbut',version:'0.4.0'},subject:{base:'b',head:'h'},verdict:'warn',findings:[],tests:{passed:2,failed:0,errored:0,skipped:0,scope:'full'}})); process.exit(0);`);
+  await writeFile(tbCli, `import { writeFileSync } from 'node:fs'; writeFileSync(new URL('./args.json', import.meta.url), JSON.stringify(process.argv.slice(2))); process.stdout.write(JSON.stringify({specVersion:'1.0',producer:{name:'trustbut',version:'0.4.0'},subject:{base:'b',head:'h'},verdict:'warn',findings:[],tests:{passed:2,failed:0,errored:0,skipped:0,scope:'full'}})); process.exit(0);`);
   await chmod(tbCli, 0o755);
-  return { work: join(root, 'work'), out: join(root, 'out'), gitBase, node22: process.execPath, tbCli, githubOutput: join(root, 'gh-output'), runnerImage: 'test' };
+  return { work: join(root, 'work'), out: join(root, 'out'), gitBase, node22: process.execPath, tbCli, tbConfig: join(root, 'trustbut.json'), githubOutput: join(root, 'gh-output'), runnerImage: 'test' };
 }
 
 const entry = (baseSha: string, headSha: string) => ({ id: 'o/r#1', repo: 'o/r', pr: 1, baseSha, headSha }) as ManifestEntry;
 
 describe('job steps', () => {
+  it('runs trustbut with the study config and output tails', async () => {
+    const { gitBase, baseSha, headSha } = await fixtureRemote();
+    const ev = await env(gitBase);
+    const ent = entry(baseSha, headSha);
+    await prepare(ent, ev);
+    const prep = JSON.parse(await readFile(join(ev.work, 'prep.json'), 'utf8'));
+    prep.recipe.node.install = 'true';
+    await writeFile(join(ev.work, 'prep.json'), JSON.stringify(prep));
+    await install(ev, { waitMs: 0 });
+    await verify(ent, ev);
+    const args = JSON.parse(await readFile(join(dirname(ev.tbCli), 'args.json'), 'utf8'));
+    expect(args).toEqual(['verify', '--base', baseSha, '--head', headSha, '--json', '--config', ev.tbConfig, '--output-tail']);
+  });
+
+  it('defaults the study config to config/trustbut.json in this repo, which sets the suite timeout', async () => {
+    const { jobEnv } = await import('../src/run/job.js');
+    const path = jobEnv({}).tbConfig;
+    expect(path.endsWith('/config/trustbut.json')).toBe(true);
+    expect(JSON.parse(await readFile(path, 'utf8'))).toEqual({ timeoutSec: 2400 });
+  });
+
   it('prepares, installs, verifies and records a run', async () => {
     const { gitBase, baseSha, headSha } = await fixtureRemote();
     const ev = await env(gitBase);
@@ -48,7 +69,7 @@ describe('job steps', () => {
 
     prep.recipe.node.install = 'true'; // don't run a real npm ci in unit tests
     await writeFile(join(ev.work, 'prep.json'), JSON.stringify(prep));
-    await install(ev);
+    await install(ev, { waitMs: 0 });
     await verify(ent, ev);
     const run = await record(ent, ev);
     expect(run).toMatchObject({ id: 'o__r__1', status: 'ran', stage: null, trustbutVersion: '0.4.0' });
@@ -61,7 +82,7 @@ describe('job steps', () => {
     const ev = await env(gitBase);
     const ent = entry('0'.repeat(40), '1'.repeat(40));
     await prepare(ent, ev);
-    await install(ev);
+    await install(ev, { waitMs: 0 });
     await verify(ent, ev);
     expect(await record(ent, ev)).toMatchObject({ status: 'setup-failed', stage: 'fetch' });
   });
@@ -72,11 +93,47 @@ describe('job steps', () => {
     const ent = entry(baseSha, headSha);
     await prepare(ent, ev);
     const prep = JSON.parse(await readFile(join(ev.work, 'prep.json'), 'utf8'));
-    prep.recipe.node.install = 'exit 3';
+    prep.recipe.node.install = 'echo boom; exit 3';
     await writeFile(join(ev.work, 'prep.json'), JSON.stringify(prep));
-    await install(ev);
+    await install(ev, { waitMs: 0 });
     await verify(ent, ev);
-    expect(await record(ent, ev)).toMatchObject({ status: 'setup-failed', stage: 'install', exitCodes: { install: 3, verify: null } });
+    expect(await record(ent, ev)).toMatchObject({
+      status: 'setup-failed', stage: 'install', exitCodes: { install: 3, verify: null }, installRetries: 2, installTail: 'boom',
+    });
+  });
+});
+
+async function preparedWith(install: string) {
+  const { gitBase, baseSha, headSha } = await fixtureRemote();
+  const ev = await env(gitBase);
+  const ent = entry(baseSha, headSha);
+  await prepare(ent, ev);
+  const prep = JSON.parse(await readFile(join(ev.work, 'prep.json'), 'utf8'));
+  prep.recipe.node.install = install;
+  await writeFile(join(ev.work, 'prep.json'), JSON.stringify(prep));
+  return { ev, ent };
+}
+
+describe('install retries', () => {
+  it('reruns a failing command and succeeds on a later attempt', async () => {
+    const { ev, ent } = await preparedWith('n=$(cat .attempts 2>/dev/null || echo 0); n=$((n+1)); echo $n > .attempts; [ "$n" -ge 3 ]');
+    await install(ev, { waitMs: 0 });
+    await verify(ent, ev);
+    const run = await record(ent, ev);
+    expect(run).toMatchObject({ status: 'ran', installRetries: 2, exitCodes: { install: 0 } });
+    expect(run).not.toHaveProperty('installTail');
+  });
+
+  it('does not retry a timeout', async () => {
+    const { ev, ent } = await preparedWith('sleep 5');
+    await install(ev, { waitMs: 0, budgetMs: 300 });
+    expect(await record(ent, ev)).toMatchObject({ status: 'timeout', stage: 'install', installRetries: 0 });
+  });
+
+  it('stops retrying when the budget has no room for the wait', async () => {
+    const { ev, ent } = await preparedWith('echo nope; exit 1');
+    await install(ev, { waitMs: 5000, budgetMs: 1000 });
+    expect(await record(ent, ev)).toMatchObject({ status: 'setup-failed', installRetries: 0, installTail: 'nope' });
   });
 });
 

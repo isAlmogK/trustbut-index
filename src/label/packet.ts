@@ -1,6 +1,6 @@
 import { isTestPath } from '../collect/qualify.js';
 import { readRepoFile, type GitHubApi } from '../github/client.js';
-import type { Family, Finding, ManifestEntry, Proof, Receipt } from '../types.js';
+import type { Family, Finding, ManifestEntry, Proof, Receipt, TestCase } from '../types.js';
 import { scrub } from './blind.js';
 import type { SampleItem } from './sample.js';
 
@@ -12,6 +12,8 @@ export interface Packet {
   pr: { title: string; body: string };
   diff: { file: string; patch: string }[];
   testSource: { file: string; startLine: number; text: string } | null;
+  /** For `test-regressed`: the failing head case and its base outcome ('missing' when the base run has no such case). */
+  regression: { name: string; before: string; after: string; message?: string } | null;
   baseRun: string;
 }
 
@@ -26,6 +28,26 @@ function sourceWindow(text: string, line: number | undefined): { startLine: numb
   if (!line) return { startLine: 1, text: lines.slice(0, HEAD_LINES).join('\n') };
   const start = Math.max(1, line - WINDOW);
   return { startLine: start, text: lines.slice(start - 1, line + WINDOW).join('\n') };
+}
+
+const isFailing = (c: TestCase) => c.outcome === 'fail' || c.outcome === 'error';
+
+/** The runner reports case files relative to the package root, or absolute; the finding's file is from the repo root. */
+function sameFile(caseFile: string, findingFile: string | undefined): boolean {
+  if (findingFile === undefined) return true;
+  const c = caseFile.replace(/^\.\//, '');
+  return c === findingFile || findingFile.endsWith(`/${c}`) || c.endsWith(`/${findingFile}`);
+}
+
+/** The head case behind a `test-regressed` finding (matched by name and file), and its base outcome by case id. Raw values. */
+function regressedCase(f: Finding, receipt: Receipt): { name: string; before: string; after: string; message?: string } | null {
+  if (f.id !== 'test-regressed' || !f.detail) return null;
+  const x = receipt['x-trustbut'];
+  const head = (x?.after?.cases ?? []).filter((c) => c && c.name === f.detail && typeof c.file === 'string' && sameFile(c.file, f.file));
+  const c = head.find(isFailing) ?? head[0];
+  if (!c) return null;
+  const base = (x?.before?.cases ?? []).find((b) => b && b.id === c.id);
+  return { name: c.name, before: base ? String(base.outcome) : 'missing', after: String(c.outcome), ...(typeof c.message === 'string' && c.message ? { message: c.message } : {}) };
 }
 
 export function assemblePacket(
@@ -52,6 +74,14 @@ export function assemblePacket(
     ...(f.detail ? { detail: scrub(f.detail) } : {}),
   };
   const body = scrub(pr.body ?? '').replace(/\n{3,}/g, '\n\n').slice(0, MAX_BODY);
+  const raw = regressedCase(f, receipt);
+  const regression = raw
+    ? { name: scrub(raw.name), before: scrub(raw.before), after: scrub(raw.after), ...(raw.message ? { message: scrub(raw.message) } : {}) }
+    : null;
+  const runs = [
+    ...(regression ? [`${regression.name}: before ${regression.before}, after ${regression.after}${regression.message ? ` (${regression.message})` : ''}`] : []),
+    ...proofs.map((p) => `${p.name}: before ${p.before}, after ${p.after}`),
+  ];
   return {
     key: item.key,
     finding,
@@ -60,7 +90,8 @@ export function assemblePacket(
     pr: { title: scrub(pr.title), body },
     diff,
     testSource: f.file && source !== null ? { file: scrub(f.file), ...sourceWindow(scrub(source), f.line) } : null,
-    baseRun: proofs.length ? proofs.map((p) => `${p.name}: before ${p.before}, after ${p.after}`).join('; ') : 'n/a',
+    regression,
+    baseRun: runs.length ? runs.join('; ') : 'n/a',
   };
 }
 

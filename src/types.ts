@@ -63,6 +63,10 @@ export interface RunRecord {
   recipe: Recipe | null;
   durations: { installMs: number; verifyMs: number };
   exitCodes: { install: number | null; verify: number | null };
+  /** Re-runs of failed install commands, summed across all of the recipe's install commands (absent in runs before 2026-10-16). */
+  installRetries?: number;
+  /** The end of the failing install command's output, last attempt only (only when install failed). */
+  installTail?: string;
   runnerImage: string;
   trustbutVersion: string;
   note?: string;
@@ -84,6 +88,19 @@ export interface Proof {
   after: string;
   verdict: 'proves-change' | 'does-not-constrain' | 'failing' | 'skipped';
 }
+/** One test result under `x-trustbut` (trustbut's producer extension). Untrusted data: fields are checked where read. */
+export interface TestCase {
+  id: string;
+  file: string;
+  name: string;
+  outcome: string; // 'pass' | 'fail' | 'error' | 'skip'
+  message?: string;
+}
+export interface TrustbutRun {
+  exitCode?: number;
+  cases?: TestCase[];
+  outputTail?: string;
+}
 export interface Receipt {
   specVersion: string;
   producer: { name: string; version: string };
@@ -92,6 +109,8 @@ export interface Receipt {
   findings: Finding[];
   tests?: { passed: number; failed: number; errored: number; skipped: number; scope: 'full' | 'changed' };
   proofs?: Proof[];
+  /** The head run (`after`) and the base run (`before`), when trustbut ran them. */
+  'x-trustbut'?: { after?: TrustbutRun; before?: TrustbutRun };
 }
 
 export type Family = 'proof-gap' | 'test-weakening' | 'escapes' | 'untested-change' | 'red-at-head';

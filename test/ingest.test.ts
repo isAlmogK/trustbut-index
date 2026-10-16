@@ -55,9 +55,52 @@ describe('ingest', () => {
     const arts = await mkdtemp(join(tmpdir(), 'arts-'));
     const out = await mkdtemp(join(tmpdir(), 'res-'));
     await artifact(arts, 'result-a__b__3', { 'run.json': { ...run('a__b__3'), evil: 'x' }, 'receipt.json': receipt });
-    await ingest(arts, out, manifest('a__b__3'), async () => true);
+    const recipe = { node: { version: '22', pm: 'npm', install: 'npm ci' }, python: null };
+    await artifact(arts, 'result-a__b__4', { 'run.json': { ...run('a__b__4'), recipe, status: 'setup-failed', stage: 'install',
+      exitCodes: { install: 1, verify: null }, installRetries: 2, installTail: 'boom', evil: 'x' } });
+    await ingest(arts, out, manifest('a__b__3', 'a__b__4'), async () => true);
     expect(Object.keys(JSON.parse(await readFile(join(out, 'a__b__3.run.json'), 'utf8'))).sort()).toEqual(
       ['durations', 'exitCodes', 'id', 'recipe', 'runnerImage', 'stage', 'status', 'trustbutVersion']);
+    expect(Object.keys(JSON.parse(await readFile(join(out, 'a__b__4.run.json'), 'utf8'))).sort()).toEqual(
+      ['durations', 'exitCodes', 'id', 'installRetries', 'installTail', 'recipe', 'runnerImage', 'stage', 'status', 'trustbutVersion']);
+  });
+  it('copies installRetries and installTail from the artifact', async () => {
+    const arts = await mkdtemp(join(tmpdir(), 'arts-'));
+    const out = await mkdtemp(join(tmpdir(), 'res-'));
+    const recipe = { node: { version: '22', pm: 'npm', install: 'npm ci' }, python: null };
+    await artifact(arts, 'result-a__b__6', { 'run.json': { ...run('a__b__6'), status: 'setup-failed', stage: 'install', recipe,
+      exitCodes: { install: 1, verify: null }, installRetries: 2, installTail: 'npm ERR! ECONNRESET' } });
+    await ingest(arts, out, manifest('a__b__6'), async () => true);
+    expect(JSON.parse(await readFile(join(out, 'a__b__6.run.json'), 'utf8'))).toMatchObject({ installRetries: 2, installTail: 'npm ERR! ECONNRESET' });
+  });
+  it('re-applies the tail limits to an oversized installTail', async () => {
+    const arts = await mkdtemp(join(tmpdir(), 'arts-'));
+    const out = await mkdtemp(join(tmpdir(), 'res-'));
+    const long = Array.from({ length: 200 }, (_, i) => `\u001b[31mline ${i}\u001b[0m ${'x'.repeat(60)}`).join('\n');
+    await artifact(arts, 'result-a__b__7', { 'run.json': { ...run('a__b__7'), status: 'setup-failed', stage: 'install', exitCodes: { install: 1, verify: null }, installTail: long } });
+    await ingest(arts, out, manifest('a__b__7'), async () => true);
+    const t: string = JSON.parse(await readFile(join(out, 'a__b__7.run.json'), 'utf8')).installTail;
+    expect(t.length).toBeLessThanOrEqual(4000);
+    expect(t.split('\n').length).toBeLessThanOrEqual(50);
+    expect(t).not.toContain('\u001b');
+    expect(t.endsWith(`line 199 ${'x'.repeat(60)}`)).toBe(true);
+  });
+  it('rejects installRetries above what the recipe allows, or not a non-negative integer', async () => {
+    const arts = await mkdtemp(join(tmpdir(), 'arts-'));
+    const out = await mkdtemp(join(tmpdir(), 'res-'));
+    const recipe = { node: { version: '22', pm: 'npm', install: 'npm ci' }, python: { version: '3.12', install: ['pip install a', 'pip install b'] } };
+    // 3 install commands, up to 3 attempts each: at most 6 re-runs.
+    await artifact(arts, 'result-a__b__8', { 'run.json': { ...run('a__b__8'), recipe, installRetries: 6 }, 'receipt.json': receipt });
+    await artifact(arts, 'result-a__b__9', { 'run.json': { ...run('a__b__9'), recipe, installRetries: 7 }, 'receipt.json': receipt });
+    await artifact(arts, 'result-a__b__10', { 'run.json': { ...run('a__b__10'), installRetries: 1 }, 'receipt.json': receipt });
+    await artifact(arts, 'result-a__b__11', { 'run.json': { ...run('a__b__11'), recipe, installRetries: 1.5 }, 'receipt.json': receipt });
+    const res = await ingest(arts, out, manifest('a__b__8', 'a__b__9', 'a__b__10', 'a__b__11'), async () => true);
+    expect(res.rejected).toEqual([
+      { dir: 'result-a__b__10', reason: 'run.json installRetries out of range' },
+      { dir: 'result-a__b__11', reason: 'run.json missing or malformed' },
+      { dir: 'result-a__b__9', reason: 'run.json installRetries out of range' },
+    ]);
+    expect(JSON.parse(await readFile(join(out, 'a__b__8.run.json'), 'utf8')).installRetries).toBe(6);
   });
   it('rebuilds the recipe from known fields only', async () => {
     const arts = await mkdtemp(join(tmpdir(), 'arts-'));

@@ -35,6 +35,10 @@ describe('shape checks', () => {
     expect(isRunRecord(run)).toBe(true);
     expect(isRunRecord({ ...run, status: 'great' })).toBe(false);
     expect(isRunRecord('x')).toBe(false);
+    expect(isRunRecord({ ...run, installRetries: 2, installTail: 'npm error ECONNRESET' })).toBe(true);
+    expect(isRunRecord({ ...run, installRetries: -1 })).toBe(false);
+    expect(isRunRecord({ ...run, installRetries: 1.5 })).toBe(false);
+    expect(isRunRecord({ ...run, installTail: 3 })).toBe(false);
   });
   it('checks exit codes, durations and the recipe in depth', () => {
     const run = { id: 'o__r__1', status: 'ran', stage: null, recipe, durations: { installMs: 1, verifyMs: 2 },

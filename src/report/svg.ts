@@ -66,7 +66,10 @@ export function ciBars(rows: { label: string; value: RateCI; color: string }[], 
 }
 
 /** Rows × columns of rates: a dot at the estimate with an interval line, per cell. */
-export function dotPlot(rows: { label: string; dimmed: boolean }[], cols: string[], cells: (RateCI | null)[][], pal: Palette, color: (row: number) => string): string {
+/** A cell with a dot and interval, nothing (null or n=0), or the words "not measured". */
+export type DotCell = RateCI | null | 'not-measured';
+
+export function dotPlot(rows: { label: string; dimmed: boolean }[], cols: string[], cells: DotCell[][], pal: Palette, color: (row: number) => string): string {
   const left = 120, colW = 130, rowH = 30, top = 48;
   const width = left + cols.length * colW + 10, height = top + rows.length * rowH + 10;
   let body = cols.map((c, j) => `<text x="${left + j * colW + colW / 2}" y="16" text-anchor="middle" fill="${pal.muted}">${wrap(c, 18).map((ln, k) => `<tspan x="${left + j * colW + colW / 2}" dy="${k ? 16 : 0}">${esc(ln)}</tspan>`).join('')}</text>`).join('');
@@ -76,6 +79,10 @@ export function dotPlot(rows: { label: string; dimmed: boolean }[], cols: string
     cols.forEach((_, j) => {
       const c = cells[i]?.[j];
       const x0 = left + j * colW + 10, w = colW - 20;
+      if (c === 'not-measured') {
+        body += `<text x="${x0 + w / 2}" y="${y + 4}" text-anchor="middle" fill="${pal.muted}">not measured</text>`;
+        return;
+      }
       body += `<line x1="${x0}" x2="${x0 + w}" y1="${y}" y2="${y}" stroke="${pal.grid}"/>`;
       if (!c || c.n === 0) return;
       body += `<line x1="${r1(x0 + c.lo * w)}" x2="${r1(x0 + c.hi * w)}" y1="${y}" y2="${y}" stroke="${color(i)}" stroke-width="2"/>`;
