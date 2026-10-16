@@ -1,0 +1,959 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "1108729da2c75d8b8d174d1747435bd2a7c7f7bf",
+    "head": "b6c77f18f52415257c2c40dde40380d761039545"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 2400 s"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 2400032,
+      "timedOut": true,
+      "cases": [],
+      "outputTail": "FFFFFF.FFFFFFFFFFFFFFF.................F.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [  1%]\nFFFFFFFFFF.F.FFFFFFFFFFFFFFFFFFFFFFFFFFFFF...FFFFFFFFFFFFFFFFFFFFFFFFFFF [  3%]\nFEEEEEEFF........................FFFFFF.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [  4%]\nFFFFFFFFFFFFFFFF......FFF.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.FF.....FF [  6%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFF...FFFFFFFFFFFFFFFFF..FFFFFFFFFFFFFFFFFFFFFFF [  7%]\nFFF.FFEEEEF.....EEEEsEEEEEEFEE...................EEEEEEEEEEEEEEEEEEEEEEE [  9%]\nEFFF..FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 10%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.FFFFF..FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 12%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 13%]\nFFFFFFFFFFFFFFFFFFFFFF.F.FFFFFF.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 15%]\nFFFFEEEEEEEEEEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 17%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.FFFFF.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 18%]\nFFFFFFFFFFFFFFFFFFFFF.FFFFFFFFFFFFFFFFFFFFFFEEEEEEEEEEEEEEEEEEEEEEEEEEEE [ 20%]\nEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 21%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.....FFFFFFFFFFFFFFFFFF [ 23%]\nFFFF.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 24%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.FFFFFFFFFFFFFFFFFFF.FFFFFF. [ 26%]\nFFFFFFFFF...F.FFFFFFF.FFFFFFFF.FFFFFFFFFFFFFFFFF.FFFFFFFFFF.FFFFFF..FFFF [ 27%]\nF..FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 29%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 31%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 32%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 34%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 35%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 37%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF........FFFFFFF...FFFFFFF [ 38%]\nFFFFFF.FFFFF\nCommand timed out after 2400000 ms"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 156340,
+      "cases": [
+        {
+          "id": "tests.test_cfn::test_cfn_create_describe_delete_stack",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_create_describe_delete_stack",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_stack_with_parameters",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_stack_with_parameters",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_change_set_use_previous_value_updates_resource",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_change_set_use_previous_value_updates_resource",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_intrinsic_ref_getatt",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_intrinsic_ref_getatt",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_conditions",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_conditions",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_outputs_exports",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_outputs_exports",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_kinesis_stream",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_kinesis_stream",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_fn_sub",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_fn_sub",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_multi_resource_dependencies",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_multi_resource_dependencies",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_change_set_lifecycle",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_change_set_lifecycle",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_change_set_create_emits_review_event",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_change_set_create_emits_review_event",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_update_stack",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_update_stack",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_delete_nonexistent_stack",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_delete_nonexistent_stack",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_validate_template",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_validate_template",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_get_template_summary",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_get_template_summary",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_list_stacks",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_list_stacks",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_stack_events",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_stack_events",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_describe_stack_resources_logical_id_filter",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_describe_stack_resources_logical_id_filter",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_yaml_template",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_yaml_template",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_rollback_on_failure",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_rollback_on_failure",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_import_nonexistent_export",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_import_nonexistent_export",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_delete_stack_with_active_imports",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_delete_stack_with_active_imports",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_update_rollback_on_failure",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_update_rollback_on_failure",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_e2e_s3_put_and_get",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_e2e_s3_put_and_get",
+          "outcome": "error",
+          "message": "failed on setup with \"botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_e2e_s3_list_objects",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_e2e_s3_list_objects",
+          "outcome": "error",
+          "message": "failed on setup with \"botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_e2e_sqs_send_receive_delete",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_e2e_sqs_send_receive_delete",
+          "outcome": "error",
+          "message": "failed on setup with \"botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_e2e_sns_publish",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_e2e_sns_publish",
+          "outcome": "error",
+          "message": "failed on setup with \"botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_e2e_ssm_read_cfn_param",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_e2e_ssm_read_cfn_param",
+          "outcome": "error",
+          "message": "failed on setup with \"botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_e2e_ssm_write_and_read",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_e2e_ssm_write_and_read",
+          "outcome": "error",
+          "message": "failed on setup with \"botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_e2e_lambda_invoke",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_e2e_lambda_invoke",
+          "outcome": "error",
+          "message": "failed on setup with \"botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_e2e_lambda_role_matches_iam_role",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_e2e_lambda_role_matches_iam_role",
+          "outcome": "error",
+          "message": "failed on setup with \"botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_e2e_pipeline",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_e2e_pipeline",
+          "outcome": "error",
+          "message": "failed on setup with \"botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_e2e_exports_available",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_e2e_exports_available",
+          "outcome": "error",
+          "message": "failed on setup with \"botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_auto_name_s3_follows_aws_pattern",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_auto_name_s3_follows_aws_pattern",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_auto_name_sqs_follows_aws_pattern",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_auto_name_sqs_follows_aws_pattern",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_auto_name_dynamodb_follows_aws_pattern",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_auto_name_dynamodb_follows_aws_pattern",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_dynamodb_global_table_pay_per_request",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_dynamodb_global_table_pay_per_request",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_dynamodb_global_table_provisioned_throughput",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_dynamodb_global_table_provisioned_throughput",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_explicit_name_not_overridden",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_explicit_name_not_overridden",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_s3_bucket_policy",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_s3_bucket_policy",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_lambda_permission",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_lambda_permission",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/2015-03-31/functions\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_lambda_permission_qualified_arn_uses_base_function_policy",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_lambda_permission_qualified_arn_uses_base_function_policy",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/2015-03-31/functions\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_lambda_version",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_lambda_version",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/2015-03-31/functions\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_lambda_event_invoke_config_lifecycle",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_lambda_event_invoke_config_lifecycle",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/2015-03-31/functions\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_esm_filter_criteria_round_trips",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_esm_filter_criteria_round_trips",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/2015-03-31/functions\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_esm_extra_props_round_trip_and_in_place_update",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_esm_extra_props_round_trip_and_in_place_update",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/2015-03-31/functions\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_lambda_alias_and_esm_keep_function_name",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_lambda_alias_and_esm_keep_function_name",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/2015-03-31/functions\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_lambda_esm_preserves_qualified_function_ref",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_lambda_esm_preserves_qualified_function_ref",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/2015-03-31/functions\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_lambda_provisioners_do_not_tail_resolve_wrong_service_arns",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_lambda_provisioners_do_not_tail_resolve_wrong_service_arns",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/2015-03-31/functions\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_lambda_provisioners_reject_missing_bare_qualifier",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_lambda_provisioners_reject_missing_bare_qualifier",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/2015-03-31/functions\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_wait_condition",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_wait_condition",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_secretsmanager_generate_secret_string",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_secretsmanager_generate_secret_string",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_stack_with_s3_lambda_dynamodb",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_stack_with_s3_lambda_dynamodb",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_cdk_bootstrap_resources",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_cdk_bootstrap_resources",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_ec2_launch_template",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_ec2_launch_template",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_ec2_vpc_endpoint_uses_ec2_state",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_ec2_vpc_endpoint_uses_ec2_state",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_elbv2_load_balancer_and_listener",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_elbv2_load_balancer_and_listener",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_cloudwatch_alarm_lifecycle",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_cloudwatch_alarm_lifecycle",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_cloudwatch_dashboard_lifecycle",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_cloudwatch_dashboard_lifecycle",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_route53_hosted_zone_and_record_set",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_route53_hosted_zone_and_record_set",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_ssm_parameter_timestamp_is_epoch",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_ssm_parameter_timestamp_is_epoch",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_appconfig_application",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_appconfig_application",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_appconfig_full_stack",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_appconfig_full_stack",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_lambda_nodejs_inline_zip",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_lambda_nodejs_inline_zip",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_lambda_s3_code",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_lambda_s3_code",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/cfn-lambda-code-test\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_dynamodb_stream_spec",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_dynamodb_stream_spec",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_pipes_dynamodb_stream_to_sns",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_pipes_dynamodb_stream_to_sns",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_pipes_rejects_cross_region_target",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_pipes_rejects_cross_region_target",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_sns_topic_subscription_filter_policy_scope",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_sns_topic_subscription_filter_policy_scope",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_sns_subscription_raw_message_delivery",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_sns_subscription_raw_message_delivery",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_codebuild_project_basic",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_codebuild_project_basic",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_codebuild_project_auto_name",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_codebuild_project_auto_name",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_codebuild_project_getatt_arn",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_codebuild_project_getatt_arn",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_codebuild_project_tags",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_codebuild_project_tags",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_codebuild_project_with_iam_role",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_codebuild_project_with_iam_role",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_codebuild_project_duplicate_name_fails",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_codebuild_project_duplicate_name_fails",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_codebuild_project_idempotent_delete",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_codebuild_project_idempotent_delete",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_scheduler_schedule",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_scheduler_schedule",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_eventbus_basic",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_eventbus_basic",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_eventbus_auto_name",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_eventbus_auto_name",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_eventbus_getatt_arn",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_eventbus_getatt_arn",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_eventbus_tags",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_eventbus_tags",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_eventbus_with_rule",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_eventbus_with_rule",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_eventbus_duplicate_name_fails",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_eventbus_duplicate_name_fails",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_eventbus_default_name_fails",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_eventbus_default_name_fails",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_aws_region_pseudo_param_uses_caller_region",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_aws_region_pseudo_param_uses_caller_region",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_cognito_user_pool_client_generate_secret",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_cognito_user_pool_client_generate_secret",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_cognito_user_pool_group",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_cognito_user_pool_group",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_cognito_user_pool_resource_server",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_cognito_user_pool_resource_server",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_cognito_user_pool_lambda_config",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_cognito_user_pool_lambda_config",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigwv2_integration_basic",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigwv2_integration_basic",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigwv2_ms_custom_id",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigwv2_ms_custom_id",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigwv2_route_basic",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigwv2_route_basic",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigwv2_authorizer_jwt",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigwv2_authorizer_jwt",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigwv2_integration_getatt",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigwv2_integration_getatt",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigwv2_route_getatt",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigwv2_route_getatt",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigwv2_integration_idempotent_delete",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigwv2_integration_idempotent_delete",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigwv2_full_http_api_stack",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigwv2_full_http_api_stack",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigwv2_integration_ref_returns_integration_id_alone",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigwv2_integration_ref_returns_integration_id_alone",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigwv2_full_http_api_stack_invokes_lambda",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigwv2_full_http_api_stack_invokes_lambda",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/2015-03-31/functions\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_cloudfront_keyvaluestore_create_update_delete",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_cloudfront_keyvaluestore_create_update_delete",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_cloudfront_distribution_supports_invalidations",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_cloudfront_distribution_supports_invalidations",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_auto_named_s3_bucket_stable_across_updates",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_auto_named_s3_bucket_stable_across_updates",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_lambda_s3_ref_bucket_has_code_size",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_lambda_s3_ref_bucket_has_code_size",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigateway_model_lifecycle",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigateway_model_lifecycle",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/restapis\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigateway_authorizer_provisions",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigateway_authorizer_provisions",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigateway_base_path_mapping_lifecycle",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigateway_base_path_mapping_lifecycle",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/restapis\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigateway_account_provisions",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigateway_account_provisions",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigateway_stage_ref_returns_stage_name",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigateway_stage_ref_returns_stage_name",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigateway_domain_name_lifecycle",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigateway_domain_name_lifecycle",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigateway_gateway_response_resolves_rest_api_ref",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigateway_gateway_response_resolves_rest_api_ref",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigateway_gateway_response_lifecycle",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigateway_gateway_response_lifecycle",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/restapis\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigateway_documentation_part_lifecycle",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigateway_documentation_part_lifecycle",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/restapis\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_apigateway_documentation_version_lifecycle",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_apigateway_documentation_version_lifecycle",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/restapis\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_restapi_openapi_body_petstore",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_restapi_openapi_body_petstore",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_nested_stack_basic",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_nested_stack_basic",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/cfn-nested-templates-26bbaa0d\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_logs_subscription_filter_provisions",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_logs_subscription_filter_provisions",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_change_set_detects_parameter_driven_change",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_change_set_detects_parameter_driven_change",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/cfn897-code\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_lambda_layer_packages_importable",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_lambda_layer_packages_importable",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/cfn-layer-assets\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_sam_transform_function_and_simple_table",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_sam_transform_function_and_simple_table",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/cfn-sam-code-8d0ffb38\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_sam_transform_serverless_api",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_sam_transform_serverless_api",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/cfn-sam-api-code-c52470a2\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_sam_transform_missing_translator_falls_back",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_sam_transform_missing_translator_falls_back",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_opensearch_domain_create_update_replace_and_idempotent_delete",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_opensearch_domain_create_update_replace_and_idempotent_delete",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_opensearch_auto_name_is_stable_across_update",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_opensearch_auto_name_is_stable_across_update",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_opensearch_vpc_refs_use_vpc_endpoint",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_opensearch_vpc_refs_use_vpc_endpoint",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_opensearch_failed_replacement_preserves_original",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_opensearch_failed_replacement_preserves_original",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/2021-01-01/opensearch/domain\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_opensearch_invalid_create_redacts_secret_and_rolls_back",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_opensearch_invalid_create_redacts_secret_and_rolls_back",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_opensearch_private_compatibility_state_is_detached_and_replaced",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_opensearch_private_compatibility_state_is_detached_and_replaced",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_cdk_opensearch_access_policy_custom_resource",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_cdk_opensearch_access_policy_custom_resource",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_cfn::test_cfn_s3tables_resources",
+          "file": "tests.test_cfn",
+          "name": "test_cfn_s3tables_resources",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        }
+      ],
+      "outputTail": "isions - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_cfn.py::test_cfn_change_set_detects_parameter_driven_change - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/cfn897-code\"\nFAILED tests/test_cfn.py::test_cfn_lambda_layer_packages_importable - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/cfn-layer-assets\"\nFAILED tests/test_cfn.py::test_cfn_sam_transform_function_and_simple_table - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/cfn-sam-code-8d0ffb38\"\nFAILED tests/test_cfn.py::test_cfn_sam_transform_serverless_api - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/cfn-sam-api-code-c52470a2\"\nFAILED tests/test_cfn.py::test_cfn_opensearch_domain_create_update_replace_and_idempotent_delete - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_cfn.py::test_cfn_opensearch_auto_name_is_stable_across_update - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_cfn.py::test_cfn_opensearch_vpc_refs_use_vpc_endpoint - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_cfn.py::test_cfn_opensearch_failed_replacement_preserves_original - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/2021-01-01/opensearch/domain\"\nFAILED tests/test_cfn.py::test_cfn_opensearch_invalid_create_redacts_secret_and_rolls_back - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_cfn.py::test_cfn_cdk_opensearch_access_policy_custom_resource - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_cfn.py::test_cfn_s3tables_resources - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nERROR tests/test_cfn.py::test_cfn_e2e_s3_put_and_get - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nERROR tests/test_cfn.py::test_cfn_e2e_s3_list_objects - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nERROR tests/test_cfn.py::test_cfn_e2e_sqs_send_receive_delete - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nERROR tests/test_cfn.py::test_cfn_e2e_sns_publish - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nERROR tests/test_cfn.py::test_cfn_e2e_ssm_read_cfn_param - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nERROR tests/test_cfn.py::test_cfn_e2e_ssm_write_and_read - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nERROR tests/test_cfn.py::test_cfn_e2e_lambda_invoke - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nERROR tests/test_cfn.py::test_cfn_e2e_lambda_role_matches_iam_role - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nERROR tests/test_cfn.py::test_cfn_e2e_pipeline - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nERROR tests/test_cfn.py::test_cfn_e2e_exports_available - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\n118 failed, 2 passed, 10 errors in 155.25s (0:02:35)"
+    }
+  }
+}

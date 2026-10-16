@@ -1,0 +1,24 @@
+{
+  "id": "makecindy__cindy__5662",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "22.22.3",
+      "pm": "pnpm",
+      "install": "pnpm install --frozen-lockfile"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 47754,
+    "verifyMs": 1272222
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.5.0",
+  "installRetries": 0
+}

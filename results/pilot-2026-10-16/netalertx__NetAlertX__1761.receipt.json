@@ -1,0 +1,401 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "a0270c76a4cde0fad3feedfddc42487be04c9ee7",
+    "head": "bcd44381c656fba66cfe81f977ddc3e21a7885c4"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 46,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "escape-added",
+      "severity": "warn",
+      "title": "lint rule disabled",
+      "file": "server/plugins/mikrotik_scan/mikrotik.py",
+      "line": 10,
+      "detail": "from plugin_helper import Plugin_Objects, normalize_mac  # noqa: E402 [flake8 lint suppression]"
+    },
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 2"
+    },
+    {
+      "id": "proofs-unmatched",
+      "severity": "warn",
+      "title": "No test results matched the changed test files; fail-before/pass-after evidence unavailable"
+    }
+  ],
+  "risks": [
+    {
+      "file": "server/plugins/mikrotik_scan/mikrotik.py",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 2,
+      "durationMs": 5118,
+      "cases": [
+        {
+          "id": "::test.api_endpoints.test_auth_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_auth_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_dbquery_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_dbquery_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_device_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_device_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_device_update_normalization",
+          "file": "",
+          "name": "test.api_endpoints.test_device_update_normalization",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_devices_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_devices_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_docs",
+          "file": "",
+          "name": "test.api_endpoints.test_docs",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_events_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_events_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_graphq_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_graphq_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_health_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_health_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_history_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_history_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_languages_endpoint",
+          "file": "",
+          "name": "test.api_endpoints.test_languages_endpoint",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_logs_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_logs_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_mcp_disabled_tools",
+          "file": "",
+          "name": "test.api_endpoints.test_mcp_disabled_tools",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_mcp_extended_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_mcp_extended_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_mcp_openapi_spec",
+          "file": "",
+          "name": "test.api_endpoints.test_mcp_openapi_spec",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_mcp_tools_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_mcp_tools_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_messaging_in_app_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_messaging_in_app_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_nettools_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_nettools_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_plugin_stats_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_plugin_stats_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_scan_pause_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_scan_pause_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_sessions_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_sessions_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_settings_endpoints",
+          "file": "",
+          "name": "test.api_endpoints.test_settings_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.api_endpoints.test_sync_endpoint",
+          "file": "",
+          "name": "test.api_endpoints.test_sync_endpoint",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.docker_tests.test_docker_compose_scenarios",
+          "file": "",
+          "name": "test.docker_tests.test_docker_compose_scenarios",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.plugins.test_adguard_export",
+          "file": "",
+          "name": "test.plugins.test_adguard_export",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.plugins.test_fritzbox",
+          "file": "",
+          "name": "test.plugins.test_fritzbox",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.plugins.test_ntfy_custom_headers",
+          "file": "",
+          "name": "test.plugins.test_ntfy_custom_headers",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.plugins.test_rest_import",
+          "file": "",
+          "name": "test.plugins.test_rest_import",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.scan.test_authoritative_handler",
+          "file": "",
+          "name": "test.scan.test_authoritative_handler",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.scan.test_device_field_lock",
+          "file": "",
+          "name": "test.scan.test_device_field_lock",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.scan.test_device_status_mappings",
+          "file": "",
+          "name": "test.scan.test_device_status_mappings",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.scan.test_down_sleep_events",
+          "file": "",
+          "name": "test.scan.test_down_sleep_events",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.scan.test_field_lock_scan_integration",
+          "file": "",
+          "name": "test.scan.test_field_lock_scan_integration",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.scan.test_field_lock_scenarios",
+          "file": "",
+          "name": "test.scan.test_field_lock_scenarios",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.scan.test_force_status",
+          "file": "",
+          "name": "test.scan.test_force_status",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.scan.test_ip_format_and_locking",
+          "file": "",
+          "name": "test.scan.test_ip_format_and_locking",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.scan.test_ip_update_logic",
+          "file": "",
+          "name": "test.scan.test_ip_update_logic",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.scan.test_nic_presence",
+          "file": "",
+          "name": "test.scan.test_nic_presence",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.scan.test_sync_hub_node_backfill",
+          "file": "",
+          "name": "test.scan.test_sync_hub_node_backfill",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.server.test_api_server_start",
+          "file": "",
+          "name": "test.server.test_api_server_start",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.server.test_graphql_endpoints",
+          "file": "",
+          "name": "test.server.test_graphql_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.server.test_plugin_history_filtering",
+          "file": "",
+          "name": "test.server.test_plugin_history_filtering",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.test_device_atomicity",
+          "file": "",
+          "name": "test.test_device_atomicity",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.test_mcp_disablement",
+          "file": "",
+          "name": "test.test_mcp_disablement",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.test_plugin_helper",
+          "file": "",
+          "name": "test.test_plugin_helper",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::test.ui",
+          "file": "",
+          "name": "test.ui",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ],
+      "outputTail": "\nEnable tracemalloc to get traceback where the object was allocated.\nSee https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.\n  warnings.warn(pytest.PytestUnhandledThreadExceptionWarning(msg))\n\nERROR test/api_endpoints/test_device_update_normalization.py\nERROR test/api_endpoints/test_devices_endpoints.py\nERROR test/api_endpoints/test_docs.py\nERROR test/api_endpoints/test_events_endpoints.py\nERROR test/api_endpoints/test_graphq_endpoints.py\nERROR test/api_endpoints/test_health_endpoints.py\nERROR test/api_endpoints/test_history_endpoints.py\nERROR test/api_endpoints/test_languages_endpoint.py\nERROR test/api_endpoints/test_logs_endpoints.py\nERROR test/api_endpoints/test_mcp_disabled_tools.py - FileNotFoundError: [Errno 2] No such file or directory: '/data/config/app.conf'\nERROR test/api_endpoints/test_mcp_extended_endpoints.py - FileNotFoundError: [Errno 2] No such file or directory: '/data/config/app.conf'\nERROR test/api_endpoints/test_mcp_openapi_spec.py - FileNotFoundError: [Errno 2] No such file or directory: '/data/config/app.conf'\nERROR test/api_endpoints/test_mcp_tools_endpoints.py - FileNotFoundError: [Errno 2] No such file or directory: '/data/config/app.conf'\nERROR test/api_endpoints/test_messaging_in_app_endpoints.py - FileNotFoundError: [Errno 2] No such file or directory: '/data/config/app.conf'\nERROR test/api_endpoints/test_nettools_endpoints.py - FileNotFoundError: [Errno 2] No such file or directory: '/data/config/app.conf'\nERROR test/api_endpoints/test_plugin_stats_endpoints.py - FileNotFoundError: [Errno 2] No such file or directory: '/data/config/app.conf'\nERROR test/api_endpoints/test_scan_pause_endpoints.py - FileNotFoundError: [Errno 2] No such file or directory: '/data/config/app.conf'\nERROR test/api_endpoints/test_sessions_endpoints.py - FileNotFoundError: [Errno 2] No such file or directory: '/data/config/app.conf'\nERROR test/api_endpoints/test_settings_endpoints.py - FileNotFoundError: [Errno 2] No such file or directory: '/data/config/app.conf'\nERROR test/api_endpoints/test_sync_endpoint.py - FileNotFoundError: [Errno 2] No such file or directory: '/data/config/app.conf'\nERROR test/docker_tests/test_docker_compose_scenarios.py\nERROR test/plugins/test_adguard_export.py - pytz.exceptions.UnknownTimeZoneError: ''\nERROR test/plugins/test_fritzbox.py\nERROR test/plugins/test_ntfy_custom_headers.py\nERROR test/plugins/test_rest_import.py\nERROR test/scan/test_authoritative_handler.py\nERROR test/scan/test_device_field_lock.py\nERROR test/scan/test_device_status_mappings.py\nERROR test/scan/test_down_sleep_events.py\nERROR test/scan/test_field_lock_scan_integration.py\nERROR test/scan/test_field_lock_scenarios.py\nERROR test/scan/test_force_status.py\nERROR test/scan/test_ip_format_and_locking.py\nERROR test/scan/test_ip_update_logic.py\nERROR test/scan/test_nic_presence.py\nERROR test/scan/test_sync_hub_node_backfill.py\nERROR test/server/test_api_server_start.py\nERROR test/server/test_graphql_endpoints.py\nERROR test/server/test_plugin_history_filtering.py\nERROR test/test_device_atomicity.py\nERROR test/test_mcp_disablement.py\nERROR test/test_plugin_helper.py - FileNotFoundError: [Errno 2] No such file or directory: '/data/config/app.conf'\nERROR test/ui - ModuleNotFoundError: No module named 'selenium'\n!!!!!!!!!!!!!!!!!!! Interrupted: 46 errors during collection !!!!!!!!!!!!!!!!!!!\n46 errors in 3.77s"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 311,
+      "cases": [
+        {
+          "id": "test.plugins.test_mikrotik_scan::test_leases_without_mac_do_not_abort_remaining_leases",
+          "file": "test.plugins.test_mikrotik_scan",
+          "name": "test_leases_without_mac_do_not_abort_remaining_leases",
+          "outcome": "fail",
+          "message": "AssertionError: assert 1 == 2&#10; + where 1 = <MagicMock name='mock.add_object' id='140423944689408'>.call_count&#10; + where <MagicMock name='mock.add_object' id='140423944689408'> = <MagicMock id='140423944611520'>.add_object"
+        }
+      ],
+      "outputTail": "F                                                                        [100%]\n=================================== FAILURES ===================================\n____________ test_leases_without_mac_do_not_abort_remaining_leases _____________\n\n    def test_leases_without_mac_do_not_abort_remaining_leases():\n        leases = [\n            _lease(\"*1\", \"192.168.1.2\", \"aa-bb-cc-dd-ee-01\"),\n            _lease(\"*2\", \"192.168.1.5\", None, status=\"waiting\"),\n            _lease(\"*3\", \"192.168.1.6\", None),\n            _lease(\"*4\", \"192.168.1.8\", \"aa-bb-cc-dd-ee-04\"),\n        ]\n        api = MagicMock(return_value=leases)\n        plugin_objects = MagicMock()\n    \n        mikrotik.MT_USER = \"user\"\n        mikrotik.MT_PASS = None\n        mikrotik.MT_HOST = \"192.168.1.1\"\n        mikrotik.MT_PORT = 8728\n    \n        with patch.object(mikrotik, \"connect\", return_value=api):\n            result = mikrotik.get_entries(plugin_objects)\n    \n        assert result is plugin_objects\n>       assert plugin_objects.add_object.call_count == 2\nE       AssertionError: assert 1 == 2\nE        +  where 1 = <MagicMock name='mock.add_object' id='140423944689408'>.call_count\nE        +    where <MagicMock name='mock.add_object' id='140423944689408'> = <MagicMock id='140423944611520'>.add_object\n\ntest/plugins/test_mikrotik_scan.py:88: AssertionError\n=========================== short test summary info ============================\nFAILED test/plugins/test_mikrotik_scan.py::test_leases_without_mac_do_not_abort_remaining_leases - AssertionError: assert 1 == 2\n +  where 1 = <MagicMock name='mock.add_object' id='140423944689408'>.call_count\n +    where <MagicMock name='mock.add_object' id='140423944689408'> = <MagicMock id='140423944611520'>.add_object\n1 failed in 0.04s"
+    }
+  }
+}

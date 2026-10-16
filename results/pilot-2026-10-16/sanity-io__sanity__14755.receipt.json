@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "cd15a5420f7fc8cf17f50ae63958da8db5fb2f3b",
+    "head": "3e2cc721b2242783aacbe1030e0edd00442d9c9e"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "}"
+    },
+    {
+      "id": "base-run-failed",
+      "severity": "warn",
+      "title": "Changed tests could not run at base; fail-before evidence unavailable (exit 1)"
+    }
+  ],
+  "risks": [
+    {
+      "file": "AGENTS.md",
+      "score": 2,
+      "reasons": [
+        "agent config"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 735,
+      "cases": [],
+      "outputTail": "    Error: Cannot find package '@repo/test-config' imported from /home/runner/work/_temp/work/repo/node_modules/.vite-temp/vitest.config.mts.timestamp-1792180767227-05666f361f814.mjs\n    Did you mean to import \"file:///home/runner/work/_temp/work/repo/packages/@repo/test-config/vitest/index.mjs\"?\n        at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n        at packageResolve (node:internal/modules/esm/resolve:772:81)\n        at moduleResolve (node:internal/modules/esm/resolve:859:18)\n        at defaultResolve (node:internal/modules/esm/resolve:989:11)\n        at ModuleLoader.#cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {\n      code: 'ERR_MODULE_NOT_FOUND'\n    },\n    Error: Cannot find package '@repo/test-config' imported from /home/runner/work/_temp/work/repo/node_modules/.vite-temp/vitest.config.mts.timestamp-1792180767227-fba3cf0e6682e.mjs\n    Did you mean to import \"file:///home/runner/work/_temp/work/repo/packages/@repo/test-config/vitest/index.mjs\"?\n        at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n        at packageResolve (node:internal/modules/esm/resolve:772:81)\n        at moduleResolve (node:internal/modules/esm/resolve:859:18)\n        at defaultResolve (node:internal/modules/esm/resolve:989:11)\n        at ModuleLoader.#cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {\n      code: 'ERR_MODULE_NOT_FOUND'\n    },\n    Error: Cannot find package '@repo/test-config' imported from /home/runner/work/_temp/work/repo/node_modules/.vite-temp/vitest.config.mts.timestamp-1792180767242-2433788a6af67.mjs\n    Did you mean to import \"file:///home/runner/work/_temp/work/repo/packages/@repo/test-config/vitest/index.mjs\"?\n        at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n        at packageResolve (node:internal/modules/esm/resolve:772:81)\n        at moduleResolve (node:internal/modules/esm/resolve:859:18)\n        at defaultResolve (node:internal/modules/esm/resolve:989:11)\n        at ModuleLoader.#cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {\n      code: 'ERR_MODULE_NOT_FOUND'\n    },\n    Error: Cannot find package '@repo/test-config' imported from /home/runner/work/_temp/work/repo/node_modules/.vite-temp/vitest.config.mts.timestamp-1792180767242-bee951381499a.mjs\n    Did you mean to import \"file:///home/runner/work/_temp/work/repo/packages/@repo/test-config/vitest/index.mjs\"?\n        at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n        at packageResolve (node:internal/modules/esm/resolve:772:81)\n        at moduleResolve (node:internal/modules/esm/resolve:859:18)\n        at defaultResolve (node:internal/modules/esm/resolve:989:11)\n        at ModuleLoader.#cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {\n      code: 'ERR_MODULE_NOT_FOUND'\n    }\n  ]\n}"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 654,
+      "cases": [],
+      "outputTail": "    Error: Cannot find package '@repo/test-config' imported from /home/runner/work/_temp/work/repo/node_modules/.vite-temp/vitest.config.mts.timestamp-1792180768292-a3864283ac254.mjs\n    Did you mean to import \"file:///home/runner/work/_temp/work/repo/packages/@repo/test-config/vitest/index.mjs\"?\n        at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n        at packageResolve (node:internal/modules/esm/resolve:772:81)\n        at moduleResolve (node:internal/modules/esm/resolve:859:18)\n        at defaultResolve (node:internal/modules/esm/resolve:989:11)\n        at ModuleLoader.#cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {\n      code: 'ERR_MODULE_NOT_FOUND'\n    },\n    Error: Cannot find package '@repo/test-config' imported from /home/runner/work/_temp/work/repo/node_modules/.vite-temp/vitest.config.mts.timestamp-1792180768292-efae74d4f33a7.mjs\n    Did you mean to import \"file:///home/runner/work/_temp/work/repo/packages/@repo/test-config/vitest/index.mjs\"?\n        at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n        at packageResolve (node:internal/modules/esm/resolve:772:81)\n        at moduleResolve (node:internal/modules/esm/resolve:859:18)\n        at defaultResolve (node:internal/modules/esm/resolve:989:11)\n        at ModuleLoader.#cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {\n      code: 'ERR_MODULE_NOT_FOUND'\n    },\n    Error: Cannot find package '@repo/test-config' imported from /home/runner/work/_temp/work/repo/node_modules/.vite-temp/vitest.config.mts.timestamp-1792180768307-2c869907dd7c3.mjs\n    Did you mean to import \"file:///home/runner/work/_temp/work/repo/packages/@repo/test-config/vitest/index.mjs\"?\n        at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n        at packageResolve (node:internal/modules/esm/resolve:772:81)\n        at moduleResolve (node:internal/modules/esm/resolve:859:18)\n        at defaultResolve (node:internal/modules/esm/resolve:989:11)\n        at ModuleLoader.#cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {\n      code: 'ERR_MODULE_NOT_FOUND'\n    },\n    Error: Cannot find package '@repo/test-config' imported from /home/runner/work/_temp/work/repo/node_modules/.vite-temp/vitest.config.mts.timestamp-1792180768306-84769594f9f1a.mjs\n    Did you mean to import \"file:///home/runner/work/_temp/work/repo/packages/@repo/test-config/vitest/index.mjs\"?\n        at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n        at packageResolve (node:internal/modules/esm/resolve:772:81)\n        at moduleResolve (node:internal/modules/esm/resolve:859:18)\n        at defaultResolve (node:internal/modules/esm/resolve:989:11)\n        at ModuleLoader.#cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {\n      code: 'ERR_MODULE_NOT_FOUND'\n    }\n  ]\n}"
+    }
+  }
+}

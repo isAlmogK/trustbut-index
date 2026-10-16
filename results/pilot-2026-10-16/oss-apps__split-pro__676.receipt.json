@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "dce49ae038b89b8bb83ea93a5f37e4747d3e181c",
+    "head": "1b4f9d20f64dcd12fbeef4e4278cb656a9d5577b"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "at async Object.run (/home/runner/work/_temp/work/repo/node_modules/.pnpm/jest-cli@30.3.0_@types+node@22.19.3_ts-node@10.9.2_@types+node@22.19.3_typescript@5.7.3_/node_modules/jest-cli/build/index.js:656:9)"
+    },
+    {
+      "id": "base-run-failed",
+      "severity": "warn",
+      "title": "Changed tests could not run at base; fail-before evidence unavailable (exit 1)"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "jest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 2529,
+      "cases": [],
+      "outputTail": "❌ Invalid environment variables: [\n  {\n    validation: 'url',\n    code: 'invalid_string',\n    message: 'Invalid url',\n    path: [ 'DATABASE_URL' ]\n  },\n  {\n    code: 'invalid_type',\n    expected: 'string',\n    received: 'undefined',\n    path: [ 'NEXTAUTH_URL' ],\n    message: 'Required'\n  },\n  {\n    code: 'invalid_type',\n    expected: 'string',\n    received: 'undefined',\n    path: [ 'NEXTAUTH_URL_INTERNAL' ],\n    message: 'Required'\n  }\n]\nError: Jest: Failed to parse the TypeScript config file /tmp/trustbut-wt-FstI2s/jest.config.ts\n  Error: Invalid environment variables\n    at readConfigFileAndSetRootDir (/home/runner/work/_temp/work/repo/node_modules/.pnpm/jest-config@30.3.0_@types+node@22.19.3_ts-node@10.9.2_@types+node@22.19.3_typescript@5.7.3_/node_modules/jest-config/build/index.js:2294:13)\n    at async readInitialOptions (/home/runner/work/_temp/work/repo/node_modules/.pnpm/jest-config@30.3.0_@types+node@22.19.3_ts-node@10.9.2_@types+node@22.19.3_typescript@5.7.3_/node_modules/jest-config/build/index.js:1173:13)\n    at async readConfig (/home/runner/work/_temp/work/repo/node_modules/.pnpm/jest-config@30.3.0_@types+node@22.19.3_ts-node@10.9.2_@types+node@22.19.3_typescript@5.7.3_/node_modules/jest-config/build/index.js:944:7)\n    at async readConfigs (/home/runner/work/_temp/work/repo/node_modules/.pnpm/jest-config@30.3.0_@types+node@22.19.3_ts-node@10.9.2_@types+node@22.19.3_typescript@5.7.3_/node_modules/jest-config/build/index.js:1194:26)\n    at async runCLI (/home/runner/work/_temp/work/repo/node_modules/.pnpm/@jest+core@30.3.0_ts-node@10.9.2_@types+node@22.19.3_typescript@5.7.3_/node_modules/@jest/core/build/index.js:1402:7)\n    at async Object.run (/home/runner/work/_temp/work/repo/node_modules/.pnpm/jest-cli@30.3.0_@types+node@22.19.3_ts-node@10.9.2_@types+node@22.19.3_typescript@5.7.3_/node_modules/jest-cli/build/index.js:656:9)"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 2365,
+      "cases": [],
+      "outputTail": "❌ Invalid environment variables: [\n  {\n    validation: 'url',\n    code: 'invalid_string',\n    message: 'Invalid url',\n    path: [ 'DATABASE_URL' ]\n  },\n  {\n    code: 'invalid_type',\n    expected: 'string',\n    received: 'undefined',\n    path: [ 'NEXTAUTH_URL' ],\n    message: 'Required'\n  },\n  {\n    code: 'invalid_type',\n    expected: 'string',\n    received: 'undefined',\n    path: [ 'NEXTAUTH_URL_INTERNAL' ],\n    message: 'Required'\n  }\n]\nError: Jest: Failed to parse the TypeScript config file /tmp/trustbut-wt-jBEmxE/jest.config.ts\n  Error: Invalid environment variables\n    at readConfigFileAndSetRootDir (/home/runner/work/_temp/work/repo/node_modules/.pnpm/jest-config@30.3.0_@types+node@22.19.3_ts-node@10.9.2_@types+node@22.19.3_typescript@5.7.3_/node_modules/jest-config/build/index.js:2294:13)\n    at async readInitialOptions (/home/runner/work/_temp/work/repo/node_modules/.pnpm/jest-config@30.3.0_@types+node@22.19.3_ts-node@10.9.2_@types+node@22.19.3_typescript@5.7.3_/node_modules/jest-config/build/index.js:1173:13)\n    at async readConfig (/home/runner/work/_temp/work/repo/node_modules/.pnpm/jest-config@30.3.0_@types+node@22.19.3_ts-node@10.9.2_@types+node@22.19.3_typescript@5.7.3_/node_modules/jest-config/build/index.js:944:7)\n    at async readConfigs (/home/runner/work/_temp/work/repo/node_modules/.pnpm/jest-config@30.3.0_@types+node@22.19.3_ts-node@10.9.2_@types+node@22.19.3_typescript@5.7.3_/node_modules/jest-config/build/index.js:1194:26)\n    at async runCLI (/home/runner/work/_temp/work/repo/node_modules/.pnpm/@jest+core@30.3.0_ts-node@10.9.2_@types+node@22.19.3_typescript@5.7.3_/node_modules/@jest/core/build/index.js:1402:7)\n    at async Object.run (/home/runner/work/_temp/work/repo/node_modules/.pnpm/jest-cli@30.3.0_@types+node@22.19.3_ts-node@10.9.2_@types+node@22.19.3_typescript@5.7.3_/node_modules/jest-cli/build/index.js:656:9)"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "expressjs__express__7509",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "24",
+      "pm": "npm",
+      "install": "npm install"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 9574,
+    "verifyMs": 3050
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 0
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.5.0",
+  "installRetries": 0
+}

@@ -1,0 +1,157 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "498b2ae9530fe5c71b4825618834c5d7a48dd206",
+    "head": "6f12abc9d83f998ea0b948fa14e1faf23fca97e9"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": ".........."
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 434109,
+      "cases": [],
+      "outputTail": "........................x.xx.xxxx..x.........xx.x.....s.s.ssssssssssssss [  0%]\nssss.............................sssssss........ssssssssssssssssssssssss [  0%]\nsssssssss.ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [  0%]\nssssssssssssssssssssssssssssssss..ssssssssssssssssssss.ssssssssssssssss. [  0%]\n..sssssssssssssssssss.ssssssssssssssssss.............................sss [  0%]\nssss........ssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [  0%]\nssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [  0%]\nssssssssssssssssss.ssssssssssssssssssssssssssssssssssssssss............. [  1%]\n...............................s....sssssssxxxx.................xx.x.... [  1%]\n........................................................................ [  1%]\n...sssssssssssssss..s..ssssssssss..sssssssssssssssssssssssssssssssssssss [  1%]\nsssssssssssssss......................................................... [  1%]\n.......................................................sss.........ss... [  1%]\n.............................................................FFFFF...... [  1%]\n........................................................................ [  1%]\n.......................................................................F [  2%]\nF...............................FF.FFFFFFFF............................. [  2%]\n.........FF.............EEEE............................................ [  2%]\n..................x..................................................... [  2%]\n..............F.....................F...F............................... [  2%]\n........................................................................ [  2%]\n.........."
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 20090,
+      "cases": [
+        {
+          "id": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneCli::test_bootstrap_list_show",
+          "file": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneCli",
+          "name": "test_bootstrap_list_show",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneCli::test_json_output_carries_the_document_and_nothing_else",
+          "file": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneCli",
+          "name": "test_json_output_carries_the_document_and_nothing_else",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneCli::test_running_it_twice_against_an_unchanged_set_is_a_noop_and_says_so",
+          "file": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneCli",
+          "name": "test_running_it_twice_against_an_unchanged_set_is_a_noop_and_says_so",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneCli::test_update_changes_hash",
+          "file": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneCli",
+          "name": "test_update_changes_hash",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneCli::test_show_missing_lane_fails",
+          "file": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneCli",
+          "name": "test_show_missing_lane_fails",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneCli::test_invalid_spec_json_fails",
+          "file": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneCli",
+          "name": "test_invalid_spec_json_fails",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneCli::test_duplicate_lane_names_refused",
+          "file": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneCli",
+          "name": "test_duplicate_lane_names_refused",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneRetire::test_retired_lane_leaves_the_active_list",
+          "file": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneRetire",
+          "name": "test_retired_lane_leaves_the_active_list",
+          "outcome": "fail",
+          "message": "AssertionError: Usage: lane [OPTIONS] COMMAND [ARGS]...&#10; Try 'lane --help' for help.&#10; &#10; Error: No such command 'retire'.&#10; &#10;assert 2 == 0&#10; + where 2 = <Result SystemExit(2)>.exit_code"
+        },
+        {
+          "id": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneRetire::test_json_output_names_the_lane_and_its_hash",
+          "file": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneRetire",
+          "name": "test_json_output_names_the_lane_and_its_hash",
+          "outcome": "fail",
+          "message": "AssertionError: Usage: lane [OPTIONS] COMMAND [ARGS]...&#10; Try 'lane --help' for help.&#10; &#10; Error: No such command 'retire'.&#10; &#10;assert 2 == 0&#10; + where 2 = <Result SystemExit(2)>.exit_code"
+        },
+        {
+          "id": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneRetire::test_unknown_lane_fails_and_appends_nothing",
+          "file": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneRetire",
+          "name": "test_unknown_lane_fails_and_appends_nothing",
+          "outcome": "fail",
+          "message": "assert 2 == 1&#10; + where 2 = <Result SystemExit(2)>.exit_code"
+        },
+        {
+          "id": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneRetire::test_retiring_twice_fails_and_appends_nothing",
+          "file": "tests.unit.cli.test_govern_lane_cmd.TestGovernLaneRetire",
+          "name": "test_retiring_twice_fails_and_appends_nothing",
+          "outcome": "fail",
+          "message": "AssertionError: assert 2 == 0&#10; + where 2 = <Result SystemExit(2)>.exit_code&#10; + where <Result SystemExit(2)> = _run(['retire', 'canary', '--workdir', '/tmp/pytest-of-runner/pytest-2/test_retiring_twice_fails_and_0'])"
+        },
+        {
+          "id": "tests.unit.test_security_controls_are_wired::test_no_security_control_is_proved_uncalled",
+          "file": "tests.unit.test_security_controls_are_wired",
+          "name": "test_no_security_control_is_proved_uncalled",
+          "outcome": "fail",
+          "message": "AssertionError: public entry point(s) in core/security/ that nothing anywhere references, in code or in prose: ['audit_chain.py:record_lane_retired']. A security control with no call site is not a control - wire it, or delete it, or add it to KNOWN_UNCALLED with the reason.&#10;assert not ['audit_c…"
+        },
+        {
+          "id": "tests.unit.test_security_controls_are_wired::test_no_stale_exemptions",
+          "file": "tests.unit.test_security_controls_are_wired",
+          "name": "test_no_stale_exemptions",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.unit.test_security_controls_are_wired::test_the_unproven_list_is_reported_and_never_fails",
+          "file": "tests.unit.test_security_controls_are_wired",
+          "name": "test_the_unproven_list_is_reported_and_never_fails",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.unit.test_security_controls_are_wired::test_the_guard_can_see_a_caller_it_should",
+          "file": "tests.unit.test_security_controls_are_wired",
+          "name": "test_the_guard_can_see_a_caller_it_should",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.unit.test_security_controls_are_wired::test_alias_resolution_actually_resolves",
+          "file": "tests.unit.test_security_controls_are_wired",
+          "name": "test_alias_resolution_actually_resolves",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.unit.test_security_controls_are_wired::test_the_guard_can_see_same_module_callers",
+          "file": "tests.unit.test_security_controls_are_wired",
+          "name": "test_the_guard_can_see_same_module_callers",
+          "outcome": "pass"
+        }
+      ],
+      "outputTail": "self = <tests.unit.cli.test_govern_lane_cmd.TestGovernLaneRetire object at 0x7f3eaa6b5480>\ntmp_path = PosixPath('/tmp/pytest-of-runner/pytest-2/test_retiring_twice_fails_and_0')\n\n    def test_retiring_twice_fails_and_appends_nothing(self, tmp_path: Path):\n        spec = _write_spec(tmp_path, _SPEC)\n        _run([\"bootstrap\", str(spec), \"--workdir\", str(tmp_path)])\n>       assert _run([\"retire\", \"canary\", \"--workdir\", str(tmp_path)]).exit_code == 0\nE       AssertionError: assert 2 == 0\nE        +  where 2 = <Result SystemExit(2)>.exit_code\nE        +    where <Result SystemExit(2)> = _run(['retire', 'canary', '--workdir', '/tmp/pytest-of-runner/pytest-2/test_retiring_twice_fails_and_0'])\n\ntests/unit/cli/test_govern_lane_cmd.py:151: AssertionError\n_________________ test_no_security_control_is_proved_uncalled __________________\n\n    def test_no_security_control_is_proved_uncalled() -> None:\n        \"\"\"Fails only on what the guard can prove: a name written nowhere else at all.\"\"\"\n        proved, _unproven = _classify()\n        new = sorted(proved - KNOWN_UNCALLED)\n>       assert not new, (\n            \"public entry point(s) in core/security/ that nothing anywhere references, in code \"\n            f\"or in prose: {new}. A security control with no call site is not a control - wire \"\n            \"it, or delete it, or add it to KNOWN_UNCALLED with the reason.\"\n        )\nE       AssertionError: public entry point(s) in core/security/ that nothing anywhere references, in code or in prose: ['audit_chain.py:record_lane_retired']. A security control with no call site is not a control - wire it, or delete it, or add it to KNOWN_UNCALLED with the reason.\nE       assert not ['audit_chain.py:record_lane_retired']\n\ntests/unit/test_security_controls_are_wired.py:196: AssertionError\n=========================== short test summary info ============================\nFAILED tests/unit/cli/test_govern_lane_cmd.py::TestGovernLaneRetire::test_retired_lane_leaves_the_active_list - AssertionError: Usage: lane [OPTIONS] COMMAND [ARGS]...\n  Try 'lane --help' for help.\n  \n  Error: No such command 'retire'.\n  \nassert 2 == 0\n +  where 2 = <Result SystemExit(2)>.exit_code\nFAILED tests/unit/cli/test_govern_lane_cmd.py::TestGovernLaneRetire::test_json_output_names_the_lane_and_its_hash - AssertionError: Usage: lane [OPTIONS] COMMAND [ARGS]...\n  Try 'lane --help' for help.\n  \n  Error: No such command 'retire'.\n  \nassert 2 == 0\n +  where 2 = <Result SystemExit(2)>.exit_code\nFAILED tests/unit/cli/test_govern_lane_cmd.py::TestGovernLaneRetire::test_unknown_lane_fails_and_appends_nothing - assert 2 == 1\n +  where 2 = <Result SystemExit(2)>.exit_code\nFAILED tests/unit/cli/test_govern_lane_cmd.py::TestGovernLaneRetire::test_retiring_twice_fails_and_appends_nothing - AssertionError: assert 2 == 0\n +  where 2 = <Result SystemExit(2)>.exit_code\n +    where <Result SystemExit(2)> = _run(['retire', 'canary', '--workdir', '/tmp/pytest-of-runner/pytest-2/test_retiring_twice_fails_and_0'])\nFAILED tests/unit/test_security_controls_are_wired.py::test_no_security_control_is_proved_uncalled - AssertionError: public entry point(s) in core/security/ that nothing anywhere references, in code or in prose: ['audit_chain.py:record_lane_retired']. A security control with no call site is not a control - wire it, or delete it, or add it to KNOWN_UNCALLED with the reason.\nassert not ['audit_chain.py:record_lane_retired']\n5 failed, 12 passed in 16.13s"
+    }
+  }
+}

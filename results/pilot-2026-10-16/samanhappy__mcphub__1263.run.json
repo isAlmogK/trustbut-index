@@ -1,0 +1,24 @@
+{
+  "id": "samanhappy__mcphub__1263",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "24",
+      "pm": "pnpm",
+      "install": "pnpm install --frozen-lockfile"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 7773,
+    "verifyMs": 28026
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 0
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.5.0",
+  "installRetries": 0
+}

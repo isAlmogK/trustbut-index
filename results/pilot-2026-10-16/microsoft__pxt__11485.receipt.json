@@ -1,0 +1,64 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "ea81f93d522a9f97fb468f32bc226750e1233e84",
+    "head": "709565b95ef5e246c47535b6e1ff8dd9a1860d19"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "escape-added",
+      "severity": "warn",
+      "title": "explicit any",
+      "file": "webapp/src/components/assetEditor/assetSidebar.tsx",
+      "line": 98,
+      "detail": "protected handleAssetOpError = (message: string) => (e: any) => {"
+    },
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "\u001b[31mError: No test files found: \"test\"\u001b[39m"
+    },
+    {
+      "id": "no-tests-changed",
+      "severity": "warn",
+      "title": "Source changed but no tests were added or changed"
+    }
+  ],
+  "risks": [
+    {
+      "file": "webapp/src/components/assetEditor/assetSidebar.tsx",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "mocha",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 139,
+      "cases": [],
+      "outputTail": "Error: No test files found: \"test\""
+    }
+  }
+}

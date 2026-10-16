@@ -1,0 +1,66 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "c5852b6a85aad474af62930d13d8fbb539fe3ef3",
+    "head": "c7855dab7d7fbe420a17f8dd0c793509b6928789"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 2400 s"
+    }
+  ],
+  "risks": [
+    {
+      "file": "tests/unit/eval/bench/test_authority_suite.py",
+      "score": 1,
+      "reasons": [
+        "large change (247 lines)"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 2400185,
+      "timedOut": true,
+      "cases": [],
+      "outputTail": ".........................x.........xxxxx....s.s.ssssssssssssssssss...... [  0%]\n.......................sssssss......sssssssssssssssssssssssssssssssss.ss [  0%]\nssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [  0%]\nssssssssssssssssssss..ssssssssssssssssss.ssssssssssssssss...ssssssssssss [  0%]\nsssssss.ssssssssssssssssss.............................sssssss......ssss [  0%]\nssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [  0%]\nssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss [  0%]\n.ssssssssssssssssssssssssssssssssssssssss............................... [  1%]\n.............s....sssssss.................xxxxx......................... [  1%]\n.....................................................sssssssssssssss..s. [  1%]\n.ssssssssss..ssssssssssssssssssssssssssssssssssssssssssssssssssss....... [  1%]\n........................................................................ [  1%]\n.................................sss.........ss......................... [  1%]\n.......................................FFFFF............F............... [  1%]\n........................................................................ [  1%]\n....................................FF........................F......FF. [  2%]\nFFFFFFFF............F........................FFF.............EEEE....... [  2%]\n......................................................Fx................ [  2%]\n....................................F.F............F.................... [  2%]\n.F..FF......F........................................................... [  2%]\n...............................................F........................ [  2%]\n..................................................................FFF.FF [  2%]\nFsssssEEEEEEEEE..FFFFF.F.....FFFFF............\nCommand timed out after 2400000 ms"
+    },
+    "before": {
+      "exitCode": 2,
+      "durationMs": 6774,
+      "cases": [
+        {
+          "id": "::tests.unit.eval.bench.test_authority_suite",
+          "file": "",
+          "name": "tests.unit.eval.bench.test_authority_suite",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ],
+      "outputTail": "\n==================================== ERRORS ====================================\n________ ERROR collecting tests/unit/eval/bench/test_authority_suite.py ________\nImportError while importing test module '/tmp/trustbut-wt-ZFXG2n/tests/unit/eval/bench/test_authority_suite.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/opt/hostedtoolcache/Python/3.14.8/x64/lib/python3.14/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/unit/eval/bench/test_authority_suite.py:24: in <module>\n    from bernstein.eval.bench.authority_suite import (\nE   ModuleNotFoundError: No module named 'bernstein.eval.bench.authority_suite'\n=========================== short test summary info ============================\nERROR tests/unit/eval/bench/test_authority_suite.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 0.74s"
+    }
+  }
+}

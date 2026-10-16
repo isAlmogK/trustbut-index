@@ -1,0 +1,26 @@
+{
+  "id": "sktime__sktime__11141",
+  "status": "setup-failed",
+  "stage": "no-passing-tests",
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.13",
+      "install": [
+        "uv pip install -e \".[dev,tests]\"",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 3048,
+    "verifyMs": 106387
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.5.0",
+  "installRetries": 0
+}

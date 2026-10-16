@@ -1,0 +1,152 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "1e04e7b6c536334486daa10725e5be3d88f21a31",
+    "head": "5ec2fd18b77002271d1fdf5996fd320235b50ed9"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 14,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 14"
+    },
+    {
+      "id": "proofs-unmatched",
+      "severity": "warn",
+      "title": "No test results matched the changed test files; fail-before/pass-after evidence unavailable"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "mocha",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 14,
+      "durationMs": 792,
+      "cases": [
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/core\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/core\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/core/decorators-legacy\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/core/decorators-legacy\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/db2\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/db2\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/db2-ibmi\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/db2-ibmi\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/mariadb\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/mariadb\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/mssql\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/mssql\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/mysql\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/mysql\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/oracle\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/oracle\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/postgres\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/postgres\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/snowflake\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/snowflake\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/sqlite3\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/sqlite3\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/utils\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/utils\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/utils/node\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/utils/node\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/validator.js\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/validator.js\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        }
+      ],
+      "outputTail": "(node:2892) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:2892) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `node --trace-deprecation ...` to show where the warning was created)"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 749,
+      "cases": [
+        {
+          "id": "packages/core/test/unit/transaction.test.ts::packages/core/test/unit/transaction.test.ts",
+          "file": "packages/core/test/unit/transaction.test.ts",
+          "name": "packages/core/test/unit/transaction.test.ts",
+          "outcome": "error"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::test/esm-named-exports.test.js",
+          "file": "test/esm-named-exports.test.js",
+          "name": "test/esm-named-exports.test.js",
+          "outcome": "error"
+        }
+      ],
+      "outputTail": "(node:2911) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:2911) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n\n Exception during run: Error: Cannot find module '/tmp/trustbut-wt-pFmFzf/packages/core/lib/index.js'\n    at createEsmNotFoundErr (node:internal/modules/cjs/loader:1466:15)\n    at finalizeEsmResolution (node:internal/modules/cjs/loader:1455:15)\n    at trySelf (node:internal/modules/cjs/loader:629:12)\n    at Function.<anonymous> (node:internal/modules/cjs/loader:1406:24)\n    at Function.Module._resolveFilename.sharedData.moduleResolveFilenameHook.installedValue [as _resolveFilename] (/home/runner/work/_temp/work/repo/node_modules/@cspotcode/source-map-support/source-map-support.js:811:30)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1040:19)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1045:22)\n    at Function._load (node:internal/modules/cjs/loader:1216:25)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Module.require (node:internal/modules/cjs/loader:1527:12)\n    at require (node:internal/modules/helpers:147:16)\n    at Object.<anonymous> (/tmp/trustbut-wt-pFmFzf/packages/core/test/unit/transaction.test.ts:1:1)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Module.m._compile (/home/runner/work/_temp/work/repo/node_modules/ts-node/src/index.ts:1618:23)\n    at node:internal/modules/cjs/loader:1913:10\n    at Object.require.extensions.<computed> [as .ts] (/home/runner/work/_temp/work/repo/node_modules/ts-node/src/index.ts:1621:12)\n    at Module.load (node:internal/modules/cjs/loader:1505:32)\n    at Function._load (node:internal/modules/cjs/loader:1309:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at loadCJSModuleWithModuleLoad (node:internal/modules/esm/translators:335:3)\n    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:235:7)\n    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n    at async formattedImport (/home/runner/work/_temp/work/repo/node_modules/mocha/lib/nodejs/esm-utils.js:10:14)\n    at async Object.requireModule [as requireOrImport] (/home/runner/work/_temp/work/repo/node_modules/mocha/lib/nodejs/esm-utils.js:102:30)\n    at async Object.exports.loadFilesAsync (/home/runner/work/_temp/work/repo/node_modules/mocha/lib/nodejs/esm-utils.js:152:20)\n    at async singleRun (/home/runner/work/_temp/work/repo/node_modules/mocha/lib/cli/run-helpers.js:168:3)\n    at async Object.exports.handler (/home/runner/work/_temp/work/repo/node_modules/mocha/lib/cli/run.js:379:5) {\n  code: 'MODULE_NOT_FOUND',\n  path: '/tmp/trustbut-wt-pFmFzf/packages/core/package.json'\n}"
+    }
+  }
+}

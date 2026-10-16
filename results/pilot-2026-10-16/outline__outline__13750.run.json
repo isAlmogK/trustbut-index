@@ -1,0 +1,24 @@
+{
+  "id": "outline__outline__13750",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "26",
+      "pm": "yarn-berry",
+      "install": "yarn install --immutable"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 24318,
+    "verifyMs": 638568
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.5.0",
+  "installRetries": 0
+}

@@ -1,0 +1,113 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "b558f562ea2a11b0c4464eb2bb667fb2c4a109bd",
+    "head": "39da55c8ae9428780758c4337d6f5c73de5bf595"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 3,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 2"
+    },
+    {
+      "id": "proofs-unmatched",
+      "severity": "warn",
+      "title": "No test results matched the changed test files; fail-before/pass-after evidence unavailable"
+    }
+  ],
+  "risks": [
+    {
+      "file": ".github/workflows/release.yml",
+      "score": 3,
+      "reasons": [
+        "CI pipeline"
+      ]
+    },
+    {
+      "file": "libs/giskard-scan/pyproject.toml",
+      "score": 2,
+      "reasons": [
+        "dependencies"
+      ]
+    },
+    {
+      "file": "pyproject.toml",
+      "score": 2,
+      "reasons": [
+        "dependencies"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 2,
+      "durationMs": 10342,
+      "cases": [
+        {
+          "id": "::libs.giskard-core.tests",
+          "file": "",
+          "name": "libs.giskard-core.tests",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::libs.giskard-llm.tests",
+          "file": "",
+          "name": "libs.giskard-llm.tests",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::libs.giskard-scan.tests",
+          "file": "",
+          "name": "libs.giskard-scan.tests",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ],
+      "outputTail": "-wt-DBZJ3i/libs/giskard-agents/tests/test_generator_backends.py:53: PytestUnknownMarkWarning: Unknown pytest.mark.litellm - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html\n    marks=pytest.mark.litellm,\n\nlibs/giskard-agents/tests/test_generator_backends.py:96\n  /tmp/trustbut-wt-DBZJ3i/libs/giskard-agents/tests/test_generator_backends.py:96: PytestUnknownMarkWarning: Unknown pytest.mark.litellm - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html\n    @pytest.mark.litellm\n\nlibs/giskard-agents/tests/test_litellm_generator.py:24\n  /tmp/trustbut-wt-DBZJ3i/libs/giskard-agents/tests/test_litellm_generator.py:24: PytestUnknownMarkWarning: Unknown pytest.mark.litellm - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html\n    pytestmark = pytest.mark.litellm\n\nlibs/giskard-checks/tests/core/test_missing_serialization.py:15\n  /tmp/trustbut-wt-DBZJ3i/libs/giskard-checks/tests/core/test_missing_serialization.py:15: PydanticDeprecatedSince214: The `MISSING` sentinel is no longer experimental. Import it from the main `pydantic` module instead. Deprecated in Pydantic V2.14 to be removed in V3.0.\n    from pydantic.experimental.missing_sentinel import MISSING\n\nlibs/giskard-checks/tests/core/test_trace_type_inference.py:6\n  /tmp/trustbut-wt-DBZJ3i/libs/giskard-checks/tests/core/test_trace_type_inference.py:6: PydanticDeprecatedSince214: The `MISSING` sentinel is no longer experimental. Import it from the main `pydantic` module instead. Deprecated in Pydantic V2.14 to be removed in V3.0.\n    from pydantic.experimental.missing_sentinel import MISSING\n\nlibs/giskard-checks/tests/integration/conftest.py:6\n  /tmp/trustbut-wt-DBZJ3i/libs/giskard-checks/tests/integration/conftest.py:6: PytestUnknownMarkWarning: Unknown pytest.mark.integration - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html\n    pytestmark = [pytest.mark.integration, pytest.mark.uses_ambient_env]\n\nlibs/giskard-checks/tests/integration/conftest.py:6\n  /tmp/trustbut-wt-DBZJ3i/libs/giskard-checks/tests/integration/conftest.py:6: PytestUnknownMarkWarning: Unknown pytest.mark.uses_ambient_env - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html\n    pytestmark = [pytest.mark.integration, pytest.mark.uses_ambient_env]\n\n../../home/runner/work/_temp/work/repo/libs/giskard-checks/src/giskard/checks/core/result.py:423\n  /home/runner/work/_temp/work/repo/libs/giskard-checks/src/giskard/checks/core/result.py:423: PytestCollectionWarning: cannot collect test class 'TestCaseResult' because it has a __init__ constructor (from: libs/giskard-checks/tests/scenarios/test_testcase.py)\n    class TestCaseResult(BaseResult, frozen=True):\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nERROR libs/giskard-core/tests - _pytest.pathlib.ImportPathMismatchError: ('tests.conftest', '/tmp/trustbut-wt-DBZJ3i/libs/giskard-checks/tests/conftest.py', PosixPath('/tmp/trustbut-wt-DBZJ3i/libs/giskard-core/tests/conftest.py'))\nERROR libs/giskard-llm/tests - _pytest.pathlib.ImportPathMismatchError: ('tests.conftest', '/tmp/trustbut-wt-DBZJ3i/libs/giskard-checks/tests/conftest.py', PosixPath('/tmp/trustbut-wt-DBZJ3i/libs/giskard-llm/tests/conftest.py'))\nERROR libs/giskard-scan/tests - _pytest.pathlib.ImportPathMismatchError: ('tests.conftest', '/tmp/trustbut-wt-DBZJ3i/libs/giskard-checks/tests/conftest.py', PosixPath('/tmp/trustbut-wt-DBZJ3i/libs/giskard-scan/tests/conftest.py'))\n!!!!!!!!!!!!!!!!!!! Interrupted: 3 errors during collection !!!!!!!!!!!!!!!!!!!!\n21 warnings, 3 errors in 7.74s"
+    },
+    "before": {
+      "exitCode": 2,
+      "durationMs": 263,
+      "cases": [
+        {
+          "id": "::tools.test_bump_workspace_pins",
+          "file": "",
+          "name": "tools.test_bump_workspace_pins",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tools.test_check_extra_pins",
+          "file": "",
+          "name": "tools.test_check_extra_pins",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ],
+      "outputTail": "\n==================================== ERRORS ====================================\n______________ ERROR collecting tools/test_bump_workspace_pins.py ______________\nImportError while importing test module '/tmp/trustbut-wt-NQKo4V/tools/test_bump_workspace_pins.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntools/test_bump_workspace_pins.py:6: in <module>\n    from tools.bump_workspace_pins import bump_pins, rewrite_text\nE   ModuleNotFoundError: No module named 'tools.bump_workspace_pins'\n_______________ ERROR collecting tools/test_check_extra_pins.py ________________\nImportError while importing test module '/tmp/trustbut-wt-NQKo4V/tools/test_check_extra_pins.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntools/test_check_extra_pins.py:8: in <module>\n    from tools.check_extra_pins import collect_mismatches, collect_package_pin_mismatches\nE   ImportError: cannot import name 'collect_package_pin_mismatches' from 'tools.check_extra_pins' (/tmp/trustbut-wt-NQKo4V/tools/check_extra_pins.py)\n=========================== short test summary info ============================\nERROR tools/test_bump_workspace_pins.py\nERROR tools/test_check_extra_pins.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 2 errors during collection !!!!!!!!!!!!!!!!!!!!\n2 errors in 0.09s"
+    }
+  }
+}

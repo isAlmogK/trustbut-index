@@ -1,0 +1,56 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "095434236d2f32e59516b68cec3842b545401f15",
+    "head": "1c84d840092a7013dcc467a8c84cc13a70321eaa"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "\u001b[31mError: No test files found: \"test\"\u001b[39m"
+    },
+    {
+      "id": "no-tests-changed",
+      "severity": "warn",
+      "title": "Source changed but no tests were added or changed"
+    }
+  ],
+  "risks": [
+    {
+      "file": "skillmap/src/lib/authClient.ts",
+      "score": 3,
+      "reasons": [
+        "auth/permissions"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "mocha",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 107,
+      "cases": [],
+      "outputTail": "Error: No test files found: \"test\""
+    }
+  }
+}

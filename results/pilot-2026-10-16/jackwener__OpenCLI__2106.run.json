@@ -1,0 +1,25 @@
+{
+  "id": "jackwener__OpenCLI__2106",
+  "status": "setup-failed",
+  "stage": "install",
+  "recipe": {
+    "node": {
+      "version": "24",
+      "pm": "bun",
+      "install": "bun install --frozen-lockfile"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 60467,
+    "verifyMs": 0
+  },
+  "exitCodes": {
+    "install": 1,
+    "verify": null
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "unknown",
+  "installRetries": 2,
+  "installTail": "bun install v1.4.3 (c6da4a4d3)\nResolving dependencies\nResolved, downloaded and extracted [0]\nerror: lockfile had changes, but lockfile is frozen\nnote: overrides in package.json changed since bun.lock was saved\nnote: try re-running without --frozen-lockfile and commit the updated lockfile"
+}

@@ -1,0 +1,24 @@
+{
+  "id": "heroui-inc__heroui__6785",
+  "status": "setup-failed",
+  "stage": "no-passing-tests",
+  "recipe": {
+    "node": {
+      "version": "22.14.0",
+      "pm": "pnpm",
+      "install": "pnpm install --frozen-lockfile"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 23637,
+    "verifyMs": 18401
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.5.0",
+  "installRetries": 0
+}

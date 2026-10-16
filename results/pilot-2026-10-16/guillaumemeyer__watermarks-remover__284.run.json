@@ -1,0 +1,26 @@
+{
+  "id": "guillaumemeyer__watermarks-remover__284",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.12",
+      "install": [
+        "uv pip install -r requirements-dev.txt",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 637,
+    "verifyMs": 25896
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 0
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.5.0",
+  "installRetries": 0
+}

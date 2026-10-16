@@ -1,0 +1,26 @@
+{
+  "id": "loopx-project__loopx__5929",
+  "status": "setup-failed",
+  "stage": "no-passing-tests",
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.13",
+      "install": [
+        "uv pip install -e \".[test]\"",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 1828,
+    "verifyMs": 2403809
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.5.0",
+  "installRetries": 0
+}

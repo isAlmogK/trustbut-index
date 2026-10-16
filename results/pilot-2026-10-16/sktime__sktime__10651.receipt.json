@@ -1,0 +1,70 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "7188a92a3986aec8bc84cff31c22757e3722f5e4",
+    "head": "1c60cc473effb5d0de502e1770d44371a4261279"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 3,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 1"
+    },
+    {
+      "id": "no-tests-changed",
+      "severity": "warn",
+      "title": "Source changed but no tests were added or changed"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 158642,
+      "cases": [
+        {
+          "id": "::gw1",
+          "file": "",
+          "name": "gw1",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::gw0",
+          "file": "",
+          "name": "gw0",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::gw3",
+          "file": "",
+          "name": "gw3",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ],
+      "outputTail": "+++ gw0\n\n@@ -3540,17 +3540,17 @@\n\n sktime/transformations/hierarchical/tests/reconcile/test_full_hierarchy.py::test_nonnegative_reconciliation[hierarchical_levels0]\n sktime/datasets/tests/test_datadownload.py::test_load_UEA\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[m1_quarterly_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecasting_data_invalid_name[invalid_name]\n sktime/datasets/tests/test_datadownload.py::test_load_solar\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[vehicle_trips_dataset_without_missing_values]\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[solar_10_minutes_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[wind_4_seconds_dataset]\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[tourism_quarterly_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[australian_electricity_demand_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_m5\n sktime/datasets/tests/test_datadownload.py::test_load_fpp3_private\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[solar_10_minutes_dataset]\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[weather_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_fpp3_public\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[pedestrian_counts_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[m4_hourly_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_check_freq_for_hier_data\n sktime/transformations/tests/test_catch22.py::test_catch22_on_basic_motions\nTo see why this happens see 'Known limitations' in documentation for pytest-xdist\nERROR gw3 - Different tests were collected between gw2 and gw3. The difference is:\n--- gw2\n\n+++ gw3\n\n@@ -3539,13 +3539,13 @@\n\n sktime/transformations/hierarchical/tests/reconcile/test_full_hierarchy.py::test_nonnegative_reconciliation[hierarchical_levels1]\n sktime/transformations/hierarchical/tests/reconcile/test_full_hierarchy.py::test_nonnegative_reconciliation[hierarchical_levels0]\n sktime/datasets/tests/test_datadownload.py::test_load_UEA\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[m4_weekly_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[m1_quarterly_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecasting_data_invalid_name[invalid_name]\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[traffic_weekly_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_solar\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[vehicle_trips_dataset_without_missing_values]\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[solar_10_minutes_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[wind_4_seconds_dataset]\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[m3_yearly_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[australian_electricity_demand_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_m5\n sktime/datasets/tests/test_datadownload.py::test_load_fpp3_private\nTo see why this happens see 'Known limitations' in documentation for pytest-xdist\n16 warnings, 3 errors in 153.38s (0:02:33)"
+    }
+  }
+}

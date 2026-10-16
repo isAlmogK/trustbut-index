@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "21b78c55d5a0b2e4c9966be584165f6114e1ae0a",
+    "head": "da1f4e6c3d817f80f18c57bb4253311f3786e678"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "npm run build"
+    },
+    {
+      "id": "base-run-failed",
+      "severity": "warn",
+      "title": "Changed tests could not run at base; fail-before evidence unavailable (exit 1)"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 943,
+      "cases": [],
+      "outputTail": "\nUnit-test build prerequisites are missing (fresh checkout detected):\n\n  - packages/core: workspace package \"@qwen-code/qwen-code-core\" has not been built (missing packages/core/dist/index.js)\n\nPackage-local unit tests import these workspace packages through\ntheir built dist/ output, which a fresh clone or new worktree does\nnot have. From the repository root, run:\n\n    npm run build"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 910,
+      "cases": [],
+      "outputTail": "\nUnit-test build prerequisites are missing (fresh checkout detected):\n\n  - packages/acp-bridge: workspace package \"@qwen-code/acp-bridge\" has not been built (missing packages/acp-bridge/dist/index.js)\n  - packages/web-templates: workspace package \"@qwen-code/web-templates\" has not been built (missing packages/web-templates/dist/index.js)\n  - packages/channels/base: workspace package \"@qwen-code/channel-base\" has not been built (missing packages/channels/base/dist/index.js)\n  - packages/channels/dingtalk: workspace package \"@qwen-code/channel-dingtalk\" has not been built (missing packages/channels/dingtalk/dist/index.js)\n  - packages/channels/dws: workspace package \"@qwen-code/channel-dws\" has not been built (missing packages/channels/dws/dist/index.js)\n  - packages/channels/email: workspace package \"@qwen-code/channel-email\" has not been built (missing packages/channels/email/dist/index.js)\n  - packages/channels/feishu: workspace package \"@qwen-code/channel-feishu\" has not been built (missing packages/channels/feishu/dist/index.js)\n  - packages/channels/github: workspace package \"@qwen-code/channel-github\" has not been built (missing packages/channels/github/dist/index.js)\n  - packages/channels/gitlab: workspace package \"@qwen-code/channel-gitlab\" has not been built (missing packages/channels/gitlab/dist/index.js)\n  - packages/channels/qqbot: workspace package \"@qwen-code/channel-qqbot\" has not been built (missing packages/channels/qqbot/dist/index.js)\n  - packages/channels/telegram: workspace package \"@qwen-code/channel-telegram\" has not been built (missing packages/channels/telegram/dist/index.js)\n  - packages/channels/wecom: workspace package \"@qwen-code/channel-wecom\" has not been built (missing packages/channels/wecom/dist/index.js)\n  - packages/channels/weixin: workspace package \"@qwen-code/channel-weixin\" has not been built (missing packages/channels/weixin/dist/index.js)\n  - packages/cli/src/generated/git-commit.ts: generated file does not exist\n\nPackage-local unit tests import these workspace packages through\ntheir built dist/ output, which a fresh clone or new worktree does\nnot have. From the repository root, run:\n\n    npm run build\n\nTo only regenerate git-commit.ts, run \"npm run generate\" instead."
+    }
+  }
+}

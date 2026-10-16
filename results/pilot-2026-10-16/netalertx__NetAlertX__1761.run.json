@@ -1,0 +1,26 @@
+{
+  "id": "netalertx__NetAlertX__1761",
+  "status": "setup-failed",
+  "stage": "no-passing-tests",
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.12",
+      "install": [
+        "uv pip install -r requirements.txt",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 1970,
+    "verifyMs": 6421
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.5.0",
+  "installRetries": 0
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "9e14dee5da9beb129f6c63c4f5e2467f9fcd831b",
+    "head": "bc6a27a76a8830d8da02458d364365cbf2562be3"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 2400 s"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 2400225,
+      "timedOut": true,
+      "cases": [],
+      "outputTail": "ok 2 - accepts one explicit terminal reboot but rejects early and repeated reboots\n  ---\n  duration_ms: 2.341006\n  type: 'test'\n  ...\n# Subtest: implicit final reboot does not relax dynamic ordering, wipes or complete-image checks\nok 3 - implicit final reboot does not relax dynamic ordering, wipes or complete-image checks\n  ---\n  duration_ms: 1.573749\n  type: 'test'\n  ...\n# Subtest: rejects every unconditional erase and unknown destructive instruction\nok 4 - rejects every unconditional erase and unknown destructive instruction\n  ---\n  duration_ms: 5.584055\n  type: 'test'\n  ...\n# Subtest: conditional wipes are target-specific, unique and last\nok 5 - conditional wipes are target-specific, unique and last\n  ---\n  duration_ms: 0.725018\n  type: 'test'\n  ...\nTAP version 13\n# Subtest: malformed disk journals require typed recovery before effects\nok 1 - malformed disk journals require typed recovery before effects\n  ---\n  duration_ms: 158.729097\n  type: 'test'\n  ...\n# Subtest: real provider outages preserve pending authority and revocation\nok 2 - real provider outages preserve pending authority and revocation\n  ---\n  duration_ms: 153.049259\n  type: 'test'\n  ...\nTAP version 13\n# Subtest: management projects server action, revision and date without private provider data\nok 1 - management projects server action, revision and date without private provider data\n  ---\n  duration_ms: 2.040948\n  type: 'test'\n  ...\n# Subtest: management rejects stale, inconsistent and malformed server controls\nok 2 - management rejects stale, inconsistent and malformed server controls\n  ---\n  duration_ms: 2.065925\n  type: 'test'\n  ...\nCommand timed out after 2400000 ms"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 4391,
+      "cases": [
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > signs a message payload",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > signs a message payload",
+          "outcome": "pass"
+        },
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > signs a messageBase64 payload",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > signs a messageBase64 payload",
+          "outcome": "pass"
+        },
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > rejects a missing or blank payload as a client error, not 503",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > rejects a missing or blank payload as a client error, not 503",
+          "outcome": "pass"
+        },
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > rejects malformed messageBase64 instead of signing other bytes",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > rejects malformed messageBase64 instead of signing other bytes",
+          "outcome": "fail",
+          "message": "expected 200 to be 400 // Object.is equality"
+        },
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > rejects malformed transactionBase64 as a client error, not 503",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > rejects malformed transactionBase64 as a client error, not 503",
+          "outcome": "fail",
+          "message": "expected 503 to be 400 // Object.is equality"
+        },
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > keeps a missing signer key on the 503 unavailable contract",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > keeps a missing signer key on the 503 unavailable contract",
+          "outcome": "pass"
+        }
+      ],
+      "outputTail": "JUNIT report written to /tmp/trustbut-junit-JBwwKD/junit.xml"
+    }
+  }
+}

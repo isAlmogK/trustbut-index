@@ -1,0 +1,27 @@
+{
+  "id": "PrefectHQ__fastmcp__4831",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.12",
+      "install": [
+        "uv pip install -e .",
+        "uv pip install --group dev",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 7392,
+    "verifyMs": 179772
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.5.0",
+  "installRetries": 0
+}

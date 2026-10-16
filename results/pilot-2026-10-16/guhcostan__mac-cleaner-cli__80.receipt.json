@@ -1,0 +1,2327 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "9bc7c61b641893980fbdc277207ed7fbef076f0f",
+    "head": "a572b7d4ef39ce5d989a7704440ef4fdb9002d16"
+  },
+  "verdict": "warn",
+  "tests": {
+    "passed": 348,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [
+    {
+      "file": "src/utils/clipboard.test.ts",
+      "name": "copyToClipboard > should copy text to clipboard using pbcopy",
+      "before": "fail",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "src/utils/clipboard.test.ts",
+      "name": "copyToClipboard > should handle empty string",
+      "before": "fail",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "src/utils/clipboard.test.ts",
+      "name": "copyToClipboard > should handle text with special characters",
+      "before": "fail",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "src/utils/clipboard.test.ts",
+      "name": "copyToClipboard > should handle multiline text",
+      "before": "fail",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "src/utils/clipboard.test.ts",
+      "name": "copyToClipboard > should handle very long paths",
+      "before": "fail",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "src/utils/display.test.ts",
+      "name": "sanitizeDisplayName > leaves normal names untouched",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "src/utils/display.test.ts",
+      "name": "sanitizeDisplayName > strips ANSI escape sequences",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "src/utils/display.test.ts",
+      "name": "sanitizeDisplayName > strips newlines and carriage returns used to forge extra rows",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "src/utils/display.test.ts",
+      "name": "sanitizeDisplayName > strips bidi overrides and zero-width characters",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    }
+  ],
+  "findings": [
+    {
+      "id": "escape-added",
+      "severity": "warn",
+      "title": "lint rule disabled",
+      "file": "src/utils/display.ts",
+      "line": 7,
+      "detail": "// eslint-disable-next-line no-control-regex"
+    }
+  ],
+  "risks": [
+    {
+      "file": ".github/workflows/ci.yml",
+      "score": 3,
+      "reasons": [
+        "CI pipeline"
+      ]
+    },
+    {
+      "file": "src/utils/display.ts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 0,
+      "durationMs": 3478,
+      "cases": [
+        {
+          "id": "src/index.test.ts::CLI version > should display the version from package.json",
+          "file": "src/index.test.ts",
+          "name": "CLI version > should display the version from package.json",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/index.test.ts::CLI version > should not display a hardcoded version",
+          "file": "src/index.test.ts",
+          "name": "CLI version > should not display a hardcoded version",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/types.test.ts::CATEGORIES > should have all expected categories",
+          "file": "src/types.test.ts",
+          "name": "CATEGORIES > should have all expected categories",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/types.test.ts::CATEGORIES > should have valid category structure",
+          "file": "src/types.test.ts",
+          "name": "CATEGORIES > should have valid category structure",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/types.test.ts::CATEGORIES > should have valid safety levels",
+          "file": "src/types.test.ts",
+          "name": "CATEGORIES > should have valid safety levels",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/types.test.ts::CATEGORIES > should mark risky categories correctly",
+          "file": "src/types.test.ts",
+          "name": "CATEGORIES > should mark risky categories correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/types.test.ts::CATEGORIES > should mark safe categories correctly",
+          "file": "src/types.test.ts",
+          "name": "CATEGORIES > should mark safe categories correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/types.test.ts::CATEGORIES > should have valid groups",
+          "file": "src/types.test.ts",
+          "name": "CATEGORIES > should have valid groups",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/types.test.ts::CATEGORIES > should have consistent id in key and value",
+          "file": "src/types.test.ts",
+          "name": "CATEGORIES > should have consistent id in key and value",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/clean.test.ts::clean command > should return null when nothing to clean",
+          "file": "src/commands/clean.test.ts",
+          "name": "clean command > should return null when nothing to clean",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/clean.test.ts::clean command > should skip risky categories without --unsafe",
+          "file": "src/commands/clean.test.ts",
+          "name": "clean command > should skip risky categories without --unsafe",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/clean.test.ts::clean command > should skip risky categories without safety note",
+          "file": "src/commands/clean.test.ts",
+          "name": "clean command > should skip risky categories without safety note",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/clean.test.ts::clean command > should perform dry run",
+          "file": "src/commands/clean.test.ts",
+          "name": "clean command > should perform dry run",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/clean.test.ts::clean command > should clean safe categories with --all --yes",
+          "file": "src/commands/clean.test.ts",
+          "name": "clean command > should clean safe categories with --all --yes",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/clean.test.ts::clean command > should clean only the specified categories without interactive selection",
+          "file": "src/commands/clean.test.ts",
+          "name": "clean command > should clean only the specified categories without interactive selection",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/clean.test.ts::clean command > should still skip risky categories with --categories unless --unsafe",
+          "file": "src/commands/clean.test.ts",
+          "name": "clean command > should still skip risky categories with --categories unless --unsafe",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/clean.test.ts::clean command > should cancel when user declines confirmation",
+          "file": "src/commands/clean.test.ts",
+          "name": "clean command > should cancel when user declines confirmation",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/clean.test.ts::clean command > should return null when no items selected interactively",
+          "file": "src/commands/clean.test.ts",
+          "name": "clean command > should return null when no items selected interactively",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/clean.test.ts::clean command > should handle cleaning with errors",
+          "file": "src/commands/clean.test.ts",
+          "name": "clean command > should handle cleaning with errors",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/clean.test.ts::clean command > should handle interactive selection for large-files category",
+          "file": "src/commands/clean.test.ts",
+          "name": "clean command > should handle interactive selection for large-files category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/clean.test.ts::clean command > should handle interactive selection for risky category with safetyNote",
+          "file": "src/commands/clean.test.ts",
+          "name": "clean command > should handle interactive selection for risky category with safetyNote",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/clean.test.ts::clean command > should skip items when none selected from risky category",
+          "file": "src/commands/clean.test.ts",
+          "name": "clean command > should skip items when none selected from risky category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/clean.test.ts::clean command > should select safe categories by default in interactive mode",
+          "file": "src/commands/clean.test.ts",
+          "name": "clean command > should select safe categories by default in interactive mode",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/clean.test.ts::clean command > should handle ios-backups category with item selection",
+          "file": "src/commands/clean.test.ts",
+          "name": "clean command > should handle ios-backups category with item selection",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/interactive.test.ts::interactive command > should return null when nothing to clean",
+          "file": "src/commands/interactive.test.ts",
+          "name": "interactive command > should return null when nothing to clean",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/interactive.test.ts::interactive command > should hide risky categories by default",
+          "file": "src/commands/interactive.test.ts",
+          "name": "interactive command > should hide risky categories by default",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/interactive.test.ts::interactive command > should return null when no items selected",
+          "file": "src/commands/interactive.test.ts",
+          "name": "interactive command > should return null when no items selected",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/interactive.test.ts::interactive command > should cancel when user declines confirmation",
+          "file": "src/commands/interactive.test.ts",
+          "name": "interactive command > should cancel when user declines confirmation",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/interactive.test.ts::interactive command > should clean selected items when confirmed",
+          "file": "src/commands/interactive.test.ts",
+          "name": "interactive command > should clean selected items when confirmed",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/interactive.test.ts::interactive command > should include risky categories when includeRisky is true",
+          "file": "src/commands/interactive.test.ts",
+          "name": "interactive command > should include risky categories when includeRisky is true",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/interactive.test.ts::interactive command > should handle large-files category with item selection",
+          "file": "src/commands/interactive.test.ts",
+          "name": "interactive command > should handle large-files category with item selection",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/interactive.test.ts::interactive command > should handle cleaning with errors",
+          "file": "src/commands/interactive.test.ts",
+          "name": "interactive command > should handle cleaning with errors",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/interactive.test.ts::interactive command > should skip item selection when no items selected from risky category",
+          "file": "src/commands/interactive.test.ts",
+          "name": "interactive command > should skip item selection when no items selected from risky category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/maintenance.test.ts::maintenance command > should show message when no tasks specified",
+          "file": "src/commands/maintenance.test.ts",
+          "name": "maintenance command > should show message when no tasks specified",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/maintenance.test.ts::maintenance command > should flush DNS cache when --dns specified",
+          "file": "src/commands/maintenance.test.ts",
+          "name": "maintenance command > should flush DNS cache when --dns specified",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/maintenance.test.ts::maintenance command > should free purgeable space when --purgeable specified",
+          "file": "src/commands/maintenance.test.ts",
+          "name": "maintenance command > should free purgeable space when --purgeable specified",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/maintenance.test.ts::maintenance command > should run both tasks when both flags specified",
+          "file": "src/commands/maintenance.test.ts",
+          "name": "maintenance command > should run both tasks when both flags specified",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/maintenance.test.ts::maintenance command > should handle failed tasks",
+          "file": "src/commands/maintenance.test.ts",
+          "name": "maintenance command > should handle failed tasks",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/scan.test.ts::scan command > scanCommand > should run all scans by default",
+          "file": "src/commands/scan.test.ts",
+          "name": "scan command > scanCommand > should run all scans by default",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/scan.test.ts::scan command > scanCommand > should run specific category scan",
+          "file": "src/commands/scan.test.ts",
+          "name": "scan command > scanCommand > should run specific category scan",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/scan.test.ts::scan command > scanCommand > should output valid JSON with --json",
+          "file": "src/commands/scan.test.ts",
+          "name": "scan command > scanCommand > should output valid JSON with --json",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/scan.test.ts::scan command > scanCommand > should include item paths in JSON with --verbose",
+          "file": "src/commands/scan.test.ts",
+          "name": "scan command > scanCommand > should include item paths in JSON with --verbose",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/scan.test.ts::scan command > listCategories > should list all categories",
+          "file": "src/commands/scan.test.ts",
+          "name": "scan command > listCategories > should list all categories",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should display message when no apps found",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should display message when no apps found",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should display apps when found",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should display apps when found",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should handle dry run",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should handle dry run",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should cancel when user declines",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should cancel when user declines",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should uninstall when confirmed",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should uninstall when confirmed",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should uninstall with --yes flag",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should uninstall with --yes flag",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should handle errors during uninstall",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should handle errors during uninstall",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should handle noProgress option",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should handle noProgress option",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should find apps in both Application directories",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should find apps in both Application directories",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should skip non-.app entries",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should skip non-.app entries",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/maintenance/dns-cache.test.ts::dns-cache > flushDnsCache > should return a MaintenanceResult",
+          "file": "src/maintenance/dns-cache.test.ts",
+          "name": "dns-cache > flushDnsCache > should return a MaintenanceResult",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/maintenance/dns-cache.test.ts::dns-cache > flushDnsCache > should have error property when fails",
+          "file": "src/maintenance/dns-cache.test.ts",
+          "name": "dns-cache > flushDnsCache > should have error property when fails",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/maintenance/dns-cache.test.ts::dns-cache > flushDnsCache > should have requiresSudo property when sudo is needed",
+          "file": "src/maintenance/dns-cache.test.ts",
+          "name": "dns-cache > flushDnsCache > should have requiresSudo property when sudo is needed",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/maintenance/index.test.ts::maintenance tasks > flushDnsCache > should return a result object",
+          "file": "src/maintenance/index.test.ts",
+          "name": "maintenance tasks > flushDnsCache > should return a result object",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/maintenance/index.test.ts::maintenance tasks > freePurgeableSpace > should return a result object",
+          "file": "src/maintenance/index.test.ts",
+          "name": "maintenance tasks > freePurgeableSpace > should return a result object",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/pickers/file-picker.test.ts::filePicker selection logic > 'a' key in files pane (select all) > selects all files in category and marks category selected",
+          "file": "src/pickers/file-picker.test.ts",
+          "name": "filePicker selection logic > 'a' key in files pane (select all) > selects all files in category and marks category selected",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/pickers/file-picker.test.ts::filePicker selection logic > 'a' key in files pane (select all) > deselects all files and unmarks category when pressed again",
+          "file": "src/pickers/file-picker.test.ts",
+          "name": "filePicker selection logic > 'a' key in files pane (select all) > deselects all files and unmarks category when pressed again",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/pickers/file-picker.test.ts::filePicker selection logic > 'i' key in files pane (invert) > inverts selection across all files in category",
+          "file": "src/pickers/file-picker.test.ts",
+          "name": "filePicker selection logic > 'i' key in files pane (invert) > inverts selection across all files in category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/pickers/file-picker.test.ts::filePicker selection logic > 'i' key in files pane (invert) > auto-selects category when inversion results in selected files",
+          "file": "src/pickers/file-picker.test.ts",
+          "name": "filePicker selection logic > 'i' key in files pane (invert) > auto-selects category when inversion results in selected files",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/pickers/file-picker.test.ts::filePicker selection logic > 'i' key in files pane (invert) > deselects category when inversion leaves no files selected",
+          "file": "src/pickers/file-picker.test.ts",
+          "name": "filePicker selection logic > 'i' key in files pane (invert) > deselects category when inversion leaves no files selected",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/pickers/file-picker.test.ts::filePicker selection logic > single-file toggle in files pane > auto-selects parent category when selecting a file",
+          "file": "src/pickers/file-picker.test.ts",
+          "name": "filePicker selection logic > single-file toggle in files pane > auto-selects parent category when selecting a file",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/pickers/file-picker.test.ts::filePicker selection logic > single-file toggle in files pane > keeps category selected when other files remain selected",
+          "file": "src/pickers/file-picker.test.ts",
+          "name": "filePicker selection logic > single-file toggle in files pane > keeps category selected when other files remain selected",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/pickers/file-picker.test.ts::filePicker selection logic > single-file toggle in files pane > deselects parent category when last file is deselected",
+          "file": "src/pickers/file-picker.test.ts",
+          "name": "filePicker selection logic > single-file toggle in files pane > deselects parent category when last file is deselected",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/pickers/file-picker.test.ts::filePicker selection logic > category deselection clears file selections > clears file selections when deselecting a category",
+          "file": "src/pickers/file-picker.test.ts",
+          "name": "filePicker selection logic > category deselection clears file selections > clears file selections when deselecting a category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/pickers/file-picker.test.ts::filePicker selection logic > category deselection clears file selections > preserves file selections for other categories when deselecting one",
+          "file": "src/pickers/file-picker.test.ts",
+          "name": "filePicker selection logic > category deselection clears file selections > preserves file selections for other categories when deselecting one",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/pickers/file-picker.test.ts::filePicker selection logic > 'd' key for directory selection > selects all files in the current directory only",
+          "file": "src/pickers/file-picker.test.ts",
+          "name": "filePicker selection logic > 'd' key for directory selection > selects all files in the current directory only",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/pickers/file-picker.test.ts::filePicker selection logic > 'd' key for directory selection > deselects all files in directory when toggled twice, keeping category membership",
+          "file": "src/pickers/file-picker.test.ts",
+          "name": "filePicker selection logic > 'd' key for directory selection > deselects all files in directory when toggled twice, keeping category membership",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/pickers/file-picker.test.ts::filePicker selection logic > 'd' key for directory selection > only affects current directory, not others",
+          "file": "src/pickers/file-picker.test.ts",
+          "name": "filePicker selection logic > 'd' key for directory selection > only affects current directory, not others",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/pickers/file-picker.test.ts::filePicker selection logic > cross-category isolation > does not affect other categories when selecting all files in one",
+          "file": "src/pickers/file-picker.test.ts",
+          "name": "filePicker selection logic > cross-category isolation > does not affect other categories when selecting all files in one",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/pickers/file-picker.test.ts::filePicker selection logic > cross-category isolation > does not affect other categories when deselecting one category",
+          "file": "src/pickers/file-picker.test.ts",
+          "name": "filePicker selection logic > cross-category isolation > does not affect other categories when deselecting one category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/base-scanner.test.ts::BaseScanner > createResult > should create result with correct structure",
+          "file": "src/scanners/base-scanner.test.ts",
+          "name": "BaseScanner > createResult > should create result with correct structure",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/base-scanner.test.ts::BaseScanner > createResult > should calculate total size correctly",
+          "file": "src/scanners/base-scanner.test.ts",
+          "name": "BaseScanner > createResult > should calculate total size correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/base-scanner.test.ts::BaseScanner > createResult > should handle empty items",
+          "file": "src/scanners/base-scanner.test.ts",
+          "name": "BaseScanner > createResult > should handle empty items",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/base-scanner.test.ts::BaseScanner > clean > should clean items and return result",
+          "file": "src/scanners/base-scanner.test.ts",
+          "name": "BaseScanner > clean > should clean items and return result",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/base-scanner.test.ts::BaseScanner > clean > should handle dry run",
+          "file": "src/scanners/base-scanner.test.ts",
+          "name": "BaseScanner > clean > should handle dry run",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/base-scanner.test.ts::BaseScanner > clean > should summarize failures by error code",
+          "file": "src/scanners/base-scanner.test.ts",
+          "name": "BaseScanner > clean > should summarize failures by error code",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/browser-cache.test.ts::BrowserCacheScanner > should have correct category",
+          "file": "src/scanners/browser-cache.test.ts",
+          "name": "BrowserCacheScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/browser-cache.test.ts::BrowserCacheScanner > should scan browser cache directories",
+          "file": "src/scanners/browser-cache.test.ts",
+          "name": "BrowserCacheScanner > should scan browser cache directories",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/browser-cache.test.ts::BrowserCacheScanner > should handle missing browser caches",
+          "file": "src/scanners/browser-cache.test.ts",
+          "name": "BrowserCacheScanner > should handle missing browser caches",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/browser-cache.test.ts::BrowserCacheScanner > should include browser name in item name",
+          "file": "src/scanners/browser-cache.test.ts",
+          "name": "BrowserCacheScanner > should include browser name in item name",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/dev-cache.test.ts::DevCacheScanner > should have correct category",
+          "file": "src/scanners/dev-cache.test.ts",
+          "name": "DevCacheScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/dev-cache.test.ts::DevCacheScanner > should scan npm cache directory",
+          "file": "src/scanners/dev-cache.test.ts",
+          "name": "DevCacheScanner > should scan npm cache directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/dev-cache.test.ts::DevCacheScanner > should scan Xcode DerivedData directory",
+          "file": "src/scanners/dev-cache.test.ts",
+          "name": "DevCacheScanner > should scan Xcode DerivedData directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/dev-cache.test.ts::DevCacheScanner > should handle empty dev caches",
+          "file": "src/scanners/dev-cache.test.ts",
+          "name": "DevCacheScanner > should handle empty dev caches",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/dev-cache.test.ts::DevCacheScanner > should skip empty cache directories",
+          "file": "src/scanners/dev-cache.test.ts",
+          "name": "DevCacheScanner > should skip empty cache directories",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/dev-cache.test.ts::DevCacheScanner > should scan Xcode Archives directory",
+          "file": "src/scanners/dev-cache.test.ts",
+          "name": "DevCacheScanner > should scan Xcode Archives directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/dev-cache.test.ts::DevCacheScanner > should skip empty Xcode Archives directory",
+          "file": "src/scanners/dev-cache.test.ts",
+          "name": "DevCacheScanner > should skip empty Xcode Archives directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/docker.test.ts::DockerScanner > should have correct category",
+          "file": "src/scanners/docker.test.ts",
+          "name": "DockerScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/docker.test.ts::DockerScanner > should return empty items when docker binary not found",
+          "file": "src/scanners/docker.test.ts",
+          "name": "DockerScanner > should return empty items when docker binary not found",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/docker.test.ts::DockerScanner > should clean with dry run without calling docker",
+          "file": "src/scanners/docker.test.ts",
+          "name": "DockerScanner > should clean with dry run without calling docker",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/docker.test.ts::DockerScanner > should return error when docker binary not found during clean",
+          "file": "src/scanners/docker.test.ts",
+          "name": "DockerScanner > should return error when docker binary not found during clean",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/docker.test.ts::DockerScanner > should parse docker size correctly",
+          "file": "src/scanners/docker.test.ts",
+          "name": "DockerScanner > should parse docker size correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/docker.test.ts::DockerScanner > should validate docker output types",
+          "file": "src/scanners/docker.test.ts",
+          "name": "DockerScanner > should validate docker output types",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/downloads.test.ts::DownloadsScanner > should have correct category",
+          "file": "src/scanners/downloads.test.ts",
+          "name": "DownloadsScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/downloads.test.ts::DownloadsScanner > should filter by age",
+          "file": "src/scanners/downloads.test.ts",
+          "name": "DownloadsScanner > should filter by age",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/downloads.test.ts::DownloadsScanner > should handle empty downloads",
+          "file": "src/scanners/downloads.test.ts",
+          "name": "DownloadsScanner > should handle empty downloads",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/downloads.test.ts::DownloadsScanner > should use custom days old option",
+          "file": "src/scanners/downloads.test.ts",
+          "name": "DownloadsScanner > should use custom days old option",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/downloads.test.ts::DownloadsScanner > should handle nonexistent downloads directory",
+          "file": "src/scanners/downloads.test.ts",
+          "name": "DownloadsScanner > should handle nonexistent downloads directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/duplicates.test.ts::DuplicatesScanner > should have correct category",
+          "file": "src/scanners/duplicates.test.ts",
+          "name": "DuplicatesScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/duplicates.test.ts::DuplicatesScanner > should clean empty items array",
+          "file": "src/scanners/duplicates.test.ts",
+          "name": "DuplicatesScanner > should clean empty items array",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/duplicates.test.ts::DuplicatesScanner > should clean with dry run",
+          "file": "src/scanners/duplicates.test.ts",
+          "name": "DuplicatesScanner > should clean with dry run",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/git-worktrees.test.ts::GitWorktreesScanner > should have correct category",
+          "file": "src/scanners/git-worktrees.test.ts",
+          "name": "GitWorktreesScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/git-worktrees.test.ts::GitWorktreesScanner > should find stale linked worktrees via the main repo registry",
+          "file": "src/scanners/git-worktrees.test.ts",
+          "name": "GitWorktreesScanner > should find stale linked worktrees via the main repo registry",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/git-worktrees.test.ts::GitWorktreesScanner > should find worktrees outside the crawl root through the git registry",
+          "file": "src/scanners/git-worktrees.test.ts",
+          "name": "GitWorktreesScanner > should find worktrees outside the crawl root through the git registry",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/git-worktrees.test.ts::GitWorktreesScanner > should find orphaned worktrees even when recent",
+          "file": "src/scanners/git-worktrees.test.ts",
+          "name": "GitWorktreesScanner > should find orphaned worktrees even when recent",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/git-worktrees.test.ts::GitWorktreesScanner > should ignore fresh linked worktrees",
+          "file": "src/scanners/git-worktrees.test.ts",
+          "name": "GitWorktreesScanner > should ignore fresh linked worktrees",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/git-worktrees.test.ts::GitWorktreesScanner > should ignore primary checkouts with a .git directory",
+          "file": "src/scanners/git-worktrees.test.ts",
+          "name": "GitWorktreesScanner > should ignore primary checkouts with a .git directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/git-worktrees.test.ts::GitWorktreesScanner > should discover nested agent worktree directories",
+          "file": "src/scanners/git-worktrees.test.ts",
+          "name": "GitWorktreesScanner > should discover nested agent worktree directories",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/git-worktrees.test.ts::GitWorktreesScanner > should skip heavy directories like Library while crawling",
+          "file": "src/scanners/git-worktrees.test.ts",
+          "name": "GitWorktreesScanner > should skip heavy directories like Library while crawling",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/git-worktrees.test.ts::GitWorktreesScanner > should find deep orphaned worktrees under allowed dot directories",
+          "file": "src/scanners/git-worktrees.test.ts",
+          "name": "GitWorktreesScanner > should find deep orphaned worktrees under allowed dot directories",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/git-worktrees.test.ts::GitWorktreesScanner > should clean empty items with dry run",
+          "file": "src/scanners/git-worktrees.test.ts",
+          "name": "GitWorktreesScanner > should clean empty items with dry run",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/homebrew.test.ts::HomebrewScanner > should have correct category",
+          "file": "src/scanners/homebrew.test.ts",
+          "name": "HomebrewScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/homebrew.test.ts::HomebrewScanner > should handle homebrew not installed",
+          "file": "src/scanners/homebrew.test.ts",
+          "name": "HomebrewScanner > should handle homebrew not installed",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/homebrew.test.ts::HomebrewScanner > should return empty when brew binary not found in safe locations",
+          "file": "src/scanners/homebrew.test.ts",
+          "name": "HomebrewScanner > should return empty when brew binary not found in safe locations",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/homebrew.test.ts::HomebrewScanner > should clean using brew cleanup with dry run",
+          "file": "src/scanners/homebrew.test.ts",
+          "name": "HomebrewScanner > should clean using brew cleanup with dry run",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/homebrew.test.ts::HomebrewScanner > should return error when brew binary not found during clean",
+          "file": "src/scanners/homebrew.test.ts",
+          "name": "HomebrewScanner > should return error when brew binary not found during clean",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/homebrew.test.ts::HomebrewScanner > should handle brew cleanup failure gracefully",
+          "file": "src/scanners/homebrew.test.ts",
+          "name": "HomebrewScanner > should handle brew cleanup failure gracefully",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/index.test.ts::scanners index > should export all scanners",
+          "file": "src/scanners/index.test.ts",
+          "name": "scanners index > should export all scanners",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/index.test.ts::scanners index > should get scanner by category id",
+          "file": "src/scanners/index.test.ts",
+          "name": "scanners index > should get scanner by category id",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/index.test.ts::scanners index > should get all scanners",
+          "file": "src/scanners/index.test.ts",
+          "name": "scanners index > should get all scanners",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/index.test.ts::scanners index > should have scan method for all scanners",
+          "file": "src/scanners/index.test.ts",
+          "name": "scanners index > should have scan method for all scanners",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/index.test.ts::scanners index > should have clean method for all scanners",
+          "file": "src/scanners/index.test.ts",
+          "name": "scanners index > should have clean method for all scanners",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/index.test.ts::scanners index > should have matching category ids",
+          "file": "src/scanners/index.test.ts",
+          "name": "scanners index > should have matching category ids",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/index.test.ts::scanners index > should throw for unknown scanner category id",
+          "file": "src/scanners/index.test.ts",
+          "name": "scanners index > should throw for unknown scanner category id",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/index.test.ts::scanners index > runScans should support concurrency 0 without hanging",
+          "file": "src/scanners/index.test.ts",
+          "name": "scanners index > runScans should support concurrency 0 without hanging",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/index.test.ts::scanners index > runScans should call progress callbacks correctly in serial mode",
+          "file": "src/scanners/index.test.ts",
+          "name": "scanners index > runScans should call progress callbacks correctly in serial mode",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/ios-backups.test.ts::IosBackupsScanner > should have correct category",
+          "file": "src/scanners/ios-backups.test.ts",
+          "name": "IosBackupsScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/ios-backups.test.ts::IosBackupsScanner > should scan iOS backups directory",
+          "file": "src/scanners/ios-backups.test.ts",
+          "name": "IosBackupsScanner > should scan iOS backups directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/ios-backups.test.ts::IosBackupsScanner > should handle missing backups directory",
+          "file": "src/scanners/ios-backups.test.ts",
+          "name": "IosBackupsScanner > should handle missing backups directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/ios-backups.test.ts::IosBackupsScanner > should truncate backup ID in name",
+          "file": "src/scanners/ios-backups.test.ts",
+          "name": "IosBackupsScanner > should truncate backup ID in name",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/language-files.test.ts::LanguageFilesScanner > should have correct category",
+          "file": "src/scanners/language-files.test.ts",
+          "name": "LanguageFilesScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/language-files.test.ts::LanguageFilesScanner > should scan application language files",
+          "file": "src/scanners/language-files.test.ts",
+          "name": "LanguageFilesScanner > should scan application language files",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/language-files.test.ts::LanguageFilesScanner > should keep English and Portuguese localizations",
+          "file": "src/scanners/language-files.test.ts",
+          "name": "LanguageFilesScanner > should keep English and Portuguese localizations",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/language-files.test.ts::LanguageFilesScanner > should handle missing applications directory",
+          "file": "src/scanners/language-files.test.ts",
+          "name": "LanguageFilesScanner > should handle missing applications directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/language-files.test.ts::LanguageFilesScanner > should skip non-app directories",
+          "file": "src/scanners/language-files.test.ts",
+          "name": "LanguageFilesScanner > should skip non-app directories",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/large-files.test.ts::LargeFilesScanner > should have correct category",
+          "file": "src/scanners/large-files.test.ts",
+          "name": "LargeFilesScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/large-files.test.ts::LargeFilesScanner > should filter by minimum size",
+          "file": "src/scanners/large-files.test.ts",
+          "name": "LargeFilesScanner > should filter by minimum size",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/large-files.test.ts::LargeFilesScanner > should sort by size descending",
+          "file": "src/scanners/large-files.test.ts",
+          "name": "LargeFilesScanner > should sort by size descending",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/large-files.test.ts::LargeFilesScanner > should skip hidden files",
+          "file": "src/scanners/large-files.test.ts",
+          "name": "LargeFilesScanner > should skip hidden files",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/large-files.test.ts::LargeFilesScanner > should scan nested directories",
+          "file": "src/scanners/large-files.test.ts",
+          "name": "LargeFilesScanner > should scan nested directories",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/large-files.test.ts::LargeFilesScanner > should respect max depth limit",
+          "file": "src/scanners/large-files.test.ts",
+          "name": "LargeFilesScanner > should respect max depth limit",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/large-files.test.ts::LargeFilesScanner > should scan both downloads and documents",
+          "file": "src/scanners/large-files.test.ts",
+          "name": "LargeFilesScanner > should scan both downloads and documents",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/large-files.test.ts::LargeFilesScanner > should handle permission denied errors gracefully",
+          "file": "src/scanners/large-files.test.ts",
+          "name": "LargeFilesScanner > should handle permission denied errors gracefully",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/launch-agents.test.ts::LaunchAgentsScanner > should have correct category",
+          "file": "src/scanners/launch-agents.test.ts",
+          "name": "LaunchAgentsScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/launch-agents.test.ts::LaunchAgentsScanner > should detect orphaned launch agents",
+          "file": "src/scanners/launch-agents.test.ts",
+          "name": "LaunchAgentsScanner > should detect orphaned launch agents",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/launch-agents.test.ts::LaunchAgentsScanner > should not detect valid launch agents (app exists)",
+          "file": "src/scanners/launch-agents.test.ts",
+          "name": "LaunchAgentsScanner > should not detect valid launch agents (app exists)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/launch-agents.test.ts::LaunchAgentsScanner > should skip system binaries",
+          "file": "src/scanners/launch-agents.test.ts",
+          "name": "LaunchAgentsScanner > should skip system binaries",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/launch-agents.test.ts::LaunchAgentsScanner > should handle malformed plists gracefully",
+          "file": "src/scanners/launch-agents.test.ts",
+          "name": "LaunchAgentsScanner > should handle malformed plists gracefully",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/launch-agents.test.ts::LaunchAgentsScanner > should handle empty LaunchAgents directory",
+          "file": "src/scanners/launch-agents.test.ts",
+          "name": "LaunchAgentsScanner > should handle empty LaunchAgents directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/launch-agents.test.ts::LaunchAgentsScanner > should handle non-existent LaunchAgents directory",
+          "file": "src/scanners/launch-agents.test.ts",
+          "name": "LaunchAgentsScanner > should handle non-existent LaunchAgents directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/launch-agents.test.ts::LaunchAgentsScanner > should skip plists without Program or ProgramArguments",
+          "file": "src/scanners/launch-agents.test.ts",
+          "name": "LaunchAgentsScanner > should skip plists without Program or ProgramArguments",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/launch-agents.test.ts::LaunchAgentsScanner > should handle relative paths gracefully",
+          "file": "src/scanners/launch-agents.test.ts",
+          "name": "LaunchAgentsScanner > should handle relative paths gracefully",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/launch-agents.test.ts::LaunchAgentsScanner > should handle plists with ProgramArguments array",
+          "file": "src/scanners/launch-agents.test.ts",
+          "name": "LaunchAgentsScanner > should handle plists with ProgramArguments array",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/launch-agents.test.ts::LaunchAgentsScanner > should skip Homebrew binaries",
+          "file": "src/scanners/launch-agents.test.ts",
+          "name": "LaunchAgentsScanner > should skip Homebrew binaries",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/launch-agents.test.ts::LaunchAgentsScanner > should calculate total size correctly",
+          "file": "src/scanners/launch-agents.test.ts",
+          "name": "LaunchAgentsScanner > should calculate total size correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/launch-agents.test.ts::LaunchAgentsScanner > should only include .plist files",
+          "file": "src/scanners/launch-agents.test.ts",
+          "name": "LaunchAgentsScanner > should only include .plist files",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/launch-agents.test.ts::LaunchAgentsScanner > should handle mix of orphaned and valid plists",
+          "file": "src/scanners/launch-agents.test.ts",
+          "name": "LaunchAgentsScanner > should handle mix of orphaned and valid plists",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/mail-attachments.test.ts::MailAttachmentsScanner > should have correct category",
+          "file": "src/scanners/mail-attachments.test.ts",
+          "name": "MailAttachmentsScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/mail-attachments.test.ts::MailAttachmentsScanner > should scan mail attachments directory",
+          "file": "src/scanners/mail-attachments.test.ts",
+          "name": "MailAttachmentsScanner > should scan mail attachments directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/mail-attachments.test.ts::MailAttachmentsScanner > should handle missing mail directory",
+          "file": "src/scanners/mail-attachments.test.ts",
+          "name": "MailAttachmentsScanner > should handle missing mail directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/mail-attachments.test.ts::MailAttachmentsScanner > should calculate total size correctly",
+          "file": "src/scanners/mail-attachments.test.ts",
+          "name": "MailAttachmentsScanner > should calculate total size correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/node-modules.test.ts::NodeModulesScanner > should have correct category",
+          "file": "src/scanners/node-modules.test.ts",
+          "name": "NodeModulesScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/node-modules.test.ts::NodeModulesScanner > should clean empty items array",
+          "file": "src/scanners/node-modules.test.ts",
+          "name": "NodeModulesScanner > should clean empty items array",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/node-modules.test.ts::NodeModulesScanner > should clean with dry run",
+          "file": "src/scanners/node-modules.test.ts",
+          "name": "NodeModulesScanner > should clean with dry run",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/system-cache.test.ts::SystemCacheScanner > should have correct category",
+          "file": "src/scanners/system-cache.test.ts",
+          "name": "SystemCacheScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/system-cache.test.ts::SystemCacheScanner > should scan cache directory",
+          "file": "src/scanners/system-cache.test.ts",
+          "name": "SystemCacheScanner > should scan cache directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/system-cache.test.ts::SystemCacheScanner > should handle non-existing cache directory",
+          "file": "src/scanners/system-cache.test.ts",
+          "name": "SystemCacheScanner > should handle non-existing cache directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/system-logs.test.ts::SystemLogsScanner > should have correct category",
+          "file": "src/scanners/system-logs.test.ts",
+          "name": "SystemLogsScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/system-logs.test.ts::SystemLogsScanner > should scan user logs directory",
+          "file": "src/scanners/system-logs.test.ts",
+          "name": "SystemLogsScanner > should scan user logs directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/system-logs.test.ts::SystemLogsScanner > should scan system logs directory when accessible",
+          "file": "src/scanners/system-logs.test.ts",
+          "name": "SystemLogsScanner > should scan system logs directory when accessible",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/system-logs.test.ts::SystemLogsScanner > should handle permission denied on system logs",
+          "file": "src/scanners/system-logs.test.ts",
+          "name": "SystemLogsScanner > should handle permission denied on system logs",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/system-logs.test.ts::SystemLogsScanner > should handle missing log directories",
+          "file": "src/scanners/system-logs.test.ts",
+          "name": "SystemLogsScanner > should handle missing log directories",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/system-logs.test.ts::SystemLogsScanner > should calculate total size correctly",
+          "file": "src/scanners/system-logs.test.ts",
+          "name": "SystemLogsScanner > should calculate total size correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/temp-files.test.ts::TempFilesScanner > should have correct category",
+          "file": "src/scanners/temp-files.test.ts",
+          "name": "TempFilesScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/temp-files.test.ts::TempFilesScanner > should scan tmp directory",
+          "file": "src/scanners/temp-files.test.ts",
+          "name": "TempFilesScanner > should scan tmp directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/temp-files.test.ts::TempFilesScanner > should scan var/folders directory",
+          "file": "src/scanners/temp-files.test.ts",
+          "name": "TempFilesScanner > should scan var/folders directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/temp-files.test.ts::TempFilesScanner > should handle missing directories",
+          "file": "src/scanners/temp-files.test.ts",
+          "name": "TempFilesScanner > should handle missing directories",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/temp-files.test.ts::TempFilesScanner > should calculate total size correctly",
+          "file": "src/scanners/temp-files.test.ts",
+          "name": "TempFilesScanner > should calculate total size correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/trash.test.ts::TrashScanner > should have correct category",
+          "file": "src/scanners/trash.test.ts",
+          "name": "TrashScanner > should have correct category",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/trash.test.ts::TrashScanner > should scan trash directory",
+          "file": "src/scanners/trash.test.ts",
+          "name": "TrashScanner > should scan trash directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/trash.test.ts::TrashScanner > should handle nonexistent trash directory",
+          "file": "src/scanners/trash.test.ts",
+          "name": "TrashScanner > should handle nonexistent trash directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/trash.test.ts::TrashScanner > should calculate total size correctly",
+          "file": "src/scanners/trash.test.ts",
+          "name": "TrashScanner > should calculate total size correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/scanners/trash.test.ts::TrashScanner > should handle empty trash",
+          "file": "src/scanners/trash.test.ts",
+          "name": "TrashScanner > should handle empty trash",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/backup.test.ts::backup utilities > ensureBackupDir > should create backup directory",
+          "file": "src/utils/backup.test.ts",
+          "name": "backup utilities > ensureBackupDir > should create backup directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/backup.test.ts::backup utilities > getBackupDir > should return backup directory path",
+          "file": "src/utils/backup.test.ts",
+          "name": "backup utilities > getBackupDir > should return backup directory path",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/backup.test.ts::backup utilities > listBackups > should list backups",
+          "file": "src/utils/backup.test.ts",
+          "name": "backup utilities > listBackups > should list backups",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/backup.test.ts::backup utilities > cleanOldBackups > should clean old backups",
+          "file": "src/utils/backup.test.ts",
+          "name": "backup utilities > cleanOldBackups > should clean old backups",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/backup.test.ts::backup utilities > backupItem > should return false for non-existent item",
+          "file": "src/utils/backup.test.ts",
+          "name": "backup utilities > backupItem > should return false for non-existent item",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/backup.test.ts::backup utilities > backupItem > should backup existing file",
+          "file": "src/utils/backup.test.ts",
+          "name": "backup utilities > backupItem > should backup existing file",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/backup.test.ts::backup utilities > backupItems > should handle empty items array",
+          "file": "src/utils/backup.test.ts",
+          "name": "backup utilities > backupItems > should handle empty items array",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/backup.test.ts::backup utilities > backupItems > should backup multiple items",
+          "file": "src/utils/backup.test.ts",
+          "name": "backup utilities > backupItems > should backup multiple items",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/backup.test.ts::backup utilities > backupItems > should call progress callback",
+          "file": "src/utils/backup.test.ts",
+          "name": "backup utilities > backupItems > should call progress callback",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/backup.test.ts::backup utilities > backupItems > should count successes and failures",
+          "file": "src/utils/backup.test.ts",
+          "name": "backup utilities > backupItems > should count successes and failures",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/backup.test.ts::backup utilities > restoreBackup > should handle empty backup directory",
+          "file": "src/utils/backup.test.ts",
+          "name": "backup utilities > restoreBackup > should handle empty backup directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/backup.test.ts::backup utilities > restoreBackup > should reject restore from invalid backup directory",
+          "file": "src/utils/backup.test.ts",
+          "name": "backup utilities > restoreBackup > should reject restore from invalid backup directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/backup.test.ts::backup utilities > restoreBackup > should return errors array in result",
+          "file": "src/utils/backup.test.ts",
+          "name": "backup utilities > restoreBackup > should return errors array in result",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/backup.test.ts::backup utilities > restoreBackup > should skip files with path traversal patterns",
+          "file": "src/utils/backup.test.ts",
+          "name": "backup utilities > restoreBackup > should skip files with path traversal patterns",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/checkbox.test.ts::groupFilesByDirectory > should group files by directory",
+          "file": "src/utils/checkbox.test.ts",
+          "name": "groupFilesByDirectory > should group files by directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/checkbox.test.ts::groupFilesByDirectory > should sort directories by largest file size descending",
+          "file": "src/utils/checkbox.test.ts",
+          "name": "groupFilesByDirectory > should sort directories by largest file size descending",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/checkbox.test.ts::groupFilesByDirectory > should sort files within directory by size descending",
+          "file": "src/utils/checkbox.test.ts",
+          "name": "groupFilesByDirectory > should sort files within directory by size descending",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/checkbox.test.ts::groupFilesByDirectory > should use ~ notation when absolutePaths is false",
+          "file": "src/utils/checkbox.test.ts",
+          "name": "groupFilesByDirectory > should use ~ notation when absolutePaths is false",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/checkbox.test.ts::groupFilesByDirectory > should use absolute paths when absolutePaths is true",
+          "file": "src/utils/checkbox.test.ts",
+          "name": "groupFilesByDirectory > should use absolute paths when absolutePaths is true",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/checkbox.test.ts::groupFilesByDirectory > should preserve full file names (truncation happens in rendering)",
+          "file": "src/utils/checkbox.test.ts",
+          "name": "groupFilesByDirectory > should preserve full file names (truncation happens in rendering)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/checkbox.test.ts::groupFilesByDirectory > should mark directory headers as non-selectable and files as selectable",
+          "file": "src/utils/checkbox.test.ts",
+          "name": "groupFilesByDirectory > should mark directory headers as non-selectable and files as selectable",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/checkbox.test.ts::groupFilesByDirectory > should set directoryKey for grouping",
+          "file": "src/utils/checkbox.test.ts",
+          "name": "groupFilesByDirectory > should set directoryKey for grouping",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/checkbox.test.ts::groupFilesByDirectory > should handle empty array",
+          "file": "src/utils/checkbox.test.ts",
+          "name": "groupFilesByDirectory > should handle empty array",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/checkbox.test.ts::groupFilesByDirectory > should handle single file",
+          "file": "src/utils/checkbox.test.ts",
+          "name": "groupFilesByDirectory > should handle single file",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/checkbox.test.ts::groupFilesByDirectory > should handle deep nested paths",
+          "file": "src/utils/checkbox.test.ts",
+          "name": "groupFilesByDirectory > should handle deep nested paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/clipboard.test.ts::copyToClipboard > should copy text to clipboard using pbcopy",
+          "file": "src/utils/clipboard.test.ts",
+          "name": "copyToClipboard > should copy text to clipboard using pbcopy",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/clipboard.test.ts::copyToClipboard > should throw error if pbcopy fails",
+          "file": "src/utils/clipboard.test.ts",
+          "name": "copyToClipboard > should throw error if pbcopy fails",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/clipboard.test.ts::copyToClipboard > should handle empty string",
+          "file": "src/utils/clipboard.test.ts",
+          "name": "copyToClipboard > should handle empty string",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/clipboard.test.ts::copyToClipboard > should handle text with special characters",
+          "file": "src/utils/clipboard.test.ts",
+          "name": "copyToClipboard > should handle text with special characters",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/clipboard.test.ts::copyToClipboard > should handle multiline text",
+          "file": "src/utils/clipboard.test.ts",
+          "name": "copyToClipboard > should handle multiline text",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/clipboard.test.ts::copyToClipboard > should handle very long paths",
+          "file": "src/utils/clipboard.test.ts",
+          "name": "copyToClipboard > should handle very long paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/config.test.ts::config utilities > getDefaultConfig > should return default config",
+          "file": "src/utils/config.test.ts",
+          "name": "config utilities > getDefaultConfig > should return default config",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/config.test.ts::config utilities > loadConfig > should return default config when no file exists",
+          "file": "src/utils/config.test.ts",
+          "name": "config utilities > loadConfig > should return default config when no file exists",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/config.test.ts::config utilities > loadConfig > should load config from file",
+          "file": "src/utils/config.test.ts",
+          "name": "config utilities > loadConfig > should load config from file",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/config.test.ts::config utilities > loadConfig > should merge with defaults",
+          "file": "src/utils/config.test.ts",
+          "name": "config utilities > loadConfig > should merge with defaults",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/config.test.ts::config utilities > loadConfig > should reject config path outside home directory",
+          "file": "src/utils/config.test.ts",
+          "name": "config utilities > loadConfig > should reject config path outside home directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/config.test.ts::config utilities > loadConfig > should validate numeric values within bounds",
+          "file": "src/utils/config.test.ts",
+          "name": "config utilities > loadConfig > should validate numeric values within bounds",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/config.test.ts::config utilities > loadConfig > should filter invalid category IDs",
+          "file": "src/utils/config.test.ts",
+          "name": "config utilities > loadConfig > should filter invalid category IDs",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/config.test.ts::config utilities > loadConfig > should handle malformed JSON gracefully",
+          "file": "src/utils/config.test.ts",
+          "name": "config utilities > loadConfig > should handle malformed JSON gracefully",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/config.test.ts::config utilities > loadConfig > should validate extraPaths are within allowed directories",
+          "file": "src/utils/config.test.ts",
+          "name": "config utilities > loadConfig > should validate extraPaths are within allowed directories",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/config.test.ts::config utilities > saveConfig > should save config to file",
+          "file": "src/utils/config.test.ts",
+          "name": "config utilities > saveConfig > should save config to file",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/config.test.ts::config utilities > configExists > should return false when config does not exist",
+          "file": "src/utils/config.test.ts",
+          "name": "config utilities > configExists > should return false when config does not exist",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/config.test.ts::config utilities > clearConfigCache > should clear cached config",
+          "file": "src/utils/config.test.ts",
+          "name": "config utilities > clearConfigCache > should clear cached config",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/display.test.ts::sanitizeDisplayName > leaves normal names untouched",
+          "file": "src/utils/display.test.ts",
+          "name": "sanitizeDisplayName > leaves normal names untouched",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/display.test.ts::sanitizeDisplayName > strips ANSI escape sequences",
+          "file": "src/utils/display.test.ts",
+          "name": "sanitizeDisplayName > strips ANSI escape sequences",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/display.test.ts::sanitizeDisplayName > strips newlines and carriage returns used to forge extra rows",
+          "file": "src/utils/display.test.ts",
+          "name": "sanitizeDisplayName > strips newlines and carriage returns used to forge extra rows",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/display.test.ts::sanitizeDisplayName > strips bidi overrides and zero-width characters",
+          "file": "src/utils/display.test.ts",
+          "name": "sanitizeDisplayName > strips bidi overrides and zero-width characters",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fda.test.ts::hasFullDiskAccess > should return null on non-macOS platforms",
+          "file": "src/utils/fda.test.ts",
+          "name": "hasFullDiskAccess > should return null on non-macOS platforms",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fda.test.ts::hasFullDiskAccess > should return true when the TCC-protected directory is readable",
+          "file": "src/utils/fda.test.ts",
+          "name": "hasFullDiskAccess > should return true when the TCC-protected directory is readable",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fda.test.ts::hasFullDiskAccess > should return false on EPERM",
+          "file": "src/utils/fda.test.ts",
+          "name": "hasFullDiskAccess > should return false on EPERM",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fda.test.ts::hasFullDiskAccess > should return false on EACCES",
+          "file": "src/utils/fda.test.ts",
+          "name": "hasFullDiskAccess > should return false on EACCES",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fda.test.ts::hasFullDiskAccess > should return null when the probe path does not exist",
+          "file": "src/utils/fda.test.ts",
+          "name": "hasFullDiskAccess > should return null when the probe path does not exist",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > exists > should return true for existing file",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > exists > should return true for existing file",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > exists > should return true for existing directory",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > exists > should return true for existing directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > exists > should return false for non-existing path",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > exists > should return false for non-existing path",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > getSize > should return file size",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > getSize > should return file size",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > getSize > should return 0 for non-existing path",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > getSize > should return 0 for non-existing path",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > getDirectorySize > should return total size of directory contents",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > getDirectorySize > should return total size of directory contents",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > getDirectorySize > should include subdirectory contents",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > getDirectorySize > should include subdirectory contents",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > getDirectorySize > should return 0 for non-existing directory",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > getDirectorySize > should return 0 for non-existing directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > getDirectoryItems > should list items in directory",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > getDirectoryItems > should list items in directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > getDirectoryItems > should include size for each item",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > getDirectoryItems > should include size for each item",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > getDirectoryItems > should identify directories",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > getDirectoryItems > should identify directories",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > getDirectoryItems > should return empty array for non-existing directory",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > getDirectoryItems > should return empty array for non-existing directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > getItems > should filter by minimum age",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > getItems > should filter by minimum age",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > getItems > should filter by minimum size",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > getItems > should filter by minimum size",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > symlink handling > should not follow symlinks when calculating size",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > symlink handling > should not follow symlinks when calculating size",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > symlink handling > should count symlink size not target size in directory",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > symlink handling > should count symlink size not target size in directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > symlink handling > should handle symlinks in getDirectoryItems",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > symlink handling > should handle symlinks in getDirectoryItems",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > isProtectedPath > should return true for system paths",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > isProtectedPath > should return true for system paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > isProtectedPath > should return false for user paths",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > isProtectedPath > should return false for user paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > isProtectedPath > should return false for allowed temp paths",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > isProtectedPath > should return false for allowed temp paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > validatePathSafety > should return null for safe paths",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > validatePathSafety > should return null for safe paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > validatePathSafety > should return error message for protected paths",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > validatePathSafety > should return error message for protected paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > validatePathSafety > should return error for root directory",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > validatePathSafety > should return error for root directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > validatePathSafety > should return error for home directory itself",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > validatePathSafety > should return error for home directory itself",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > removeItem > should remove a file successfully",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > removeItem > should remove a file successfully",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > removeItem > should remove a directory recursively",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > removeItem > should remove a directory recursively",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > removeItem > should return true for dry run without deleting",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > removeItem > should return true for dry run without deleting",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > removeItem > should remove symlink without following it",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > removeItem > should remove symlink without following it",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > removeItem > should refuse to delete protected system paths",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > removeItem > should refuse to delete protected system paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > removeItem > should refuse to delete root directory",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > removeItem > should refuse to delete root directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > removeItem > should refuse to delete home directory",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > removeItem > should refuse to delete home directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > removeItem > should return false for non-existent path",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > removeItem > should return false for non-existent path",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > removeItems > should report per-item failures with error codes",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > removeItems > should report per-item failures with error codes",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/fs.test.ts::fs utils > removeItems > should report no failures on dry run",
+          "file": "src/utils/fs.test.ts",
+          "name": "fs utils > removeItems > should report no failures on dry run",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/hash.test.ts::hash utilities > getFileHash > should calculate file hash",
+          "file": "src/utils/hash.test.ts",
+          "name": "hash utilities > getFileHash > should calculate file hash",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/hash.test.ts::hash utilities > getFileHash > should produce same hash for identical content",
+          "file": "src/utils/hash.test.ts",
+          "name": "hash utilities > getFileHash > should produce same hash for identical content",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/hash.test.ts::hash utilities > getFileHash > should produce different hash for different content",
+          "file": "src/utils/hash.test.ts",
+          "name": "hash utilities > getFileHash > should produce different hash for different content",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/hash.test.ts::hash utilities > getFileHash > should use specified algorithm",
+          "file": "src/utils/hash.test.ts",
+          "name": "hash utilities > getFileHash > should use specified algorithm",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/hash.test.ts::hash utilities > getFileHash > should reject for non-existent file",
+          "file": "src/utils/hash.test.ts",
+          "name": "hash utilities > getFileHash > should reject for non-existent file",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/hash.test.ts::hash utilities > getFileHashPartial > should calculate partial file hash",
+          "file": "src/utils/hash.test.ts",
+          "name": "hash utilities > getFileHashPartial > should calculate partial file hash",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/hash.test.ts::hash utilities > getFileHashPartial > should handle files smaller than byte limit",
+          "file": "src/utils/hash.test.ts",
+          "name": "hash utilities > getFileHashPartial > should handle files smaller than byte limit",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::HOME > should be the user home directory",
+          "file": "src/utils/paths.test.ts",
+          "name": "HOME > should be the user home directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::PATHS > should have userCaches path",
+          "file": "src/utils/paths.test.ts",
+          "name": "PATHS > should have userCaches path",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::PATHS > should have systemCaches path",
+          "file": "src/utils/paths.test.ts",
+          "name": "PATHS > should have systemCaches path",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::PATHS > should have trash path",
+          "file": "src/utils/paths.test.ts",
+          "name": "PATHS > should have trash path",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::PATHS > should have downloads path",
+          "file": "src/utils/paths.test.ts",
+          "name": "PATHS > should have downloads path",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::PATHS > should have npm cache path",
+          "file": "src/utils/paths.test.ts",
+          "name": "PATHS > should have npm cache path",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::PATHS > should have xcode derived data path",
+          "file": "src/utils/paths.test.ts",
+          "name": "PATHS > should have xcode derived data path",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::expandPath > should expand ~ to home directory",
+          "file": "src/utils/paths.test.ts",
+          "name": "expandPath > should expand ~ to home directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::expandPath > should expand just ~ to home directory",
+          "file": "src/utils/paths.test.ts",
+          "name": "expandPath > should expand just ~ to home directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::expandPath > should resolve paths without ~",
+          "file": "src/utils/paths.test.ts",
+          "name": "expandPath > should resolve paths without ~",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::expandPath > should throw error for path traversal attempts from home",
+          "file": "src/utils/paths.test.ts",
+          "name": "expandPath > should throw error for path traversal attempts from home",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::expandPath > should allow paths outside home when allowOutsideHome is true",
+          "file": "src/utils/paths.test.ts",
+          "name": "expandPath > should allow paths outside home when allowOutsideHome is true",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::expandPath > should resolve relative path components",
+          "file": "src/utils/paths.test.ts",
+          "name": "expandPath > should resolve relative path components",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::hasTraversalPattern > should detect ../ pattern",
+          "file": "src/utils/paths.test.ts",
+          "name": "hasTraversalPattern > should detect ../ pattern",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::hasTraversalPattern > should detect /.. pattern",
+          "file": "src/utils/paths.test.ts",
+          "name": "hasTraversalPattern > should detect /.. pattern",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::hasTraversalPattern > should detect standalone ..",
+          "file": "src/utils/paths.test.ts",
+          "name": "hasTraversalPattern > should detect standalone ..",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::hasTraversalPattern > should not flag safe paths",
+          "file": "src/utils/paths.test.ts",
+          "name": "hasTraversalPattern > should not flag safe paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::isSystemPath > should return true for system paths",
+          "file": "src/utils/paths.test.ts",
+          "name": "isSystemPath > should return true for system paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::isSystemPath > should return false for non-system paths",
+          "file": "src/utils/paths.test.ts",
+          "name": "isSystemPath > should return false for non-system paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::isSystemPath > should handle exact system path matches",
+          "file": "src/utils/paths.test.ts",
+          "name": "isSystemPath > should handle exact system path matches",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::contractPath > should contract home directory to ~",
+          "file": "src/utils/paths.test.ts",
+          "name": "contractPath > should contract home directory to ~",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::contractPath > should not modify paths outside home directory",
+          "file": "src/utils/paths.test.ts",
+          "name": "contractPath > should not modify paths outside home directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::contractPath > should handle exact home directory",
+          "file": "src/utils/paths.test.ts",
+          "name": "contractPath > should handle exact home directory",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateDirectoryPath > should not truncate short paths",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateDirectoryPath > should not truncate short paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateDirectoryPath > should truncate very deep paths",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateDirectoryPath > should truncate very deep paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateDirectoryPath > should use absolute paths when absolutePaths is true",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateDirectoryPath > should use absolute paths when absolutePaths is true",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateDirectoryPath > should truncate long absolute paths",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateDirectoryPath > should truncate long absolute paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateDirectoryPath > should keep first and last two segments for deep paths",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateDirectoryPath > should keep first and last two segments for deep paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateFileName > should not truncate short filenames",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateFileName > should not truncate short filenames",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateFileName > should not truncate filenames equal to maxLength",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateFileName > should not truncate filenames equal to maxLength",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateFileName > should truncate long filenames with extension",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateFileName > should truncate long filenames with extension",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateFileName > should truncate filename and split basename evenly",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateFileName > should truncate filename and split basename evenly",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateFileName > should handle filenames without extension",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateFileName > should handle filenames without extension",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateFileName > should handle files with multiple dots",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateFileName > should handle files with multiple dots",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateFileName > should handle edge case where extension is very long",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateFileName > should handle edge case where extension is very long",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateFileName > should handle extreme case where maxLength is very small",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateFileName > should handle extreme case where maxLength is very small",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateFileName > should handle filename with dot at start (hidden file)",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateFileName > should handle filename with dot at start (hidden file)",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateFileName > should preserve extension for files with single character basename",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateFileName > should preserve extension for files with single character basename",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateFileName > should handle filename that is just an extension",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateFileName > should handle filename that is just an extension",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateFileName > should truncate basename symmetrically",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateFileName > should truncate basename symmetrically",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateFileName > should handle filename with no dots in middle",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateFileName > should handle filename with no dots in middle",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/paths.test.ts::truncateFileName > should handle maxLength equal to filename length",
+          "file": "src/utils/paths.test.ts",
+          "name": "truncateFileName > should handle maxLength equal to filename length",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/progress.test.ts::ProgressBar > should create a progress bar with default options",
+          "file": "src/utils/progress.test.ts",
+          "name": "ProgressBar > should create a progress bar with default options",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/progress.test.ts::ProgressBar > should update progress",
+          "file": "src/utils/progress.test.ts",
+          "name": "ProgressBar > should update progress",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/progress.test.ts::ProgressBar > should increment progress",
+          "file": "src/utils/progress.test.ts",
+          "name": "ProgressBar > should increment progress",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/progress.test.ts::ProgressBar > should update with label",
+          "file": "src/utils/progress.test.ts",
+          "name": "ProgressBar > should update with label",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/progress.test.ts::ProgressBar > should finish and clear line",
+          "file": "src/utils/progress.test.ts",
+          "name": "ProgressBar > should finish and clear line",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/progress.test.ts::ProgressBar > should finish with message",
+          "file": "src/utils/progress.test.ts",
+          "name": "ProgressBar > should finish with message",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/progress.test.ts::ProgressBar > should handle custom bar width",
+          "file": "src/utils/progress.test.ts",
+          "name": "ProgressBar > should handle custom bar width",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/progress.test.ts::ProgressBar > should handle percentage display",
+          "file": "src/utils/progress.test.ts",
+          "name": "ProgressBar > should handle percentage display",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/progress.test.ts::ProgressBar > should handle count display",
+          "file": "src/utils/progress.test.ts",
+          "name": "ProgressBar > should handle count display",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/progress.test.ts::factory functions > should create scan progress",
+          "file": "src/utils/progress.test.ts",
+          "name": "factory functions > should create scan progress",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/progress.test.ts::factory functions > should create clean progress",
+          "file": "src/utils/progress.test.ts",
+          "name": "factory functions > should create clean progress",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/size.test.ts::formatSize > should format bytes",
+          "file": "src/utils/size.test.ts",
+          "name": "formatSize > should format bytes",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/size.test.ts::formatSize > should format kilobytes",
+          "file": "src/utils/size.test.ts",
+          "name": "formatSize > should format kilobytes",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/size.test.ts::formatSize > should format megabytes",
+          "file": "src/utils/size.test.ts",
+          "name": "formatSize > should format megabytes",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/size.test.ts::formatSize > should format gigabytes",
+          "file": "src/utils/size.test.ts",
+          "name": "formatSize > should format gigabytes",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/size.test.ts::formatSize > should format terabytes",
+          "file": "src/utils/size.test.ts",
+          "name": "formatSize > should format terabytes",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/size.test.ts::parseSize > should parse bytes",
+          "file": "src/utils/size.test.ts",
+          "name": "parseSize > should parse bytes",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/size.test.ts::parseSize > should parse kilobytes",
+          "file": "src/utils/size.test.ts",
+          "name": "parseSize > should parse kilobytes",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/size.test.ts::parseSize > should parse megabytes",
+          "file": "src/utils/size.test.ts",
+          "name": "parseSize > should parse megabytes",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/size.test.ts::parseSize > should parse gigabytes",
+          "file": "src/utils/size.test.ts",
+          "name": "parseSize > should parse gigabytes",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/size.test.ts::parseSize > should return 0 for invalid input",
+          "file": "src/utils/size.test.ts",
+          "name": "parseSize > should return 0 for invalid input",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/size.test.ts::parseSize > should be case insensitive",
+          "file": "src/utils/size.test.ts",
+          "name": "parseSize > should be case insensitive",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/size.test.ts::SIZE_THRESHOLDS > should have correct values",
+          "file": "src/utils/size.test.ts",
+          "name": "SIZE_THRESHOLDS > should have correct values",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/time.test.ts::formatRelativeAge > should format today",
+          "file": "src/utils/time.test.ts",
+          "name": "formatRelativeAge > should format today",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/time.test.ts::formatRelativeAge > should format recent days",
+          "file": "src/utils/time.test.ts",
+          "name": "formatRelativeAge > should format recent days",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/time.test.ts::formatRelativeAge > should format older dates with month and day",
+          "file": "src/utils/time.test.ts",
+          "name": "formatRelativeAge > should format older dates with month and day",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/time.test.ts::formatRelativeAge > should include year for dates older than a year",
+          "file": "src/utils/time.test.ts",
+          "name": "formatRelativeAge > should include year for dates older than a year",
+          "outcome": "pass"
+        }
+      ]
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 644,
+      "cases": [
+        {
+          "id": "src/utils/clipboard.test.ts::copyToClipboard > should copy text to clipboard using pbcopy",
+          "file": "src/utils/clipboard.test.ts",
+          "name": "copyToClipboard > should copy text to clipboard using pbcopy",
+          "outcome": "fail",
+          "message": "expected \"vi.fn()\" to be called with arguments: [ '/usr/bin/pbcopy', { …(2) } ][90m Received: [1m 1st vi.fn() call: [22m[2m [[22m [32m- \"/usr/bin/pbcopy\",[90m [31m+ \"pbcopy\",[90m [2m {[22m [2m \"encoding\": \"utf-8\",[22m [2m \"input\": \"/Users/test/some/directory\",[22m [2m },[22m [2m ][22m [39m[90m Numb…"
+        },
+        {
+          "id": "src/utils/clipboard.test.ts::copyToClipboard > should throw error if pbcopy fails",
+          "file": "src/utils/clipboard.test.ts",
+          "name": "copyToClipboard > should throw error if pbcopy fails",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/utils/clipboard.test.ts::copyToClipboard > should handle empty string",
+          "file": "src/utils/clipboard.test.ts",
+          "name": "copyToClipboard > should handle empty string",
+          "outcome": "fail",
+          "message": "expected \"vi.fn()\" to be called with arguments: [ '/usr/bin/pbcopy', …(1) ][90m Received: [1m 1st vi.fn() call: [22m[2m [[22m [32m- \"/usr/bin/pbcopy\",[90m [31m+ \"pbcopy\",[90m [2m {[22m [2m \"encoding\": \"utf-8\",[22m [2m \"input\": \"\",[22m [2m },[22m [2m ][22m [39m[90m Number of calls: [1m1[22m [39m"
+        },
+        {
+          "id": "src/utils/clipboard.test.ts::copyToClipboard > should handle text with special characters",
+          "file": "src/utils/clipboard.test.ts",
+          "name": "copyToClipboard > should handle text with special characters",
+          "outcome": "fail",
+          "message": "expected \"vi.fn()\" to be called with arguments: [ '/usr/bin/pbcopy', { …(2) } ][90m Received: [1m 1st vi.fn() call: [22m[2m [[22m [32m- \"/usr/bin/pbcopy\",[90m [31m+ \"pbcopy\",[90m [2m {[22m [2m \"encoding\": \"utf-8\",[22m [2m \"input\": \"/path/with spaces/and-special_chars!@#$%\",[22m [2m },[22m [2m ][22m…"
+        },
+        {
+          "id": "src/utils/clipboard.test.ts::copyToClipboard > should handle multiline text",
+          "file": "src/utils/clipboard.test.ts",
+          "name": "copyToClipboard > should handle multiline text",
+          "outcome": "fail",
+          "message": "expected \"vi.fn()\" to be called with arguments: [ '/usr/bin/pbcopy', { …(2) } ][90m Received: [1m 1st vi.fn() call: [22m[33m@@ -1,7 +1,7 @@[90m [2m [[22m [32m- \"/usr/bin/pbcopy\",[90m [31m+ \"pbcopy\",[90m [2m {[22m [2m \"encoding\": \"utf-8\",[22m [2m \"input\": \"/path/line1[22m [2m /path/line2[22m [2m /pa…"
+        },
+        {
+          "id": "src/utils/clipboard.test.ts::copyToClipboard > should handle very long paths",
+          "file": "src/utils/clipboard.test.ts",
+          "name": "copyToClipboard > should handle very long paths",
+          "outcome": "fail",
+          "message": "expected \"vi.fn()\" to be called with arguments: [ '/usr/bin/pbcopy', { …(2) } ][90m Received: [1m 1st vi.fn() call: [22m[2m [[22m [32m- \"/usr/bin/pbcopy\",[90m [31m+ \"pbcopy\",[90m [2m {[22m [2m \"encoding\": \"utf-8\",[22m [2m \"input\": \"/Users/test/very/deep/nested/directory/structure/that/goes/on/and/o…"
+        },
+        {
+          "id": "src/utils/display.test.ts::src/utils/display.test.ts",
+          "file": "src/utils/display.test.ts",
+          "name": "src/utils/display.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module './display.js' imported from '/tmp/trustbut-wt-ujrzq7/src/utils/display.test.ts'"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should display message when no apps found",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should display message when no apps found",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should display apps when found",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should display apps when found",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should handle dry run",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should handle dry run",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should cancel when user declines",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should cancel when user declines",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should uninstall when confirmed",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should uninstall when confirmed",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should uninstall with --yes flag",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should uninstall with --yes flag",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should handle errors during uninstall",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should handle errors during uninstall",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should handle noProgress option",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should handle noProgress option",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should find apps in both Application directories",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should find apps in both Application directories",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/commands/uninstall.test.ts::uninstall command > should skip non-.app entries",
+          "file": "src/commands/uninstall.test.ts",
+          "name": "uninstall command > should skip non-.app entries",
+          "outcome": "pass"
+        }
+      ],
+      "outputTail": "JUNIT report written to /tmp/trustbut-junit-A1WDnL/junit.xml"
+    }
+  }
+}

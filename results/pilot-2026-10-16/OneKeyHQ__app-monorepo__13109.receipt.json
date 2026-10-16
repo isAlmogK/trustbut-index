@@ -1,0 +1,350 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "b1f0cfec756e9d529c4e499d225bddb138b46eef",
+    "head": "a1f17e276ec33f10ce5a983d446a2432613a871f"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "Node.js v24.21.0"
+    }
+  ],
+  "risks": [
+    {
+      "file": "packages/kit/src/views/Swap/hooks/useSwapStockSelectedBalanceSync.test.tsx",
+      "score": 1,
+      "reasons": [
+        "large change (324 lines)"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "jest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 279501,
+      "cases": [],
+      "outputTail": "    https://jestjs.io/docs/configuration\n    For information about custom transformations, see:\n    https://jestjs.io/docs/code-transformation\n\n    Details:\n\n    /home/runner/work/_temp/work/repo/node_modules/@react-native-async-storage/async-storage/lib/module/index.js:3\n    import NativeModule from './NativeAsyncStorage';\n    ^^^^^^\n\n    SyntaxError: Cannot use import statement outside a module\n\n       9 | import {\n      10 |   ALGO_SIGNING_METHODS,\n    > 11 |   COSMOS_SIGNING_METHODS,\n         |                                ^\n      12 |   EIP155_SIGNING_METHODS,\n      13 |   WC_DAPP_SIDE_METHODS_EVM,\n      14 | } from '@onekeyhq/shared/src/walletConnect/constant';\n\n      at Runtime.createScriptFromCode (../../home/runner/work/_temp/work/repo/node_modules/jest-runtime/build/index.js:1505:14)\n      at Object.require (../../home/runner/work/_temp/work/repo/node_modules/@reown/appkit-core-react-native/src/utils/StorageUtil.ts:2:1)\n      at Object.require (../../home/runner/work/_temp/work/repo/node_modules/@reown/appkit-core-react-native/src/controllers/ApiController.ts:6:1)\n      at Object.require (../../home/runner/work/_temp/work/repo/node_modules/@reown/appkit-core-react-native/src/controllers/EventsController.ts:2:1)\n      at Object.require (../../home/runner/work/_temp/work/repo/node_modules/@reown/appkit-core-react-native/src/controllers/ModalController.ts:5:1)\n      at Object.require (../../home/runner/work/_temp/work/repo/node_modules/@reown/appkit-core-react-native/src/index.ts:2:1)\n      at Object.<anonymous> (../../home/runner/work/_temp/work/repo/packages/kit-bg/src/services/ServiceWalletConnect/WalletConnectDappSideProvider.ts:11:32)\n      at Object.<anonymous> (../../home/runner/work/_temp/work/repo/packages/kit-bg/src/connectors/chains/evm/ExternalControllerEvm.ts:26:40)\n      at Object.<anonymous> (../../home/runner/work/_temp/work/repo/packages/kit-bg/src/connectors/externalWalletFactory.ts:22:32)\n      at Object.<anonymous> (../../home/runner/work/_temp/work/repo/packages/kit-bg/src/apis/BackgroundApi.ts:12:71)\n      at Object.<anonymous> (../../home/runner/work/_temp/work/repo/packages/kit/src/background/instance/backgroundApiInit.ts:11:63)\n      at Object.<anonymous> (../../home/runner/work/_temp/work/repo/packages/kit/src/background/instance/backgroundApiProxy.ts:14:67)\n      at Object.<anonymous> (packages/kit/src/views/Swap/utils/swapProPositionsLoader.ts:12:68)\n      at Object.<anonymous> (packages/kit/src/views/Swap/hooks/useSwapPro.ts:96:33)\n      at Object.<anonymous> (packages/kit/src/views/Swap/hooks/useSwapPro.accountCache.test.tsx:198:21)\n\n/tmp/trustbut-wt-71gIbx/packages/shared/src/logger/loggerRegistry.ts:23\n        return new ScopeConstructor();\n               ^\n\nTypeError: ScopeConstructor is not a constructor\n    at Object.app (/tmp/trustbut-wt-71gIbx/packages/shared/src/logger/loggerRegistry.ts:23:16)\n    at createLoggerScope (/tmp/trustbut-wt-71gIbx/packages/shared/src/logger/loggerRegistry.ts:68:37)\n    at DefaultLoggerContainer.getScope (/tmp/trustbut-wt-71gIbx/packages/shared/src/logger/loggerImpl.ts:23:62)\n    at DefaultLoggerContainer.get (/tmp/trustbut-wt-71gIbx/packages/shared/src/logger/loggerImpl.ts:34:25)\n    at /home/runner/work/_temp/work/repo/packages/kit-bg/src/dbs/local/indexed/LocalDbIndexedBase.ts:146:39\n    at async Promise.all (index 0)\n    at LocalDbIndexed._openDb (/home/runner/work/_temp/work/repo/packages/kit-bg/src/dbs/local/indexed/LocalDbIndexedBase.ts:114:9)\n\nNode.js v24.21.0"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 5189,
+      "cases": [
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::parseMarketTokenBalance keeps invalid balance null unknown",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "parseMarketTokenBalance keeps invalid balance null unknown",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::parseMarketTokenBalance keeps invalid balance \"\" unknown",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "parseMarketTokenBalance keeps invalid balance \"\" unknown",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::parseMarketTokenBalance keeps invalid balance \"NaN\" unknown",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "parseMarketTokenBalance keeps invalid balance \"NaN\" unknown",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::parseMarketTokenBalance keeps invalid balance \"Infinity\" unknown",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "parseMarketTokenBalance keeps invalid balance \"Infinity\" unknown",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::parseMarketTokenBalance keeps invalid balance \"-Infinity\" unknown",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "parseMarketTokenBalance keeps invalid balance \"-Infinity\" unknown",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::parseMarketTokenBalance keeps invalid balance \"invalid\" unknown",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "parseMarketTokenBalance keeps invalid balance \"invalid\" unknown",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::parseMarketTokenBalance keeps invalid balance \"-1\" unknown",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "parseMarketTokenBalance keeps invalid balance \"-1\" unknown",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::parseMarketTokenBalance preserves a valid zero balance",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "parseMarketTokenBalance preserves a valid zero balance",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::isMarketUserCancelledError does not treat default internal errors as user cancellation",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "isMarketUserCancelledError does not treat default internal errors as user cancellation",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::isMarketUserCancelledError accepts an explicit cancellation signal 0",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "isMarketUserCancelledError accepts an explicit cancellation signal 0",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::isMarketUserCancelledError accepts an explicit cancellation signal 1",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "isMarketUserCancelledError accepts an explicit cancellation signal 1",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::isMarketUserCancelledError accepts an explicit cancellation signal 2",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "isMarketUserCancelledError accepts an explicit cancellation signal 2",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::isMarketQuoteResultForPair accepts only a quote for the currently selected pair",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "isMarketQuoteResultForPair accepts only a quote for the currently selected pair",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions keeps the latest same-network balance when stablecoin balance requests resolve out of order",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions keeps the latest same-network balance when stablecoin balance requests resolve out of order",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions re-requests the provider quote when a stock live-open state changes",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions re-requests the provider quote when a stock live-open state changes",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions uses the Trade Stocks execution channel for a stock market token",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions uses the Trade Stocks execution channel for a stock market token",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions keeps the stock token as the sell side in the Trade Stocks channel",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions keeps the stock token as the sell side in the Trade Stocks channel",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions quotes Market with Auto slippage semantics",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions quotes Market with Auto slippage semantics",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions quotes Market with Custom slippage semantics",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions quotes Market with Custom slippage semantics",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions preserves automatic slippage when manually refreshing Market quotes",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions preserves automatic slippage when manually refreshing Market quotes",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions allows the rate row to force-refresh a current Market quote",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions allows the rate row to force-refresh a current Market quote",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions quotes EVM to native BTC with independent network addresses",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions quotes EVM to native BTC with independent network addresses",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions quotes native BTC to EVM with independent network addresses",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions quotes native BTC to EVM with independent network addresses",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions pauses Market quotes while review is open and resumes after close",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions pauses Market quotes while review is open and resumes after close",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions defers signed quote building but still rebuilds an invalidated review",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions defers signed quote building but still rebuilds an invalidated review",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions clears a previous token balance while the next balance is loading",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions clears a previous token balance while the next balance is loading",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions keeps the balance unknown when the balance request fails",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions keeps the balance unknown when the balance request fails",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions preserves a successfully fetched zero balance",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions preserves a successfully fetched zero balance",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions checks the latest balance before creating a wrapped review snapshot",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions checks the latest balance before creating a wrapped review snapshot",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions checks the latest balance again before sending a wrapped transaction",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions checks the latest balance again before sending a wrapped transaction",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions checks rebuilt amount plus gas before signing a wrapped transaction",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions checks rebuilt amount plus gas before signing a wrapped transaction",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions checks the wrapped token and rebuilt native gas before signing an unwrap",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions checks the wrapped token and rebuilt native gas before signing an unwrap",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions waits for the matching network account before refreshing the current token balance",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions waits for the matching network account before refreshing the current token balance",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions ignores unrelated balance update events while the current balance request is in flight",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions ignores unrelated balance update events while the current balance request is in flight",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions does not refetch the current balance when only the market token price changes",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions does not refetch the current balance when only the market token price changes",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions falls back to the current token price sources when the live price still belongs to the previous token",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions falls back to the current token price sources when the live price still belongs to the previous token",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions uses refreshed live payment token prices without requiring token reselection",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions uses refreshed live payment token prices without requiring token reselection",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions ignores live payment token prices from a stale currency scope",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions ignores live payment token prices from a stale currency scope",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::useSpeedSwapActions falls back to same-currency fetched prices when inline price currencies differ",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "useSpeedSwapActions falls back to same-currency fetched prices when inline price currencies differ",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::buildMarketSwapHistoryItem includes the selected fiat currency id in market swap history",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "buildMarketSwapHistoryItem includes the selected fiat currency id in market swap history",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::buildMarketSwapHistoryItem keeps a dynamic network id for background history enrichment",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "buildMarketSwapHistoryItem keeps a dynamic network id for background history enrichment",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::buildMarketReviewTokens applies the live payment token price to the buy review from token",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "buildMarketReviewTokens applies the live payment token price to the buy review from token",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx::buildMarketReviewTokens applies the live payment token price to the sell review to token",
+          "file": "packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx",
+          "name": "buildMarketReviewTokens applies the live payment token price to the sell review to token",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/kit/src/views/Swap/hooks/useSwapStockSelectedBalanceSync.test.tsx::useSwapStockSelectedBalanceSync does not loop when retained Stock and current token screens share a store",
+          "file": "packages/kit/src/views/Swap/hooks/useSwapStockSelectedBalanceSync.test.tsx",
+          "name": "useSwapStockSelectedBalanceSync does not loop when retained Stock and current token screens share a store",
+          "outcome": "fail",
+          "message": "Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops. at getRootForUpdatedFiber (/home/runner/work/_temp/work/repo/node_modules/react-dom…"
+        },
+        {
+          "id": "packages/kit/src/views/Swap/hooks/useSwapStockSelectedBalanceSync.test.tsx::useSwapStockSelectedBalanceSync does not let an unfocused retained stock screen overwrite the current balance",
+          "file": "packages/kit/src/views/Swap/hooks/useSwapStockSelectedBalanceSync.test.tsx",
+          "name": "useSwapStockSelectedBalanceSync does not let an unfocused retained stock screen overwrite the current balance",
+          "outcome": "fail",
+          "message": "Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops. at getRootForUpdatedFiber (/home/runner/work/_temp/work/repo/node_modules/react-dom…"
+        },
+        {
+          "id": "packages/kit/src/views/Swap/hooks/useSwapStockSelectedBalanceSync.test.tsx::useSwapStockSelectedBalanceSync republishes the retained stock balance when that screen is focused again",
+          "file": "packages/kit/src/views/Swap/hooks/useSwapStockSelectedBalanceSync.test.tsx",
+          "name": "useSwapStockSelectedBalanceSync republishes the retained stock balance when that screen is focused again",
+          "outcome": "fail",
+          "message": "Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops. at getRootForUpdatedFiber (/home/runner/work/_temp/work/repo/node_modules/react-dom…"
+        },
+        {
+          "id": "packages/kit/src/views/Swap/hooks/useSwapStockSelectedBalanceSync.test.tsx::useSwapStockSelectedBalanceSync does not let an unfocused stock screen overwrite another focused stock balance",
+          "file": "packages/kit/src/views/Swap/hooks/useSwapStockSelectedBalanceSync.test.tsx",
+          "name": "useSwapStockSelectedBalanceSync does not let an unfocused stock screen overwrite another focused stock balance",
+          "outcome": "fail",
+          "message": "Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops. at getRootForUpdatedFiber (/home/runner/work/_temp/work/repo/node_modules/react-dom…"
+        },
+        {
+          "id": "packages/kit/src/views/Swap/hooks/useSwapStockSelectedBalanceSync.test.tsx::useSwapStockSelectedBalanceSync clears the previous owner balance before publishing the next live balance",
+          "file": "packages/kit/src/views/Swap/hooks/useSwapStockSelectedBalanceSync.test.tsx",
+          "name": "useSwapStockSelectedBalanceSync clears the previous owner balance before publishing the next live balance",
+          "outcome": "pass"
+        }
+      ],
+      "outputTail": "development.js:15159:11)\n      at commitLayoutEffectOnFiber (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:13949:11)\n      at recursivelyTraverseLayoutEffects (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:15159:11)\n      at commitLayoutEffectOnFiber (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:13949:11)\n      at recursivelyTraverseLayoutEffects (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:15159:11)\n      at commitLayoutEffectOnFiber (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:14165:11)\n      at recursivelyTraverseLayoutEffects (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:15159:11)\n      at commitLayoutEffectOnFiber (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:13949:11)\n      at recursivelyTraverseLayoutEffects (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:15159:11)\n      at commitLayoutEffectOnFiber (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:13949:11)\n      at recursivelyTraverseLayoutEffects (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:15159:11)\n      at commitLayoutEffectOnFiber (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:14031:11)\n      at flushLayoutEffects (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:18138:15)\n      at commitRoot (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:17954:9)\n      at performWorkOnRoot (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:16667:15)\n      at performSyncWorkOnRoot (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:18972:7)\n      at flushSyncWorkAcrossRoots_impl (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:18814:21)\n      at flushSpawnedWork (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:18334:9)\n      at commitRoot (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:17955:9)\n      at performWorkOnRoot (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:16667:15)\n      at performWorkOnRootViaSchedulerTask (../../home/runner/work/_temp/work/repo/node_modules/react-dom/cjs/react-dom-client.development.js:18957:7)\n      at flushActQueue (../../home/runner/work/_temp/work/repo/node_modules/react/cjs/react.development.js:590:34)\n      at Object.<anonymous>.process.env.NODE_ENV.exports.act (../../home/runner/work/_temp/work/repo/node_modules/react/cjs/react.development.js:884:10)\n      at ../../home/runner/work/_temp/work/repo/node_modules/@testing-library/react/dist/act-compat.js:46:25\n      at renderRoot (../../home/runner/work/_temp/work/repo/node_modules/@testing-library/react/dist/pure.js:189:26)\n      at render (../../home/runner/work/_temp/work/repo/node_modules/@testing-library/react/dist/pure.js:291:10)\n      at Object.<anonymous> (packages/kit/src/views/Swap/hooks/useSwapStockSelectedBalanceSync.test.tsx:264:32)\n\nTest Suites: 1 failed, 1 passed, 2 total\nTests:       4 failed, 44 passed, 48 total\nSnapshots:   0 total\nTime:        3.485 s\nRan all test suites within paths \"packages/kit/src/views/Market/MarketDetailV2/components/SwapPanel/hooks/useSpeedSwapActions.test.tsx\", \"packages/kit/src/views/Swap/hooks/useSwapStockSelectedBalanceSync.test.tsx\".\nTest results written to: ../trustbut-jest-wYcj3U/jest.json"
+    }
+  }
+}

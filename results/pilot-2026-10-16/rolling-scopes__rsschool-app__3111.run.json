@@ -1,0 +1,24 @@
+{
+  "id": "rolling-scopes__rsschool-app__3111",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "24",
+      "pm": "npm",
+      "install": "npm ci"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 49759,
+    "verifyMs": 124805
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.5.0",
+  "installRetries": 0
+}

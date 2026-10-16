@@ -1,0 +1,1386 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "2954e37048f8dcffe16e1c37b8f71afb0094a0a2",
+    "head": "b4d9c791bc5c685e62c3c5db1d8fc0ee4da1d7f6"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 171,
+    "skipped": 20,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 2"
+    },
+    {
+      "id": "proofs-unmatched",
+      "severity": "warn",
+      "title": "No test results matched the changed test files; fail-before/pass-after evidence unavailable"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 2,
+      "durationMs": 75474,
+      "cases": [
+        {
+          "id": "::tests.integrations.test_langgraph",
+          "file": "",
+          "name": "tests.integrations.test_langgraph",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.integrations.test_strands.test_ccr_exclusion",
+          "file": "",
+          "name": "tests.integrations.test_strands.test_ccr_exclusion",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_adversarial_grid",
+          "file": "",
+          "name": "tests.test_adversarial_grid",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_agent_savings",
+          "file": "",
+          "name": "tests.test_agent_savings",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_anthropic_ccr_workspace_unbound",
+          "file": "",
+          "name": "tests.test_anthropic_ccr_workspace_unbound",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_anthropic_compaction_transforms",
+          "file": "",
+          "name": "tests.test_anthropic_compaction_transforms",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_anthropic_pre_upstream_backpressure",
+          "file": "",
+          "name": "tests.test_anthropic_pre_upstream_backpressure",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_backend_nonstreaming_cache_metrics",
+          "file": "",
+          "name": "tests.test_backend_nonstreaming_cache_metrics",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_backend_streaming_cache_metrics",
+          "file": "",
+          "name": "tests.test_backend_streaming_cache_metrics",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_banner_upstream_targets",
+          "file": "",
+          "name": "tests.test_banner_upstream_targets",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_bash_search_lossless_fold",
+          "file": "",
+          "name": "tests.test_bash_search_lossless_fold",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_bedrock_prefix_tracker_wiring",
+          "file": "",
+          "name": "tests.test_bedrock_prefix_tracker_wiring",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_bedrock_streaming_input_tokens",
+          "file": "",
+          "name": "tests.test_bedrock_streaming_input_tokens",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_builtin_compressor_adapters",
+          "file": "",
+          "name": "tests.test_builtin_compressor_adapters",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_cache.test_client_integration",
+          "file": "",
+          "name": "tests.test_cache.test_client_integration",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_canonical_pipeline",
+          "file": "",
+          "name": "tests.test_canonical_pipeline",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_ccr_mcp_http",
+          "file": "",
+          "name": "tests.test_ccr_mcp_http",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_ccr_row_drop_store_bridge",
+          "file": "",
+          "name": "tests.test_ccr_row_drop_store_bridge",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_ccr_rust_marker_hash_bridge",
+          "file": "",
+          "name": "tests.test_ccr_rust_marker_hash_bridge",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_ccr_tag_placeholder_regression",
+          "file": "",
+          "name": "tests.test_ccr_tag_placeholder_regression",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_claude_session_branch_compare",
+          "file": "",
+          "name": "tests.test_claude_session_branch_compare",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_claude_session_mode_benchmark",
+          "file": "",
+          "name": "tests.test_claude_session_mode_benchmark",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_code_aware_regressions",
+          "file": "",
+          "name": "tests.test_code_aware_regressions",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_codex_live",
+          "file": "",
+          "name": "tests.test_codex_live",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_codex_responses_passthrough_bytes",
+          "file": "",
+          "name": "tests.test_codex_responses_passthrough_bytes",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_compaction_markdown_kv",
+          "file": "",
+          "name": "tests.test_compaction_markdown_kv",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_compress_route_tokenizer_by_model",
+          "file": "",
+          "name": "tests.test_compress_route_tokenizer_by_model",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_compression_batches",
+          "file": "",
+          "name": "tests.test_compression_batches",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_compression_determinism",
+          "file": "",
+          "name": "tests.test_compression_determinism",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_compression_observability",
+          "file": "",
+          "name": "tests.test_compression_observability",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_compression_safety_rails",
+          "file": "",
+          "name": "tests.test_compression_safety_rails",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_compression_units",
+          "file": "",
+          "name": "tests.test_compression_units",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_compressor_selection",
+          "file": "",
+          "name": "tests.test_compressor_selection",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_content_router_compact_json",
+          "file": "",
+          "name": "tests.test_content_router_compact_json",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_content_router_detection_dedup",
+          "file": "",
+          "name": "tests.test_content_router_detection_dedup",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_content_router_exclude_tools",
+          "file": "",
+          "name": "tests.test_content_router_exclude_tools",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_content_router_single_item_deadline",
+          "file": "",
+          "name": "tests.test_content_router_single_item_deadline",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_content_router_token_units",
+          "file": "",
+          "name": "tests.test_content_router_token_units",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_content_router_tool_role_reversibility",
+          "file": "",
+          "name": "tests.test_content_router_tool_role_reversibility",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_content_router_user_blocks",
+          "file": "",
+          "name": "tests.test_content_router_user_blocks",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_dashboard.test_live_feed",
+          "file": "",
+          "name": "tests.test_dashboard.test_live_feed",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_dashboard_agent_usage",
+          "file": "",
+          "name": "tests.test_dashboard_agent_usage",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_dashboard_cache_lifetime_playwright",
+          "file": "",
+          "name": "tests.test_dashboard_cache_lifetime_playwright",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_dashboard_cache_net_playwright",
+          "file": "",
+          "name": "tests.test_dashboard_cache_net_playwright",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_dashboard_cache_ttl_playwright",
+          "file": "",
+          "name": "tests.test_dashboard_cache_ttl_playwright",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_dashboard_co2_playwright",
+          "file": "",
+          "name": "tests.test_dashboard_co2_playwright",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_dashboard_static_assets",
+          "file": "",
+          "name": "tests.test_dashboard_static_assets",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_dataset_recall_runner",
+          "file": "",
+          "name": "tests.test_dataset_recall_runner",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_error_detection",
+          "file": "",
+          "name": "tests.test_error_detection",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_evals.test_html_extraction_eval",
+          "file": "",
+          "name": "tests.test_evals.test_html_extraction_eval",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_evals.test_html_oss_benchmarks",
+          "file": "",
+          "name": "tests.test_evals.test_html_oss_benchmarks",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_evals_cjk_tokenization",
+          "file": "",
+          "name": "tests.test_evals_cjk_tokenization",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_evals_datasets",
+          "file": "",
+          "name": "tests.test_evals_datasets",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_evals_metrics",
+          "file": "",
+          "name": "tests.test_evals_metrics",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_evals_multilingual",
+          "file": "",
+          "name": "tests.test_evals_multilingual",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_force_kompress_all",
+          "file": "",
+          "name": "tests.test_force_kompress_all",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_gateway_sidecar_ports",
+          "file": "",
+          "name": "tests.test_gateway_sidecar_ports",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_gemini_compression_offload",
+          "file": "",
+          "name": "tests.test_gemini_compression_offload",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_gemini_function_response_waste",
+          "file": "",
+          "name": "tests.test_gemini_function_response_waste",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_google_multimodal",
+          "file": "",
+          "name": "tests.test_google_multimodal",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_h2_stream_reset_retry",
+          "file": "",
+          "name": "tests.test_h2_stream_reset_retry",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_header_isolation",
+          "file": "",
+          "name": "tests.test_header_isolation",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_hermes_passthrough_compression",
+          "file": "",
+          "name": "tests.test_hermes_passthrough_compression",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_hermes_tool_call_unwrap",
+          "file": "",
+          "name": "tests.test_hermes_tool_call_unwrap",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_kompress_preload_deferral",
+          "file": "",
+          "name": "tests.test_kompress_preload_deferral",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_kompress_request_nonblocking",
+          "file": "",
+          "name": "tests.test_kompress_request_nonblocking",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_litellm_callback",
+          "file": "",
+          "name": "tests.test_litellm_callback",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_lossless_diff_fold_guard",
+          "file": "",
+          "name": "tests.test_lossless_diff_fold_guard",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_lossless_excluded_compaction",
+          "file": "",
+          "name": "tests.test_lossless_excluded_compaction",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_lossless_first_dispatch",
+          "file": "",
+          "name": "tests.test_lossless_first_dispatch",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_lossless_mode",
+          "file": "",
+          "name": "tests.test_lossless_mode",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_lossless_then_lossy",
+          "file": "",
+          "name": "tests.test_lossless_then_lossy",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_memory.test_learn_flag",
+          "file": "",
+          "name": "tests.test_memory.test_learn_flag",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_memory_eval",
+          "file": "",
+          "name": "tests.test_memory_eval",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_mid_turn_steering",
+          "file": "",
+          "name": "tests.test_mid_turn_steering",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_netcost_gate",
+          "file": "",
+          "name": "tests.test_netcost_gate",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_netcost_suffix_image_tokens",
+          "file": "",
+          "name": "tests.test_netcost_suffix_image_tokens",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_no_ccr_lossy",
+          "file": "",
+          "name": "tests.test_no_ccr_lossy",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_oauth_bearer_routing",
+          "file": "",
+          "name": "tests.test_oauth_bearer_routing",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_observability_metrics",
+          "file": "",
+          "name": "tests.test_observability_metrics",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_observability_tracing",
+          "file": "",
+          "name": "tests.test_observability_tracing",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_observed_wire_shapes",
+          "file": "",
+          "name": "tests.test_observed_wire_shapes",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_openai_chat_turn_hooks",
+          "file": "",
+          "name": "tests.test_openai_chat_turn_hooks",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_openai_response_cache_key",
+          "file": "",
+          "name": "tests.test_openai_response_cache_key",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_openai_responses_compression_units",
+          "file": "",
+          "name": "tests.test_openai_responses_compression_units",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_openai_responses_context_compaction",
+          "file": "",
+          "name": "tests.test_openai_responses_context_compaction",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_openai_responses_output_shaper",
+          "file": "",
+          "name": "tests.test_openai_responses_output_shaper",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_openai_responses_t3_replay_regression",
+          "file": "",
+          "name": "tests.test_openai_responses_t3_replay_regression",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_openai_responses_traffic_learner",
+          "file": "",
+          "name": "tests.test_openai_responses_traffic_learner",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_openai_streaming_backend",
+          "file": "",
+          "name": "tests.test_openai_streaming_backend",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_perl_scanner_safety",
+          "file": "",
+          "name": "tests.test_perl_scanner_safety",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_platform_stabilization_functional",
+          "file": "",
+          "name": "tests.test_platform_stabilization_functional",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_provider_codex_runtime",
+          "file": "",
+          "name": "tests.test_provider_codex_runtime",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_provider_display_classification",
+          "file": "",
+          "name": "tests.test_provider_display_classification",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_provider_proxy_routes",
+          "file": "",
+          "name": "tests.test_provider_proxy_routes",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy.test_anthropic_buffered_timeout",
+          "file": "",
+          "name": "tests.test_proxy.test_anthropic_buffered_timeout",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy.test_anthropic_ccr_deferred_injection",
+          "file": "",
+          "name": "tests.test_proxy.test_anthropic_ccr_deferred_injection",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy.test_anthropic_ccr_raise",
+          "file": "",
+          "name": "tests.test_proxy.test_anthropic_ccr_raise",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy.test_anthropic_streaming_ccr_retrieve",
+          "file": "",
+          "name": "tests.test_proxy.test_anthropic_streaming_ccr_retrieve",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy.test_anthropic_upstream_header",
+          "file": "",
+          "name": "tests.test_proxy.test_anthropic_upstream_header",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy.test_bedrock_passthrough",
+          "file": "",
+          "name": "tests.test_proxy.test_bedrock_passthrough",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy.test_bedrock_sse_ping",
+          "file": "",
+          "name": "tests.test_proxy.test_bedrock_sse_ping",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy.test_gemini_savings_profile",
+          "file": "",
+          "name": "tests.test_proxy.test_gemini_savings_profile",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy.test_model_router_wiring",
+          "file": "",
+          "name": "tests.test_proxy.test_model_router_wiring",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy.test_openai_backend_path",
+          "file": "",
+          "name": "tests.test_proxy.test_openai_backend_path",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy.test_openai_chat_savings_profile",
+          "file": "",
+          "name": "tests.test_proxy.test_openai_chat_savings_profile",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy.test_openai_responses_ccr",
+          "file": "",
+          "name": "tests.test_proxy.test_openai_responses_ccr",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy.test_openai_transport_path_prefix",
+          "file": "",
+          "name": "tests.test_proxy.test_openai_transport_path_prefix",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy.test_transformations_feed",
+          "file": "",
+          "name": "tests.test_proxy.test_transformations_feed",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_anthropic_cache_stability",
+          "file": "",
+          "name": "tests.test_proxy_anthropic_cache_stability",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_anthropic_compression_diagnostics",
+          "file": "",
+          "name": "tests.test_proxy_anthropic_compression_diagnostics",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_anthropic_model_sanitization",
+          "file": "",
+          "name": "tests.test_proxy_anthropic_model_sanitization",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_batch_integration",
+          "file": "",
+          "name": "tests.test_proxy_batch_integration",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_byte_faithful_forwarding",
+          "file": "",
+          "name": "tests.test_proxy_byte_faithful_forwarding",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_cache_telemetry",
+          "file": "",
+          "name": "tests.test_proxy_cache_telemetry",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_ccr",
+          "file": "",
+          "name": "tests.test_proxy_ccr",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_codex_route_aliases",
+          "file": "",
+          "name": "tests.test_proxy_codex_route_aliases",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_compress_endpoint",
+          "file": "",
+          "name": "tests.test_proxy_compress_endpoint",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_compression_executor",
+          "file": "",
+          "name": "tests.test_proxy_compression_executor",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_cors",
+          "file": "",
+          "name": "tests.test_proxy_cors",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_count_tokens_integration",
+          "file": "",
+          "name": "tests.test_proxy_count_tokens_integration",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_debug_endpoints",
+          "file": "",
+          "name": "tests.test_proxy_debug_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_disable_kompress",
+          "file": "",
+          "name": "tests.test_proxy_disable_kompress",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_eager_preload_bind",
+          "file": "",
+          "name": "tests.test_proxy_eager_preload_bind",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_favicon_route",
+          "file": "",
+          "name": "tests.test_proxy_favicon_route",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_gemini_integration",
+          "file": "",
+          "name": "tests.test_proxy_gemini_integration",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_gemini_native_integration",
+          "file": "",
+          "name": "tests.test_proxy_gemini_native_integration",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_google_cloudcode_route_aliases",
+          "file": "",
+          "name": "tests.test_proxy_google_cloudcode_route_aliases",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_handler_helpers",
+          "file": "",
+          "name": "tests.test_proxy_handler_helpers",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_hardening",
+          "file": "",
+          "name": "tests.test_proxy_hardening",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_health",
+          "file": "",
+          "name": "tests.test_proxy_health",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_healthchecks",
+          "file": "",
+          "name": "tests.test_proxy_healthchecks",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_hooks_regression",
+          "file": "",
+          "name": "tests.test_proxy_hooks_regression",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_loop_exception_health",
+          "file": "",
+          "name": "tests.test_proxy_loop_exception_health",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_loopback_gating",
+          "file": "",
+          "name": "tests.test_proxy_loopback_gating",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_memory_integration",
+          "file": "",
+          "name": "tests.test_proxy_memory_integration",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_mode_benchmark",
+          "file": "",
+          "name": "tests.test_proxy_mode_benchmark",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_openai_cache_key_integration",
+          "file": "",
+          "name": "tests.test_proxy_openai_cache_key_integration",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_openai_cache_stability",
+          "file": "",
+          "name": "tests.test_proxy_openai_cache_stability",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_openai_responses_bypass",
+          "file": "",
+          "name": "tests.test_proxy_openai_responses_bypass",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_openai_responses_integration",
+          "file": "",
+          "name": "tests.test_proxy_openai_responses_integration",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_passthrough_integration",
+          "file": "",
+          "name": "tests.test_proxy_passthrough_integration",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_per_provider_kompress",
+          "file": "",
+          "name": "tests.test_proxy_per_provider_kompress",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_pipeline_lifecycle",
+          "file": "",
+          "name": "tests.test_proxy_pipeline_lifecycle",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_project_savings",
+          "file": "",
+          "name": "tests.test_proxy_project_savings",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_retry_429",
+          "file": "",
+          "name": "tests.test_proxy_retry_429",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_savings_history",
+          "file": "",
+          "name": "tests.test_proxy_savings_history",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_semantic_cache_key_integration",
+          "file": "",
+          "name": "tests.test_proxy_semantic_cache_key_integration",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_settings_endpoints",
+          "file": "",
+          "name": "tests.test_proxy_settings_endpoints",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_stats_recent_requests",
+          "file": "",
+          "name": "tests.test_proxy_stats_recent_requests",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_streaming_ratelimit_headers",
+          "file": "",
+          "name": "tests.test_proxy_streaming_ratelimit_headers",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_streaming_request_logger",
+          "file": "",
+          "name": "tests.test_proxy_streaming_request_logger",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_system_prompt_immutable",
+          "file": "",
+          "name": "tests.test_proxy_system_prompt_immutable",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_proxy_telemetry_env",
+          "file": "",
+          "name": "tests.test_proxy_telemetry_env",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_read_maturation_handler_nobust",
+          "file": "",
+          "name": "tests.test_read_maturation_handler_nobust",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_realignment_live_multi_turn",
+          "file": "",
+          "name": "tests.test_realignment_live_multi_turn",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_relevance_split",
+          "file": "",
+          "name": "tests.test_relevance_split",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_reread_attribution",
+          "file": "",
+          "name": "tests.test_reread_attribution",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_retry_preserve_upstream_status",
+          "file": "",
+          "name": "tests.test_retry_preserve_upstream_status",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_router_external_dispatch",
+          "file": "",
+          "name": "tests.test_router_external_dispatch",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_router_registry_dispatch",
+          "file": "",
+          "name": "tests.test_router_registry_dispatch",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_router_registry_smartcrusher",
+          "file": "",
+          "name": "tests.test_router_registry_smartcrusher",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_runtime_env",
+          "file": "",
+          "name": "tests.test_runtime_env",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_session_probes",
+          "file": "",
+          "name": "tests.test_session_probes",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_smart_crusher",
+          "file": "",
+          "name": "tests.test_smart_crusher",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_stats_new_input_savings_rate",
+          "file": "",
+          "name": "tests.test_stats_new_input_savings_rate",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_tag_protector_invariant",
+          "file": "",
+          "name": "tests.test_tag_protector_invariant",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_tokenizer_count_offload",
+          "file": "",
+          "name": "tests.test_tokenizer_count_offload",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_transforms.test_content_router",
+          "file": "",
+          "name": "tests.test_transforms.test_content_router",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_transforms.test_content_router_ccr_retrieve_exemption",
+          "file": "",
+          "name": "tests.test_transforms.test_content_router_ccr_retrieve_exemption",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_transforms.test_detect_fallback_1123",
+          "file": "",
+          "name": "tests.test_transforms.test_detect_fallback_1123",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_transforms.test_html_extractor",
+          "file": "",
+          "name": "tests.test_transforms.test_html_extractor",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_transforms.test_kompress_remote",
+          "file": "",
+          "name": "tests.test_transforms.test_kompress_remote",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_transforms.test_kompress_size_gate",
+          "file": "",
+          "name": "tests.test_transforms.test_kompress_size_gate",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_transforms.test_pipeline_waste_signal_limit",
+          "file": "",
+          "name": "tests.test_transforms.test_pipeline_waste_signal_limit",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_transforms.test_smart_crusher_attribution",
+          "file": "",
+          "name": "tests.test_transforms.test_smart_crusher_attribution",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_transforms.test_smart_crusher_audit_safe",
+          "file": "",
+          "name": "tests.test_transforms.test_smart_crusher_audit_safe",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_transforms.test_smart_crusher_ccr_retrieve_exemption",
+          "file": "",
+          "name": "tests.test_transforms.test_smart_crusher_ccr_retrieve_exemption",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_transforms.test_smart_crusher_ccr_roundtrip",
+          "file": "",
+          "name": "tests.test_transforms.test_smart_crusher_ccr_roundtrip",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_transforms.test_smart_crusher_lossless_default",
+          "file": "",
+          "name": "tests.test_transforms.test_smart_crusher_lossless_default",
+          "outcome": "skip"
+        },
+        {
+          "id": "::tests.test_transforms.test_tag_protector",
+          "file": "",
+          "name": "tests.test_transforms.test_tag_protector",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_transforms.test_text_crusher",
+          "file": "",
+          "name": "tests.test_transforms.test_text_crusher",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_transforms.test_text_crusher_cjk_eval",
+          "file": "",
+          "name": "tests.test_transforms.test_text_crusher_cjk_eval",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_transforms.test_text_crusher_parity",
+          "file": "",
+          "name": "tests.test_transforms.test_text_crusher_parity",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_transforms.test_text_crusher_routing",
+          "file": "",
+          "name": "tests.test_transforms.test_text_crusher_routing",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_transforms_config_compressor",
+          "file": "",
+          "name": "tests.test_transforms_config_compressor",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_transforms_content_detection",
+          "file": "",
+          "name": "tests.test_transforms_content_detection",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_transforms_content_router",
+          "file": "",
+          "name": "tests.test_transforms_content_router",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_transforms_tabular",
+          "file": "",
+          "name": "tests.test_transforms_tabular",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_vertex_claude_compression",
+          "file": "",
+          "name": "tests.test_vertex_claude_compression",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_websearch_tool_result_protection",
+          "file": "",
+          "name": "tests.test_websearch_tool_result_protection",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ],
+      "outputTail": "ERROR tests/test_proxy_mode_benchmark.py\nERROR tests/test_proxy_openai_cache_key_integration.py\nERROR tests/test_proxy_openai_cache_stability.py\nERROR tests/test_proxy_openai_responses_bypass.py\nERROR tests/test_proxy_openai_responses_integration.py\nERROR tests/test_proxy_passthrough_integration.py\nERROR tests/test_proxy_per_provider_kompress.py\nERROR tests/test_proxy_pipeline_lifecycle.py\nERROR tests/test_proxy_project_savings.py\nERROR tests/test_proxy_retry_429.py\nERROR tests/test_proxy_savings_history.py\nERROR tests/test_proxy_semantic_cache_key_integration.py\nERROR tests/test_proxy_settings_endpoints.py\nERROR tests/test_proxy_stats_recent_requests.py\nERROR tests/test_proxy_streaming_ratelimit_headers.py\nERROR tests/test_proxy_streaming_request_logger.py\nERROR tests/test_proxy_system_prompt_immutable.py\nERROR tests/test_proxy_telemetry_env.py\nERROR tests/test_read_maturation_handler_nobust.py\nERROR tests/test_realignment_live_multi_turn.py\nERROR tests/test_relevance_split.py\nERROR tests/test_reread_attribution.py\nERROR tests/test_retry_preserve_upstream_status.py\nERROR tests/test_router_external_dispatch.py\nERROR tests/test_router_registry_dispatch.py\nERROR tests/test_router_registry_smartcrusher.py\nERROR tests/test_runtime_env.py\nERROR tests/test_session_probes.py\nERROR tests/test_stats_new_input_savings_rate.py\nERROR tests/test_tag_protector_invariant.py\nERROR tests/test_tokenizer_count_offload.py\nERROR tests/test_transforms/test_content_router.py\nERROR tests/test_transforms/test_content_router_ccr_retrieve_exemption.py\nERROR tests/test_transforms/test_detect_fallback_1123.py\nERROR tests/test_transforms/test_kompress_remote.py\nERROR tests/test_transforms/test_kompress_size_gate.py\nERROR tests/test_transforms/test_pipeline_waste_signal_limit.py\nERROR tests/test_transforms/test_tag_protector.py\nERROR tests/test_transforms/test_text_crusher.py\nERROR tests/test_transforms/test_text_crusher_cjk_eval.py\nERROR tests/test_transforms/test_text_crusher_parity.py\nERROR tests/test_transforms/test_text_crusher_routing.py\nERROR tests/test_transforms_config_compressor.py\nERROR tests/test_transforms_content_detection.py\nERROR tests/test_transforms_content_router.py\nERROR tests/test_transforms_tabular.py\nERROR tests/test_vertex_claude_compression.py\nERROR tests/test_websearch_tool_result_protection.py\n!!!!!!!!!!!!!!!!!! Interrupted: 171 errors during collection !!!!!!!!!!!!!!!!!!!\n================== 20 skipped, 171 errors in 69.00s (0:01:08) =================="
+    },
+    "before": {
+      "exitCode": 2,
+      "durationMs": 1472,
+      "cases": [
+        {
+          "id": "::tests.test_co2_estimation",
+          "file": "",
+          "name": "tests.test_co2_estimation",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_dashboard_co2_playwright",
+          "file": "",
+          "name": "tests.test_dashboard_co2_playwright",
+          "outcome": "skip"
+        }
+      ],
+      "outputTail": "============================= test session starts ==============================\nplatform linux -- Python 3.13.16, pytest-9.1.1, pluggy-1.7.0\nrootdir: /tmp/trustbut-wt-Fr9uLL\nconfigfile: pyproject.toml\nplugins: asyncio-1.4.0, platformdirs-4.13.3, respx-0.23.1, langsmith-0.14.11, cov-7.1.0, anyio-4.15.1\nasyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function\ncollected 0 items / 1 error / 1 skipped\n\n==================================== ERRORS ====================================\n________________ ERROR collecting tests/test_co2_estimation.py _________________\nImportError while importing test module '/tmp/trustbut-wt-Fr9uLL/tests/test_co2_estimation.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/opt/hostedtoolcache/Python/3.13.16/x64/lib/python3.13/importlib/__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/test_co2_estimation.py:8: in <module>\n    from headroom.proxy.savings_tracker import estimate_co2_saved_mg\nE   ImportError: cannot import name 'estimate_co2_saved_mg' from 'headroom.proxy.savings_tracker' (/tmp/trustbut-wt-Fr9uLL/headroom/proxy/savings_tracker.py)\n----------- generated xml file: /tmp/trustbut-junit-e6Av6q/junit.xml -----------\n=========================== short test summary info ============================\nERROR tests/test_co2_estimation.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n========================= 1 skipped, 1 error in 0.48s =========================="
+    }
+  }
+}

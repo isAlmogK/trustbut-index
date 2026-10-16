@@ -1,0 +1,73 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.5.0"
+  },
+  "subject": {
+    "base": "942f23705ce6ef05d7827c2ced798c950368eb2a",
+    "head": "da8f82575cbc8488edaf53ba29ad6e98693ac6a2"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "rootdir: /tmp/trustbut-wt-ZVqLnc"
+    }
+  ],
+  "risks": [
+    {
+      "file": "infra/marina/applets/rl_data_catalog/server/catalog.py",
+      "score": 3,
+      "reasons": [
+        "infrastructure",
+        "large change (221 lines)"
+      ]
+    },
+    {
+      "file": "infra/marina/tests/test_rl_data_catalog.py",
+      "score": 1,
+      "reasons": [
+        "large change (223 lines)"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 4,
+      "durationMs": 5767,
+      "cases": [],
+      "outputTail": "ERROR: usage: python -m pytest [options] [file_or_dir] [file_or_dir] [...]\npython -m pytest: error: unrecognized arguments: -n --dist=worksteal\n  inifile: /tmp/trustbut-wt-ZVqLnc/pyproject.toml\n  rootdir: /tmp/trustbut-wt-ZVqLnc"
+    },
+    "before": {
+      "exitCode": 2,
+      "durationMs": 5697,
+      "cases": [
+        {
+          "id": "::infra.marina.tests.test_rl_data_catalog",
+          "file": "",
+          "name": "infra.marina.tests.test_rl_data_catalog",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ],
+      "outputTail": "============================= test session starts ==============================\nplatform linux -- Python 3.12.15, pytest-9.1.1, pluggy-1.7.0\nrootdir: /tmp/trustbut-wt-Gu1hPt\nconfigfile: infra/marina/pyproject.toml\nplugins: timeout-2.4.0, platformdirs-4.13.3, jaxtyping-0.3.11, anyio-4.15.1\ntimeout: 30.0s\ntimeout method: thread\ntimeout func_only: False\ncollected 0 items / 1 error\n\n==================================== ERRORS ====================================\n_________ ERROR collecting infra/marina/tests/test_rl_data_catalog.py __________\nImportError while importing test module '/tmp/trustbut-wt-Gu1hPt/infra/marina/tests/test_rl_data_catalog.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/importlib/__init__.py:90: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ninfra/marina/tests/test_rl_data_catalog.py:28: in <module>\n    from infra.marina.applets.rl_data_catalog.server.catalog import (\nE   ImportError: cannot import name 'annotate_verifier_dependency' from 'infra.marina.applets.rl_data_catalog.server.catalog' (/tmp/trustbut-wt-Gu1hPt/infra/marina/../../infra/marina/applets/rl_data_catalog/server/catalog.py)\n----------- generated xml file: /tmp/trustbut-junit-U7h8hW/junit.xml -----------\n=========================== short test summary info ============================\nERROR infra/marina/tests/test_rl_data_catalog.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n=============================== 1 error in 0.35s ==============================="
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "sequelize__sequelize__18405",
+  "status": "setup-failed",
+  "stage": "no-passing-tests",
+  "recipe": {
+    "node": {
+      "version": "22",
+      "pm": "yarn-berry",
+      "install": "yarn install --immutable"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 34703,
+    "verifyMs": 2340
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.5.0",
+  "installRetries": 0
+}
