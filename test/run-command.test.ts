@@ -21,10 +21,10 @@ describe('run.yml', () => {
     const lines = yml.split('\n').filter((l) => /\$\{\{\s*inputs\./.test(l));
     expect(lines.filter((l) => !/^\s+(MANIFEST|BATCH|DATE): \$\{\{ inputs\.\w+ \}\}$/.test(l))).toEqual([]);
   });
-  it('pins trustbut to exactly 0.5.0, as the pre-registration states', async () => {
+  it('pins trustbut to exactly 0.6.0, as the pre-registration states', async () => {
     const yml = await readFile('.github/workflows/run.yml', 'utf8');
-    expect(yml).toMatch(/^  TRUSTBUT_SPEC: '0\.5\.0'$/m);
-    expect(await readFile('PREREGISTRATION.md', 'utf8')).toContain('trustbut 0.5.0 exactly; any other version is a deviation');
+    expect(yml).toMatch(/^  TRUSTBUT_SPEC: '0\.6\.0'$/m);
+    expect(await readFile('PREREGISTRATION.md', 'utf8')).toContain('trustbut 0.6.0 exactly; any other version is a deviation');
   });
   it('lets ingest jobs run concurrently and retries the push', async () => {
     const yml = await readFile('.github/workflows/run.yml', 'utf8');
