@@ -1,6 +1,6 @@
 # Pilot measurement fixes
 
-**Status:** Draft (2026-10-16)
+**Status:** Implemented (2026-10-16)
 **Repos:** trustbut-index (this spec, the feature) · [trustbut](https://github.com/isAlmogK/trustbut/blob/main/docs/superpowers/specs/2026-10-16-test-regressed-design.md)
 **Study design:** [agent test-honesty index design](https://github.com/isAlmogK/trustbut/blob/main/docs/superpowers/specs/2026-10-14-agent-test-honesty-index-design.md) in trustbut.
 
@@ -48,7 +48,7 @@ trustbut adds the finding `test-regressed` (a test passes at base and fails at h
 | Red at head | `test-regressed` |
 | Context, not counted | adds `suite-failing`, `test-failing` |
 
-The family key stays `red-at-head`, so aggregates stay comparable. The report label becomes "Tests that passed at base fail at head". `PREREGISTRATION.md` (still a draft, not tagged `prereg-v1`) gets the same change, so this is not a deviation.
+The family key stays `red-at-head` for code continuity only: the definition changed, so rates from trustbut < 0.5.0 and ≥ 0.5.0 are not comparable. `aggregate` reports red at head as not measured for groups with receipts from trustbut older than 0.5.0. The report label becomes "Tests that passed at base fail at head". `PREREGISTRATION.md` (still a draft, not tagged `prereg-v1`) gets the same change, so this is not a deviation.
 
 ### Time budgets
 
@@ -76,7 +76,14 @@ The `pr` jobs have no secrets, and the output comes from public repositories' ow
 
 ### Rerun
 
-Dispatch `run.yml` with `manifest=manifests/pilot-2026-10-15.jsonl`, `batch=0`, `date=pilot-2026-10-16`. The first run's results stay in `results/pilot-2026-10-15`. After ingest, compare the two runs: run coverage and status by cause, red-at-head rate, counted-finding rate, and proof rate. The comparison goes in the PR description; there's no new code for it.
+Dispatch `run.yml` with `manifest=manifests/pilot-2026-10-15.jsonl`, `batch=0`, `date=pilot-2026-10-16`. The first run's results stay in `results/pilot-2026-10-15`. After ingest, compare the two runs like with like:
+
+- Run coverage and status by cause (status and stage) over all 201 PRs.
+- Rates (counted findings, proof rate, red at head) on the PRs that ran in both runs.
+- Red at head under the old definition (any `suite-failing` or `test-failing`) on run 2 as well, so the change from run 1 isolates the effect of the budgets and retries. The new definition (`test-regressed`) is reported separately; run 1 has no value for it. Run 2 also reports "red at head not compared".
+- The proof rate is not strictly like for like: trustbut 0.5.0's base run is larger (it also reruns failing unchanged files, and one failing file can stop the shared base run), and installs without a lockfile may resolve newer dependencies than in run 1.
+
+The comparison is reported after the rerun, in the conversation or a follow-up note, not in the PR description. There's no new code for it.
 
 ## Testing
 
@@ -90,4 +97,18 @@ Dispatch `run.yml` with `manifest=manifests/pilot-2026-10-15.jsonl`, `batch=0`, 
 ## Done when
 
 - Both PRs are merged, trustbut 0.5.0 is published, and the rerun's results are on main in `results/pilot-2026-10-16`.
-- The PR or a follow-up note reports the comparison with the first run.
+- A follow-up note (or the conversation) reports the comparison with the first run, after the rerun.
+
+## As built
+
+- `ingest` copies `installRetries` and `installTail` from the artifact and checks them again: `installTail` is cut with `tail()` again, and an `installRetries` above (`MAX_INSTALL_ATTEMPTS` − 1) × the recipe's install commands (node install plus each python install) rejects the artifact (`run.json installRetries out of range`). A non-integer or negative value fails `isRunRecord`, as before.
+- `runShell` starts bash in its own process group (`detached: true`) and SIGKILLs the whole group on timeout and as soon as bash exits, so a child or background process that holds the output pipes can't keep the call waiting past its budget. Exit 124 on timeout is unchanged. Background processes an install command leaves running are killed when it exits.
+- `aggregate`: a group with any `ran` receipt from trustbut older than 0.5.0 (by `producer.version`; an unparseable version counts as older) lists `red-at-head` in `notMeasured`, gets an n=0 red-at-head rate and no red-at-head comparison, and those receipts never count red at head in any-counted. `Aggregate.notMeasured` lists families not measured in any group. The report's family chart writes "not measured" in those cells with a note under the heading, and the pilot checklist has a red-at-head line that says "not measured" or gives the rate. The committed `results/pilot-2026-10-15/aggregate.json` was not regenerated; re-aggregating it now gives `notMeasured: ["red-at-head"]`.
+- "Red at head not compared" is implemented in `aggregate` as the context rate `redAtHeadNotCompared` per group (PRs that ran with a fail or error head case whose id is absent from `x-trustbut.before.cases`, or with no `before`). It has no comparison. The checklist shows it next to the red-at-head rate. `PREREGISTRATION.md` lists it under Metrics and says the red-at-head rate is a lower bound.
+- Label packets for a `test-regressed` finding carry `regression`: the matching head case (by finding `detail` = case name and file, allowing package-root-relative or absolute case paths), its outcome and failure message, and the base outcome by case id (`missing` when absent), all scrubbed. It leads the packet's `baseRun` text.
+- `Receipt` gains an optional `x-trustbut` with `after` and `before` runs (cases, `outputTail`).
+- `installTail` keeps only the last attempt's output. A retry that starts with little budget left can time out and replace the earlier failure's tail and status (timeout instead of setup-failed). Known, deferred.
+- Untrusted install scripts could redirect `TB_CONFIG` through `$GITHUB_ENV`, or edit the index checkout. This is the same accepted exposure as `TB_CLI` and `NODE22`: the `pr` job has no secrets or write access, and ingest re-validates every receipt.
+- Output tails (`installTail`, the receipt's `outputTail`) are committed unscrubbed. They come from public repositories' own test and install runs, and the paths in them are runner temp paths. Decision recorded.
+- `TB_CONFIG` overrides the study config path; the default `config/trustbut.json` is resolved from the module path.
+- `test/budgets.test.ts` also checks that the budgets nest (two trustbut runs fit in the verify budget; install, verify and 10 minutes of setup fit in the job timeout).

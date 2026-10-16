@@ -546,4 +546,10 @@ The `ingest` job commits `results/pilot-2026-10-16/` and its `aggregate.json` to
 
 - [ ] **Step 4: Compare the two runs**
 
-Once the results are on main: `git fetch origin && git show origin/main:results/pilot-2026-10-16/aggregate.json`. Compare with `pilot-2026-10-15` on run coverage (overall and by status and stage), the red-at-head rate, the any-counted rate and the proof rate, overall and agents versus humans. For the PRs that still didn't run, group them by `stage` and by the first line of `installTail` or `x-trustbut.after.outputTail`. Report this in the conversation, and as a comment on the merged PR only if the user agrees.
+Once the results are on main: `git fetch origin && git show origin/main:results/pilot-2026-10-16/aggregate.json`. Compare with `pilot-2026-10-15` like with like:
+- Run coverage overall and by status and stage, over all 201 PRs.
+- The any-counted rate, the proof rate and red at head on the PRs that ran in both runs, overall and agents versus humans.
+- Red at head under the old definition (any `suite-failing` or `test-failing`) computed on run 2 as well, to isolate the budget and retry effect; the new definition (`test-regressed`) and "red at head not compared" reported separately for run 2.
+- Note that the proof rate is not strictly like for like (0.5.0's base run is larger and can be stopped by a failing unchanged file) and that installs without a lockfile may resolve newer dependencies.
+
+For the PRs that still didn't run, group them by `stage` and by the first line of `installTail` or `x-trustbut.after.outputTail`. Report this after the rerun in the conversation (or a follow-up note), not in the PR description, and as a comment on the merged PR only if the user agrees.
