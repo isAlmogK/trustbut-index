@@ -3,7 +3,9 @@ import { join } from 'node:path';
 import { writeJson } from '../jsonl.js';
 import { byCodeUnit } from '../rng.js';
 import { fileId, type ManifestEntry, type Receipt, type Recipe, type RunRecord } from '../types.js';
+import { MAX_INSTALL_ATTEMPTS } from './job.js';
 import { isRunRecord, looksLikeReceipt } from './status.js';
+import { tail } from './tail.js';
 
 async function readParsed(path: string): Promise<{ exists: boolean; value?: unknown }> {
   let text: string;
@@ -35,8 +37,20 @@ function pick(r: RunRecord): RunRecord {
     exitCodes: { install: r.exitCodes.install, verify: r.exitCodes.verify },
     runnerImage: r.runnerImage, trustbutVersion: r.trustbutVersion,
   };
+  if (r.installRetries !== undefined) out.installRetries = r.installRetries;
+  if (r.installTail !== undefined) {
+    // The job already cut the tail; cut it again so an artifact can't commit more than the job would.
+    const t = tail(r.installTail);
+    if (t) out.installTail = t;
+  }
   if (r.note !== undefined) out.note = r.note;
   return out;
+}
+
+/** The most re-runs the install step can make for this recipe: every command retried up to the attempt limit. */
+function maxInstallRetries(r: Recipe | null): number {
+  const commands = (r?.node ? 1 : 0) + (r?.python?.install.length ?? 0);
+  return (MAX_INSTALL_ATTEMPTS - 1) * commands;
 }
 
 /** Artifacts are untrusted data: parse and check them, never execute them. */
@@ -70,6 +84,10 @@ export async function ingest(
     }
     if (run.id !== expected) {
       rejected.push({ dir, reason: 'run.json id does not match artifact' });
+      continue;
+    }
+    if (run.installRetries !== undefined && run.installRetries > maxInstallRetries(run.recipe)) {
+      rejected.push({ dir, reason: 'run.json installRetries out of range' });
       continue;
     }
     const record = pick(run);
