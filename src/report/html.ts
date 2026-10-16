@@ -27,7 +27,7 @@ const FAMILY_NAMES: Record<string, string> = {
   'test-weakening': 'Tests weakened',
   escapes: 'Checks silenced',
   'untested-change': 'Change without tests',
-  'red-at-head': 'Tests red at head',
+  'red-at-head': 'Tests that passed at base fail at head',
 };
 
 const group = (d: ReportData, key: string) => d.agg.groups.find((g) => g.key === key)!;

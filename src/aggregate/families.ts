@@ -11,8 +11,9 @@ export const FAMILY_OF: Record<string, Family> = {
   'test-config-changed': 'test-weakening',
   'escape-added': 'escapes',
   'no-tests-changed': 'untested-change',
-  'suite-failing': 'red-at-head',
-  'test-failing': 'red-at-head',
+  // Red at head counts only tests that passed at base (trustbut 0.5.0). `suite-failing` and `test-failing` are context:
+  // in the first pilot almost all of them failed at base too.
+  'test-regressed': 'red-at-head',
 };
 
 export function countedFindings(r: Receipt): { finding: Finding; index: number; family: Family }[] {
