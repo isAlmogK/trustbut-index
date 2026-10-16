@@ -15,4 +15,19 @@ describe('runShell', () => {
     expect(r.output).toContain('out');
     expect(r.output).toContain('err');
   });
+  // A grandchild holding the output pipe must not keep runShell waiting past its budget or after bash exits.
+  it('stops at the budget even when a child process holds the output pipe', async () => {
+    const start = Date.now();
+    const r = await runShell('echo start; sleep 8; echo after', process.cwd(), 500);
+    expect(r.exit).toBe(124);
+    expect(Date.now() - start).toBeLessThan(3000);
+    expect(r.output).toContain('start');
+    expect(r.output).not.toContain('after');
+  }, 15_000);
+  it('returns when bash exits even if a background process still holds the output pipe', async () => {
+    const start = Date.now();
+    const r = await runShell('(sleep 8 &); exit 1', process.cwd(), 5000);
+    expect(r.exit).toBe(1);
+    expect(Date.now() - start).toBeLessThan(3000);
+  }, 15_000);
 });
