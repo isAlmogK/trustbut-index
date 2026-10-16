@@ -17,12 +17,12 @@ Checked by hand on the pilot (Task 20). Each row records the share of pilot PRs 
 
 | Agent | Markers | Pilot check |
 |---|---|---|
-| copilot | author `Copilot` / `copilot-swe-agent[bot]`; branch `copilot/` | to fill in after the pilot |
-| codex | author `chatgpt-codex-connector[bot]`; branch `codex/`; body links `chatgpt.com/codex` | to fill in after the pilot |
-| claude-code | author `claude[bot]`; body "Generated with Claude Code"; trailer `Co-Authored-By: Claude… <noreply@anthropic.com>` | to fill in after the pilot |
-| cursor | author `cursor[bot]`; branch `cursor/`; trailer `Co-authored-by: Cursor Agent` | to fill in after the pilot |
-| devin | author `devin-ai-integration[bot]` | to fill in after the pilot |
-| jules | author `google-labs-jules[bot]` | to fill in after the pilot |
+| copilot | author `Copilot` / `copilot-swe-agent[bot]`; branch `copilot/` | 20/20 (pilot-2026-10-16) |
+| codex | author `chatgpt-codex-connector[bot]`; branch `codex/`; body links `chatgpt.com/codex` | 20/20 (pilot-2026-10-16); 20 of 20 by branch `codex/` alone |
+| claude-code | author `claude[bot]`; body "Generated with Claude Code"; trailer `Co-Authored-By: Claude… <noreply@anthropic.com>` | 20/20 (pilot-2026-10-16) |
+| cursor | author `cursor[bot]`; branch `cursor/`; trailer `Co-authored-by: Cursor Agent` | 20/20 (pilot-2026-10-16); 17 of 20 by branch `cursor/` alone |
+| devin | author `devin-ai-integration[bot]` | 20/20 (pilot-2026-10-16) |
+| jules | author `google-labs-jules[bot]` | 3/3 (pilot-2026-10-16) |
 
 Search queries, each combined with `is:pr is:merged merged:<window>` and a batch of repos: copilot `author:app/copilot-swe-agent`; codex `"chatgpt.com/codex" in:body`, `head:codex`; claude-code `"Generated with Claude Code" in:body`, `author:app/claude`; cursor `head:cursor`, `"Cursor Agent" in:body`; devin `author:app/devin-ai-integration`; jules `author:app/google-labs-jules`.
 
