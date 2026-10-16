@@ -2,7 +2,7 @@ import { join } from 'node:path';
 import { readJsonOr, readJsonlStrict } from '../jsonl.js';
 import { byCodeUnit } from '../rng.js';
 import { AGENT_IDS, fileId, type Family, type ManifestEntry, type Receipt, type RunRecord } from '../types.js';
-import { FAMILIES, familiesOf } from './families.js';
+import { FAMILIES, familiesOf, measuresRedAtHead, redAtHeadNotCompared } from './families.js';
 import { newcombe, wilson, type DiffCI, type RateCI } from './stats.js';
 
 export interface PrResult {
@@ -17,7 +17,11 @@ export interface GroupStats {
   coverage: RateCI;
   ran: number;
   anyCounted: RateCI;
+  /** Families with no rate for this group: red at head when any receipt that ran is from trustbut older than 0.5.0. Their rate is n=0. */
+  notMeasured: Family[];
   families: Record<Family, RateCI>;
+  /** Context: PRs that ran with a failing head test that has no base result, so red at head is a lower bound. */
+  redAtHeadNotCompared: RateCI;
   proofs: { provesChange: number; doesNotConstrain: number; failing: number; skipped: number; proofRate: RateCI };
   insufficient: boolean;
 }
@@ -30,6 +34,8 @@ export interface Comparison {
 export interface Aggregate {
   date: string;
   trustbutVersions: string[];
+  /** Families not measured in at least one group (see GroupStats.notMeasured); they get no comparison. */
+  notMeasured: Family[];
   groups: GroupStats[];
   comparisons: Comparison[];
 }
@@ -53,7 +59,9 @@ export function groupStats(key: string, prs: PrResult[], insufficient: boolean):
   }
   const ran = prs.filter((p) => p.run?.status === 'ran' && p.receipt);
   const fams = ran.map((p) => familiesOf(p.receipt!));
-  const families = Object.fromEntries(FAMILIES.map((f) => [f, wilson(fams.filter((s) => s.has(f)).length, ran.length)])) as Record<Family, RateCI>;
+  // Mixing old receipts (which can't report test-regressed) into a rate would read as a measured 0, so the group gets none.
+  const notMeasured: Family[] = ran.every((p) => measuresRedAtHead(p.receipt!)) ? [] : ['red-at-head'];
+  const families = Object.fromEntries(FAMILIES.map((f) => [f, notMeasured.includes(f) ? wilson(0, 0) : wilson(fams.filter((s) => s.has(f)).length, ran.length)])) as Record<Family, RateCI>;
   const proofs = ran.flatMap((p) => p.receipt!.proofs ?? []);
   const count = (v: string) => proofs.filter((x) => x.verdict === v).length;
   const provesChange = count('proves-change');
@@ -65,7 +73,9 @@ export function groupStats(key: string, prs: PrResult[], insufficient: boolean):
     coverage: wilson(byStatus.ran!, prs.length),
     ran: ran.length,
     anyCounted: wilson(fams.filter((s) => s.size > 0).length, ran.length),
+    notMeasured,
     families,
+    redAtHeadNotCompared: wilson(ran.filter((p) => redAtHeadNotCompared(p.receipt!)).length, ran.length),
     proofs: { provesChange, doesNotConstrain, failing: count('failing'), skipped: count('skipped'), proofRate: wilson(provesChange, provesChange + doesNotConstrain) },
     insufficient,
   };
@@ -84,12 +94,15 @@ export function aggregate(date: string, results: PrResult[], minPerAgent = 30): 
     metric, agents: pick(allAgents), human: pick(human), diff: newcombe(pick(allAgents), pick(human)),
   });
   const versions = [...new Set(results.map((r) => r.receipt?.producer.version).filter((v): v is string => Boolean(v)))].sort(byCodeUnit);
+  const groups = [...agentGroups, allAgents, human, all];
+  const notMeasured = FAMILIES.filter((f) => groups.some((g) => g.notMeasured.includes(f)));
   return {
     date,
     trustbutVersions: versions,
-    groups: [...agentGroups, allAgents, human, all],
+    notMeasured,
+    groups,
     comparisons: [
-      ...FAMILIES.map((f) => compare(f, (g) => g.families[f])),
+      ...FAMILIES.filter((f) => !notMeasured.includes(f)).map((f) => compare(f, (g) => g.families[f])),
       compare('any-counted', (g) => g.anyCounted),
       compare('proof-rate', (g) => g.proofs.proofRate),
     ],

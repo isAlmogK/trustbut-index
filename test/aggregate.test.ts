@@ -4,8 +4,8 @@ import type { AgentId, Receipt, RunRecord, RunStatus } from '../src/types.js';
 
 const run = (status: RunStatus): RunRecord => ({ id: 'x', status, stage: null, recipe: null, durations: { installMs: 0, verifyMs: 0 },
   exitCodes: { install: 0, verify: 0 }, runnerImage: 'x', trustbutVersion: '0.4.0' });
-const receipt = (ids: string[], proofs: Receipt['proofs'] = []): Receipt => ({
-  specVersion: '1.0', producer: { name: 'trustbut', version: '0.4.0' }, subject: { base: 'b', head: 'h' }, verdict: 'warn',
+const receipt = (ids: string[], proofs: Receipt['proofs'] = [], version = '0.5.0'): Receipt => ({
+  specVersion: version === '0.5.0' ? '1.1' : '1.0', producer: { name: 'trustbut', version }, subject: { base: 'b', head: 'h' }, verdict: 'warn',
   findings: ids.map((id) => ({ id, severity: 'warn', title: id })), proofs,
 });
 const pr = (n: number, agent: AgentId | null, status: RunStatus | null, ids: string[] = [], proofs: Receipt['proofs'] = []): PrResult => ({
@@ -78,6 +78,68 @@ describe('aggregate', () => {
     expect(c.agents).toMatchObject({ k: 1, n: 2 });
     expect(c.human).toMatchObject({ k: 0, n: 2 });
     expect(c.diff.d).toBeCloseTo(0.5, 6);
-    expect(agg.trustbutVersions).toEqual(['0.4.0']);
+    expect(agg.trustbutVersions).toEqual(['0.5.0']);
+  });
+});
+
+describe('red at head by trustbut version', () => {
+  const ran = (n: number, agent: AgentId | null, ids: string[], version: string, x?: Receipt['x-trustbut']): PrResult => ({
+    entry: { id: `o/r#${n}`, repo: 'o/r', pr: n, group: agent ? 'agent' : 'human', agent } as PrResult['entry'],
+    run: run('ran'),
+    receipt: { ...receipt(ids, [], version), ...(x ? { 'x-trustbut': x } : {}) },
+  });
+  const g = (a: ReturnType<typeof aggregate>, k: string) => a.groups.find((x) => x.key === k)!;
+
+  it('measures red at head when every receipt is from trustbut 0.5.0 or later', () => {
+    const a = aggregate('d', [ran(1, 'copilot', ['test-regressed'], '0.5.0'), ran(2, 'copilot', [], '0.6.1'), ran(3, null, [], '0.5.0')], 1);
+    expect(a.notMeasured).toEqual([]);
+    expect(g(a, 'copilot').notMeasured).toEqual([]);
+    expect(g(a, 'copilot').families['red-at-head']).toMatchObject({ k: 1, n: 2 });
+    expect(g(a, 'copilot').anyCounted).toMatchObject({ k: 1, n: 2 });
+    expect(a.comparisons.map((c) => c.metric)).toContain('red-at-head');
+  });
+
+  it('reports red at head as not measured when a receipt in the group is from trustbut older than 0.5.0', () => {
+    const a = aggregate('d', [
+      ran(1, 'copilot', ['test-regressed'], '0.5.0'), ran(2, 'copilot', ['test-regressed', 'escape-added'], '0.4.0'),
+      ran(3, null, [], '0.5.0'),
+    ], 1);
+    expect(g(a, 'copilot').notMeasured).toEqual(['red-at-head']);
+    expect(g(a, 'copilot').families['red-at-head']).toMatchObject({ k: 0, n: 0 });
+    // The old receipt counts for its other families only.
+    expect(g(a, 'copilot').anyCounted).toMatchObject({ k: 2, n: 2 });
+    expect(g(a, 'copilot').families.escapes).toMatchObject({ k: 1, n: 2 });
+    expect(g(a, 'human').notMeasured).toEqual([]);
+    expect(g(a, 'all').notMeasured).toEqual(['red-at-head']);
+    expect(a.notMeasured).toEqual(['red-at-head']);
+    expect(a.comparisons.map((c) => c.metric)).not.toContain('red-at-head');
+  });
+
+  it('excludes red at head from any-counted for an old receipt', () => {
+    const a = aggregate('d', [ran(1, 'copilot', ['test-regressed'], '0.4.0')], 1);
+    expect(g(a, 'copilot').anyCounted).toMatchObject({ k: 0, n: 1 });
+  });
+
+  it('treats an unparseable producer version as older than 0.5.0', () => {
+    const a = aggregate('d', [ran(1, 'copilot', [], 'dev')], 1);
+    expect(a.notMeasured).toEqual(['red-at-head']);
+  });
+
+  it('counts PRs whose failing head tests had no base result (red at head not compared)', () => {
+    const c = (id: string, outcome: string) => ({ id, file: 't.test.ts', name: id, outcome });
+    const a = aggregate('d', [
+      // fail at head, compared at base
+      ran(1, 'copilot', [], '0.5.0', { after: { cases: [c('a', 'fail')] }, before: { cases: [c('a', 'pass')] } }),
+      // error at head, id absent at base
+      ran(2, 'copilot', [], '0.5.0', { after: { cases: [c('a', 'pass'), c('b', 'error')] }, before: { cases: [c('a', 'pass')] } }),
+      // fail at head, no base run
+      ran(3, 'copilot', [], '0.5.0', { after: { cases: [c('a', 'fail')] } }),
+      // all pass
+      ran(4, 'copilot', [], '0.5.0', { after: { cases: [c('a', 'pass')] } }),
+      // no x-trustbut
+      ran(5, 'copilot', [], '0.5.0'),
+    ], 1);
+    expect(g(a, 'copilot').redAtHeadNotCompared).toMatchObject({ k: 2, n: 5 });
+    expect(g(a, 'human').redAtHeadNotCompared).toMatchObject({ k: 0, n: 0 });
   });
 });

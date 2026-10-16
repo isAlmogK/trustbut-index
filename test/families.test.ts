@@ -1,9 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { countedFindings, familiesOf } from '../src/aggregate/families.js';
+import { countedFindings, familiesOf, measuresRedAtHead } from '../src/aggregate/families.js';
 import type { Receipt } from '../src/types.js';
 
-const r = (ids: string[]): Receipt => ({
-  specVersion: '1.0', producer: { name: 'trustbut', version: '0.4.0' }, subject: { base: 'b', head: 'h' }, verdict: 'warn',
+const r = (ids: string[], version = '0.5.0'): Receipt => ({
+  specVersion: version === '0.4.0' ? '1.0' : '1.1', producer: { name: 'trustbut', version }, subject: { base: 'b', head: 'h' }, verdict: 'warn',
   findings: ids.map((id) => ({ id, severity: 'warn', title: id })),
 });
 
@@ -22,5 +22,10 @@ describe('families', () => {
   it('does not count ids that name Object.prototype members', () => {
     const rec = r(['constructor', 'toString', '__proto__', 'hasOwnProperty', 'escape-added']);
     expect(countedFindings(rec).map((c) => [c.index, c.family])).toEqual([[4, 'escapes']]);
+  });
+  it('measures red at head only from trustbut 0.5.0 on', () => {
+    expect(['0.4.0', '0.4.9', '0.0.1', 'dev', ''].map((v) => measuresRedAtHead(r([], v)))).toEqual([false, false, false, false, false]);
+    expect(['0.5.0', '0.5.0-rc.1', '0.10.0', '1.0.0'].map((v) => measuresRedAtHead(r([], v)))).toEqual([true, true, true, true]);
+    expect([...familiesOf(r(['test-regressed', 'escape-added'], '0.4.0'))]).toEqual(['escapes']);
   });
 });
