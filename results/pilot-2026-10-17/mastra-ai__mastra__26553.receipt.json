@@ -1,0 +1,62 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.6.0"
+  },
+  "subject": {
+    "base": "9fa4ce5aa6b58229a0a96646ca327870ae40f6fb",
+    "head": "24fa55730a7a8e7945d7f5092cee730f90c762ef"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "}"
+    },
+    {
+      "id": "base-run-failed",
+      "severity": "warn",
+      "title": "Changed tests could not run at base; fail-before evidence unavailable (exit 1)"
+    }
+  ],
+  "risks": [
+    {
+      "file": "packages/core/src/agent/durable/__tests__/evented-snapshot-write-amplification.test.ts",
+      "score": 1,
+      "reasons": [
+        "large change (297 lines)"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 1088,
+      "cases": [],
+      "outputTail": "ts (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:11232:27)\n    at Vitest._setServer (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:13217:20)\n    at BasicMinimalPluginContext.handler (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:14258:5)\n    at _createServer (file:///home/runner/.local/share/pnpm/store/v11/links/@/vite/7.3.6/7b941d33183791e7747ca374dfd4394683993fd5695b9e80d5cb963b3f57567c/node_modules/vite/dist/node/chunks/config.js:25682:86)\n    at createViteServer (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:8902:17)\n    at createVitest (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:14288:18)\n    at prepareVitest (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:14655:14)\n    at startVitest (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:14598:14)\n    at start (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cac.uFydS1Z4.js:2340:15)\n    at CAC.run (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cac.uFydS1Z4.js:2318:2) {\n  [errors]: [\n    Error: Cannot find package '@vitejs/plugin-react' imported from /home/runner/work/_temp/work/repo/node_modules/.vite-temp/vitest.config.ts.timestamp-1792194157512-090b114790121.mjs\n    Did you mean to import \"@vitejs/plugin-react/dist/index.js\"?\n        at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n        at packageResolve (node:internal/modules/esm/resolve:772:81)\n        at moduleResolve (node:internal/modules/esm/resolve:859:18)\n        at defaultResolve (node:internal/modules/esm/resolve:989:11)\n        at ModuleLoader.#cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {\n      code: 'ERR_MODULE_NOT_FOUND'\n    },\n    Error: Cannot find package '@vitejs/plugin-react' imported from /home/runner/work/_temp/work/repo/node_modules/.vite-temp/vitest.config.ts.timestamp-1792194158031-3182fc95e51ab.mjs\n    Did you mean to import \"@vitejs/plugin-react/dist/index.js\"?\n        at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n        at packageResolve (node:internal/modules/esm/resolve:772:81)\n        at moduleResolve (node:internal/modules/esm/resolve:859:18)\n        at defaultResolve (node:internal/modules/esm/resolve:989:11)\n        at ModuleLoader.#cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {\n      code: 'ERR_MODULE_NOT_FOUND'\n    }\n  ]\n}"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 1049,
+      "cases": [],
+      "outputTail": "ts (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:11232:27)\n    at Vitest._setServer (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:13217:20)\n    at BasicMinimalPluginContext.handler (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:14258:5)\n    at _createServer (file:///home/runner/.local/share/pnpm/store/v11/links/@/vite/7.3.6/7b941d33183791e7747ca374dfd4394683993fd5695b9e80d5cb963b3f57567c/node_modules/vite/dist/node/chunks/config.js:25682:86)\n    at createViteServer (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:8902:17)\n    at createVitest (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:14288:18)\n    at prepareVitest (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:14655:14)\n    at startVitest (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cli-api.CnMVyzaz.js:14598:14)\n    at start (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cac.uFydS1Z4.js:2340:15)\n    at CAC.run (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.11/0a6cff18f50877eede31d2d4e3b8a2623f93c723ffb79e36e8ee99cd4f3e93b5/node_modules/vitest/dist/chunks/cac.uFydS1Z4.js:2318:2) {\n  [errors]: [\n    Error: Cannot find package '@vitejs/plugin-react' imported from /home/runner/work/_temp/work/repo/node_modules/.vite-temp/vitest.config.ts.timestamp-1792194160074-276b275d6207a.mjs\n    Did you mean to import \"@vitejs/plugin-react/dist/index.js\"?\n        at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n        at packageResolve (node:internal/modules/esm/resolve:772:81)\n        at moduleResolve (node:internal/modules/esm/resolve:859:18)\n        at defaultResolve (node:internal/modules/esm/resolve:989:11)\n        at ModuleLoader.#cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {\n      code: 'ERR_MODULE_NOT_FOUND'\n    },\n    Error: Cannot find package '@vitejs/plugin-react' imported from /home/runner/work/_temp/work/repo/node_modules/.vite-temp/vitest.config.ts.timestamp-1792194160576-63e150e99fc05.mjs\n    Did you mean to import \"@vitejs/plugin-react/dist/index.js\"?\n        at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n        at packageResolve (node:internal/modules/esm/resolve:772:81)\n        at moduleResolve (node:internal/modules/esm/resolve:859:18)\n        at defaultResolve (node:internal/modules/esm/resolve:989:11)\n        at ModuleLoader.#cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {\n      code: 'ERR_MODULE_NOT_FOUND'\n    }\n  ]\n}"
+    }
+  }
+}

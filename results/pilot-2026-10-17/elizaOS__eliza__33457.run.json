@@ -1,0 +1,24 @@
+{
+  "id": "elizaOS__eliza__33457",
+  "status": "setup-failed",
+  "stage": "no-passing-tests",
+  "recipe": {
+    "node": {
+      "version": "22",
+      "pm": "bun",
+      "install": "bun install --frozen-lockfile"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 604450,
+    "verifyMs": 2415754
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.6.0",
+  "installRetries": 0
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.6.0"
+  },
+  "subject": {
+    "base": "a4620cae0421e880af53e9a4fa324a3e0f079a17",
+    "head": "19db86a0da303004f85d176120e64e2e50b1a466"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "}"
+    },
+    {
+      "id": "base-run-failed",
+      "severity": "warn",
+      "title": "Changed tests could not run at base; fail-before evidence unavailable (exit 1)"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 1028,
+      "cases": [],
+      "outputTail": "Testing types with tsc and vue-tsc is an experimental feature.\nBreaking changes might not follow SemVer, please pin Vitest's version when using it.\nfailed to load config from /tmp/trustbut-wt-qctRh0/packages/playground-ui/vitest.config.ts\n\n⎯⎯⎯⎯⎯⎯⎯ Startup Error ⎯⎯⎯⎯⎯⎯⎯⎯\nAggregateError: Failed to initialize projects. There were errors during projects setup. See below for more details.\n    at resolveProjects (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:11165:27)\n    at Vitest._setServer (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:13150:20)\n    at BasicMinimalPluginContext.handler (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:14191:5)\n    at _createServer (file:///home/runner/.local/share/pnpm/store/v11/links/@/vite/7.3.6/29a51af260f8f5631923a2b347588d66b4e6681daabbd1a655e8eb6b648b10ee/node_modules/vite/dist/node/chunks/config.js:25682:86)\n    at createViteServer (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:8835:17)\n    at createVitest (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:14221:18)\n    at prepareVitest (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:14588:14)\n    at startVitest (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:14531:14)\n    at start (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cac.DdICfEr1.js:2340:15)\n    at CAC.run (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cac.DdICfEr1.js:2318:2) {\n  [errors]: [\n    Error: Cannot find package '@vitejs/plugin-react' imported from /home/runner/work/_temp/work/repo/node_modules/.vite-temp/vitest.config.ts.timestamp-1792194140966-f7efefd2d8ba9.mjs\n    Did you mean to import \"@vitejs/plugin-react/dist/index.js\"?\n        at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n        at packageResolve (node:internal/modules/esm/resolve:772:81)\n        at moduleResolve (node:internal/modules/esm/resolve:859:18)\n        at defaultResolve (node:internal/modules/esm/resolve:989:11)\n        at ModuleLoader.#cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {\n      code: 'ERR_MODULE_NOT_FOUND'\n    }\n  ]\n}"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 1022,
+      "cases": [],
+      "outputTail": "Testing types with tsc and vue-tsc is an experimental feature.\nBreaking changes might not follow SemVer, please pin Vitest's version when using it.\nfailed to load config from /tmp/trustbut-wt-RI6tKG/packages/playground-ui/vitest.config.ts\n\n⎯⎯⎯⎯⎯⎯⎯ Startup Error ⎯⎯⎯⎯⎯⎯⎯⎯\nAggregateError: Failed to initialize projects. There were errors during projects setup. See below for more details.\n    at resolveProjects (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:11165:27)\n    at Vitest._setServer (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:13150:20)\n    at BasicMinimalPluginContext.handler (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:14191:5)\n    at _createServer (file:///home/runner/.local/share/pnpm/store/v11/links/@/vite/7.3.6/29a51af260f8f5631923a2b347588d66b4e6681daabbd1a655e8eb6b648b10ee/node_modules/vite/dist/node/chunks/config.js:25682:86)\n    at createViteServer (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:8835:17)\n    at createVitest (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:14221:18)\n    at prepareVitest (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:14588:14)\n    at startVitest (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cli-api.BK8pd4xc.js:14531:14)\n    at start (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cac.DdICfEr1.js:2340:15)\n    at CAC.run (file:///home/runner/.local/share/pnpm/store/v11/links/@/vitest/4.1.10/394bbb82d5f8e23e44bee0c20624da2a03e606e31336b3b60074b201ce110d82/node_modules/vitest/dist/chunks/cac.DdICfEr1.js:2318:2) {\n  [errors]: [\n    Error: Cannot find package '@vitejs/plugin-react' imported from /home/runner/work/_temp/work/repo/node_modules/.vite-temp/vitest.config.ts.timestamp-1792194143446-dce22cd523974.mjs\n    Did you mean to import \"@vitejs/plugin-react/dist/index.js\"?\n        at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n        at packageResolve (node:internal/modules/esm/resolve:772:81)\n        at moduleResolve (node:internal/modules/esm/resolve:859:18)\n        at defaultResolve (node:internal/modules/esm/resolve:989:11)\n        at ModuleLoader.#cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {\n      code: 'ERR_MODULE_NOT_FOUND'\n    }\n  ]\n}"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "taskforcesh__bullmq__4498",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "24.19.0",
+      "pm": "yarn",
+      "install": "yarn install --frozen-lockfile"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 21706,
+    "verifyMs": 14249
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.6.0",
+  "installRetries": 0
+}

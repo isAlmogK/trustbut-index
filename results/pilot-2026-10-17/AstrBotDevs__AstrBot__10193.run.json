@@ -1,0 +1,28 @@
+{
+  "id": "AstrBotDevs__AstrBot__10193",
+  "status": "no-runner",
+  "stage": "verify",
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.12",
+      "install": [
+        "uv pip install -e .",
+        "uv pip install --group dev",
+        "uv pip install -r requirements.txt",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 2372,
+    "verifyMs": 521
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 0
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.6.0",
+  "installRetries": 0
+}

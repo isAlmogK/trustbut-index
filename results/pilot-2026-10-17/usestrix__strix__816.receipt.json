@@ -1,0 +1,1788 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.6.0"
+  },
+  "subject": {
+    "base": "8cd9abba21d9a921ba740c9b3f8f82543f864cd6",
+    "head": "5081ac1c24eefe1e6e787d333ecb8a67e962092f"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 271,
+    "failed": 2,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [
+    {
+      "file": "tests/test_proxy_client.py",
+      "name": "test_build_raw_request_recomputes_content_length_for_modified_body",
+      "before": "fail",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "tests/test_proxy_client.py",
+      "name": "test_build_raw_request_drops_stale_content_length_for_empty_body",
+      "before": "fail",
+      "after": "pass",
+      "verdict": "proves-change"
+    }
+  ],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 1"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 14886,
+      "cases": [
+        {
+          "id": "tests.test_agent_factory_shell::test_wrap_exec_command_defaults_shell_to_bash",
+          "file": "tests.test_agent_factory_shell",
+          "name": "test_wrap_exec_command_defaults_shell_to_bash",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_agent_factory_shell::test_wrap_exec_command_preserves_explicit_shell[/bin/zsh]",
+          "file": "tests.test_agent_factory_shell",
+          "name": "test_wrap_exec_command_preserves_explicit_shell[/bin/zsh]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_agent_factory_shell::test_wrap_exec_command_preserves_explicit_shell[]",
+          "file": "tests.test_agent_factory_shell",
+          "name": "test_wrap_exec_command_preserves_explicit_shell[]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_agent_tool_registration::test_register_agent_tools_is_deduped",
+          "file": "tests.test_agent_tool_registration",
+          "name": "test_register_agent_tools_is_deduped",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_agent_tool_registration::test_registered_tools_appear_before_lifecycle_tool",
+          "file": "tests.test_agent_tool_registration",
+          "name": "test_registered_tools_appear_before_lifecycle_tool",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_agent_tool_registration::test_per_call_extra_tools_stack_with_registry",
+          "file": "tests.test_agent_tool_registration",
+          "name": "test_per_call_extra_tools_stack_with_registry",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_agent_tool_registration::test_register_agent_tools_rejects_duplicate_names",
+          "file": "tests.test_agent_tool_registration",
+          "name": "test_register_agent_tools_rejects_duplicate_names",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_agent_tool_registration::test_per_call_extra_tools_reject_duplicate_registered_names",
+          "file": "tests.test_agent_tool_registration",
+          "name": "test_per_call_extra_tools_reject_duplicate_registered_names",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_agent_tool_registration::test_instructions_override_is_used_verbatim",
+          "file": "tests.test_agent_tool_registration",
+          "name": "test_instructions_override_is_used_verbatim",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_agent_tool_registration::test_no_override_renders_builtin_prompt",
+          "file": "tests.test_agent_tool_registration",
+          "name": "test_no_override_renders_builtin_prompt",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_cli_target_list::test_parse_arguments_accepts_target_list_file",
+          "file": "tests.test_cli_target_list",
+          "name": "test_parse_arguments_accepts_target_list_file",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_cli_target_list::test_parse_arguments_combines_target_and_target_list",
+          "file": "tests.test_cli_target_list",
+          "name": "test_parse_arguments_combines_target_and_target_list",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_cli_target_list::test_parse_arguments_rejects_resume_with_target_list",
+          "file": "tests.test_cli_target_list",
+          "name": "test_parse_arguments_rejects_resume_with_target_list",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_read_json_overrides_missing_file",
+          "file": "tests.test_config_loader",
+          "name": "test_read_json_overrides_missing_file",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_read_json_overrides_corrupt_json",
+          "file": "tests.test_config_loader",
+          "name": "test_read_json_overrides_corrupt_json",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_read_json_overrides_non_dict_env",
+          "file": "tests.test_config_loader",
+          "name": "test_read_json_overrides_non_dict_env",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_read_json_overrides_maps_to_nested_settings",
+          "file": "tests.test_config_loader",
+          "name": "test_read_json_overrides_maps_to_nested_settings",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_read_json_overrides_skips_keys_already_in_environ",
+          "file": "tests.test_config_loader",
+          "name": "test_read_json_overrides_skips_keys_already_in_environ",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_read_json_overrides_env_wins_across_field_aliases",
+          "file": "tests.test_config_loader",
+          "name": "test_read_json_overrides_env_wins_across_field_aliases",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_read_json_overrides_env_wins_case_insensitively",
+          "file": "tests.test_config_loader",
+          "name": "test_read_json_overrides_env_wins_case_insensitively",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_read_json_overrides_uses_json_when_no_alias_in_environ",
+          "file": "tests.test_config_loader",
+          "name": "test_read_json_overrides_uses_json_when_no_alias_in_environ",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_aliases_for_simple_alias",
+          "file": "tests.test_config_loader",
+          "name": "test_aliases_for_simple_alias",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_aliases_for_alias_choices",
+          "file": "tests.test_config_loader",
+          "name": "test_aliases_for_alias_choices",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_aliases_for_string_validation_alias",
+          "file": "tests.test_config_loader",
+          "name": "test_aliases_for_string_validation_alias",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_aliases_for_no_alias",
+          "file": "tests.test_config_loader",
+          "name": "test_aliases_for_no_alias",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_apply_override_and_load_settings_round_trip",
+          "file": "tests.test_config_loader",
+          "name": "test_apply_override_and_load_settings_round_trip",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_apply_config_override_invalidates_cache",
+          "file": "tests.test_config_loader",
+          "name": "test_apply_config_override_invalidates_cache",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_persist_current_writes_env_block",
+          "file": "tests.test_config_loader",
+          "name": "test_persist_current_writes_env_block",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_config_loader::test_persist_current_sets_0600_mode",
+          "file": "tests.test_config_loader",
+          "name": "test_persist_current_sets_0600_mode",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_cost_tracking::test_streaming_logging_stays_enabled_for_cost_callback",
+          "file": "tests.test_cost_tracking",
+          "name": "test_streaming_logging_stays_enabled_for_cost_callback",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_cost_tracking::test_cost_callback_reads_openrouter_stream_usage_cost",
+          "file": "tests.test_cost_tracking",
+          "name": "test_cost_callback_reads_openrouter_stream_usage_cost",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_cost_tracking::test_cost_callback_reads_usage_cost_from_mapping_response",
+          "file": "tests.test_cost_tracking",
+          "name": "test_cost_callback_reads_usage_cost_from_mapping_response",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_cost_tracking::test_cost_callback_reads_byok_upstream_inference_cost",
+          "file": "tests.test_cost_tracking",
+          "name": "test_cost_callback_reads_byok_upstream_inference_cost",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_cost_tracking::test_cost_callback_sums_usage_cost_and_upstream_inference_cost",
+          "file": "tests.test_cost_tracking",
+          "name": "test_cost_callback_sums_usage_cost_and_upstream_inference_cost",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_cost_tracking::test_cost_callback_ignores_upstream_cost_for_non_byok_responses",
+          "file": "tests.test_cost_tracking",
+          "name": "test_cost_callback_ignores_upstream_cost_for_non_byok_responses",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_cost_tracking::test_cost_callback_estimates_cost_with_provider_prefixed_model",
+          "file": "tests.test_cost_tracking",
+          "name": "test_cost_callback_estimates_cost_with_provider_prefixed_model",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_cost_tracking::test_cost_callback_estimates_cost_with_bare_model_fallback",
+          "file": "tests.test_cost_tracking",
+          "name": "test_cost_callback_estimates_cost_with_bare_model_fallback",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_cost_tracking::test_cost_callback_records_nothing_when_no_cost_available",
+          "file": "tests.test_cost_tracking",
+          "name": "test_cost_callback_records_nothing_when_no_cost_available",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_docker_client_delete::test_delete_swallows_best_effort_kill_errors[exc0]",
+          "file": "tests.test_docker_client_delete",
+          "name": "test_delete_swallows_best_effort_kill_errors[exc0]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_docker_client_delete::test_delete_swallows_best_effort_kill_errors[exc1]",
+          "file": "tests.test_docker_client_delete",
+          "name": "test_delete_swallows_best_effort_kill_errors[exc1]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_docker_client_delete::test_delete_swallows_best_effort_kill_errors[exc2]",
+          "file": "tests.test_docker_client_delete",
+          "name": "test_delete_swallows_best_effort_kill_errors[exc2]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_docker_client_delete::test_delete_does_not_swallow_unrelated_errors",
+          "file": "tests.test_docker_client_delete",
+          "name": "test_delete_does_not_swallow_unrelated_errors",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_docker_client_delete::test_delete_noop_without_container_id",
+          "file": "tests.test_docker_client_delete",
+          "name": "test_delete_noop_without_container_id",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_execution::test_budget_stop_sets_flag",
+          "file": "tests.test_execution",
+          "name": "test_budget_stop_sets_flag",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_execution::test_budget_stop_unblocks_parked_agent",
+          "file": "tests.test_execution",
+          "name": "test_budget_stop_unblocks_parked_agent",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_execution::test_wait_for_message_returns_immediately_after_budget_stop",
+          "file": "tests.test_execution",
+          "name": "test_wait_for_message_returns_immediately_after_budget_stop",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_hooks::test_no_budget_never_raises",
+          "file": "tests.test_hooks",
+          "name": "test_no_budget_never_raises",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_hooks::test_under_budget_does_not_raise",
+          "file": "tests.test_hooks",
+          "name": "test_under_budget_does_not_raise",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_hooks::test_at_budget_raises",
+          "file": "tests.test_hooks",
+          "name": "test_at_budget_raises",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_hooks::test_over_budget_raises",
+          "file": "tests.test_hooks",
+          "name": "test_over_budget_raises",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_hooks::test_budget_check_uses_live_cost_accessor",
+          "file": "tests.test_hooks",
+          "name": "test_budget_check_uses_live_cost_accessor",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_hooks::test_error_message_includes_amounts",
+          "file": "tests.test_hooks",
+          "name": "test_error_message_includes_amounts",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_hooks::test_no_raise_when_report_state_none",
+          "file": "tests.test_hooks",
+          "name": "test_no_raise_when_report_state_none",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_hooks::test_non_positive_budget_rejected[0.0]",
+          "file": "tests.test_hooks",
+          "name": "test_non_positive_budget_rejected[0.0]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_hooks::test_non_positive_budget_rejected[-0.01]",
+          "file": "tests.test_hooks",
+          "name": "test_non_positive_budget_rejected[-0.01]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_hooks::test_non_positive_budget_rejected[-5.0]",
+          "file": "tests.test_hooks",
+          "name": "test_non_positive_budget_rejected[-5.0]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_hooks::test_budget_exceeded_error_is_runtime_error",
+          "file": "tests.test_hooks",
+          "name": "test_budget_exceeded_error_is_runtime_error",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_child_initial_input_single_message_without_history",
+          "file": "tests.test_inputs",
+          "name": "test_child_initial_input_single_message_without_history",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_child_initial_input_single_message_with_history",
+          "file": "tests.test_inputs",
+          "name": "test_child_initial_input_single_message_with_history",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_child_initial_input_no_consecutive_same_role[parent_history0]",
+          "file": "tests.test_inputs",
+          "name": "test_child_initial_input_no_consecutive_same_role[parent_history0]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_child_initial_input_no_consecutive_same_role[parent_history1]",
+          "file": "tests.test_inputs",
+          "name": "test_child_initial_input_no_consecutive_same_role[parent_history1]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_build_root_task_empty_config",
+          "file": "tests.test_inputs",
+          "name": "test_build_root_task_empty_config",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_build_root_task_repository_target",
+          "file": "tests.test_inputs",
+          "name": "test_build_root_task_repository_target",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_build_root_task_web_application_with_instructions",
+          "file": "tests.test_inputs",
+          "name": "test_build_root_task_web_application_with_instructions",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_build_root_task_diff_scope",
+          "file": "tests.test_inputs",
+          "name": "test_build_root_task_diff_scope",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_make_model_settings_forces_required_tool_choice_for_openai_models[openai/o3]",
+          "file": "tests.test_inputs",
+          "name": "test_make_model_settings_forces_required_tool_choice_for_openai_models[openai/o3]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_make_model_settings_forces_required_tool_choice_for_openai_models[gpt-4o]",
+          "file": "tests.test_inputs",
+          "name": "test_make_model_settings_forces_required_tool_choice_for_openai_models[gpt-4o]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_make_model_settings_skips_required_tool_choice_for_non_openai_models",
+          "file": "tests.test_inputs",
+          "name": "test_make_model_settings_skips_required_tool_choice_for_non_openai_models",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_make_model_settings_forces_required_for_routed_openai_model",
+          "file": "tests.test_inputs",
+          "name": "test_make_model_settings_forces_required_for_routed_openai_model",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_make_model_settings_forces_required_for_anyllm_routed_openai_model",
+          "file": "tests.test_inputs",
+          "name": "test_make_model_settings_forces_required_for_anyllm_routed_openai_model",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_make_model_settings_sets_request_timeout",
+          "file": "tests.test_inputs",
+          "name": "test_make_model_settings_sets_request_timeout",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_make_model_settings_omits_timeout_when_unset",
+          "file": "tests.test_inputs",
+          "name": "test_make_model_settings_omits_timeout_when_unset",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_inputs::test_make_model_settings_timeout_survives_reasoning_resolve",
+          "file": "tests.test_inputs",
+          "name": "test_make_model_settings_timeout_survives_reasoning_resolve",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_dir_staging::test_tree_without_symlinks_used_as_is",
+          "file": "tests.test_local_dir_staging",
+          "name": "test_tree_without_symlinks_used_as_is",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_dir_staging::test_in_tree_file_symlink_is_dereferenced",
+          "file": "tests.test_local_dir_staging",
+          "name": "test_in_tree_file_symlink_is_dereferenced",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_dir_staging::test_in_tree_relative_dir_symlink_is_dereferenced",
+          "file": "tests.test_local_dir_staging",
+          "name": "test_in_tree_relative_dir_symlink_is_dereferenced",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_dir_staging::test_out_of_tree_symlink_is_dropped",
+          "file": "tests.test_local_dir_staging",
+          "name": "test_out_of_tree_symlink_is_dropped",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_dir_staging::test_dangling_symlink_is_dropped",
+          "file": "tests.test_local_dir_staging",
+          "name": "test_dangling_symlink_is_dropped",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_dir_staging::test_cyclic_symlink_terminates",
+          "file": "tests.test_local_dir_staging",
+          "name": "test_cyclic_symlink_terminates",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_dir_staging::test_nested_symlinks_inside_linked_dir",
+          "file": "tests.test_local_dir_staging",
+          "name": "test_nested_symlinks_inside_linked_dir",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_directory_size_empty_dir_is_zero",
+          "file": "tests.test_local_sources",
+          "name": "test_directory_size_empty_dir_is_zero",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_directory_size_sums_flat_and_nested_files",
+          "file": "tests.test_local_sources",
+          "name": "test_directory_size_sums_flat_and_nested_files",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_directory_size_skips_symlinks",
+          "file": "tests.test_local_sources",
+          "name": "test_directory_size_skips_symlinks",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_directory_size_logs_and_skips_unreadable_subdir",
+          "file": "tests.test_local_sources",
+          "name": "test_directory_size_logs_and_skips_unreadable_subdir",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_find_oversized_returns_nothing_under_limit",
+          "file": "tests.test_local_sources",
+          "name": "test_find_oversized_returns_nothing_under_limit",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_find_oversized_returns_target_over_limit",
+          "file": "tests.test_local_sources",
+          "name": "test_find_oversized_returns_target_over_limit",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_find_oversized_ignores_mounted_targets",
+          "file": "tests.test_local_sources",
+          "name": "test_find_oversized_ignores_mounted_targets",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_find_oversized_ignores_non_local_targets",
+          "file": "tests.test_local_sources",
+          "name": "test_find_oversized_ignores_non_local_targets",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_find_oversized_disabled_for_non_positive_limit[0]",
+          "file": "tests.test_local_sources",
+          "name": "test_find_oversized_disabled_for_non_positive_limit[0]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_find_oversized_disabled_for_non_positive_limit[-1]",
+          "file": "tests.test_local_sources",
+          "name": "test_find_oversized_disabled_for_non_positive_limit[-1]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_collect_local_sources_propagates_mount_flag",
+          "file": "tests.test_local_sources",
+          "name": "test_collect_local_sources_propagates_mount_flag",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_collect_local_sources_repository_is_never_mounted",
+          "file": "tests.test_local_sources",
+          "name": "test_collect_local_sources_repository_is_never_mounted",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_build_mount_targets_info_for_valid_dir",
+          "file": "tests.test_local_sources",
+          "name": "test_build_mount_targets_info_for_valid_dir",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_build_mount_targets_info_rejects_missing_path",
+          "file": "tests.test_local_sources",
+          "name": "test_build_mount_targets_info_rejects_missing_path",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_build_mount_targets_info_rejects_file",
+          "file": "tests.test_local_sources",
+          "name": "test_build_mount_targets_info_rejects_file",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_build_mount_targets_info_rejects_empty_path[]",
+          "file": "tests.test_local_sources",
+          "name": "test_build_mount_targets_info_rejects_empty_path[]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_build_mount_targets_info_rejects_empty_path[   ]",
+          "file": "tests.test_local_sources",
+          "name": "test_build_mount_targets_info_rejects_empty_path[   ]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_read_target_list_file_strips_blank_lines",
+          "file": "tests.test_local_sources",
+          "name": "test_read_target_list_file_strips_blank_lines",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_read_target_list_file_ignores_comment_lines",
+          "file": "tests.test_local_sources",
+          "name": "test_read_target_list_file_ignores_comment_lines",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_read_target_list_file_rejects_empty_file",
+          "file": "tests.test_local_sources",
+          "name": "test_read_target_list_file_rejects_empty_file",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_read_target_list_file_rejects_missing_path",
+          "file": "tests.test_local_sources",
+          "name": "test_read_target_list_file_rejects_missing_path",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_read_target_list_file_rejects_non_utf8_file",
+          "file": "tests.test_local_sources",
+          "name": "test_read_target_list_file_rejects_non_utf8_file",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_read_target_list_file_rejects_empty_path[]",
+          "file": "tests.test_local_sources",
+          "name": "test_read_target_list_file_rejects_empty_path[]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_read_target_list_file_rejects_empty_path[   ]",
+          "file": "tests.test_local_sources",
+          "name": "test_read_target_list_file_rejects_empty_path[   ]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_dedupe_keeps_distinct_targets_in_order",
+          "file": "tests.test_local_sources",
+          "name": "test_dedupe_keeps_distinct_targets_in_order",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_dedupe_mount_supersedes_copied_same_path",
+          "file": "tests.test_local_sources",
+          "name": "test_dedupe_mount_supersedes_copied_same_path",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_local_sources::test_dedupe_collapses_duplicate_mounts",
+          "file": "tests.test_local_sources",
+          "name": "test_dedupe_collapses_duplicate_mounts",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_model_retry::test_statusless_error_is_retried",
+          "file": "tests.test_model_retry",
+          "name": "test_statusless_error_is_retried",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_model_retry::test_statusless_abort_is_not_retried",
+          "file": "tests.test_model_retry",
+          "name": "test_statusless_abort_is_not_retried",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_model_retry::test_client_error_is_not_retried",
+          "file": "tests.test_model_retry",
+          "name": "test_client_error_is_not_retried",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_model_retry::test_rate_limit_and_server_errors_are_retried",
+          "file": "tests.test_model_retry",
+          "name": "test_rate_limit_and_server_errors_are_retried",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_model_retry::test_timeout_error_is_retried",
+          "file": "tests.test_model_retry",
+          "name": "test_timeout_error_is_retried",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_model_retry::test_policy_helper_matches_statusless_only",
+          "file": "tests.test_model_retry",
+          "name": "test_policy_helper_matches_statusless_only",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[openai/gpt-5.6]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[openai/gpt-5.6]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[openai/gpt-5.6-sol]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[openai/gpt-5.6-sol]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[openai/gpt-5.6-terra]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[openai/gpt-5.6-terra]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[openai/gpt-5.5]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[openai/gpt-5.5]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[openai/gpt-5.5-pro]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[openai/gpt-5.5-pro]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[openai/gpt-5.4]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[openai/gpt-5.4]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[openai/gpt-5.3-codex]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[openai/gpt-5.3-codex]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[anthropic/claude-fable-5]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[anthropic/claude-fable-5]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[anthropic/claude-opus-4-8]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[anthropic/claude-opus-4-8]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[anthropic/claude-opus-4-7]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[anthropic/claude-opus-4-7]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[anthropic/claude-sonnet-5]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[anthropic/claude-sonnet-5]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[anthropic/claude-sonnet-4-6]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[anthropic/claude-sonnet-4-6]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[vertex_ai/gemini-3.1-pro-preview]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[vertex_ai/gemini-3.1-pro-preview]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[gemini/gemini-3.1-pro-preview]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[gemini/gemini-3.1-pro-preview]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[deepseek/deepseek-v4-pro]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[deepseek/deepseek-v4-pro]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[deepseek/deepseek-v4-flash]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[deepseek/deepseek-v4-flash]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[dashscope/qwen3.7-max-2026-06-08]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[dashscope/qwen3.7-max-2026-06-08]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[moonshot/kimi-k2.7-code]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[moonshot/kimi-k2.7-code]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_accepted[moonshot/kimi-k2.6]",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_accepted[moonshot/kimi-k2.6]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_request_timeout_extra_args_positive",
+          "file": "tests.test_models",
+          "name": "test_request_timeout_extra_args_positive",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_request_timeout_extra_args_survives_model_settings_json_dump",
+          "file": "tests.test_models",
+          "name": "test_request_timeout_extra_args_survives_model_settings_json_dump",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_request_timeout_extra_args_disabled[None]",
+          "file": "tests.test_models",
+          "name": "test_request_timeout_extra_args_disabled[None]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_request_timeout_extra_args_disabled[0]",
+          "file": "tests.test_models",
+          "name": "test_request_timeout_extra_args_disabled[0]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_request_timeout_extra_args_disabled[-1]",
+          "file": "tests.test_models",
+          "name": "test_request_timeout_extra_args_disabled[-1]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_recommended_models_are_matched_case_insensitively",
+          "file": "tests.test_models",
+          "name": "test_recommended_models_are_matched_case_insensitively",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[gpt-5.5]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[gpt-5.5]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[litellm/openai/gpt-5.4-pro]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[litellm/openai/gpt-5.4-pro]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[azure_ai/gpt-5.5-pro]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[azure_ai/gpt-5.5-pro]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[bedrock_mantle/openai.gpt-5.5]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[bedrock_mantle/openai.gpt-5.5]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[anthropic/claude-opus-4-8]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[anthropic/claude-opus-4-8]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[anthropic.claude-opus-4-8]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[anthropic.claude-opus-4-8]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[anthropic/claude-opus-4-7]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[anthropic/claude-opus-4-7]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[anthropic/claude-fable-5]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[anthropic/claude-fable-5]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[anthropic/claude-sonnet-5]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[anthropic/claude-sonnet-5]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[vertex_ai/claude-sonnet-5@default]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[vertex_ai/claude-sonnet-5@default]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[vertex_ai/claude-sonnet-4-6@default]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[vertex_ai/claude-sonnet-4-6@default]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[any-llm/anthropic/claude-sonnet-4-6]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[any-llm/anthropic/claude-sonnet-4-6]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[vertex_ai/gemini-3.1-pro-preview]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[vertex_ai/gemini-3.1-pro-preview]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[openrouter/google/gemini-3.1-pro-preview]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[openrouter/google/gemini-3.1-pro-preview]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[deepseek/deepseek-v4-pro]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[deepseek/deepseek-v4-pro]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[deepseek/deepseek-r1-0528]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[deepseek/deepseek-r1-0528]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[deepseek/deepseek-reasoner]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[deepseek/deepseek-reasoner]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[dashscope/qwen3-max-2026-01-23]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[dashscope/qwen3-max-2026-01-23]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[qwen3.7-max]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[qwen3.7-max]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[moonshot/kimi-k2.6]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[moonshot/kimi-k2.6]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_frontier_model_families_are_accepted[kimi-k2.7-code]",
+          "file": "tests.test_models",
+          "name": "test_frontier_model_families_are_accepted[kimi-k2.7-code]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_non_frontier_models_are_rejected[]",
+          "file": "tests.test_models",
+          "name": "test_non_frontier_models_are_rejected[]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_non_frontier_models_are_rejected[openai/gpt-4.1]",
+          "file": "tests.test_models",
+          "name": "test_non_frontier_models_are_rejected[openai/gpt-4.1]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_non_frontier_models_are_rejected[anthropic/claude-3-5-sonnet-latest]",
+          "file": "tests.test_models",
+          "name": "test_non_frontier_models_are_rejected[anthropic/claude-3-5-sonnet-latest]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_non_frontier_models_are_rejected[ollama/llama3.1]",
+          "file": "tests.test_models",
+          "name": "test_non_frontier_models_are_rejected[ollama/llama3.1]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_non_frontier_models_are_rejected[deepseek/deepseek-chat]",
+          "file": "tests.test_models",
+          "name": "test_non_frontier_models_are_rejected[deepseek/deepseek-chat]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_non_frontier_models_are_rejected[custom-ollama/gpt-5-mini-local]",
+          "file": "tests.test_models",
+          "name": "test_non_frontier_models_are_rejected[custom-ollama/gpt-5-mini-local]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_non_frontier_models_are_rejected[custom-provider/claude-opus-4-local]",
+          "file": "tests.test_models",
+          "name": "test_non_frontier_models_are_rejected[custom-provider/claude-opus-4-local]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_non_frontier_models_are_rejected[xai/grok-4.5]",
+          "file": "tests.test_models",
+          "name": "test_non_frontier_models_are_rejected[xai/grok-4.5]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_non_frontier_models_are_rejected[openrouter/x-ai/grok-4]",
+          "file": "tests.test_models",
+          "name": "test_non_frontier_models_are_rejected[openrouter/x-ai/grok-4]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_non_frontier_models_are_rejected[mistral/mistral-medium-3-5]",
+          "file": "tests.test_models",
+          "name": "test_non_frontier_models_are_rejected[mistral/mistral-medium-3-5]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_models::test_non_frontier_models_are_rejected[mistral/magistral-medium-latest]",
+          "file": "tests.test_models",
+          "name": "test_non_frontier_models_are_rejected[mistral/magistral-medium-latest]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_notes::test_create_note_retries_on_note_id_collision",
+          "file": "tests.test_notes",
+          "name": "test_create_note_retries_on_note_id_collision",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_notes::test_create_note_returns_error_after_repeated_note_id_collisions",
+          "file": "tests.test_notes",
+          "name": "test_create_note_returns_error_after_repeated_note_id_collisions",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_optional_deps::test_vertex_extra_pins_google_auth",
+          "file": "tests.test_optional_deps",
+          "name": "test_vertex_extra_pins_google_auth",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_optional_deps::test_bedrock_extra_pins_boto3",
+          "file": "tests.test_optional_deps",
+          "name": "test_bedrock_extra_pins_boto3",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_provider_hints::test_bedrock_boto3_hint",
+          "file": "tests.test_provider_hints",
+          "name": "test_bedrock_boto3_hint",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_provider_hints::test_vertex_google_hint",
+          "file": "tests.test_provider_hints",
+          "name": "test_vertex_google_hint",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_provider_hints::test_vertex_google_hint_for_litellm_wrapped_connection_error",
+          "file": "tests.test_provider_hints",
+          "name": "test_vertex_google_hint_for_litellm_wrapped_connection_error",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_provider_hints::test_bedrock_boto3_hint_for_litellm_wrapped_connection_error",
+          "file": "tests.test_provider_hints",
+          "name": "test_bedrock_boto3_hint_for_litellm_wrapped_connection_error",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_provider_hints::test_vertex_google_submodule_hint",
+          "file": "tests.test_provider_hints",
+          "name": "test_vertex_google_submodule_hint",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_provider_hints::test_vertex_google_hint_for_deeply_chained_error",
+          "file": "tests.test_provider_hints",
+          "name": "test_vertex_google_hint_for_deeply_chained_error",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_provider_hints::test_non_import_error_returns_none",
+          "file": "tests.test_provider_hints",
+          "name": "test_non_import_error_returns_none",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_provider_hints::test_unrelated_provider_returns_none",
+          "file": "tests.test_provider_hints",
+          "name": "test_unrelated_provider_returns_none",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_call_with_client_reuses_cached_client",
+          "file": "tests.test_proxy_client",
+          "name": "test_call_with_client_reuses_cached_client",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_call_with_client_creates_and_caches_when_empty",
+          "file": "tests.test_proxy_client",
+          "name": "test_call_with_client_creates_and_caches_when_empty",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_failed_init_does_not_poison_cache",
+          "file": "tests.test_proxy_client",
+          "name": "test_failed_init_does_not_poison_cache",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_call_with_client_propagates_errors",
+          "file": "tests.test_proxy_client",
+          "name": "test_call_with_client_propagates_errors",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_call_with_client_serializes_concurrent_calls",
+          "file": "tests.test_proxy_client",
+          "name": "test_call_with_client_serializes_concurrent_calls",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_host_call_serializes_concurrent_calls",
+          "file": "tests.test_proxy_client",
+          "name": "test_host_call_serializes_concurrent_calls",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_build_raw_request_recomputes_content_length_for_modified_body",
+          "file": "tests.test_proxy_client",
+          "name": "test_build_raw_request_recomputes_content_length_for_modified_body",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_build_raw_request_drops_stale_content_length_for_empty_body",
+          "file": "tests.test_proxy_client",
+          "name": "test_build_raw_request_drops_stale_content_length_for_empty_body",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_ctx_client_returns_client_when_present",
+          "file": "tests.test_proxy_client",
+          "name": "test_ctx_client_returns_client_when_present",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_ctx_client_returns_none_without_client",
+          "file": "tests.test_proxy_client",
+          "name": "test_ctx_client_returns_none_without_client",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_renderer::test_more_content_hint_shown_when_over_fifteen_lines",
+          "file": "tests.test_proxy_renderer",
+          "name": "test_more_content_hint_shown_when_over_fifteen_lines",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_renderer::test_no_more_content_hint_within_fifteen_lines",
+          "file": "tests.test_proxy_renderer",
+          "name": "test_no_more_content_hint_within_fifteen_lines",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_renderer::test_more_content_hint_shown_when_has_more_flag_set",
+          "file": "tests.test_proxy_renderer",
+          "name": "test_more_content_hint_shown_when_has_more_flag_set",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_report_writer::test_read_run_record_missing_returns_empty",
+          "file": "tests.test_report_writer",
+          "name": "test_read_run_record_missing_returns_empty",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_report_writer::test_read_run_record_corrupt_raises",
+          "file": "tests.test_report_writer",
+          "name": "test_read_run_record_corrupt_raises",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_report_writer::test_read_run_record_non_object_raises",
+          "file": "tests.test_report_writer",
+          "name": "test_read_run_record_non_object_raises",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_report_writer::test_write_and_read_run_record_round_trip",
+          "file": "tests.test_report_writer",
+          "name": "test_write_and_read_run_record_round_trip",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_report_writer::test_render_vulnerability_md_includes_core_sections",
+          "file": "tests.test_report_writer",
+          "name": "test_render_vulnerability_md_includes_core_sections",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_report_writer::test_render_vulnerability_md_includes_dependency_fields",
+          "file": "tests.test_report_writer",
+          "name": "test_render_vulnerability_md_includes_dependency_fields",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_report_writer::test_write_vulnerabilities_creates_markdown_csv_and_json",
+          "file": "tests.test_report_writer",
+          "name": "test_write_vulnerabilities_creates_markdown_csv_and_json",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_report_writer::test_write_vulnerabilities_skips_already_saved_ids",
+          "file": "tests.test_report_writer",
+          "name": "test_write_vulnerabilities_skips_already_saved_ids",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_report_writer::test_write_executive_report_writes_markdown",
+          "file": "tests.test_report_writer",
+          "name": "test_write_executive_report_writes_markdown",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_create_report_persists_new_fields",
+          "file": "tests.test_reporting_fields",
+          "name": "test_create_report_persists_new_fields",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_create_report_requires_evidence_and_assumptions",
+          "file": "tests.test_reporting_fields",
+          "name": "test_create_report_requires_evidence_and_assumptions",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_create_report_rejects_invalid_fix_effort",
+          "file": "tests.test_reporting_fields",
+          "name": "test_create_report_rejects_invalid_fix_effort",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_dependency_report_sets_class_and_metadata",
+          "file": "tests.test_reporting_fields",
+          "name": "test_dependency_report_sets_class_and_metadata",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_dependency_report_with_zero_cvss_remains_low_severity",
+          "file": "tests.test_reporting_fields",
+          "name": "test_dependency_report_with_zero_cvss_remains_low_severity",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_dependency_report_requires_advisory_cvss",
+          "file": "tests.test_reporting_fields",
+          "name": "test_dependency_report_requires_advisory_cvss",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_dependency_report_dedupe_candidate_includes_dependency_metadata",
+          "file": "tests.test_reporting_fields",
+          "name": "test_dependency_report_dedupe_candidate_includes_dependency_metadata",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_dependency_report_rejects_bad_cve",
+          "file": "tests.test_reporting_fields",
+          "name": "test_dependency_report_rejects_bad_cve",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_dependency_report_requires_ecosystem",
+          "file": "tests.test_reporting_fields",
+          "name": "test_dependency_report_requires_ecosystem",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_dedupe_comparison_preserves_cve_identity",
+          "file": "tests.test_reporting_fields",
+          "name": "test_dedupe_comparison_preserves_cve_identity",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_dependency_dedupe_uses_cve_package_identity",
+          "file": "tests.test_reporting_fields",
+          "name": "test_dependency_dedupe_uses_cve_package_identity",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_dependency_dedupe_rejects_same_cve_package_identity",
+          "file": "tests.test_reporting_fields",
+          "name": "test_dependency_dedupe_rejects_same_cve_package_identity",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_dependency_dedupe_detects_legacy_same_cve_package",
+          "file": "tests.test_reporting_fields",
+          "name": "test_dependency_dedupe_detects_legacy_same_cve_package",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_dependency_dedupe_defers_unclear_legacy_same_cve",
+          "file": "tests.test_reporting_fields",
+          "name": "test_dependency_dedupe_defers_unclear_legacy_same_cve",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_dependency_dedupe_defers_legacy_package_substring_match",
+          "file": "tests.test_reporting_fields",
+          "name": "test_dependency_dedupe_defers_legacy_package_substring_match",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_dependency_dedupe_defers_legacy_ecosystem_mismatch",
+          "file": "tests.test_reporting_fields",
+          "name": "test_dependency_dedupe_defers_legacy_ecosystem_mismatch",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_dependency_dedupe_matches_structured_missing_ecosystem",
+          "file": "tests.test_reporting_fields",
+          "name": "test_dependency_dedupe_matches_structured_missing_ecosystem",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_tool_descriptions_include_formatting_guidance",
+          "file": "tests.test_reporting_fields",
+          "name": "test_tool_descriptions_include_formatting_guidance",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_reporting_fields::test_vuln_tool_exposes_new_params",
+          "file": "tests.test_reporting_fields",
+          "name": "test_vuln_tool_exposes_new_params",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_runner_rate_limit::test_persistent_rate_limit_stops_gracefully",
+          "file": "tests.test_runner_rate_limit",
+          "name": "test_persistent_rate_limit_stops_gracefully",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_runner_root_prompt::test_root_prompt_options_flow_into_root_agent",
+          "file": "tests.test_runner_root_prompt",
+          "name": "test_root_prompt_options_flow_into_root_agent",
+          "outcome": "fail",
+          "message": "AttributeError: 'types.SimpleNamespace' object has no attribute 'runtime'"
+        },
+        {
+          "id": "tests.test_runner_root_prompt::test_extra_system_prompt_context_cannot_override_scope_context",
+          "file": "tests.test_runner_root_prompt",
+          "name": "test_extra_system_prompt_context_cannot_override_scope_context",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_runner_root_prompt::test_root_prompt_options_default_to_none",
+          "file": "tests.test_runner_root_prompt",
+          "name": "test_root_prompt_options_default_to_none",
+          "outcome": "fail",
+          "message": "AttributeError: 'types.SimpleNamespace' object has no attribute 'runtime'"
+        },
+        {
+          "id": "tests.test_sarif::test_write_sarif_basic_shape",
+          "file": "tests.test_sarif",
+          "name": "test_write_sarif_basic_shape",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif::test_write_sarif_always_emits_for_zero_findings",
+          "file": "tests.test_sarif",
+          "name": "test_write_sarif_always_emits_for_zero_findings",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif::test_write_sarif_tool_version_is_reported",
+          "file": "tests.test_sarif",
+          "name": "test_write_sarif_tool_version_is_reported",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif::test_write_sarif_locationless_finding_is_anchored_not_dropped",
+          "file": "tests.test_sarif",
+          "name": "test_write_sarif_locationless_finding_is_anchored_not_dropped",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif::test_write_sarif_fingerprint_stable_across_title_rewording",
+          "file": "tests.test_sarif",
+          "name": "test_write_sarif_fingerprint_stable_across_title_rewording",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif::test_write_sarif_distinct_findings_get_distinct_fingerprints",
+          "file": "tests.test_sarif",
+          "name": "test_write_sarif_distinct_findings_get_distinct_fingerprints",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif::test_write_sarif_never_embeds_poc_script",
+          "file": "tests.test_sarif",
+          "name": "test_write_sarif_never_embeds_poc_script",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif::test_write_sarif_builds_fixes_from_code_location_fix_pairs",
+          "file": "tests.test_sarif",
+          "name": "test_write_sarif_builds_fixes_from_code_location_fix_pairs",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif::test_write_sarif_omits_fixes_without_fix_pairs",
+          "file": "tests.test_sarif",
+          "name": "test_write_sarif_omits_fixes_without_fix_pairs",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif::test_write_sarif_adds_logical_location_for_endpoint",
+          "file": "tests.test_sarif",
+          "name": "test_write_sarif_adds_logical_location_for_endpoint",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif::test_write_sarif_synthetic_finding_falls_back_to_resource_logical_location",
+          "file": "tests.test_sarif",
+          "name": "test_write_sarif_synthetic_finding_falls_back_to_resource_logical_location",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif::test_write_sarif_emits_version_control_provenance",
+          "file": "tests.test_sarif",
+          "name": "test_write_sarif_emits_version_control_provenance",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif::test_write_sarif_omits_provenance_when_no_repository_context",
+          "file": "tests.test_sarif",
+          "name": "test_write_sarif_omits_provenance_when_no_repository_context",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif::test_write_sarif_replaces_atomically_no_partial_on_reemit",
+          "file": "tests.test_sarif",
+          "name": "test_write_sarif_replaces_atomically_no_partial_on_reemit",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif_stride::test_stride_tags_on_rule_for_known_cwe",
+          "file": "tests.test_sarif_stride",
+          "name": "test_stride_tags_on_rule_for_known_cwe",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif_stride::test_stride_tags_attach_to_rule_not_duplicated_on_result",
+          "file": "tests.test_sarif_stride",
+          "name": "test_stride_tags_attach_to_rule_not_duplicated_on_result",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif_stride::test_stride_default_for_unmapped_cwe",
+          "file": "tests.test_sarif_stride",
+          "name": "test_stride_default_for_unmapped_cwe",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif_stride::test_stride_default_for_no_cwe",
+          "file": "tests.test_sarif_stride",
+          "name": "test_stride_default_for_no_cwe",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif_stride::test_stride_sql_injection_is_tampering_not_spoofing",
+          "file": "tests.test_sarif_stride",
+          "name": "test_stride_sql_injection_is_tampering_not_spoofing",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif_stride::test_stride_idor_is_elevation",
+          "file": "tests.test_sarif_stride",
+          "name": "test_stride_idor_is_elevation",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif_stride::test_stride_cleartext_transmission_is_info_disclosure",
+          "file": "tests.test_sarif_stride",
+          "name": "test_stride_cleartext_transmission_is_info_disclosure",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif_stride::test_stride_hardcoded_credentials_is_spoofing",
+          "file": "tests.test_sarif_stride",
+          "name": "test_stride_hardcoded_credentials_is_spoofing",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif_stride::test_stride_missing_authorization_is_elevation",
+          "file": "tests.test_sarif_stride",
+          "name": "test_stride_missing_authorization_is_elevation",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif_stride::test_stride_cwe_normalisation_variants[CWE-306]",
+          "file": "tests.test_sarif_stride",
+          "name": "test_stride_cwe_normalisation_variants[CWE-306]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif_stride::test_stride_cwe_normalisation_variants[306]",
+          "file": "tests.test_sarif_stride",
+          "name": "test_stride_cwe_normalisation_variants[306]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif_stride::test_stride_cwe_normalisation_variants[cwe 306]",
+          "file": "tests.test_sarif_stride",
+          "name": "test_stride_cwe_normalisation_variants[cwe 306]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif_stride::test_stride_cwe_normalisation_variants[CWE306]",
+          "file": "tests.test_sarif_stride",
+          "name": "test_stride_cwe_normalisation_variants[CWE306]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_sarif_stride::test_every_leg_letter_is_valid",
+          "file": "tests.test_sarif_stride",
+          "name": "test_every_leg_letter_is_valid",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_session_entries::test_copied_source_becomes_localdir_entry",
+          "file": "tests.test_session_entries",
+          "name": "test_copied_source_becomes_localdir_entry",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_session_entries::test_mounted_source_becomes_bind_mount",
+          "file": "tests.test_session_entries",
+          "name": "test_mounted_source_becomes_bind_mount",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_session_entries::test_mixed_sources_split_correctly",
+          "file": "tests.test_session_entries",
+          "name": "test_mixed_sources_split_correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_session_entries::test_incomplete_sources_are_skipped",
+          "file": "tests.test_session_entries",
+          "name": "test_incomplete_sources_are_skipped",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_session_entries::test_symlink_tree_is_staged",
+          "file": "tests.test_session_entries",
+          "name": "test_symlink_tree_is_staged",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_skill_dir_extension::test_no_registration_leaves_builtin_only",
+          "file": "tests.test_skill_dir_extension",
+          "name": "test_no_registration_leaves_builtin_only",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_skill_dir_extension::test_register_is_idempotent_and_ordered",
+          "file": "tests.test_skill_dir_extension",
+          "name": "test_register_is_idempotent_and_ordered",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_skill_dir_extension::test_registered_dir_adds_new_skill",
+          "file": "tests.test_skill_dir_extension",
+          "name": "test_registered_dir_adds_new_skill",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_skill_dir_extension::test_registered_root_skill_is_discoverable_and_valid",
+          "file": "tests.test_skill_dir_extension",
+          "name": "test_registered_root_skill_is_discoverable_and_valid",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_skill_dir_extension::test_ambiguous_bare_skill_requires_qualified_name",
+          "file": "tests.test_skill_dir_extension",
+          "name": "test_ambiguous_bare_skill_requires_qualified_name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_skill_dir_extension::test_registered_dir_overrides_builtin_skill",
+          "file": "tests.test_skill_dir_extension",
+          "name": "test_registered_dir_overrides_builtin_skill",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_skill_dir_extension::test_builtin_skill_still_loads_when_not_overridden",
+          "file": "tests.test_skill_dir_extension",
+          "name": "test_builtin_skill_still_loads_when_not_overridden",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_skill_dir_extension::test_missing_skill_is_skipped",
+          "file": "tests.test_skill_dir_extension",
+          "name": "test_missing_skill_is_skipped",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_state_repo_context::test_parse_repo_full_name_handles_common_forms",
+          "file": "tests.test_state_repo_context",
+          "name": "test_parse_repo_full_name_handles_common_forms",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_state_repo_context::test_repository_context_none_for_non_repository_targets",
+          "file": "tests.test_state_repo_context",
+          "name": "test_repository_context_none_for_non_repository_targets",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_state_repo_context::test_repository_context_uri_only_without_clone",
+          "file": "tests.test_state_repo_context",
+          "name": "test_repository_context_uri_only_without_clone",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_state_repo_context::test_repository_context_none_for_multiple_repository_targets",
+          "file": "tests.test_state_repo_context",
+          "name": "test_repository_context_none_for_multiple_repository_targets",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_state_repo_context::test_repository_context_derives_commit_and_branch_from_clone",
+          "file": "tests.test_state_repo_context",
+          "name": "test_repository_context_derives_commit_and_branch_from_clone",
+          "outcome": "pass"
+        }
+      ],
+      "outputTail": "                chat_completions_tools=chat_completions_tools,\n                system_prompt_context=scope_context,\n            )\n    \n            async def spawn_child_agent(**kwargs: Any) -> dict[str, Any]:\n                return await start_child_agent(\n                    coordinator=coordinator,\n                    factory=child_agent_builder,\n                    agents_db_path=agents_db,\n                    sessions_to_close=sessions_to_close,\n                    run_config=run_config,\n                    max_turns=max_turns,\n                    interactive=interactive,\n                    event_sink=event_sink,\n                    hooks=hooks,\n                    **kwargs,\n                )\n    \n            context: dict[str, Any] = {\n                \"coordinator\": coordinator,\n                \"sandbox_session\": bundle[\"session\"],\n                \"caido_client\": bundle[\"caido_client\"],\n                \"agent_id\": root_id,\n                \"parent_id\": None,\n                \"interactive\": interactive,\n                \"spawn_child_agent\": spawn_child_agent,\n>               \"max_context_images\": settings.runtime.max_context_images,\n                                      ^^^^^^^^^^^^^^^^\n            }\nE           AttributeError: 'types.SimpleNamespace' object has no attribute 'runtime'\n\nstrix/core/runner.py:291: AttributeError\n------------------------------ Captured log call -------------------------------\nERROR    strix.core.runner:runner.py:395 Strix scan scan-default failed\nTraceback (most recent call last):\n  File \"/tmp/trustbut-wt-u0l0Za/strix/core/runner.py\", line 291, in run_strix_scan\n    \"max_context_images\": settings.runtime.max_context_images,\n                          ^^^^^^^^^^^^^^^^\nAttributeError: 'types.SimpleNamespace' object has no attribute 'runtime'\n=============================== warnings summary ===============================\ntests/test_config_loader.py::test_persist_current_writes_env_block\ntests/test_config_loader.py::test_persist_current_sets_0600_mode\n  /tmp/trustbut-wt-u0l0Za/strix/config/loader.py:63: PydanticDeprecatedSince211: Accessing the 'model_fields' attribute on the instance is deprecated. Instead, you should access this attribute from the model class. Deprecated in Pydantic V2.11 to be removed in V3.0.\n    for sub_name in s.model_fields:\n\n-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html\n=========================== short test summary info ============================\nFAILED tests/test_runner_root_prompt.py::test_root_prompt_options_flow_into_root_agent - AttributeError: 'types.SimpleNamespace' object has no attribute 'runtime'\nFAILED tests/test_runner_root_prompt.py::test_root_prompt_options_default_to_none - AttributeError: 'types.SimpleNamespace' object has no attribute 'runtime'\n2 failed, 271 passed, 2 warnings in 12.27s"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 3104,
+      "cases": [
+        {
+          "id": "tests.test_proxy_client::test_call_with_client_reuses_cached_client",
+          "file": "tests.test_proxy_client",
+          "name": "test_call_with_client_reuses_cached_client",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_call_with_client_creates_and_caches_when_empty",
+          "file": "tests.test_proxy_client",
+          "name": "test_call_with_client_creates_and_caches_when_empty",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_failed_init_does_not_poison_cache",
+          "file": "tests.test_proxy_client",
+          "name": "test_failed_init_does_not_poison_cache",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_call_with_client_propagates_errors",
+          "file": "tests.test_proxy_client",
+          "name": "test_call_with_client_propagates_errors",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_call_with_client_serializes_concurrent_calls",
+          "file": "tests.test_proxy_client",
+          "name": "test_call_with_client_serializes_concurrent_calls",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_host_call_serializes_concurrent_calls",
+          "file": "tests.test_proxy_client",
+          "name": "test_host_call_serializes_concurrent_calls",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_build_raw_request_recomputes_content_length_for_modified_body",
+          "file": "tests.test_proxy_client",
+          "name": "test_build_raw_request_recomputes_content_length_for_modified_body",
+          "outcome": "fail",
+          "message": "AssertionError: assert ['12'] == ['45']&#10; &#10; At index 0 diff: '12' != '45'&#10; &#10; Full diff:&#10; [&#10; - '45',&#10; ? ^^&#10; + '12',&#10; ? ^^&#10; ]"
+        },
+        {
+          "id": "tests.test_proxy_client::test_build_raw_request_drops_stale_content_length_for_empty_body",
+          "file": "tests.test_proxy_client",
+          "name": "test_build_raw_request_drops_stale_content_length_for_empty_body",
+          "outcome": "fail",
+          "message": "AssertionError: assert ['12'] == []&#10; &#10; Left contains one more item: '12'&#10; &#10; Full diff:&#10; - []&#10; + [&#10; + '12',&#10; + ]"
+        },
+        {
+          "id": "tests.test_proxy_client::test_ctx_client_returns_client_when_present",
+          "file": "tests.test_proxy_client",
+          "name": "test_ctx_client_returns_client_when_present",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_proxy_client::test_ctx_client_returns_none_without_client",
+          "file": "tests.test_proxy_client",
+          "name": "test_ctx_client_returns_none_without_client",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_runner_root_prompt::test_root_prompt_options_flow_into_root_agent",
+          "file": "tests.test_runner_root_prompt",
+          "name": "test_root_prompt_options_flow_into_root_agent",
+          "outcome": "fail",
+          "message": "AttributeError: 'types.SimpleNamespace' object has no attribute 'runtime'"
+        },
+        {
+          "id": "tests.test_runner_root_prompt::test_extra_system_prompt_context_cannot_override_scope_context",
+          "file": "tests.test_runner_root_prompt",
+          "name": "test_extra_system_prompt_context_cannot_override_scope_context",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_runner_root_prompt::test_root_prompt_options_default_to_none",
+          "file": "tests.test_runner_root_prompt",
+          "name": "test_root_prompt_options_default_to_none",
+          "outcome": "fail",
+          "message": "AttributeError: 'types.SimpleNamespace' object has no attribute 'runtime'"
+        }
+      ],
+      "outputTail": "                    event_sink=event_sink,\n                    hooks=hooks,\n                    **kwargs,\n                )\n    \n            context: dict[str, Any] = {\n                \"coordinator\": coordinator,\n                \"sandbox_session\": bundle[\"session\"],\n                \"caido_client\": bundle[\"caido_client\"],\n                \"agent_id\": root_id,\n                \"parent_id\": None,\n                \"interactive\": interactive,\n                \"spawn_child_agent\": spawn_child_agent,\n>               \"max_context_images\": settings.runtime.max_context_images,\n                                      ^^^^^^^^^^^^^^^^\n            }\nE           AttributeError: 'types.SimpleNamespace' object has no attribute 'runtime'\n\nstrix/core/runner.py:291: AttributeError\n------------------------------ Captured log call -------------------------------\nERROR    strix.core.runner:runner.py:395 Strix scan scan-default failed\nTraceback (most recent call last):\n  File \"/tmp/trustbut-wt-q2MLQu/strix/core/runner.py\", line 291, in run_strix_scan\n    \"max_context_images\": settings.runtime.max_context_images,\n                          ^^^^^^^^^^^^^^^^\nAttributeError: 'types.SimpleNamespace' object has no attribute 'runtime'\n=========================== short test summary info ============================\nFAILED tests/test_proxy_client.py::test_build_raw_request_recomputes_content_length_for_modified_body - AssertionError: assert ['12'] == ['45']\n  \n  At index 0 diff: '12' != '45'\n  \n  Full diff:\n    [\n  -     '45',\n  ?      ^^\n  +     '12',\n  ?      ^^\n    ]\nFAILED tests/test_proxy_client.py::test_build_raw_request_drops_stale_content_length_for_empty_body - AssertionError: assert ['12'] == []\n  \n  Left contains one more item: '12'\n  \n  Full diff:\n  - []\n  + [\n  +     '12',\n  + ]\nFAILED tests/test_runner_root_prompt.py::test_root_prompt_options_flow_into_root_agent - AttributeError: 'types.SimpleNamespace' object has no attribute 'runtime'\nFAILED tests/test_runner_root_prompt.py::test_root_prompt_options_default_to_none - AttributeError: 'types.SimpleNamespace' object has no attribute 'runtime'\n4 failed, 9 passed in 2.35s"
+    }
+  }
+}

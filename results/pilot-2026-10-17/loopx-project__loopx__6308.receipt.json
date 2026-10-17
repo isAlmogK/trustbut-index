@@ -1,0 +1,565 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.6.0"
+  },
+  "subject": {
+    "base": "eea050eb6ff46097eedb3499c4751eb263d18710",
+    "head": "19ff13a94d692ae5c7da6800d9fad7a6eaa8a9cd"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 2400 s"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 2403101,
+      "timedOut": true,
+      "cases": [],
+      "outputTail": "........................................................................ [ 12%]\n........................................................................ [ 13%]\n........................................................................ [ 13%]\n........................................................................ [ 13%]\n........................................................................ [ 14%]\n........................................................................ [ 14%]\n........................................................................ [ 14%]\n........................................................................ [ 15%]\n........................................................................ [ 15%]\n...........sssss....ssss................................................ [ 15%]\n........................................................................ [ 16%]\n........................................................................ [ 16%]\n........................................................................ [ 16%]\n........................................................................ [ 17%]\n........................................................................ [ 17%]\n...........................................................sssssssssssss [ 17%]\nssssssssssssssssssssssssssssss.......................................... [ 18%]\n........................................................................ [ 18%]\n........................................................................ [ 18%]\n........................................................................ [ 19%]\n........................................................................ [ 19%]\n........................................................................ [ 19%]\n........................................................................ [ 20%]\n........................................................................ [ 20%]\n........................................................................ [ 20%]\n........................................................................ [ 21%]\n........................................................................ [ 21%]\n........................................................................ [ 21%]\n........................................................................ [ 22%]\n........................................................................ [ 22%]\n........................................................................ [ 22%]\n...........................................F............................ [ 23%]\n........................................................................ [ 23%]\n........................................................................ [ 23%]\n................................................ss...................... [ 24%]\n........................................................................ [ 24%]\n........................................................................ [ 24%]\n........................................................................ [ 25%]\n................................................F....................... [ 25%]\n........................................................................ [ 25%]\n........................................................................ [ 26%]\n........................................................................ [ 26%]\n........................................................................ [ 26%]\n........................................................................ [ 27%]\n........................................................................ [ 27%]\n........................................................................ [ 27%]\n........................................................................ [ 28%]\n........................................................................ [ 28%]\n..............................................\nCommand timed out after 2400000 ms"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 4826,
+      "cases": [
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_real_file_recall_delivers_advice_not_a_verdict_or_utility[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_real_file_recall_delivers_advice_not_a_verdict_or_utility[aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_real_file_recall_delivers_advice_not_a_verdict_or_utility[bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb]",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_real_file_recall_delivers_advice_not_a_verdict_or_utility[bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_off_and_unqualified_paths_preserve_the_entire_packet[no_goal]",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_off_and_unqualified_paths_preserve_the_entire_packet[no_goal]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_off_and_unqualified_paths_preserve_the_entire_packet[no_agent]",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_off_and_unqualified_paths_preserve_the_entire_packet[no_agent]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_off_and_unqualified_paths_preserve_the_entire_packet[disabled]",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_off_and_unqualified_paths_preserve_the_entire_packet[disabled]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_off_and_unqualified_paths_preserve_the_entire_packet[not_enabled]",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_off_and_unqualified_paths_preserve_the_entire_packet[not_enabled]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_off_and_unqualified_paths_preserve_the_entire_packet[recall_off]",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_off_and_unqualified_paths_preserve_the_entire_packet[recall_off]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_off_and_unqualified_paths_preserve_the_entire_packet[config_drift]",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_off_and_unqualified_paths_preserve_the_entire_packet[config_drift]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_off_and_unqualified_paths_preserve_the_entire_packet[wrong_surface]",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_off_and_unqualified_paths_preserve_the_entire_packet[wrong_surface]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_off_and_unqualified_paths_preserve_the_entire_packet[unverified]",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_off_and_unqualified_paths_preserve_the_entire_packet[unverified]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_off_and_unqualified_paths_preserve_the_entire_packet[different_repository]",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_off_and_unqualified_paths_preserve_the_entire_packet[different_repository]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_off_and_unqualified_paths_preserve_the_entire_packet[inactive]",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_off_and_unqualified_paths_preserve_the_entire_packet[inactive]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_off_and_unqualified_paths_preserve_the_entire_packet[readiness]",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_off_and_unqualified_paths_preserve_the_entire_packet[readiness]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_malformed_or_changed_source_fails_open_without_partial_context",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_malformed_or_changed_source_fails_open_without_partial_context",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_cli_json_and_markdown_readback",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_cli_json_and_markdown_readback",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_cli_uses_normalized_changed_paths_with_an_ordinary_title[docs/architecture/rfcs/recovery.md-context_delivered]",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_cli_uses_normalized_changed_paths_with_an_ordinary_title[docs/architecture/rfcs/recovery.md-context_delivered]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_pr_review_repository_experience::test_cli_uses_normalized_changed_paths_with_an_ordinary_title[src/opaque_xyz.py-empty]",
+          "file": "tests.capabilities.test_pr_review_repository_experience",
+          "name": "test_cli_uses_normalized_changed_paths_with_an_ordinary_title[src/opaque_xyz.py-empty]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_revision_bound_record_cannot_reach_decision_context[revision:previous]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_revision_bound_record_cannot_reach_decision_context[revision:previous]",
+          "outcome": "fail",
+          "message": "Failed: An unqualified revision reached the application callback"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_revision_bound_record_cannot_reach_decision_context[None]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_revision_bound_record_cannot_reach_decision_context[None]",
+          "outcome": "fail",
+          "message": "Failed: An unqualified revision reached the application callback"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_revision_filter_continues_to_the_next_configured_corpus",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_revision_filter_continues_to_the_next_configured_corpus",
+          "outcome": "fail",
+          "message": "assert 0 == 1"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_disabled_adds_no_packet_transport_or_provider",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_disabled_adds_no_packet_transport_or_provider",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_pre_provider_admission[extra0-None]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_pre_provider_admission[extra0-None]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_pre_provider_admission[extra1-query_not_ready]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_pre_provider_admission[extra1-query_not_ready]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_pre_provider_admission[extra2-application_strategy_required]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_pre_provider_admission[extra2-application_strategy_required]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_pre_provider_admission[extra3-application_strategy_required]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_pre_provider_admission[extra3-application_strategy_required]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_pre_provider_admission[extra4-application_strategy_required]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_pre_provider_admission[extra4-application_strategy_required]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_pre_provider_admission[extra5-current_artifact_binding_required]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_pre_provider_admission[extra5-current_artifact_binding_required]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_failure_keeps_base_research_and_truthful_counters[empty-empty-1-0]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_failure_keeps_base_research_and_truthful_counters[empty-empty-1-0]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_failure_keeps_base_research_and_truthful_counters[filtered-empty-1-1]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_failure_keeps_base_research_and_truthful_counters[filtered-empty-1-1]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_failure_keeps_base_research_and_truthful_counters[unavailable-provider_unavailable-1-0]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_failure_keeps_base_research_and_truthful_counters[unavailable-provider_unavailable-1-0]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_failure_keeps_base_research_and_truthful_counters[wrong_scope-incomplete-0-0]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_failure_keeps_base_research_and_truthful_counters[wrong_scope-incomplete-0-0]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_recall_only_and_old_optional_callback_sdk_remain_legitimate",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_recall_only_and_old_optional_callback_sdk_remain_legitimate",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_invalid_original_request_retains_safe_boundary_reason",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_invalid_original_request_retains_safe_boundary_reason",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_checkpoint_input_diagnostics_do_not_call_provider[checkpoint0-read_authority_checkpoint_missing]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_checkpoint_input_diagnostics_do_not_call_provider[checkpoint0-read_authority_checkpoint_missing]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_checkpoint_input_diagnostics_do_not_call_provider[checkpoint1-read_authority_checkpoint_invalid]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_checkpoint_input_diagnostics_do_not_call_provider[checkpoint1-read_authority_checkpoint_invalid]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_shared_surface_checkpoint_builder_preserves_explicit_read_proof[True]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_shared_surface_checkpoint_builder_preserves_explicit_read_proof[True]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_shared_surface_checkpoint_builder_preserves_explicit_read_proof[False]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_shared_surface_checkpoint_builder_preserves_explicit_read_proof[False]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_turn_checkpoint_wrapper_retains_original_scope_and_source",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_turn_checkpoint_wrapper_retains_original_scope_and_source",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_new_corpus_does_not_expand_an_existing_surface_without_owner_binding",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_new_corpus_does_not_expand_an_existing_surface_without_owner_binding",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_invalid_age_is_not_coerced_even_with_a_missing_checkpoint[True]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_invalid_age_is_not_coerced_even_with_a_missing_checkpoint[True]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_invalid_age_is_not_coerced_even_with_a_missing_checkpoint[-1]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_invalid_age_is_not_coerced_even_with_a_missing_checkpoint[-1]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_invalid_age_is_not_coerced_even_with_a_missing_checkpoint[0.5]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_invalid_age_is_not_coerced_even_with_a_missing_checkpoint[0.5]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_invalid_age_is_not_coerced_even_with_a_missing_checkpoint[1]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_invalid_age_is_not_coerced_even_with_a_missing_checkpoint[1]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_other_freshness_input_errors_are_safe_and_zero_call[freshness0]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_other_freshness_input_errors_are_safe_and_zero_call[freshness0]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_other_freshness_input_errors_are_safe_and_zero_call[freshness1]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_other_freshness_input_errors_are_safe_and_zero_call[freshness1]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_other_freshness_input_errors_are_safe_and_zero_call[freshness2]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_other_freshness_input_errors_are_safe_and_zero_call[freshness2]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_shared_builder_does_not_substitute_an_unconfigured_surface",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_shared_builder_does_not_substitute_an_unconfigured_surface",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_typed_input_error_cannot_carry_an_arbitrary_public_code",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_typed_input_error_cannot_carry_an_arbitrary_public_code",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_delivery_then_actual_bound_assessment_and_exact_replay[applied]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_delivery_then_actual_bound_assessment_and_exact_replay[applied]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_delivery_then_actual_bound_assessment_and_exact_replay[applied_unchanged]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_delivery_then_actual_bound_assessment_and_exact_replay[applied_unchanged]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_delivery_then_actual_bound_assessment_and_exact_replay[ignored]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_delivery_then_actual_bound_assessment_and_exact_replay[ignored]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_delivery_then_actual_bound_assessment_and_exact_replay[refuted]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_delivery_then_actual_bound_assessment_and_exact_replay[refuted]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_direct_semantic_assessment_does_not_invent_context_delivery[applied]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_direct_semantic_assessment_does_not_invent_context_delivery[applied]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_direct_semantic_assessment_does_not_invent_context_delivery[ignored]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_direct_semantic_assessment_does_not_invent_context_delivery[ignored]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_direct_semantic_assessment_does_not_invent_context_delivery[refuted]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_direct_semantic_assessment_does_not_invent_context_delivery[refuted]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_failed_assessment_retains_delivery_for_retry_without_recall",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_failed_assessment_retains_delivery_for_retry_without_recall",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_invalid_semantic_evidence_is_not_adoption[foreign_ref]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_invalid_semantic_evidence_is_not_adoption[foreign_ref]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_invalid_semantic_evidence_is_not_adoption[unverified_artifact]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_invalid_semantic_evidence_is_not_adoption[unverified_artifact]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_invalid_semantic_evidence_is_not_adoption[unattributed]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_invalid_semantic_evidence_is_not_adoption[unattributed]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_invalid_semantic_evidence_is_not_adoption[throws]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_invalid_semantic_evidence_is_not_adoption[throws]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_ts_projection_failure_after_provider_retains_call_evidence",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_ts_projection_failure_after_provider_retains_call_evidence",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_semantic_receipt_survives_ts_failure_without_claiming_completion",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_semantic_receipt_survives_ts_failure_without_claiming_completion",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_delivery_projection_recovers_exact_result_without_recalling_or_reapplying",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_delivery_projection_recovers_exact_result_without_recalling_or_reapplying",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_assessment_projection_recovers_original_output_without_second_judgment[applied]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_assessment_projection_recovers_original_output_without_second_judgment[applied]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_assessment_projection_recovers_original_output_without_second_judgment[ignored]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_assessment_projection_recovers_original_output_without_second_judgment[ignored]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_assessment_projection_recovers_original_output_without_second_judgment[refuted]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_assessment_projection_recovers_original_output_without_second_judgment[refuted]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_assessment_projection_recovers_original_output_without_second_judgment[invalid]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_assessment_projection_recovers_original_output_without_second_judgment[invalid]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_assess_recovers_delivery_before_one_bound_judgment",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_assess_recovers_delivery_before_one_bound_judgment",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_pending_projection_keeps_exact_request_fence[artifact]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_pending_projection_keeps_exact_request_fence[artifact]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_pending_projection_keeps_exact_request_fence[query]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_pending_projection_keeps_exact_request_fence[query]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_pending_projection_keeps_exact_request_fence[scope]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_pending_projection_keeps_exact_request_fence[scope]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_pending_projection_keeps_exact_request_fence[configuration]",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_pending_projection_keeps_exact_request_fence[configuration]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_projection_recovery_cannot_upgrade_invalid_model_evidence",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_projection_recovery_cannot_upgrade_invalid_model_evidence",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_pre_provider_transport_failure_does_not_implicitly_restart_work",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_pre_provider_transport_failure_does_not_implicitly_restart_work",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_decision::test_direct_semantic_projection_recovers_without_inventing_delivery",
+          "file": "tests.capabilities.test_reward_memory_decision",
+          "name": "test_direct_semantic_projection_recovers_without_inventing_delivery",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_experience_quality::test_fact_only_summary_is_blocked_before_provider_write",
+          "file": "tests.capabilities.test_reward_memory_experience_quality",
+          "name": "test_fact_only_summary_is_blocked_before_provider_write",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_experience_quality::test_missing_future_behavior_field_is_invalid_before_provider_write",
+          "file": "tests.capabilities.test_reward_memory_experience_quality",
+          "name": "test_missing_future_behavior_field_is_invalid_before_provider_write",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_experience_quality::test_finance_experience_cannot_cross_to_a_different_surface",
+          "file": "tests.capabilities.test_reward_memory_experience_quality",
+          "name": "test_finance_experience_cannot_cross_to_a_different_surface",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_experience_quality::test_qualified_experience_is_preserved_and_exactly_read_back",
+          "file": "tests.capabilities.test_reward_memory_experience_quality",
+          "name": "test_qualified_experience_is_preserved_and_exactly_read_back",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_experience_quality::test_recall_respects_revision_policy_after_corpus_update[revision_bound]",
+          "file": "tests.capabilities.test_reward_memory_experience_quality",
+          "name": "test_recall_respects_revision_policy_after_corpus_update[revision_bound]",
+          "outcome": "fail",
+          "message": "AssertionError: assert 1 == 0&#10; + where 1 = len((RewardMemoryRecallItem(memory_ref='viking://resources/reward-memory/finance-trade/reward-memory-7d07426fcc07-3ea78df8...3b28d393741df9df97babe3a483db524', content_digest='04c7d594f1cbe8bde92f49a2762388f722732e31f91b06db9e1250fa6d340ca4'),))&#10; +…"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_experience_quality::test_recall_respects_revision_policy_after_corpus_update[source_truth_bound]",
+          "file": "tests.capabilities.test_reward_memory_experience_quality",
+          "name": "test_recall_respects_revision_policy_after_corpus_update[source_truth_bound]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_experience_quality::test_exact_readback_without_destination_recall_is_not_available",
+          "file": "tests.capabilities.test_reward_memory_experience_quality",
+          "name": "test_exact_readback_without_destination_recall_is_not_available",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_experience_quality::test_legacy_fact_only_procedural_record_is_not_recalled",
+          "file": "tests.capabilities.test_reward_memory_experience_quality",
+          "name": "test_legacy_fact_only_procedural_record_is_not_recalled",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_experience_quality::test_malformed_procedural_experience_reports_quality_filter",
+          "file": "tests.capabilities.test_reward_memory_experience_quality",
+          "name": "test_malformed_procedural_experience_reports_quality_filter",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.capabilities.test_reward_memory_experience_quality::test_future_behavior_changes_candidate_identity",
+          "file": "tests.capabilities.test_reward_memory_experience_quality",
+          "name": "test_future_behavior_changes_candidate_identity",
+          "outcome": "pass"
+        }
+      ],
+      "outputTail": "\n\n    @pytest.mark.parametrize(\"mode\", [\"revision_bound\", \"source_truth_bound\"])\n    def test_recall_respects_revision_policy_after_corpus_update(mode) -> None:\n        provider = FakeProvider()\n        selected = corpus()\n        old_event = event()\n        old_revision = old_event[\"revision_ref\"]\n        old_event[\"experience\"][\"evidence_refs\"].append(old_revision)\n        selected[\"freshness\"] = {\"mode\": mode, \"source_revision\": old_revision}\n        activated = ingest_scoped_feedback_reward_memory_event(\n            old_event, corpus=selected, standing_policy=policy(),\n            provider_binding=binding(), observed_at=OBSERVED_AT,\n            execute=True, provider=provider,\n        )\n        assert activated[\"status\"] == \"activated\"\n        original_resources = dict(provider.resources)\n        original_writes = provider.sync_calls\n        same_revision = execute_reward_memory_recall(\n            recall_request(selected_corpus=selected), provider_binding=binding(), provider=provider,\n        )\n        assert len(same_revision.items) == 1\n    \n        next_revision = \"revision:next-artifact\"\n        selected[\"freshness\"][\"source_revision\"] = next_revision\n        request = recall_request(selected_corpus=selected, revision_ref=next_revision)\n        assert request[\"guard\"][\"passed\"] is True\n        recalled = execute_reward_memory_recall(request, provider_binding=binding(), provider=provider)\n        expected_count = 0 if mode == \"revision_bound\" else 1\n>       assert len(recalled.items) == expected_count\nE       AssertionError: assert 1 == 0\nE        +  where 1 = len((RewardMemoryRecallItem(memory_ref='viking://resources/reward-memory/finance-trade/reward-memory-7d07426fcc07-3ea78df8...3b28d393741df9df97babe3a483db524', content_digest='04c7d594f1cbe8bde92f49a2762388f722732e31f91b06db9e1250fa6d340ca4'),))\nE        +    where (RewardMemoryRecallItem(memory_ref='viking://resources/reward-memory/finance-trade/reward-memory-7d07426fcc07-3ea78df8...3b28d393741df9df97babe3a483db524', content_digest='04c7d594f1cbe8bde92f49a2762388f722732e31f91b06db9e1250fa6d340ca4'),) = RewardMemoryRecallSession(public_packet={'ok': True, 'schema_version': 'reward_memory_recall_v0', 'corpus_id': 'financ...be3a483db524', content_digest='04c7d594f1cbe8bde92f49a2762388f722732e31f91b06db9e1250fa6d340ca4'),), filtered_items=()).items\n\ntests/capabilities/test_reward_memory_experience_quality.py:361: AssertionError\n=========================== short test summary info ============================\nFAILED tests/capabilities/test_reward_memory_decision.py::test_revision_bound_record_cannot_reach_decision_context[revision:previous] - Failed: An unqualified revision reached the application callback\nFAILED tests/capabilities/test_reward_memory_decision.py::test_revision_bound_record_cannot_reach_decision_context[None] - Failed: An unqualified revision reached the application callback\nFAILED tests/capabilities/test_reward_memory_decision.py::test_revision_filter_continues_to_the_next_configured_corpus - assert 0 == 1\nFAILED tests/capabilities/test_reward_memory_experience_quality.py::test_recall_respects_revision_policy_after_corpus_update[revision_bound] - AssertionError: assert 1 == 0\n +  where 1 = len((RewardMemoryRecallItem(memory_ref='viking://resources/reward-memory/finance-trade/reward-memory-7d07426fcc07-3ea78df8...3b28d393741df9df97babe3a483db524', content_digest='04c7d594f1cbe8bde92f49a2762388f722732e31f91b06db9e1250fa6d340ca4'),))\n +    where (RewardMemoryRecallItem(memory_ref='viking://resources/reward-memory/finance-trade/reward-memory-7d07426fcc07-3ea78df8...3b28d393741df9df97babe3a483db524', content_digest='04c7d594f1cbe8bde92f49a2762388f722732e31f91b06db9e1250fa6d340ca4'),) = RewardMemoryRecallSession(public_packet={'ok': True, 'schema_version': 'reward_memory_recall_v0', 'corpus_id': 'financ...be3a483db524', content_digest='04c7d594f1cbe8bde92f49a2762388f722732e31f91b06db9e1250fa6d340ca4'),), filtered_items=()).items\n4 failed, 81 passed in 4.42s"
+    }
+  }
+}

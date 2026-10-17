@@ -1,0 +1,436 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.6.0"
+  },
+  "subject": {
+    "base": "45b57c0a217c800f43020cc08b739817c220bae4",
+    "head": "a8f36ca1013896a3fc3de1204033b07b39f401f0"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 14,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "assertions-removed",
+      "severity": "warn",
+      "title": "50 assertions removed",
+      "file": "packages/core/test/integration/associations/belongs-to-many.test.js"
+    },
+    {
+      "id": "assertions-removed",
+      "severity": "warn",
+      "title": "1 assertion removed",
+      "file": "packages/core/test/integration/error.test.ts"
+    },
+    {
+      "id": "assertions-removed",
+      "severity": "warn",
+      "title": "2 assertions removed",
+      "file": "packages/core/test/integration/model/bulk-create.test.js"
+    },
+    {
+      "id": "assertions-removed",
+      "severity": "warn",
+      "title": "8 assertions removed",
+      "file": "packages/core/test/smoke/smoketests.test.js"
+    },
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 14"
+    },
+    {
+      "id": "proofs-unmatched",
+      "severity": "warn",
+      "title": "No test results matched the changed test files; fail-before/pass-after evidence unavailable"
+    }
+  ],
+  "risks": [
+    {
+      "file": "packages/core/test/integration/associations/belongs-to-many.test.js",
+      "score": 3,
+      "reasons": [
+        "has findings",
+        "large change (470 lines)"
+      ]
+    },
+    {
+      "file": "packages/core/test/integration/error.test.ts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "packages/core/test/integration/model/bulk-create.test.js",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "packages/core/test/smoke/smoketests.test.js",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "packages/core/test/integration/associations/scope.test.js",
+      "score": 1,
+      "reasons": [
+        "large change (618 lines)"
+      ]
+    },
+    {
+      "file": "packages/core/test/integration/hooks/associations.test.js",
+      "score": 1,
+      "reasons": [
+        "large change (263 lines)"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "mocha",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 14,
+      "durationMs": 491,
+      "cases": [
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/core\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/core\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/core/decorators-legacy\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/core/decorators-legacy\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/db2\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/db2\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/db2-ibmi\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/db2-ibmi\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/mariadb\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/mariadb\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/mssql\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/mssql\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/mysql\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/mysql\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/oracle\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/oracle\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/postgres\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/postgres\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/snowflake\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/snowflake\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/sqlite3\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/sqlite3\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/utils\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/utils\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/utils/node\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/utils/node\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::module \"@sequelize/validator.js\" exposes the same named exports as the CJS module",
+          "file": "test/esm-named-exports.test.js",
+          "name": "module \"@sequelize/validator.js\" exposes the same named exports as the CJS module",
+          "outcome": "fail"
+        }
+      ],
+      "outputTail": "(node:2734) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:2734) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `node --trace-deprecation ...` to show where the warning was created)"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 495,
+      "cases": [
+        {
+          "id": "packages/core/test/integration/associations/belongs-to-many.test.js::packages/core/test/integration/associations/belongs-to-many.test.js",
+          "file": "packages/core/test/integration/associations/belongs-to-many.test.js",
+          "name": "packages/core/test/integration/associations/belongs-to-many.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/associations/belongs-to.test.js::packages/core/test/integration/associations/belongs-to.test.js",
+          "file": "packages/core/test/integration/associations/belongs-to.test.js",
+          "name": "packages/core/test/integration/associations/belongs-to.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/associations/has-many.test.js::packages/core/test/integration/associations/has-many.test.js",
+          "file": "packages/core/test/integration/associations/has-many.test.js",
+          "name": "packages/core/test/integration/associations/has-many.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/associations/has-one.test.js::packages/core/test/integration/associations/has-one.test.js",
+          "file": "packages/core/test/integration/associations/has-one.test.js",
+          "name": "packages/core/test/integration/associations/has-one.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/associations/scope.test.js::packages/core/test/integration/associations/scope.test.js",
+          "file": "packages/core/test/integration/associations/scope.test.js",
+          "name": "packages/core/test/integration/associations/scope.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/cls.test.ts::packages/core/test/integration/cls.test.ts",
+          "file": "packages/core/test/integration/cls.test.ts",
+          "name": "packages/core/test/integration/cls.test.ts",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/configuration.test.ts::packages/core/test/integration/configuration.test.ts",
+          "file": "packages/core/test/integration/configuration.test.ts",
+          "name": "packages/core/test/integration/configuration.test.ts",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/data-types/geography.test.ts::packages/core/test/integration/data-types/geography.test.ts",
+          "file": "packages/core/test/integration/data-types/geography.test.ts",
+          "name": "packages/core/test/integration/data-types/geography.test.ts",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/error.test.ts::packages/core/test/integration/error.test.ts",
+          "file": "packages/core/test/integration/error.test.ts",
+          "name": "packages/core/test/integration/error.test.ts",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/hooks/associations.test.js::packages/core/test/integration/hooks/associations.test.js",
+          "file": "packages/core/test/integration/hooks/associations.test.js",
+          "name": "packages/core/test/integration/hooks/associations.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/hooks/hooks.test.js::packages/core/test/integration/hooks/hooks.test.js",
+          "file": "packages/core/test/integration/hooks/hooks.test.js",
+          "name": "packages/core/test/integration/hooks/hooks.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/instance/destroy.test.js::packages/core/test/integration/instance/destroy.test.js",
+          "file": "packages/core/test/integration/instance/destroy.test.js",
+          "name": "packages/core/test/integration/instance/destroy.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/model.test.js::packages/core/test/integration/model.test.js",
+          "file": "packages/core/test/integration/model.test.js",
+          "name": "packages/core/test/integration/model.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/model/attributes/types.test.js::packages/core/test/integration/model/attributes/types.test.js",
+          "file": "packages/core/test/integration/model/attributes/types.test.js",
+          "name": "packages/core/test/integration/model/attributes/types.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/model/bulk-create.test.js::packages/core/test/integration/model/bulk-create.test.js",
+          "file": "packages/core/test/integration/model/bulk-create.test.js",
+          "name": "packages/core/test/integration/model/bulk-create.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/model/create.test.js::packages/core/test/integration/model/create.test.js",
+          "file": "packages/core/test/integration/model/create.test.js",
+          "name": "packages/core/test/integration/model/create.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/model/findOne.test.js::packages/core/test/integration/model/findOne.test.js",
+          "file": "packages/core/test/integration/model/findOne.test.js",
+          "name": "packages/core/test/integration/model/findOne.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/model/json.test.js::packages/core/test/integration/model/json.test.js",
+          "file": "packages/core/test/integration/model/json.test.js",
+          "name": "packages/core/test/integration/model/json.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/model/paranoid.test.js::packages/core/test/integration/model/paranoid.test.js",
+          "file": "packages/core/test/integration/model/paranoid.test.js",
+          "name": "packages/core/test/integration/model/paranoid.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/model/upsert.test.js::packages/core/test/integration/model/upsert.test.js",
+          "file": "packages/core/test/integration/model/upsert.test.js",
+          "name": "packages/core/test/integration/model/upsert.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/operators.test.js::packages/core/test/integration/operators.test.js",
+          "file": "packages/core/test/integration/operators.test.js",
+          "name": "packages/core/test/integration/operators.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/query-interface.test.js::packages/core/test/integration/query-interface.test.js",
+          "file": "packages/core/test/integration/query-interface.test.js",
+          "name": "packages/core/test/integration/query-interface.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/query-interface/add-show-remove-constraint.test.ts::packages/core/test/integration/query-interface/add-show-remove-constraint.test.ts",
+          "file": "packages/core/test/integration/query-interface/add-show-remove-constraint.test.ts",
+          "name": "packages/core/test/integration/query-interface/add-show-remove-constraint.test.ts",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/query-interface/list-tables.test.ts::packages/core/test/integration/query-interface/list-tables.test.ts",
+          "file": "packages/core/test/integration/query-interface/list-tables.test.ts",
+          "name": "packages/core/test/integration/query-interface/list-tables.test.ts",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/query-interface/remove-column.test.ts::packages/core/test/integration/query-interface/remove-column.test.ts",
+          "file": "packages/core/test/integration/query-interface/remove-column.test.ts",
+          "name": "packages/core/test/integration/query-interface/remove-column.test.ts",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/query-interface/select.test.ts::packages/core/test/integration/query-interface/select.test.ts",
+          "file": "packages/core/test/integration/query-interface/select.test.ts",
+          "name": "packages/core/test/integration/query-interface/select.test.ts",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/sequelize.test.js::packages/core/test/integration/sequelize.test.js",
+          "file": "packages/core/test/integration/sequelize.test.js",
+          "name": "packages/core/test/integration/sequelize.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/sequelize/query.test.js::packages/core/test/integration/sequelize/query.test.js",
+          "file": "packages/core/test/integration/sequelize/query.test.js",
+          "name": "packages/core/test/integration/sequelize/query.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/sql/random.test.ts::packages/core/test/integration/sql/random.test.ts",
+          "file": "packages/core/test/integration/sql/random.test.ts",
+          "name": "packages/core/test/integration/sql/random.test.ts",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/integration/transaction.test.js::packages/core/test/integration/transaction.test.js",
+          "file": "packages/core/test/integration/transaction.test.js",
+          "name": "packages/core/test/integration/transaction.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/smoke/smoketests.test.js::packages/core/test/smoke/smoketests.test.js",
+          "file": "packages/core/test/smoke/smoketests.test.js",
+          "name": "packages/core/test/smoke/smoketests.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/unit/model/define.test.ts::packages/core/test/unit/model/define.test.ts",
+          "file": "packages/core/test/unit/model/define.test.ts",
+          "name": "packages/core/test/unit/model/define.test.ts",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/unit/query-generator/create-table-query.test.ts::packages/core/test/unit/query-generator/create-table-query.test.ts",
+          "file": "packages/core/test/unit/query-generator/create-table-query.test.ts",
+          "name": "packages/core/test/unit/query-generator/create-table-query.test.ts",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/unit/query-generator/insert-query.test.ts::packages/core/test/unit/query-generator/insert-query.test.ts",
+          "file": "packages/core/test/unit/query-generator/insert-query.test.ts",
+          "name": "packages/core/test/unit/query-generator/insert-query.test.ts",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/unit/query-interface/insert.test.ts::packages/core/test/unit/query-interface/insert.test.ts",
+          "file": "packages/core/test/unit/query-interface/insert.test.ts",
+          "name": "packages/core/test/unit/query-interface/insert.test.ts",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/unit/query-interface/upsert.test.ts::packages/core/test/unit/query-interface/upsert.test.ts",
+          "file": "packages/core/test/unit/query-interface/upsert.test.ts",
+          "name": "packages/core/test/unit/query-interface/upsert.test.ts",
+          "outcome": "error"
+        },
+        {
+          "id": "packages/core/test/unit/sql/create-table.test.js::packages/core/test/unit/sql/create-table.test.js",
+          "file": "packages/core/test/unit/sql/create-table.test.js",
+          "name": "packages/core/test/unit/sql/create-table.test.js",
+          "outcome": "error"
+        },
+        {
+          "id": "test/esm-named-exports.test.js::test/esm-named-exports.test.js",
+          "file": "test/esm-named-exports.test.js",
+          "name": "test/esm-named-exports.test.js",
+          "outcome": "error"
+        }
+      ],
+      "outputTail": "(node:2791) ExperimentalWarning: `--experimental-loader` may be removed in the future; instead use `register()`:\n--import 'data:text/javascript,import { register } from \"node:module\"; import { pathToFileURL } from \"node:url\"; register(\"ts-node/esm\", pathToFileURL(\"./\"));'\n(Use `node --trace-warnings ...` to show where the warning was created)\n(node:2791) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.\n(Use `node --trace-deprecation ...` to show where the warning was created)\n\n Exception during run: Error: Cannot find module '/tmp/trustbut-wt-zQRYwr/packages/core/lib/index.js'\n    at createEsmNotFoundErr (node:internal/modules/cjs/loader:1466:15)\n    at finalizeEsmResolution (node:internal/modules/cjs/loader:1455:15)\n    at trySelf (node:internal/modules/cjs/loader:629:12)\n    at Function.<anonymous> (node:internal/modules/cjs/loader:1406:24)\n    at Function.Module._resolveFilename.sharedData.moduleResolveFilenameHook.installedValue [as _resolveFilename] (/home/runner/work/_temp/work/repo/node_modules/@cspotcode/source-map-support/source-map-support.js:811:30)\n    at defaultResolveImpl (node:internal/modules/cjs/loader:1040:19)\n    at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1045:22)\n    at Function._load (node:internal/modules/cjs/loader:1216:25)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Module.require (node:internal/modules/cjs/loader:1527:12)\n    at require (node:internal/modules/helpers:147:16)\n    at Object.<anonymous> (/tmp/trustbut-wt-zQRYwr/packages/core/test/integration/support.ts:2:1)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at Module.m._compile (/home/runner/work/_temp/work/repo/node_modules/ts-node/src/index.ts:1618:23)\n    at node:internal/modules/cjs/loader:1913:10\n    at Object.require.extensions.<computed> [as .ts] (/home/runner/work/_temp/work/repo/node_modules/ts-node/src/index.ts:1621:12)\n    at Module.load (node:internal/modules/cjs/loader:1505:32)\n    at Function._load (node:internal/modules/cjs/loader:1309:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at Module.require (node:internal/modules/cjs/loader:1527:12)\n    at require (node:internal/modules/helpers:147:16)\n    at Object.<anonymous> (/tmp/trustbut-wt-zQRYwr/packages/core/test/integration/associations/belongs-to-many.test.js:6:17)\n    at Module._compile (node:internal/modules/cjs/loader:1781:14)\n    at node:internal/modules/cjs/loader:1913:10\n    at Object.require.extensions.<computed> [as .js] (/home/runner/work/_temp/work/repo/node_modules/ts-node/src/index.ts:1608:43)\n    at Module.load (node:internal/modules/cjs/loader:1505:32)\n    at Function._load (node:internal/modules/cjs/loader:1309:12)\n    at wrapModuleLoad (node:internal/modules/cjs/loader:254:19)\n    at loadCJSModuleWithModuleLoad (node:internal/modules/esm/translators:335:3)\n    at ModuleWrap.<anonymous> (node:internal/modules/esm/translators:235:7)\n    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n    at async formattedImport (/home/runner/work/_temp/work/repo/node_modules/mocha/lib/nodejs/esm-utils.js:10:14)\n    at async Object.requireModule [as requireOrImport] (/home/runner/work/_temp/work/repo/node_modules/mocha/lib/nodejs/esm-utils.js:102:30)\n    at async Object.exports.loadFilesAsync (/home/runner/work/_temp/work/repo/node_modules/mocha/lib/nodejs/esm-utils.js:152:20)\n    at async singleRun (/home/runner/work/_temp/work/repo/node_modules/mocha/lib/cli/run-helpers.js:168:3)\n    at async Object.exports.handler (/home/runner/work/_temp/work/repo/node_modules/mocha/lib/cli/run.js:379:5) {\n  code: 'MODULE_NOT_FOUND',\n  path: '/tmp/trustbut-wt-zQRYwr/packages/core/package.json'\n}"
+    }
+  }
+}

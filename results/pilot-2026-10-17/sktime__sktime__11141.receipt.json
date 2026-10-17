@@ -1,0 +1,118 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.6.0"
+  },
+  "subject": {
+    "base": "3d650dd8c24a696f06c0343bd8730a5b94f2d784",
+    "head": "2ebdcc61e3287ac016d89368f7eeb9c351e841fa"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 3,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 1"
+    },
+    {
+      "id": "proofs-unmatched",
+      "severity": "warn",
+      "title": "No test results matched the changed test files; fail-before/pass-after evidence unavailable"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 141141,
+      "cases": [
+        {
+          "id": "::gw3",
+          "file": "",
+          "name": "gw3",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::gw2",
+          "file": "",
+          "name": "gw2",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::gw0",
+          "file": "",
+          "name": "gw0",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ],
+      "outputTail": "+++ gw2\n\n@@ -53065,14 +53065,14 @@\n\n sktime/datasets/tests/test_datadownload.py::test_load_UEA\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_check_freq_for_hier_data\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[solar_4_seconds_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[solar_10_minutes_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_m5\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[nn5_daily_dataset_without_missing_values]\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[car_parts_dataset_without_missing_values]\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[london_smart_meters_dataset_without_missing_values]\n sktime/datasets/tests/test_datadownload.py::test_load_forecasting_data_invalid_name[invalid_name]\n sktime/datasets/tests/test_datadownload.py::test_load_fpp3_public\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[us_births_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_solar\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[m4_weekly_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[wind_4_seconds_dataset]\n sktime/forecasting/tests/test_sarimax.py::test_SARIMAX_for_exogenous_features\n sktime/forecasting/tests/test_sarimax.py::test_SARIMAX_update_with_exogenous_variables\nTo see why this happens see 'Known limitations' in documentation for pytest-xdist\nERROR gw0 - Different tests were collected between gw1 and gw0. The difference is:\n--- gw1\n\n+++ gw0\n\n@@ -53064,16 +53064,16 @@\n\n sktime/datasets/tests/test_datadownload.py::test_load_fpp3_private\n sktime/datasets/tests/test_datadownload.py::test_load_UEA\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_check_freq_for_hier_data\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[traffic_weekly_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[solar_4_seconds_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[solar_10_minutes_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_m5\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[nn5_daily_dataset_without_missing_values]\n sktime/datasets/tests/test_datadownload.py::test_load_forecasting_data_invalid_name[invalid_name]\n sktime/datasets/tests/test_datadownload.py::test_load_fpp3_public\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[us_births_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_solar\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[wind_4_seconds_dataset]\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[nn5_weekly_dataset]\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[m1_quarterly_dataset]\n sktime/forecasting/tests/test_sarimax.py::test_SARIMAX_for_exogenous_features\n sktime/forecasting/tests/test_sarimax.py::test_SARIMAX_update_with_exogenous_variables\n sktime/forecasting/tests/test_sarimax.py::test_SARIMAX_multiple_intervals_against_statsmodels\nTo see why this happens see 'Known limitations' in documentation for pytest-xdist\n24 warnings, 3 errors in 136.90s (0:02:16)"
+    },
+    "before": {
+      "exitCode": 0,
+      "durationMs": 5614,
+      "cases": [
+        {
+          "id": "sktime.detection.tests.test_lof::test_cut_into_intervals[_daily_datetime_case-1-None]",
+          "file": "sktime.detection.tests.test_lof",
+          "name": "test_cut_into_intervals[_daily_datetime_case-1-None]",
+          "outcome": "skip"
+        },
+        {
+          "id": "sktime.detection.tests.test_lof::test_cut_into_intervals[x0-1-expected_intervals0]",
+          "file": "sktime.detection.tests.test_lof",
+          "name": "test_cut_into_intervals[x0-1-expected_intervals0]",
+          "outcome": "skip"
+        },
+        {
+          "id": "sktime.detection.tests.test_lof::test_cut_into_intervals[_month_end_datetime_case-2-None]",
+          "file": "sktime.detection.tests.test_lof",
+          "name": "test_cut_into_intervals[_month_end_datetime_case-2-None]",
+          "outcome": "skip"
+        },
+        {
+          "id": "sktime.detection.tests.test_lof::test_sublof_does_not_mutate_input",
+          "file": "sktime.detection.tests.test_lof",
+          "name": "test_sublof_does_not_mutate_input",
+          "outcome": "skip"
+        },
+        {
+          "id": "sktime.detection.tests.test_lof::test_predict[X0-y_expected0]",
+          "file": "sktime.detection.tests.test_lof",
+          "name": "test_predict[X0-y_expected0]",
+          "outcome": "skip"
+        },
+        {
+          "id": "sktime.detection.tests.test_lof::test_cut_into_intervals[x2-interval_size2-expected_intervals2]",
+          "file": "sktime.detection.tests.test_lof",
+          "name": "test_cut_into_intervals[x2-interval_size2-expected_intervals2]",
+          "outcome": "skip"
+        },
+        {
+          "id": "sktime.detection.tests.test_lof::test_cut_into_intervals[x1-1.5-expected_intervals1]",
+          "file": "sktime.detection.tests.test_lof",
+          "name": "test_cut_into_intervals[x1-1.5-expected_intervals1]",
+          "outcome": "skip"
+        }
+      ]
+    }
+  }
+}

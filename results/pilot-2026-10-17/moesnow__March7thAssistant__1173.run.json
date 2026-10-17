@@ -1,0 +1,29 @@
+{
+  "id": "moesnow__March7thAssistant__1173",
+  "status": "setup-failed",
+  "stage": "install",
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.13",
+      "install": [
+        "uv pip install -e .",
+        "uv pip install --group dev",
+        "uv pip install -r requirements.txt",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 67308,
+    "verifyMs": 0
+  },
+  "exitCodes": {
+    "install": 1,
+    "verify": null
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "unknown",
+  "installRetries": 2,
+  "installTail": "Using Python 3.13.16 environment at: /home/runner/work/_temp/venv\nResolved 105 packages in 13ms\n   Building pyrect==0.2.0\n   Building pygetwindow==0.0.9\n   Building march7thassistant @ file:///home/runner/work/_temp/work/repo\nDownloading pyside6-addons (167.0MiB)\nDownloading pyside6-essentials (76.2MiB)\nDownloading opencv-python (69.5MiB)\nDownloading openvino (55.7MiB)\nerror: Failed to build `march7thassistant @ file:///home/runner/work/_temp/work/repo`\n  cause: The build backend returned an error\n  cause: Call to `setuptools.build_meta:__legacy__.get_requires_for_build_editable` failed (exit status: 1)\n\n         [stderr]\n         error: Multiple top-level packages discovered in a flat-layout: ['app', 'module', 'assets'].\n\n         To avoid accidental inclusion of unwanted files or directories,\n         setuptools will not proceed with this build.\n\n         If you are trying to create a single distribution with multiple packages\n         on purpose, you should not rely on automatic discovery.\n         Instead, consider the following options:\n\n         1. set up custom discovery (`find` directive with `include` or `exclude`)\n         2. use a `src-layout`\n         3. explicitly set `py_modules` or `packages` with a list of names\n\n         To find more information, look for \"package discovery\" on setuptools docs.\n\nhint: Build failures usually indicate a problem with the package or the build environment"
+}

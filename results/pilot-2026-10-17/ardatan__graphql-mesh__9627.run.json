@@ -1,0 +1,24 @@
+{
+  "id": "ardatan__graphql-mesh__9627",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "25",
+      "pm": "yarn-berry",
+      "install": "yarn install --immutable"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 65335,
+    "verifyMs": 46199
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 0
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.6.0",
+  "installRetries": 0
+}

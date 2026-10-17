@@ -1,0 +1,623 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.6.0"
+  },
+  "subject": {
+    "base": "f5bbc9ba6a623bf9a1109a39d1ac4773afaf6401",
+    "head": "796d4e4c93dda7f18466ab5d6f310e52b2fea055"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 15,
+    "failed": 9,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [
+    {
+      "file": "tests/build.ts",
+      "name": "builds an object with the correct shape",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "tests/build.ts",
+      "name": "fails when input argument is missing",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "tests/build.ts",
+      "name": "fails when input file does not exist",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "tests/build.ts",
+      "name": "fails when filename is missing a height",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "tests/build.ts",
+      "name": "fails when height in filename does not match height attribute of SVG",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "tests/build.ts",
+      "name": "fails when height attribute is missing",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "tests/build.ts",
+      "name": "fails when width attribute is missing",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "tests/build.ts",
+      "name": "fails when viewBox attribute is missing",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "tests/build.ts",
+      "name": "fails when height attribute is invalid",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "tests/build.ts",
+      "name": "fails when width attribute is invalid",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "tests/build.ts",
+      "name": "fails when viewBox attribute is invalid",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "tests/build.ts",
+      "name": "fails when viewBox width does not match width attribute",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "tests/build.ts",
+      "name": "fails when viewBox height does not match height attribute",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "tests/build.ts",
+      "name": "ignores non-SVG input files",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "lib/octicons_node/tests/index.ts",
+      "name": "tests/index.ts",
+      "before": "missing",
+      "after": "fail",
+      "verdict": "failing"
+    },
+    {
+      "file": "lib/octicons_node/tests/index.ts",
+      "name": "tests/index.ts",
+      "before": "missing",
+      "after": "fail",
+      "verdict": "failing"
+    },
+    {
+      "file": "lib/octicons_react/__tests__/codesplitting.test.ts",
+      "name": "emits one pre-transformed module per icon",
+      "before": "missing",
+      "after": "fail",
+      "verdict": "failing"
+    },
+    {
+      "file": "lib/octicons_react/__tests__/codesplitting.test.ts",
+      "name": "the barrel is a pure re-export of the per-icon modules",
+      "before": "missing",
+      "after": "fail",
+      "verdict": "failing"
+    },
+    {
+      "file": "lib/octicons_react/__tests__/codesplitting.test.ts",
+      "name": "package.json exports expose the \".\" barrel and a per-icon \"./*\" subpath",
+      "before": "missing",
+      "after": "pass",
+      "verdict": "proves-change"
+    },
+    {
+      "file": "lib/octicons_react/__tests__/codesplitting.test.ts",
+      "name": "dynamic subpath imports are code-split into separate chunks",
+      "before": "missing",
+      "after": "fail",
+      "verdict": "failing"
+    },
+    {
+      "file": "lib/octicons_react/__tests__/public-api.test.ts",
+      "name": "__tests__/public-api.test.ts",
+      "before": "missing",
+      "after": "fail",
+      "verdict": "failing"
+    },
+    {
+      "file": "lib/octicons_react/__tests__/tree-shaking.test.ts",
+      "name": "tree shaking",
+      "before": "missing",
+      "after": "fail",
+      "verdict": "failing"
+    },
+    {
+      "file": "lib/octicons_react/__tests__/tree-shaking.test.ts",
+      "name": "tree shaking single export",
+      "before": "missing",
+      "after": "fail",
+      "verdict": "failing"
+    }
+  ],
+  "findings": [
+    {
+      "id": "test-config-changed",
+      "severity": "warn",
+      "title": "Test or coverage config changed",
+      "file": "lib/octicons_node/vitest.config.mts"
+    },
+    {
+      "id": "snapshot-changed",
+      "severity": "warn",
+      "title": "Snapshot changed",
+      "file": "lib/octicons_react/__tests__/__snapshots__/public-api.test.ts.snap"
+    },
+    {
+      "id": "snapshot-changed",
+      "severity": "warn",
+      "title": "Snapshot changed",
+      "file": "lib/octicons_react/src/__tests__/__snapshots__/octicon.tsx.snap"
+    },
+    {
+      "id": "test-config-changed",
+      "severity": "warn",
+      "title": "Test or coverage config changed",
+      "file": "lib/octicons_react/vitest.config.mts"
+    },
+    {
+      "id": "test-config-changed",
+      "severity": "warn",
+      "title": "Test or coverage config changed",
+      "file": "lib/octicons_styled/vitest.config.mts"
+    },
+    {
+      "id": "snapshot-changed",
+      "severity": "warn",
+      "title": "Snapshot changed",
+      "file": "tests/__snapshots__/build.ts.snap"
+    },
+    {
+      "id": "test-config-changed",
+      "severity": "warn",
+      "title": "Test or coverage config changed",
+      "file": "vitest.config.mjs"
+    },
+    {
+      "id": "test-config-changed",
+      "severity": "warn",
+      "title": "Test or coverage config changed",
+      "file": "vitest.config.mts"
+    },
+    {
+      "id": "deps-changed",
+      "severity": "info",
+      "title": "Dependencies changed; both runs use the currently installed dependencies"
+    },
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 1"
+    },
+    {
+      "id": "test-failing",
+      "severity": "fail",
+      "title": "Test fails at head",
+      "file": "lib/octicons_node/tests/index.ts",
+      "detail": "tests/index.ts"
+    },
+    {
+      "id": "test-failing",
+      "severity": "fail",
+      "title": "Test fails at head",
+      "file": "lib/octicons_node/tests/index.ts",
+      "detail": "tests/index.ts"
+    },
+    {
+      "id": "test-failing",
+      "severity": "fail",
+      "title": "Test fails at head",
+      "file": "lib/octicons_react/__tests__/codesplitting.test.ts",
+      "detail": "emits one pre-transformed module per icon"
+    },
+    {
+      "id": "test-failing",
+      "severity": "fail",
+      "title": "Test fails at head",
+      "file": "lib/octicons_react/__tests__/codesplitting.test.ts",
+      "detail": "the barrel is a pure re-export of the per-icon modules"
+    },
+    {
+      "id": "test-failing",
+      "severity": "fail",
+      "title": "Test fails at head",
+      "file": "lib/octicons_react/__tests__/codesplitting.test.ts",
+      "detail": "dynamic subpath imports are code-split into separate chunks"
+    },
+    {
+      "id": "test-failing",
+      "severity": "fail",
+      "title": "Test fails at head",
+      "file": "lib/octicons_react/__tests__/public-api.test.ts",
+      "detail": "__tests__/public-api.test.ts"
+    },
+    {
+      "id": "test-failing",
+      "severity": "fail",
+      "title": "Test fails at head",
+      "file": "lib/octicons_react/__tests__/tree-shaking.test.ts",
+      "detail": "tree shaking"
+    },
+    {
+      "id": "test-failing",
+      "severity": "fail",
+      "title": "Test fails at head",
+      "file": "lib/octicons_react/__tests__/tree-shaking.test.ts",
+      "detail": "tree shaking single export"
+    }
+  ],
+  "risks": [
+    {
+      "file": ".github/workflows/javascript.yml",
+      "score": 3,
+      "reasons": [
+        "CI pipeline"
+      ]
+    },
+    {
+      "file": ".github/workflows/optimize.yml",
+      "score": 3,
+      "reasons": [
+        "CI pipeline"
+      ]
+    },
+    {
+      "file": "examples/octicons-react-nextjs/package.json",
+      "score": 2,
+      "reasons": [
+        "dependencies"
+      ]
+    },
+    {
+      "file": "lib/octicons_node/package.json",
+      "score": 2,
+      "reasons": [
+        "dependencies"
+      ]
+    },
+    {
+      "file": "lib/octicons_node/tests/index.ts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "lib/octicons_node/vitest.config.mts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "lib/octicons_react/__tests__/__snapshots__/public-api.test.ts.snap",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "lib/octicons_react/__tests__/codesplitting.test.ts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "lib/octicons_react/__tests__/public-api.test.ts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "lib/octicons_react/__tests__/tree-shaking.test.ts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "lib/octicons_react/package.json",
+      "score": 2,
+      "reasons": [
+        "dependencies"
+      ]
+    },
+    {
+      "file": "lib/octicons_react/src/__tests__/__snapshots__/octicon.tsx.snap",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "lib/octicons_react/vitest.config.mts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "lib/octicons_styled/package.json",
+      "score": 2,
+      "reasons": [
+        "dependencies"
+      ]
+    },
+    {
+      "file": "lib/octicons_styled/vitest.config.mts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "package-lock.json",
+      "score": 2,
+      "reasons": [
+        "dependencies"
+      ]
+    },
+    {
+      "file": "package.json",
+      "score": 2,
+      "reasons": [
+        "dependencies"
+      ]
+    },
+    {
+      "file": "tests/__snapshots__/build.ts.snap",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "vitest.config.mjs",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "vitest.config.mts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 3983,
+      "cases": [
+        {
+          "id": "tests/build.ts::builds an object with the correct shape",
+          "file": "tests/build.ts",
+          "name": "builds an object with the correct shape",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/build.ts::fails when input argument is missing",
+          "file": "tests/build.ts",
+          "name": "fails when input argument is missing",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/build.ts::fails when input file does not exist",
+          "file": "tests/build.ts",
+          "name": "fails when input file does not exist",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/build.ts::fails when filename is missing a height",
+          "file": "tests/build.ts",
+          "name": "fails when filename is missing a height",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/build.ts::fails when height in filename does not match height attribute of SVG",
+          "file": "tests/build.ts",
+          "name": "fails when height in filename does not match height attribute of SVG",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/build.ts::fails when height attribute is missing",
+          "file": "tests/build.ts",
+          "name": "fails when height attribute is missing",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/build.ts::fails when width attribute is missing",
+          "file": "tests/build.ts",
+          "name": "fails when width attribute is missing",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/build.ts::fails when viewBox attribute is missing",
+          "file": "tests/build.ts",
+          "name": "fails when viewBox attribute is missing",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/build.ts::fails when height attribute is invalid",
+          "file": "tests/build.ts",
+          "name": "fails when height attribute is invalid",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/build.ts::fails when width attribute is invalid",
+          "file": "tests/build.ts",
+          "name": "fails when width attribute is invalid",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/build.ts::fails when viewBox attribute is invalid",
+          "file": "tests/build.ts",
+          "name": "fails when viewBox attribute is invalid",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/build.ts::fails when viewBox width does not match width attribute",
+          "file": "tests/build.ts",
+          "name": "fails when viewBox width does not match width attribute",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/build.ts::fails when viewBox height does not match height attribute",
+          "file": "tests/build.ts",
+          "name": "fails when viewBox height does not match height attribute",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/build.ts::ignores non-SVG input files",
+          "file": "tests/build.ts",
+          "name": "ignores non-SVG input files",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/index.ts::tests/index.ts",
+          "file": "tests/index.ts",
+          "name": "tests/index.ts",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, scandir './lib/build/svg'"
+        },
+        {
+          "id": "lib/octicons_node/tests/index.ts::tests/index.ts",
+          "file": "lib/octicons_node/tests/index.ts",
+          "name": "tests/index.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '/tmp/trustbut-wt-7QAgDO/lib/octicons_node/index.js'. Please verify that the package.json has a valid \"main\" entry"
+        },
+        {
+          "id": "lib/octicons_react/__tests__/codesplitting.test.ts::emits one pre-transformed module per icon",
+          "file": "lib/octicons_react/__tests__/codesplitting.test.ts",
+          "name": "emits one pre-transformed module per icon",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-7QAgDO/lib/octicons_react/dist/icons/AlertIcon.mjs'"
+        },
+        {
+          "id": "lib/octicons_react/__tests__/codesplitting.test.ts::the barrel is a pure re-export of the per-icon modules",
+          "file": "lib/octicons_react/__tests__/codesplitting.test.ts",
+          "name": "the barrel is a pure re-export of the per-icon modules",
+          "outcome": "fail",
+          "message": "ENOENT: no such file or directory, open '/tmp/trustbut-wt-7QAgDO/lib/octicons_react/dist/index.esm.mjs'"
+        },
+        {
+          "id": "lib/octicons_react/__tests__/codesplitting.test.ts::package.json exports expose the \".\" barrel and a per-icon \"./*\" subpath",
+          "file": "lib/octicons_react/__tests__/codesplitting.test.ts",
+          "name": "package.json exports expose the \".\" barrel and a per-icon \"./*\" subpath",
+          "outcome": "pass"
+        },
+        {
+          "id": "lib/octicons_react/__tests__/codesplitting.test.ts::dynamic subpath imports are code-split into separate chunks",
+          "file": "lib/octicons_react/__tests__/codesplitting.test.ts",
+          "name": "dynamic subpath imports are code-split into separate chunks",
+          "outcome": "fail",
+          "message": "Build failed with 2 errors: [31m[UNRESOLVED_IMPORT] [0mCould not resolve '../../dist/icons/AlertIcon.mjs' in lib/octicons_react/__tests__/__fixtures__/dynamic-imports.mts [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m lib/octicons_react/__tests__/__fixtures__/dynamic-imports.mts:6:21 [38;5;246m][0m [38…"
+        },
+        {
+          "id": "lib/octicons_react/__tests__/public-api.test.ts::__tests__/public-api.test.ts",
+          "file": "lib/octicons_react/__tests__/public-api.test.ts",
+          "name": "__tests__/public-api.test.ts",
+          "outcome": "fail",
+          "message": "Cannot find module '../' imported from '/tmp/trustbut-wt-7QAgDO/lib/octicons_react/__tests__/public-api.test.ts'"
+        },
+        {
+          "id": "lib/octicons_react/__tests__/tree-shaking.test.ts::tree shaking",
+          "file": "lib/octicons_react/__tests__/tree-shaking.test.ts",
+          "name": "tree shaking",
+          "outcome": "fail",
+          "message": "Build failed with 1 error: [31m[UNRESOLVED_IMPORT] [0mCould not resolve '/tmp/trustbut-wt-7QAgDO/lib/octicons_react' in __entrypoint__ [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m __entrypoint__:1:27 [38;5;246m][0m [38;5;246m│[0m [38;5;246m1 │[0m [38;5;249mi[0m[38;5;249mm[0m[38;5;249mp[0m[38;5;249mo[…"
+        },
+        {
+          "id": "lib/octicons_react/__tests__/tree-shaking.test.ts::tree shaking single export",
+          "file": "lib/octicons_react/__tests__/tree-shaking.test.ts",
+          "name": "tree shaking single export",
+          "outcome": "fail",
+          "message": "Build failed with 1 error: [31m[UNRESOLVED_IMPORT] [0mCould not resolve '/tmp/trustbut-wt-7QAgDO/lib/octicons_react' in __entrypoint__ [38;5;246m╭[0m[38;5;246m─[0m[38;5;246m[[0m __entrypoint__:1:23 [38;5;246m][0m [38;5;246m│[0m [38;5;246m1 │[0m [38;5;249me[0m[38;5;249mx[0m[38;5;249mp[0m[38;5;249mo[…"
+        },
+        {
+          "id": "lib/octicons_react/ts-tests/index.test-d.tsx::ts-tests/index.test-d.tsx",
+          "file": "lib/octicons_react/ts-tests/index.test-d.tsx",
+          "name": "ts-tests/index.test-d.tsx",
+          "outcome": "fail",
+          "message": "Module '\"../src\"' has no exported member 'MarkGithubIcon'."
+        }
+      ],
+      "outputTail": "Testing types with tsc and vue-tsc is an experimental feature.\nBreaking changes might not follow SemVer, please pin Vitest's version when using it.\nTesting types with tsc and vue-tsc is an experimental feature.\nBreaking changes might not follow SemVer, please pin Vitest's version when using it.\nFailed to resolve dependency: jest-styled-components, present in client 'optimizeDeps.include'\nJUNIT report written to /tmp/trustbut-junit-Hwjv90/junit.xml\nerror during close browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1234/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n    at /home/runner/work/_temp/work/repo/node_modules/@vitest/browser/dist/webdriver-BStCVush.js:80:54\n    at async PlaywrightBrowserProvider.createContext (/home/runner/work/_temp/work/repo/node_modules/@vitest/browser/dist/webdriver-BStCVush.js:206:19)\n    at async PlaywrightBrowserProvider.openBrowserPage (/home/runner/work/_temp/work/repo/node_modules/@vitest/browser/dist/webdriver-BStCVush.js:266:19)\n    at async PlaywrightBrowserProvider.openPage (/home/runner/work/_temp/work/repo/node_modules/@vitest/browser/dist/webdriver-BStCVush.js:280:23)\n    at async BrowserPool.openPage (/home/runner/work/_temp/work/repo/node_modules/@vitest/browser/dist/index.js:3536:3)\n    at async BrowserPool.runTests (/home/runner/work/_temp/work/repo/node_modules/@vitest/browser/dist/index.js:3526:3)\n    at async runWorkspaceTests (/home/runner/work/_temp/work/repo/node_modules/@vitest/browser/dist/index.js:3434:3)\n    at async executeTests (/home/runner/work/_temp/work/repo/node_modules/vitest/dist/chunks/coverage.DfSpMS-b.js:3421:4)\n    at async file:///home/runner/work/_temp/work/repo/node_modules/vitest/dist/chunks/cli-api.DVe0nWUx.js:9648:6\n    at async Vitest.runFiles (/home/runner/work/_temp/work/repo/node_modules/vitest/dist/chunks/cli-api.DVe0nWUx.js:9676:10)\n    at async Vitest.start (/home/runner/work/_temp/work/repo/node_modules/vitest/dist/chunks/cli-api.DVe0nWUx.js:9564:18)\n    at async startVitest (/home/runner/work/_temp/work/repo/node_modules/vitest/dist/chunks/cli-api.DVe0nWUx.js:10520:8)\n    at async start (/home/runner/work/_temp/work/repo/node_modules/vitest/dist/chunks/cac.BfaZ95xE.js:1414:15)\n    at async CAC.run (/home/runner/work/_temp/work/repo/node_modules/vitest/dist/chunks/cac.BfaZ95xE.js:1393:2) {\n  log: [],\n  name: 'Error',\n  type: 'Unhandled Error'\n}"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 937,
+      "cases": [
+        {
+          "id": "lib/octicons_react/ts-tests/index.test-d.tsx::ts-tests/index.test-d.tsx",
+          "file": "lib/octicons_react/ts-tests/index.test-d.tsx",
+          "name": "ts-tests/index.test-d.tsx",
+          "outcome": "fail",
+          "message": "Module '\"../src\"' has no exported member 'MarkGithubIcon'."
+        }
+      ],
+      "outputTail": "Testing types with tsc and vue-tsc is an experimental feature.\nBreaking changes might not follow SemVer, please pin Vitest's version when using it.\nTesting types with tsc and vue-tsc is an experimental feature.\nBreaking changes might not follow SemVer, please pin Vitest's version when using it.\nJUNIT report written to /tmp/trustbut-junit-OZf5B7/junit.xml"
+    }
+  }
+}

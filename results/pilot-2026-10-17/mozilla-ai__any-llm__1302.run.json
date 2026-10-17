@@ -1,0 +1,28 @@
+{
+  "id": "mozilla-ai__any-llm__1302",
+  "status": "setup-failed",
+  "stage": "no-passing-tests",
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.13",
+      "install": [
+        "uv pip install -e .",
+        "uv pip install --group dev",
+        "uv pip install --group tests",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 3254,
+    "verifyMs": 12593
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.6.0",
+  "installRetries": 0
+}

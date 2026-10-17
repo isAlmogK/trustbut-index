@@ -1,0 +1,28 @@
+{
+  "id": "home-assistant__supervisor__7188",
+  "status": "setup-failed",
+  "stage": "install",
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.12",
+      "install": [
+        "uv pip install -e .",
+        "uv pip install -r requirements.txt",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 62779,
+    "verifyMs": 0
+  },
+  "exitCodes": {
+    "install": 1,
+    "verify": null
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "unknown",
+  "installRetries": 2,
+  "installTail": "Using Python 3.12.15 environment at: /home/runner/work/_temp/venv\nerror: No solution found when resolving dependencies\n  cause: Because the current Python version (3.12.15) does not satisfy Python>=3.14.0 and supervisor==9999.9.9.dev9999 depends on Python>=3.14.0, we can conclude that supervisor==9999.9.9.dev9999 cannot be used.\n         And because only supervisor==9999.9.9.dev9999 is available and you require supervisor, we can conclude that your requirements are unsatisfiable."
+}

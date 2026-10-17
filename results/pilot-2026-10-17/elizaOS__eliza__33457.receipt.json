@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.6.0"
+  },
+  "subject": {
+    "base": "9e14dee5da9beb129f6c63c4f5e2467f9fcd831b",
+    "head": "bc6a27a76a8830d8da02458d364365cbf2562be3"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 2400 s"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 2400236,
+      "timedOut": true,
+      "cases": [],
+      "outputTail": "  ---\n  duration_ms: 642.262303\n  type: 'test'\n  ...\n1..1\n# tests 1\n# suites 0\n# pass 1\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 653.863853\nTAP version 13\nHEAD is now at 9706ee9 initial\nTAP version 13\n# Subtest: reuse rejects missing, altered, and unexpected companions even when the fused file is unchanged\nok 1 - reuse rejects missing, altered, and unexpected companions even when the fused file is unchanged\n  ---\n  duration_ms: 5.216825\n  type: 'test'\n  ...\n# Subtest: reuse rejects another architecture, explicit backend, or legacy incomplete stamp\nok 2 - reuse rejects another architecture, explicit backend, or legacy incomplete stamp\n  ---\n  duration_ms: 2.327722\n  type: 'test'\n  ...\n# Subtest: a second edit to an already-dirty native source invalidates reuse\nok 3 - a second edit to an already-dirty native source invalidates reuse\n  ---\n  duration_ms: 77.738313\n  type: 'test'\n  ...\n(node:53567) ExperimentalWarning: SQLite is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\nTAP version 13\n# Subtest: source export rejects ambiguous identity and never copies working-tree edits\nok 1 - source export rejects ambiguous identity and never copies working-tree edits\n  ---\n  duration_ms: 54.094241\n  type: 'test'\n  ...\n# Subtest: a committed task bundle runs on SQLite and records the consumer's exact source identity\nok 2 - a committed task bundle runs on SQLite and records the consumer's exact source identity\n  ---\n  duration_ms: 598.710679\n  type: 'test'\n  ...\nCommand timed out after 2400000 ms"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 4657,
+      "cases": [
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > signs a message payload",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > signs a message payload",
+          "outcome": "pass"
+        },
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > signs a messageBase64 payload",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > signs a messageBase64 payload",
+          "outcome": "pass"
+        },
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > rejects a missing or blank payload as a client error, not 503",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > rejects a missing or blank payload as a client error, not 503",
+          "outcome": "pass"
+        },
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > rejects malformed messageBase64 instead of signing other bytes",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > rejects malformed messageBase64 instead of signing other bytes",
+          "outcome": "fail",
+          "message": "expected 200 to be 400 // Object.is equality"
+        },
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > rejects malformed transactionBase64 as a client error, not 503",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > rejects malformed transactionBase64 as a client error, not 503",
+          "outcome": "fail",
+          "message": "expected 503 to be 400 // Object.is equality"
+        },
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > keeps a missing signer key on the 503 unavailable contract",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > keeps a missing signer key on the 503 unavailable contract",
+          "outcome": "pass"
+        }
+      ],
+      "outputTail": "JUNIT report written to /tmp/trustbut-junit-Mivvw1/junit.xml"
+    }
+  }
+}

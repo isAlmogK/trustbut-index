@@ -1,0 +1,25 @@
+{
+  "id": "microsoft__vscode__332875",
+  "status": "setup-failed",
+  "stage": "install",
+  "recipe": {
+    "node": {
+      "version": "24.18.0",
+      "pm": "npm",
+      "install": "npm ci"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 258133,
+    "verifyMs": 0
+  },
+  "exitCodes": {
+    "install": 1,
+    "verify": null
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "unknown",
+  "installRetries": 2,
+  "installTail": "npm error gyp info using node-gyp@12.3.0\nnpm error gyp info using node@24.18.0 | linux | x64\nnpm error gyp info find Python using Python version 3.12.3 found at \"/usr/bin/python3\"\nnpm error gyp info spawn /usr/bin/python3\nnpm error gyp info spawn args [\nnpm error gyp info spawn args '/opt/hostedtoolcache/node/24.18.0/x64/lib/node_modules/npm/node_modules/node-gyp/gyp/gyp_main.py',\nnpm error gyp info spawn args 'binding.gyp',\nnpm error gyp info spawn args '-f',\nnpm error gyp info spawn args 'make',\nnpm error gyp info spawn args '-I',\nnpm error gyp info spawn args '/home/runner/work/_temp/work/repo/node_modules/kerberos/build/config.gypi',\nnpm error gyp info spawn args '-I',\nnpm error gyp info spawn args '/opt/hostedtoolcache/node/24.18.0/x64/lib/node_modules/npm/node_modules/node-gyp/addon.gypi',\nnpm error gyp info spawn args '-I',\nnpm error gyp info spawn args '/home/runner/.cache/node-gyp/42.8.1/include/node/common.gypi',\nnpm error gyp info spawn args '-Dlibrary=shared_library',\nnpm error gyp info spawn args '-Dvisibility=default',\nnpm error gyp info spawn args '-Dnode_root_dir=/home/runner/.cache/node-gyp/42.8.1',\nnpm error gyp info spawn args '-Dnode_gyp_dir=/opt/hostedtoolcache/node/24.18.0/x64/lib/node_modules/npm/node_modules/node-gyp',\nnpm error gyp info spawn args '-Dnode_lib_file=/home/runner/.cache/node-gyp/42.8.1/<(target_arch)/node.lib',\nnpm error gyp info spawn args '-Dmodule_root_dir=/home/runner/work/_temp/work/repo/node_modules/kerberos',\nnpm error gyp info spawn args '-Dnode_engine=v8',\nnpm error gyp info spawn args '--depth=.',\nnpm error gyp info spawn args '--no-parallel',\nnpm error gyp info spawn args '--generator-output',\nnpm error gyp info spawn args 'build',\nnpm error gyp info spawn args '-Goutput_dir=.'\nnpm error gyp info spawn args ]\nnpm error gyp info spawn make\nnpm error gyp info spawn args [ 'BUILDTYPE=Release', '-C', 'build' ]\nnpm error In file included from ../src/kerberos_common.h:5,\nnpm error                  from ../src/kerberos.h:13,\nnpm error                  from ../src/kerberos.cc:1:\nnpm error ../src/unix/kerberos_gss.h:21:14: fatal error: gssapi/gssapi.h: No such file or directory\nnpm error    21 |     #include <gssapi/gssapi.h>\nnpm error       |              ^~~~~~~~~~~~~~~~~\nnpm error compilation terminated.\nnpm error make: *** [kerberos.target.mk:129: Release/obj.target/kerberos/src/kerberos.o] Error 1\nnpm error gyp ERR! build error \nnpm error gyp ERR! stack Error: `make` failed with exit code: 2\nnpm error gyp ERR! stack at ChildProcess.<anonymous> (/opt/hostedtoolcache/node/24.18.0/x64/lib/node_modules/npm/node_modules/node-gyp/lib/build.js:219:23)\nnpm error gyp ERR! System Linux 6.17.0-1022-azure\nnpm error gyp ERR! command \"/opt/hostedtoolcache/node/24.18.0/x64/bin/node\" \"/opt/hostedtoolcache/node/24.18.0/x64/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js\" \"rebuild\"\nnpm error gyp ERR! cwd /home/runner/work/_temp/work/repo/node_modules/kerberos\nnpm error gyp ERR! node -v v24.18.0\nnpm error gyp ERR! node-gyp -v v12.3.0\nnpm error gyp ERR! $npm_package_name kerberos\nnpm error gyp ERR! $npm_package_version 2.1.1\nnpm error gyp ERR! not ok\nnpm error A complete log of this run can be found in: /home/runner/.npm/_logs/2026-10-16T23_51_30_243Z-debug-0.log"
+}

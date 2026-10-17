@@ -1,0 +1,24 @@
+{
+  "id": "microsoft__pxt__11485",
+  "status": "setup-failed",
+  "stage": "no-passing-tests",
+  "recipe": {
+    "node": {
+      "version": "24",
+      "pm": "npm",
+      "install": "npm install"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 184842,
+    "verifyMs": 2261
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.6.0",
+  "installRetries": 0
+}

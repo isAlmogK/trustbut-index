@@ -1,0 +1,604 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.6.0"
+  },
+  "subject": {
+    "base": "3473db281832aeaebcb428573d3625305a5e36e7",
+    "head": "c9a4ac43d2bc3fee50b88933e0a4cf590992e2fa"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 61,
+    "failed": 13,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 1"
+    },
+    {
+      "id": "no-tests-changed",
+      "severity": "warn",
+      "title": "Source changed but no tests were added or changed"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 2994,
+      "cases": [
+        {
+          "id": "packages/cli/src/init.test.ts::packages/cli/src/init.test.ts",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "packages/cli/src/init.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url chalk (resolved id: chalk) in /tmp/trustbut-wt-Ff1MJJ/packages/cli/src/init.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/cli/src/package-manager.test.ts::PACKAGE_MANAGERS > lists every supported package manager",
+          "file": "packages/cli/src/package-manager.test.ts",
+          "name": "PACKAGE_MANAGERS > lists every supported package manager",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/package-manager.test.ts::detectPackageManager > detects pnpm from the user agent",
+          "file": "packages/cli/src/package-manager.test.ts",
+          "name": "detectPackageManager > detects pnpm from the user agent",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/package-manager.test.ts::detectPackageManager > detects yarn from the user agent",
+          "file": "packages/cli/src/package-manager.test.ts",
+          "name": "detectPackageManager > detects yarn from the user agent",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/package-manager.test.ts::detectPackageManager > detects bun from the user agent",
+          "file": "packages/cli/src/package-manager.test.ts",
+          "name": "detectPackageManager > detects bun from the user agent",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/package-manager.test.ts::detectPackageManager > falls back to npm when the user agent is unset",
+          "file": "packages/cli/src/package-manager.test.ts",
+          "name": "detectPackageManager > falls back to npm when the user agent is unset",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/cli/src/package-manager.test.ts::detectPackageManager > falls back to npm when the user agent is unrecognized",
+          "file": "packages/cli/src/package-manager.test.ts",
+          "name": "detectPackageManager > falls back to npm when the user agent is unrecognized",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/cli/run.test.ts::packages/core/src/cli/run.test.ts",
+          "file": "packages/core/src/cli/run.test.ts",
+          "name": "packages/core/src/cli/run.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url chalk (resolved id: chalk) in /tmp/trustbut-wt-Ff1MJJ/packages/cli/src/init.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/editing/comments.test.ts::packages/core/src/editing/comments.test.ts",
+          "file": "packages/core/src/editing/comments.test.ts",
+          "name": "packages/core/src/editing/comments.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/types (resolved id: @babel/types) in /tmp/trustbut-wt-Ff1MJJ/packages/core/src/editing/edit-ops.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/editing/edit-ops.test.ts::packages/core/src/editing/edit-ops.test.ts",
+          "file": "packages/core/src/editing/edit-ops.test.ts",
+          "name": "packages/core/src/editing/edit-ops.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/types (resolved id: @babel/types) in /tmp/trustbut-wt-Ff1MJJ/packages/core/src/editing/edit-ops.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/editing/revert-asset.test.ts::packages/core/src/editing/revert-asset.test.ts",
+          "file": "packages/core/src/editing/revert-asset.test.ts",
+          "name": "packages/core/src/editing/revert-asset.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/types (resolved id: @babel/types) in /tmp/trustbut-wt-Ff1MJJ/packages/core/src/editing/edit-ops.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/editing/slide-ops.test.ts::packages/core/src/editing/slide-ops.test.ts",
+          "file": "packages/core/src/editing/slide-ops.test.ts",
+          "name": "packages/core/src/editing/slide-ops.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/parser (resolved id: @babel/parser) in /tmp/trustbut-wt-Ff1MJJ/packages/core/src/editing/slide-ops.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/files/assets.test.ts::packages/core/src/files/assets.test.ts",
+          "file": "packages/core/src/files/assets.test.ts",
+          "name": "packages/core/src/files/assets.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/parser (resolved id: @babel/parser) in /tmp/trustbut-wt-Ff1MJJ/packages/core/src/editing/slide-ops.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateName > trims whitespace and accepts non-empty strings",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateName > trims whitespace and accepts non-empty strings",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateName > rejects non-strings",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateName > rejects non-strings",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateName > rejects empty / whitespace-only / overlong strings",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateName > rejects empty / whitespace-only / overlong strings",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateName > accepts a 40-character name (boundary)",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateName > accepts a 40-character name (boundary)",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateIcon > accepts a valid emoji icon",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateIcon > accepts a valid emoji icon",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateIcon > accepts a valid color icon",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateIcon > accepts a valid color icon",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateIcon > rejects malformed colors",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateIcon > rejects malformed colors",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateIcon > rejects empty or overlong emoji values",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateIcon > rejects empty or overlong emoji values",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateIcon > rejects unknown types and non-objects",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateIcon > rejects unknown types and non-objects",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateReorder > accepts a permutation of the current ids",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateReorder > accepts a permutation of the current ids",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateReorder > rejects non-arrays and wrong-length arrays",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateReorder > rejects non-arrays and wrong-length arrays",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/files/folders.test.ts::validateReorder > rejects duplicate ids, unknown ids, and malformed ids",
+          "file": "packages/core/src/files/folders.test.ts",
+          "name": "validateReorder > rejects duplicate ids, unknown ids, and malformed ids",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/http/request-guard.test.ts::validateMutationRequest > accepts same-origin JSON mutation requests",
+          "file": "packages/core/src/http/request-guard.test.ts",
+          "name": "validateMutationRequest > accepts same-origin JSON mutation requests",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/http/request-guard.test.ts::validateMutationRequest > accepts forwarded host/proto when origin matches",
+          "file": "packages/core/src/http/request-guard.test.ts",
+          "name": "validateMutationRequest > accepts forwarded host/proto when origin matches",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/http/request-guard.test.ts::validateMutationRequest > rejects non-JSON mutation bodies when required",
+          "file": "packages/core/src/http/request-guard.test.ts",
+          "name": "validateMutationRequest > rejects non-JSON mutation bodies when required",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/http/request-guard.test.ts::validateMutationRequest > rejects cross-site browser requests",
+          "file": "packages/core/src/http/request-guard.test.ts",
+          "name": "validateMutationRequest > rejects cross-site browser requests",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/http/request-guard.test.ts::validateMutationRequest > rejects opaque origin values",
+          "file": "packages/core/src/http/request-guard.test.ts",
+          "name": "validateMutationRequest > rejects opaque origin values",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/http/request-guard.test.ts::validateMutationRequest > rejects mismatched origin/host combinations",
+          "file": "packages/core/src/http/request-guard.test.ts",
+          "name": "validateMutationRequest > rejects mismatched origin/host combinations",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/http/request-guard.test.ts::validateMutationRequest > allows trusted requests even when origin is missing",
+          "file": "packages/core/src/http/request-guard.test.ts",
+          "name": "validateMutationRequest > allows trusted requests even when origin is missing",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/vite/design-plugin.test.ts::packages/core/src/vite/design-plugin.test.ts",
+          "file": "packages/core/src/vite/design-plugin.test.ts",
+          "name": "packages/core/src/vite/design-plugin.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/parser (resolved id: @babel/parser) in /tmp/trustbut-wt-Ff1MJJ/packages/core/src/editing/slide-ops.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/vite/loc-tags-plugin.test.ts::packages/core/src/vite/loc-tags-plugin.test.ts",
+          "file": "packages/core/src/vite/loc-tags-plugin.test.ts",
+          "name": "packages/core/src/vite/loc-tags-plugin.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/parser (resolved id: @babel/parser) in /tmp/trustbut-wt-Ff1MJJ/packages/core/src/editing/slide-ops.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/vite/notes-plugin.test.ts::packages/core/src/vite/notes-plugin.test.ts",
+          "file": "packages/core/src/vite/notes-plugin.test.ts",
+          "name": "packages/core/src/vite/notes-plugin.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/parser (resolved id: @babel/parser) in /tmp/trustbut-wt-Ff1MJJ/packages/core/src/editing/slide-ops.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/vite/open-slide-plugin.test.ts::packages/core/src/vite/open-slide-plugin.test.ts",
+          "file": "packages/core/src/vite/open-slide-plugin.test.ts",
+          "name": "packages/core/src/vite/open-slide-plugin.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url fast-glob (resolved id: fast-glob) in /tmp/trustbut-wt-Ff1MJJ/packages/core/src/vite/open-slide-plugin.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts::getThumbnailOffscreenDirection > reports a thumbnail fully above the visible area",
+          "file": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts",
+          "name": "getThumbnailOffscreenDirection > reports a thumbnail fully above the visible area",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts::getThumbnailOffscreenDirection > reports a thumbnail fully below the visible area",
+          "file": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts",
+          "name": "getThumbnailOffscreenDirection > reports a thumbnail fully below the visible area",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts::getThumbnailOffscreenDirection > keeps the control hidden while a thumbnail is fully visible",
+          "file": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts",
+          "name": "getThumbnailOffscreenDirection > keeps the control hidden while a thumbnail is fully visible",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts::getThumbnailOffscreenDirection > keeps the control hidden while either edge remains visible",
+          "file": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts",
+          "name": "getThumbnailOffscreenDirection > keeps the control hidden while either edge remains visible",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts::getCenteredThumbnailScrollTop > centers the thumbnail inside the unobscured viewport",
+          "file": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts",
+          "name": "getCenteredThumbnailScrollTop > centers the thumbnail inside the unobscured viewport",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts::getCenteredThumbnailScrollTop > does not scroll before the start of the list",
+          "file": "packages/core/src/app/components/thumbnail-rail-scroll.test.ts",
+          "name": "getCenteredThumbnailScrollTop > does not scroll before the start of the list",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > filters assets by usage",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > filters assets by usage",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > filters image MIME types",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > filters image MIME types",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > filters font MIME types",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > filters font MIME types",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > filters video MIME types",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > filters video MIME types",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > filters other MIME types",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > filters other MIME types",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > matches trimmed filename searches case-insensitively",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > matches trimmed filename searches case-insensitively",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > applies usage, type, and search filters together",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > applies usage, type, and search filters together",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::filterAssets > returns all assets when every filter is inactive",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "filterAssets > returns all assets when every filter is inactive",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by name asc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by name asc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by name desc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by name desc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by modified asc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by modified asc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by modified desc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by modified desc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by size asc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by size asc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by size desc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by size desc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by type asc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by type asc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts by type desc",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts by type desc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > sorts names naturally and case-insensitively",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > sorts names naturally and case-insensitively",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > breaks primary-value ties by name ascending for both directions",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > breaks primary-value ties by name ascending for both directions",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/asset-filter.test.ts::sortAssets > does not mutate the input",
+          "file": "packages/core/src/app/lib/asset-filter.test.ts",
+          "name": "sortAssets > does not mutate the input",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/print-ready.test.ts::waitForFonts > awaits document.fonts.ready without force-loading any face",
+          "file": "packages/core/src/app/lib/print-ready.test.ts",
+          "name": "waitForFonts > awaits document.fonts.ready without force-loading any face",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/print-ready.test.ts::waitForFonts > resolves when the FontFaceSet API is unavailable",
+          "file": "packages/core/src/app/lib/print-ready.test.ts",
+          "name": "waitForFonts > resolves when the FontFaceSet API is unavailable",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/sdk.test.ts::canvas constants > targets a 1920x1080 canvas",
+          "file": "packages/core/src/app/lib/sdk.test.ts",
+          "name": "canvas constants > targets a 1920x1080 canvas",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/sdk.test.ts::canvas constants > preserves a 16:9 aspect ratio",
+          "file": "packages/core/src/app/lib/sdk.test.ts",
+          "name": "canvas constants > preserves a 16:9 aspect ratio",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/utils.test.ts::packages/core/src/app/lib/utils.test.ts",
+          "file": "packages/core/src/app/lib/utils.test.ts",
+          "name": "packages/core/src/app/lib/utils.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url clsx (resolved id: clsx) in /tmp/trustbut-wt-Ff1MJJ/packages/core/src/app/lib/utils.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/vite/routes/update.test.ts::packages/core/src/vite/routes/update.test.ts",
+          "file": "packages/core/src/vite/routes/update.test.ts",
+          "name": "packages/core/src/vite/routes/update.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/parser (resolved id: @babel/parser) in /tmp/trustbut-wt-Ff1MJJ/packages/core/src/editing/slide-ops.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/app/lib/inspector/fiber.test.ts::findSlideSource primary path > reads line:column from data-slide-loc",
+          "file": "packages/core/src/app/lib/inspector/fiber.test.ts",
+          "name": "findSlideSource primary path > reads line:column from data-slide-loc",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/inspector/fiber.test.ts::findSlideSource fallback > matches a POSIX fileName",
+          "file": "packages/core/src/app/lib/inspector/fiber.test.ts",
+          "name": "findSlideSource fallback > matches a POSIX fileName",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/inspector/fiber.test.ts::findSlideSource fallback > matches a Windows-backslash fileName",
+          "file": "packages/core/src/app/lib/inspector/fiber.test.ts",
+          "name": "findSlideSource fallback > matches a Windows-backslash fileName",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/inspector/fiber.test.ts::findSlideSource fallback > matches a fileName carrying an HMR ?t= query",
+          "file": "packages/core/src/app/lib/inspector/fiber.test.ts",
+          "name": "findSlideSource fallback > matches a fileName carrying an HMR ?t= query",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/inspector/fiber.test.ts::findSlideSource fallback > matches a Windows fileName with an HMR query",
+          "file": "packages/core/src/app/lib/inspector/fiber.test.ts",
+          "name": "findSlideSource fallback > matches a Windows fileName with an HMR query",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/inspector/fiber.test.ts::findSlideSource fallback > returns null when the fiber fileName points at a different slideId",
+          "file": "packages/core/src/app/lib/inspector/fiber.test.ts",
+          "name": "findSlideSource fallback > returns null when the fiber fileName points at a different slideId",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/core/src/app/lib/inspector/fiber.test.ts::findSlideSource fallback > walks up the fiber chain until it finds a matching source",
+          "file": "packages/core/src/app/lib/inspector/fiber.test.ts",
+          "name": "findSlideSource fallback > walks up the fiber chain until it finds a matching source",
+          "outcome": "pass"
+        }
+      ],
+      "outputTail": "The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.\n(node:2678) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 unhandledRejection listeners added to [process]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit\n(Use `node --trace-warnings ...` to show where the warning was created)\nJUNIT report written to /tmp/trustbut-junit-6e8BBo/junit.xml"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 2260,
+      "cases": [
+        {
+          "id": "packages/cli/src/init.test.ts::packages/cli/src/init.test.ts",
+          "file": "packages/cli/src/init.test.ts",
+          "name": "packages/cli/src/init.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url chalk (resolved id: chalk) in /tmp/trustbut-wt-Dkfs4E/packages/cli/src/init.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/cli/run.test.ts::packages/core/src/cli/run.test.ts",
+          "file": "packages/core/src/cli/run.test.ts",
+          "name": "packages/core/src/cli/run.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url chalk (resolved id: chalk) in /tmp/trustbut-wt-Dkfs4E/packages/cli/src/init.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/editing/comments.test.ts::packages/core/src/editing/comments.test.ts",
+          "file": "packages/core/src/editing/comments.test.ts",
+          "name": "packages/core/src/editing/comments.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/types (resolved id: @babel/types) in /tmp/trustbut-wt-Dkfs4E/packages/core/src/editing/revert-asset.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/editing/edit-ops.test.ts::packages/core/src/editing/edit-ops.test.ts",
+          "file": "packages/core/src/editing/edit-ops.test.ts",
+          "name": "packages/core/src/editing/edit-ops.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/types (resolved id: @babel/types) in /tmp/trustbut-wt-Dkfs4E/packages/core/src/editing/revert-asset.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/editing/revert-asset.test.ts::packages/core/src/editing/revert-asset.test.ts",
+          "file": "packages/core/src/editing/revert-asset.test.ts",
+          "name": "packages/core/src/editing/revert-asset.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/types (resolved id: @babel/types) in /tmp/trustbut-wt-Dkfs4E/packages/core/src/editing/revert-asset.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/editing/slide-ops.test.ts::packages/core/src/editing/slide-ops.test.ts",
+          "file": "packages/core/src/editing/slide-ops.test.ts",
+          "name": "packages/core/src/editing/slide-ops.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/parser (resolved id: @babel/parser) in /tmp/trustbut-wt-Dkfs4E/packages/core/src/editing/slide-ops.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/files/assets.test.ts::packages/core/src/files/assets.test.ts",
+          "file": "packages/core/src/files/assets.test.ts",
+          "name": "packages/core/src/files/assets.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/parser (resolved id: @babel/parser) in /tmp/trustbut-wt-Dkfs4E/packages/core/src/editing/slide-ops.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/vite/design-plugin.test.ts::packages/core/src/vite/design-plugin.test.ts",
+          "file": "packages/core/src/vite/design-plugin.test.ts",
+          "name": "packages/core/src/vite/design-plugin.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/parser (resolved id: @babel/parser) in /tmp/trustbut-wt-Dkfs4E/packages/core/src/editing/slide-ops.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/vite/loc-tags-plugin.test.ts::packages/core/src/vite/loc-tags-plugin.test.ts",
+          "file": "packages/core/src/vite/loc-tags-plugin.test.ts",
+          "name": "packages/core/src/vite/loc-tags-plugin.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/parser (resolved id: @babel/parser) in /tmp/trustbut-wt-Dkfs4E/packages/core/src/editing/slide-ops.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/vite/notes-plugin.test.ts::packages/core/src/vite/notes-plugin.test.ts",
+          "file": "packages/core/src/vite/notes-plugin.test.ts",
+          "name": "packages/core/src/vite/notes-plugin.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/parser (resolved id: @babel/parser) in /tmp/trustbut-wt-Dkfs4E/packages/core/src/editing/slide-ops.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/vite/open-slide-plugin.test.ts::packages/core/src/vite/open-slide-plugin.test.ts",
+          "file": "packages/core/src/vite/open-slide-plugin.test.ts",
+          "name": "packages/core/src/vite/open-slide-plugin.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url fast-glob (resolved id: fast-glob) in /tmp/trustbut-wt-Dkfs4E/packages/core/src/vite/open-slide-plugin.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/app/lib/utils.test.ts::packages/core/src/app/lib/utils.test.ts",
+          "file": "packages/core/src/app/lib/utils.test.ts",
+          "name": "packages/core/src/app/lib/utils.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url clsx (resolved id: clsx) in /tmp/trustbut-wt-Dkfs4E/packages/core/src/app/lib/utils.ts. Does the file exist?"
+        },
+        {
+          "id": "packages/core/src/vite/routes/update.test.ts::packages/core/src/vite/routes/update.test.ts",
+          "file": "packages/core/src/vite/routes/update.test.ts",
+          "name": "packages/core/src/vite/routes/update.test.ts",
+          "outcome": "fail",
+          "message": "Failed to load url @babel/parser (resolved id: @babel/parser) in /tmp/trustbut-wt-Dkfs4E/packages/core/src/editing/slide-ops.ts. Does the file exist?"
+        }
+      ],
+      "outputTail": "The CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.\n(node:3185) MaxListenersExceededWarning: Possible EventEmitter memory leak detected. 11 unhandledRejection listeners added to [process]. MaxListeners is 10. Use emitter.setMaxListeners() to increase limit\n(Use `node --trace-warnings ...` to show where the warning was created)\nJUNIT report written to /tmp/trustbut-junit-OKjqYP/junit.xml"
+    }
+  }
+}

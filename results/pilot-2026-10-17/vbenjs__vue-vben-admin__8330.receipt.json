@@ -1,0 +1,1718 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.6.0"
+  },
+  "subject": {
+    "base": "dcc601d7d523e6c99e7828669f7222af340810a0",
+    "head": "18d8f944afe317cd4b00271f784c860f5b3f0af9"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 176,
+    "failed": 42,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [
+    {
+      "file": "packages/effects/layouts/src/widgets/notification/__tests__/notification.test.ts",
+      "name": "packages/effects/layouts/src/widgets/notification/__tests__/notification.test.ts",
+      "before": "fail",
+      "after": "fail",
+      "verdict": "failing"
+    }
+  ],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 1"
+    },
+    {
+      "id": "test-failing",
+      "severity": "fail",
+      "title": "Test fails at head",
+      "file": "packages/effects/layouts/src/widgets/notification/__tests__/notification.test.ts",
+      "detail": "packages/effects/layouts/src/widgets/notification/__tests__/notification.test.ts"
+    }
+  ],
+  "risks": [
+    {
+      "file": "packages/effects/layouts/src/widgets/notification/__tests__/notification.test.ts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 12203,
+      "cases": [
+        {
+          "id": "playground/__tests__/unit/date-range-codec.test.ts::playground/__tests__/unit/date-range-codec.test.ts",
+          "file": "playground/__tests__/unit/date-range-codec.test.ts",
+          "name": "playground/__tests__/unit/date-range-codec.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"dayjs\" from \"playground/__tests__/unit/date-range-codec.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "internal/node-utils/src/__tests__/hash.test.ts::generatorContentHash > should generate an MD5 hash for the content",
+          "file": "internal/node-utils/src/__tests__/hash.test.ts",
+          "name": "generatorContentHash > should generate an MD5 hash for the content",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/node-utils/src/__tests__/hash.test.ts::generatorContentHash > should generate an MD5 hash with specified length",
+          "file": "internal/node-utils/src/__tests__/hash.test.ts",
+          "name": "generatorContentHash > should generate an MD5 hash with specified length",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/node-utils/src/__tests__/hash.test.ts::generatorContentHash > should correctly generate the hash with specified length",
+          "file": "internal/node-utils/src/__tests__/hash.test.ts",
+          "name": "generatorContentHash > should correctly generate the hash with specified length",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/node-utils/src/__tests__/hash.test.ts::generatorContentHash > should return full hash if hash length parameter is not provided",
+          "file": "internal/node-utils/src/__tests__/hash.test.ts",
+          "name": "generatorContentHash > should return full hash if hash length parameter is not provided",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/node-utils/src/__tests__/hash.test.ts::generatorContentHash > should handle empty content",
+          "file": "internal/node-utils/src/__tests__/hash.test.ts",
+          "name": "generatorContentHash > should handle empty content",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/node-utils/src/__tests__/path.test.ts::toPosixPath > converts Windows-style paths to POSIX paths",
+          "file": "internal/node-utils/src/__tests__/path.test.ts",
+          "name": "toPosixPath > converts Windows-style paths to POSIX paths",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/node-utils/src/__tests__/path.test.ts::toPosixPath > leaves POSIX-style paths unchanged",
+          "file": "internal/node-utils/src/__tests__/path.test.ts",
+          "name": "toPosixPath > leaves POSIX-style paths unchanged",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/node-utils/src/__tests__/path.test.ts::toPosixPath > converts paths with mixed separators",
+          "file": "internal/node-utils/src/__tests__/path.test.ts",
+          "name": "toPosixPath > converts paths with mixed separators",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/node-utils/src/__tests__/path.test.ts::toPosixPath > handles empty strings",
+          "file": "internal/node-utils/src/__tests__/path.test.ts",
+          "name": "toPosixPath > handles empty strings",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/node-utils/src/__tests__/path.test.ts::toPosixPath > handles path with only separators",
+          "file": "internal/node-utils/src/__tests__/path.test.ts",
+          "name": "toPosixPath > handles path with only separators",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/node-utils/src/__tests__/path.test.ts::toPosixPath > handles path without separators",
+          "file": "internal/node-utils/src/__tests__/path.test.ts",
+          "name": "toPosixPath > handles path without separators",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/node-utils/src/__tests__/path.test.ts::toPosixPath > handles path ending with a separator",
+          "file": "internal/node-utils/src/__tests__/path.test.ts",
+          "name": "toPosixPath > handles path ending with a separator",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/node-utils/src/__tests__/path.test.ts::toPosixPath > handles path starting with a separator",
+          "file": "internal/node-utils/src/__tests__/path.test.ts",
+          "name": "toPosixPath > handles path starting with a separator",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/node-utils/src/__tests__/path.test.ts::toPosixPath > handles path with invalid characters",
+          "file": "internal/node-utils/src/__tests__/path.test.ts",
+          "name": "toPosixPath > handles path with invalid characters",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/vite-config/src/plugins/css-layer.test.ts::viteCssLayerPlugin > wraps matching css modules in the target layer",
+          "file": "internal/vite-config/src/plugins/css-layer.test.ts",
+          "name": "viteCssLayerPlugin > wraps matching css modules in the target layer",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/vite-config/src/plugins/css-layer.test.ts::viteCssLayerPlugin > does not wrap css modules outside the target package",
+          "file": "internal/vite-config/src/plugins/css-layer.test.ts",
+          "name": "viteCssLayerPlugin > does not wrap css modules outside the target package",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/vite-config/src/plugins/css-layer.test.ts::viteCssLayerPlugin > injects the layer order statement into matching css assets",
+          "file": "internal/vite-config/src/plugins/css-layer.test.ts",
+          "name": "viteCssLayerPlugin > injects the layer order statement into matching css assets",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/vite-config/src/plugins/css-layer.test.ts::viteCssLayerPlugin > does not inject the statement twice when already present",
+          "file": "internal/vite-config/src/plugins/css-layer.test.ts",
+          "name": "viteCssLayerPlugin > does not inject the statement twice when already present",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/vite-config/src/plugins/css-layer.test.ts::viteCssLayerPlugin > injects the statement even when the asset starts with a BOM",
+          "file": "internal/vite-config/src/plugins/css-layer.test.ts",
+          "name": "viteCssLayerPlugin > injects the statement even when the asset starts with a BOM",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/vite-config/src/plugins/css-layer.test.ts::viteCssLayerPlugin > ignores non-css assets",
+          "file": "internal/vite-config/src/plugins/css-layer.test.ts",
+          "name": "viteCssLayerPlugin > ignores non-css assets",
+          "outcome": "pass"
+        },
+        {
+          "id": "internal/vite-config/src/plugins/form-field-slot-migration-warning.test.ts::form field slot migration warning plugin > warns in serve mode and injects the same browser message",
+          "file": "internal/vite-config/src/plugins/form-field-slot-migration-warning.test.ts",
+          "name": "form field slot migration warning plugin > warns in serve mode and injects the same browser message",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/preferences/__tests__/config.test.ts::defaultPreferences immutability test > should not modify the config object",
+          "file": "packages/@core/preferences/__tests__/config.test.ts",
+          "name": "defaultPreferences immutability test > should not modify the config object",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/preferences/__tests__/preferences.test.ts::packages/@core/preferences/__tests__/preferences.test.ts",
+          "file": "packages/@core/preferences/__tests__/preferences.test.ts",
+          "name": "packages/@core/preferences/__tests__/preferences.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/color\" from \"packages/@core/preferences/src/update-css-variables.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/stores/src/modules/access.test.ts::packages/stores/src/modules/access.test.ts",
+          "file": "packages/stores/src/modules/access.test.ts",
+          "name": "packages/stores/src/modules/access.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"pinia\" from \"packages/stores/src/modules/access.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/stores/src/modules/tabbar.test.ts::packages/stores/src/modules/tabbar.test.ts",
+          "file": "packages/stores/src/modules/tabbar.test.ts",
+          "name": "packages/stores/src/modules/tabbar.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"vue-router\" from \"packages/stores/src/modules/tabbar.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/stores/src/modules/user.test.ts::packages/stores/src/modules/user.test.ts",
+          "file": "packages/stores/src/modules/user.test.ts",
+          "name": "packages/stores/src/modules/user.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"pinia\" from \"packages/stores/src/modules/user.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/composables/src/__tests__/use-layout-style.test.ts::packages/@core/composables/src/__tests__/use-layout-style.test.ts",
+          "file": "packages/@core/composables/src/__tests__/use-layout-style.test.ts",
+          "name": "packages/@core/composables/src/__tests__/use-layout-style.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/@core/composables/src/use-layout-style.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/composables/src/__tests__/use-layout-viewport-height.test.ts::packages/@core/composables/src/__tests__/use-layout-viewport-height.test.ts",
+          "file": "packages/@core/composables/src/__tests__/use-layout-viewport-height.test.ts",
+          "name": "packages/@core/composables/src/__tests__/use-layout-viewport-height.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/@core/composables/src/__tests__/use-layout-viewport-height.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/composables/src/__tests__/use-scroll-lock.test.ts::packages/@core/composables/src/__tests__/use-scroll-lock.test.ts",
+          "file": "packages/@core/composables/src/__tests__/use-scroll-lock.test.ts",
+          "name": "packages/@core/composables/src/__tests__/use-scroll-lock.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/@core/composables/src/__tests__/use-scroll-lock.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/composables/src/__tests__/use-sortable.test.ts::useSortable > should call Sortable.create with the correct options",
+          "file": "packages/@core/composables/src/__tests__/use-sortable.test.ts",
+          "name": "useSortable > should call Sortable.create with the correct options",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/config.test.ts::packages/@core/ui-kit/form-ui/__tests__/config.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/config.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/config.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/global-state\" from \"packages/@core/ui-kit/form-ui/__tests__/config.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-api.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-api.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-api.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-api.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/store\" from \"packages/@core/ui-kit/form-ui/src/form-api.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-codec.test.ts::form codec > encodes and decodes complete form values",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-codec.test.ts",
+          "name": "form codec > encodes and decodes complete form values",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-codec.test.ts::form codec > reports the failed codec phase without mutating inputs",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-codec.test.ts",
+          "name": "form codec > reports the failed codec phase without mutating inputs",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-compatibility.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-compatibility.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-compatibility.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-compatibility.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/global-state\" from \"packages/@core/ui-kit/form-ui/src/config.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-field-node-name.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-field-node-name.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-field-node-name.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-field-node-name.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vue/test-utils\" from \"packages/@core/ui-kit/form-ui/__tests__/form-field-node-name.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-integration.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-integration.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-integration.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-integration.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vue/test-utils\" from \"packages/@core/ui-kit/form-ui/__tests__/form-integration.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-runtime.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-runtime.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-runtime.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-runtime.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vue/test-utils\" from \"packages/@core/ui-kit/form-ui/__tests__/form-runtime.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-schema.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-schema.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-schema.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-schema.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/utils\" from \"packages/@core/ui-kit/form-ui/src/form-render/schema.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-types.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-types.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-types.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-types.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/store\" from \"packages/@core/ui-kit/form-ui/src/use-vben-form.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-value-transform.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-value-transform.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-value-transform.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-value-transform.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/utils\" from \"packages/@core/ui-kit/form-ui/src/form-value-transform.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/label-width.test.ts::packages/@core/ui-kit/form-ui/__tests__/label-width.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/label-width.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/label-width.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vue/test-utils\" from \"packages/@core/ui-kit/form-ui/__tests__/label-width.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/zod-v4-schema.test.ts::packages/@core/ui-kit/form-ui/__tests__/zod-v4-schema.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/zod-v4-schema.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/zod-v4-schema.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"zod\" from \"packages/@core/ui-kit/form-ui/__tests__/zod-v4-schema.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/effects/access/src/__tests__/accessible.test.ts::packages/effects/access/src/__tests__/accessible.test.ts",
+          "file": "packages/effects/access/src/__tests__/accessible.test.ts",
+          "name": "packages/effects/access/src/__tests__/accessible.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben/utils\" from \"packages/effects/access/src/accessible.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/request-client.test.ts::packages/effects/request/src/request-client/request-client.test.ts",
+          "file": "packages/effects/request/src/request-client/request-client.test.ts",
+          "name": "packages/effects/request/src/request-client/request-client.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"axios-mock-adapter\" from \"packages/effects/request/src/request-client/request-client.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts::menu Finder Tests > finds a top-level menu",
+          "file": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts",
+          "name": "menu Finder Tests > finds a top-level menu",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts::menu Finder Tests > finds a nested menu",
+          "file": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts",
+          "name": "menu Finder Tests > finds a nested menu",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts::menu Finder Tests > returns null for a non-existent path",
+          "file": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts",
+          "name": "menu Finder Tests > returns null for a non-existent path",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts::menu Finder Tests > handles empty menus list",
+          "file": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts",
+          "name": "menu Finder Tests > handles empty menus list",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts::menu Finder Tests > handles menu items without children",
+          "file": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts",
+          "name": "menu Finder Tests > handles menu items without children",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts::menu Finder Tests > finds root menu by path",
+          "file": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts",
+          "name": "menu Finder Tests > finds root menu by path",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts::menu Finder Tests > returns null for undefined or empty path",
+          "file": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts",
+          "name": "menu Finder Tests > returns null for undefined or empty path",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts::menu Finder Tests > checks for root menu when path does not exist",
+          "file": "packages/utils/src/helpers/__tests__/find-menu-by-path.test.ts",
+          "name": "menu Finder Tests > checks for root menu when path does not exist",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/utils/src/helpers/__tests__/generate-menus.test.ts::packages/utils/src/helpers/__tests__/generate-menus.test.ts",
+          "file": "packages/utils/src/helpers/__tests__/generate-menus.test.ts",
+          "name": "packages/utils/src/helpers/__tests__/generate-menus.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"vue-router\" from \"packages/utils/src/helpers/__tests__/generate-menus.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/utils/src/helpers/__tests__/generate-routes-frontend.test.ts::packages/utils/src/helpers/__tests__/generate-routes-frontend.test.ts",
+          "file": "packages/utils/src/helpers/__tests__/generate-routes-frontend.test.ts",
+          "name": "packages/utils/src/helpers/__tests__/generate-routes-frontend.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/utils\" from \"packages/utils/src/helpers/generate-routes-frontend.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/utils/src/helpers/__tests__/merge-route-modules.test.ts::mergeRouteModules > should merge route modules correctly",
+          "file": "packages/utils/src/helpers/__tests__/merge-route-modules.test.ts",
+          "name": "mergeRouteModules > should merge route modules correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/utils/src/helpers/__tests__/merge-route-modules.test.ts::mergeRouteModules > should handle empty modules",
+          "file": "packages/utils/src/helpers/__tests__/merge-route-modules.test.ts",
+          "name": "mergeRouteModules > should handle empty modules",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/utils/src/helpers/__tests__/merge-route-modules.test.ts::mergeRouteModules > should handle modules with no default export",
+          "file": "packages/utils/src/helpers/__tests__/merge-route-modules.test.ts",
+          "name": "mergeRouteModules > should handle modules with no default export",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/ui-kit/layout-ui/src/__tests__/header-scroll-state.test.ts::resolveHeaderHiddenOnScroll > should show the header near the top",
+          "file": "packages/@core/ui-kit/layout-ui/src/__tests__/header-scroll-state.test.ts",
+          "name": "resolveHeaderHiddenOnScroll > should show the header near the top",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/ui-kit/layout-ui/src/__tests__/header-scroll-state.test.ts::resolveHeaderHiddenOnScroll > should show the header when the top is reached",
+          "file": "packages/@core/ui-kit/layout-ui/src/__tests__/header-scroll-state.test.ts",
+          "name": "resolveHeaderHiddenOnScroll > should show the header when the top is reached",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/ui-kit/layout-ui/src/__tests__/header-scroll-state.test.ts::resolveHeaderHiddenOnScroll > should show the header while scrolling up",
+          "file": "packages/@core/ui-kit/layout-ui/src/__tests__/header-scroll-state.test.ts",
+          "name": "resolveHeaderHiddenOnScroll > should show the header while scrolling up",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/ui-kit/layout-ui/src/__tests__/header-scroll-state.test.ts::resolveHeaderHiddenOnScroll > should hide the header while scrolling down",
+          "file": "packages/@core/ui-kit/layout-ui/src/__tests__/header-scroll-state.test.ts",
+          "name": "resolveHeaderHiddenOnScroll > should hide the header while scrolling down",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/ui-kit/layout-ui/src/__tests__/header-scroll-state.test.ts::resolveHeaderHiddenOnScroll > should preserve the current state without a direction",
+          "file": "packages/@core/ui-kit/layout-ui/src/__tests__/header-scroll-state.test.ts",
+          "name": "resolveHeaderHiddenOnScroll > should preserve the current state without a direction",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/effects/layouts/src/basic/__tests__/use-layout-scroll.test.ts::packages/effects/layouts/src/basic/__tests__/use-layout-scroll.test.ts",
+          "file": "packages/effects/layouts/src/basic/__tests__/use-layout-scroll.test.ts",
+          "name": "packages/effects/layouts/src/basic/__tests__/use-layout-scroll.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/effects/layouts/src/basic/__tests__/use-layout-scroll.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/downloader.test.ts::fileDownloader > should create an instance of FileDownloader",
+          "file": "packages/effects/request/src/request-client/modules/downloader.test.ts",
+          "name": "fileDownloader > should create an instance of FileDownloader",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/downloader.test.ts::fileDownloader > should download a file and return a Blob",
+          "file": "packages/effects/request/src/request-client/modules/downloader.test.ts",
+          "name": "fileDownloader > should download a file and return a Blob",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/downloader.test.ts::fileDownloader > should merge provided config with default config",
+          "file": "packages/effects/request/src/request-client/modules/downloader.test.ts",
+          "name": "fileDownloader > should merge provided config with default config",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/downloader.test.ts::fileDownloader > should handle errors gracefully",
+          "file": "packages/effects/request/src/request-client/modules/downloader.test.ts",
+          "name": "fileDownloader > should handle errors gracefully",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/downloader.test.ts::fileDownloader > should handle empty URL gracefully",
+          "file": "packages/effects/request/src/request-client/modules/downloader.test.ts",
+          "name": "fileDownloader > should handle empty URL gracefully",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/downloader.test.ts::fileDownloader > should handle null URL gracefully",
+          "file": "packages/effects/request/src/request-client/modules/downloader.test.ts",
+          "name": "fileDownloader > should handle null URL gracefully",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/downloader.test.ts::fileDownloader use other method > should call request using get",
+          "file": "packages/effects/request/src/request-client/modules/downloader.test.ts",
+          "name": "fileDownloader use other method > should call request using get",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/downloader.test.ts::fileDownloader use other method > should call post",
+          "file": "packages/effects/request/src/request-client/modules/downloader.test.ts",
+          "name": "fileDownloader use other method > should call post",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/downloader.test.ts::fileDownloader use other method > should handle errors gracefully",
+          "file": "packages/effects/request/src/request-client/modules/downloader.test.ts",
+          "name": "fileDownloader use other method > should handle errors gracefully",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/sse.test.ts::sSE > should call requestSSE when postSSE is used",
+          "file": "packages/effects/request/src/request-client/modules/sse.test.ts",
+          "name": "sSE > should call requestSSE when postSSE is used",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/sse.test.ts::sSE > should throw error if fetch response not ok",
+          "file": "packages/effects/request/src/request-client/modules/sse.test.ts",
+          "name": "sSE > should throw error if fetch response not ok",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/sse.test.ts::sSE > should trigger onMessage and onEnd callbacks",
+          "file": "packages/effects/request/src/request-client/modules/sse.test.ts",
+          "name": "sSE > should trigger onMessage and onEnd callbacks",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/sse.test.ts::sSE > should apply request interceptors",
+          "file": "packages/effects/request/src/request-client/modules/sse.test.ts",
+          "name": "sSE > should apply request interceptors",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/sse.test.ts::sSE > should throw error when no reader",
+          "file": "packages/effects/request/src/request-client/modules/sse.test.ts",
+          "name": "sSE > should throw error when no reader",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/uploader.test.ts::packages/effects/request/src/request-client/modules/uploader.test.ts",
+          "file": "packages/effects/request/src/request-client/modules/uploader.test.ts",
+          "name": "packages/effects/request/src/request-client/modules/uploader.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben/utils\" from \"packages/effects/request/src/request-client/modules/uploader.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts::storageManager > should set and get an item",
+          "file": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts",
+          "name": "storageManager > should set and get an item",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts::storageManager > should return default value if item does not exist",
+          "file": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts",
+          "name": "storageManager > should return default value if item does not exist",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts::storageManager > should remove an item",
+          "file": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts",
+          "name": "storageManager > should remove an item",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts::storageManager > should clear all items with the prefix",
+          "file": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts",
+          "name": "storageManager > should clear all items with the prefix",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts::storageManager > should clear expired items",
+          "file": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts",
+          "name": "storageManager > should clear expired items",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts::storageManager > should not clear non-expired items",
+          "file": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts",
+          "name": "storageManager > should not clear non-expired items",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts::storageManager > should return null for non-existent items without default value",
+          "file": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts",
+          "name": "storageManager > should return null for non-existent items without default value",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts::storageManager > should overwrite existing items",
+          "file": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts",
+          "name": "storageManager > should overwrite existing items",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts::storageManager > should handle items without expiry correctly",
+          "file": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts",
+          "name": "storageManager > should handle items without expiry correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts::storageManager > should remove expired items when accessed",
+          "file": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts",
+          "name": "storageManager > should remove expired items when accessed",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts::storageManager > should not remove non-expired items when accessed",
+          "file": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts",
+          "name": "storageManager > should not remove non-expired items when accessed",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts::storageManager > should handle multiple items with different expiry times",
+          "file": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts",
+          "name": "storageManager > should handle multiple items with different expiry times",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts::storageManager > should handle items with no expiry",
+          "file": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts",
+          "name": "storageManager > should handle items with no expiry",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts::storageManager > should clear all items correctly",
+          "file": "packages/@core/base/shared/src/cache/__tests__/storage-manager.test.ts",
+          "name": "storageManager > should clear all items correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/color/__tests__/convert.test.ts::packages/@core/base/shared/src/color/__tests__/convert.test.ts",
+          "file": "packages/@core/base/shared/src/color/__tests__/convert.test.ts",
+          "name": "packages/@core/base/shared/src/color/__tests__/convert.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@ctrl/tinycolor\" from \"packages/@core/base/shared/src/color/convert.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/date.test.ts::packages/@core/base/shared/src/utils/__tests__/date.test.ts",
+          "file": "packages/@core/base/shared/src/utils/__tests__/date.test.ts",
+          "name": "packages/@core/base/shared/src/utils/__tests__/date.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"dayjs\" from \"packages/@core/base/shared/src/utils/__tests__/date.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts::diff function > should return an empty object when comparing identical objects",
+          "file": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts",
+          "name": "diff function > should return an empty object when comparing identical objects",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts::diff function > should detect simple changes in primitive values",
+          "file": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts",
+          "name": "diff function > should detect simple changes in primitive values",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts::diff function > should detect nested object changes",
+          "file": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts",
+          "name": "diff function > should detect nested object changes",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts::diff function > should handle array changes",
+          "file": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts",
+          "name": "diff function > should handle array changes",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts::diff function > should ignore array order changes",
+          "file": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts",
+          "name": "diff function > should ignore array order changes",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts::diff function > should handle added keys",
+          "file": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts",
+          "name": "diff function > should handle added keys",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts::diff function > should handle removed keys",
+          "file": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts",
+          "name": "diff function > should handle removed keys",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts::diff function > should handle boolean value changes",
+          "file": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts",
+          "name": "diff function > should handle boolean value changes",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts::diff function > should handle null and undefined values",
+          "file": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts",
+          "name": "diff function > should handle null and undefined values",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts::diffStrict function > should return undefined when comparing identical objects",
+          "file": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts",
+          "name": "diffStrict function > should return undefined when comparing identical objects",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts::diffStrict function > should detect array order changes",
+          "file": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts",
+          "name": "diffStrict function > should detect array order changes",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts::diffStrict function > should detect array element changes",
+          "file": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts",
+          "name": "diffStrict function > should detect array element changes",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts::diffStrict function > should detect nested object changes",
+          "file": "packages/@core/base/shared/src/utils/__tests__/diff.test.ts",
+          "name": "diffStrict function > should detect nested object changes",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts::getElementVisibleRect > should return default rect if element is undefined",
+          "file": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts",
+          "name": "getElementVisibleRect > should return default rect if element is undefined",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts::getElementVisibleRect > should return default rect if element is null",
+          "file": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts",
+          "name": "getElementVisibleRect > should return default rect if element is null",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts::getElementVisibleRect > should return correct visible rect when element is fully visible",
+          "file": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts",
+          "name": "getElementVisibleRect > should return correct visible rect when element is fully visible",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts::getElementVisibleRect > should return correct visible rect when element is partially off-screen at the top",
+          "file": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts",
+          "name": "getElementVisibleRect > should return correct visible rect when element is partially off-screen at the top",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts::getElementVisibleRect > should return correct visible rect when element is partially off-screen at the right",
+          "file": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts",
+          "name": "getElementVisibleRect > should return correct visible rect when element is partially off-screen at the right",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts::getElementVisibleRect > should return all zeros when element is completely off-screen",
+          "file": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts",
+          "name": "getElementVisibleRect > should return all zeros when element is completely off-screen",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts::getLayoutScrollElement > should return the layout scroll element",
+          "file": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts",
+          "name": "getLayoutScrollElement > should return the layout scroll element",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts::getLayoutScrollElement > should return null when the layout scroll element is missing",
+          "file": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts",
+          "name": "getLayoutScrollElement > should return null when the layout scroll element is missing",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts::needsScrollbar > should check scrollbar state from target element",
+          "file": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts",
+          "name": "needsScrollbar > should check scrollbar state from target element",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts::needsScrollbar > should return false when target content does not overflow",
+          "file": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts",
+          "name": "needsScrollbar > should return false when target content does not overflow",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts::needsScrollbar > should ignore clip overflow targets",
+          "file": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts",
+          "name": "needsScrollbar > should ignore clip overflow targets",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts::needsScrollbar > should ignore hidden overflow targets",
+          "file": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts",
+          "name": "needsScrollbar > should ignore hidden overflow targets",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts::needsScrollbar > should fall back to document scrollbar state",
+          "file": "packages/@core/base/shared/src/utils/__tests__/dom.test.ts",
+          "name": "needsScrollbar > should fall back to document scrollbar state",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/inference.test.ts::packages/@core/base/shared/src/utils/__tests__/inference.test.ts",
+          "file": "packages/@core/base/shared/src/utils/__tests__/inference.test.ts",
+          "name": "packages/@core/base/shared/src/utils/__tests__/inference.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vue/shared\" from \"packages/@core/base/shared/src/utils/inference.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::capitalizeFirstLetter > should capitalize the first letter of a string",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "capitalizeFirstLetter > should capitalize the first letter of a string",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::capitalizeFirstLetter > should handle empty strings",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "capitalizeFirstLetter > should handle empty strings",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::capitalizeFirstLetter > should handle single character strings",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "capitalizeFirstLetter > should handle single character strings",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::capitalizeFirstLetter > should not change the case of other characters",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "capitalizeFirstLetter > should not change the case of other characters",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::toLowerCaseFirstLetter > should convert the first letter to lowercase",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "toLowerCaseFirstLetter > should convert the first letter to lowercase",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::toLowerCaseFirstLetter > should return the same string if the first letter is already lowercase",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "toLowerCaseFirstLetter > should return the same string if the first letter is already lowercase",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::toLowerCaseFirstLetter > should handle empty strings",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "toLowerCaseFirstLetter > should handle empty strings",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::toLowerCaseFirstLetter > should handle single character strings",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "toLowerCaseFirstLetter > should handle single character strings",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::toLowerCaseFirstLetter > should handle strings with only one uppercase letter",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "toLowerCaseFirstLetter > should handle strings with only one uppercase letter",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::toLowerCaseFirstLetter > should handle strings with special characters",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "toLowerCaseFirstLetter > should handle strings with special characters",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::toCamelCase > should return the key if parentKey is empty",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "toCamelCase > should return the key if parentKey is empty",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::toCamelCase > should combine parentKey and key in camel case",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "toCamelCase > should combine parentKey and key in camel case",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::toCamelCase > should handle empty key and parentKey",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "toCamelCase > should handle empty key and parentKey",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::toCamelCase > should handle key with capital letters",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "toCamelCase > should handle key with capital letters",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::kebabToCamelCase > should convert kebab-case to camelCase correctly",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "kebabToCamelCase > should convert kebab-case to camelCase correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::kebabToCamelCase > should handle multiple consecutive hyphens",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "kebabToCamelCase > should handle multiple consecutive hyphens",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::kebabToCamelCase > should trim leading and trailing hyphens",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "kebabToCamelCase > should trim leading and trailing hyphens",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::kebabToCamelCase > should preserve the case of the first word",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "kebabToCamelCase > should preserve the case of the first word",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::kebabToCamelCase > should convert a single word correctly",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "kebabToCamelCase > should convert a single word correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::kebabToCamelCase > should return an empty string if input is empty",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "kebabToCamelCase > should return an empty string if input is empty",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::kebabToCamelCase > should handle strings with no hyphens",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "kebabToCamelCase > should handle strings with no hyphens",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::kebabToCamelCase > should handle strings with only hyphens",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "kebabToCamelCase > should handle strings with only hyphens",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts::kebabToCamelCase > should handle mixed case inputs",
+          "file": "packages/@core/base/shared/src/utils/__tests__/letter.test.ts",
+          "name": "kebabToCamelCase > should handle mixed case inputs",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/resources.test.ts::loadScript > should resolve when the script loads successfully",
+          "file": "packages/@core/base/shared/src/utils/__tests__/resources.test.ts",
+          "name": "loadScript > should resolve when the script loads successfully",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/resources.test.ts::loadScript > should not insert duplicate script and resolve immediately if already loaded",
+          "file": "packages/@core/base/shared/src/utils/__tests__/resources.test.ts",
+          "name": "loadScript > should not insert duplicate script and resolve immediately if already loaded",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/resources.test.ts::loadScript > should reject when the script fails to load",
+          "file": "packages/@core/base/shared/src/utils/__tests__/resources.test.ts",
+          "name": "loadScript > should reject when the script fails to load",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/resources.test.ts::loadScript > should handle multiple concurrent calls and only insert one script tag",
+          "file": "packages/@core/base/shared/src/utils/__tests__/resources.test.ts",
+          "name": "loadScript > should handle multiple concurrent calls and only insert one script tag",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts::stack > push & size should work",
+          "file": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts",
+          "name": "stack > push & size should work",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts::stack > peek should return top element without removing it",
+          "file": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts",
+          "name": "stack > peek should return top element without removing it",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts::stack > pop should remove and return top element",
+          "file": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts",
+          "name": "stack > pop should remove and return top element",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts::stack > pop on empty stack should return undefined",
+          "file": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts",
+          "name": "stack > pop on empty stack should return undefined",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts::stack > clear should remove all elements",
+          "file": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts",
+          "name": "stack > clear should remove all elements",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts::stack > toArray should return a shallow copy",
+          "file": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts",
+          "name": "stack > toArray should return a shallow copy",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts::stack > dedup should remove existing item before push",
+          "file": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts",
+          "name": "stack > dedup should remove existing item before push",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts::stack > dedup = false should allow duplicate items",
+          "file": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts",
+          "name": "stack > dedup = false should allow duplicate items",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts::stack > remove should delete all matching items",
+          "file": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts",
+          "name": "stack > remove should delete all matching items",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts::stack > maxSize should limit stack capacity",
+          "file": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts",
+          "name": "stack > maxSize should limit stack capacity",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts::stack > dedup + maxSize should work together",
+          "file": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts",
+          "name": "stack > dedup + maxSize should work together",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts::stack > createStack should create a stack instance",
+          "file": "packages/@core/base/shared/src/utils/__tests__/stack.test.ts",
+          "name": "stack > createStack should create a stack instance",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/state-handler.test.ts::stateHandler > should resolve when condition is set to true",
+          "file": "packages/@core/base/shared/src/utils/__tests__/state-handler.test.ts",
+          "name": "stateHandler > should resolve when condition is set to true",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/state-handler.test.ts::stateHandler > should resolve immediately if condition is already true",
+          "file": "packages/@core/base/shared/src/utils/__tests__/state-handler.test.ts",
+          "name": "stateHandler > should resolve immediately if condition is already true",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/state-handler.test.ts::stateHandler > should reject when condition is set to false after waiting",
+          "file": "packages/@core/base/shared/src/utils/__tests__/state-handler.test.ts",
+          "name": "stateHandler > should reject when condition is set to false after waiting",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/state-handler.test.ts::stateHandler > should reset condition to false",
+          "file": "packages/@core/base/shared/src/utils/__tests__/state-handler.test.ts",
+          "name": "stateHandler > should reset condition to false",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/state-handler.test.ts::stateHandler > should resolve when condition is set to true after reset",
+          "file": "packages/@core/base/shared/src/utils/__tests__/state-handler.test.ts",
+          "name": "stateHandler > should resolve when condition is set to true after reset",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts::traverseTreeValues > traverses tree and returns all node values",
+          "file": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts",
+          "name": "traverseTreeValues > traverses tree and returns all node values",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts::traverseTreeValues > handles empty tree",
+          "file": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts",
+          "name": "traverseTreeValues > handles empty tree",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts::traverseTreeValues > handles tree with only root node",
+          "file": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts",
+          "name": "traverseTreeValues > handles tree with only root node",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts::traverseTreeValues > handles tree with only leaf nodes",
+          "file": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts",
+          "name": "traverseTreeValues > handles tree with only leaf nodes",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts::filterTree > should return all nodes when condition is always true",
+          "file": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts",
+          "name": "filterTree > should return all nodes when condition is always true",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts::filterTree > should return only root nodes when condition is always false",
+          "file": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts",
+          "name": "filterTree > should return only root nodes when condition is always false",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts::filterTree > should return nodes with even id values",
+          "file": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts",
+          "name": "filterTree > should return nodes with even id values",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts::filterTree > should return nodes with odd id values and their ancestors",
+          "file": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts",
+          "name": "filterTree > should return nodes with odd id values and their ancestors",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts::filterTree > should return nodes with \"leaf\" in their name",
+          "file": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts",
+          "name": "filterTree > should return nodes with \"leaf\" in their name",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts::mapTree > map infinite depth tree using mapTree",
+          "file": "packages/@core/base/shared/src/utils/__tests__/tree.test.ts",
+          "name": "mapTree > map infinite depth tree using mapTree",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/unique.test.ts::uniqueByField > should return an array with unique items based on id field",
+          "file": "packages/@core/base/shared/src/utils/__tests__/unique.test.ts",
+          "name": "uniqueByField > should return an array with unique items based on id field",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/unique.test.ts::uniqueByField > should return an empty array when input array is empty",
+          "file": "packages/@core/base/shared/src/utils/__tests__/unique.test.ts",
+          "name": "uniqueByField > should return an empty array when input array is empty",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/unique.test.ts::uniqueByField > should handle arrays with only one item correctly",
+          "file": "packages/@core/base/shared/src/utils/__tests__/unique.test.ts",
+          "name": "uniqueByField > should handle arrays with only one item correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/unique.test.ts::uniqueByField > should preserve the order of the first occurrence of each item",
+          "file": "packages/@core/base/shared/src/utils/__tests__/unique.test.ts",
+          "name": "uniqueByField > should preserve the order of the first occurrence of each item",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/update-css-variables.test.ts::updateCSSVariables should update CSS variables in :root selector",
+          "file": "packages/@core/base/shared/src/utils/__tests__/update-css-variables.test.ts",
+          "name": "updateCSSVariables should update CSS variables in :root selector",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/update-css-variables.test.ts::updateCSSVariables should support a custom selector",
+          "file": "packages/@core/base/shared/src/utils/__tests__/update-css-variables.test.ts",
+          "name": "updateCSSVariables should support a custom selector",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/util.test.ts::bindMethods > should bind methods to the instance correctly",
+          "file": "packages/@core/base/shared/src/utils/__tests__/util.test.ts",
+          "name": "bindMethods > should bind methods to the instance correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/util.test.ts::bindMethods > should bind multiple methods",
+          "file": "packages/@core/base/shared/src/utils/__tests__/util.test.ts",
+          "name": "bindMethods > should bind multiple methods",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/util.test.ts::bindMethods > should not bind non-function properties",
+          "file": "packages/@core/base/shared/src/utils/__tests__/util.test.ts",
+          "name": "bindMethods > should not bind non-function properties",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/util.test.ts::bindMethods > should not bind constructor method",
+          "file": "packages/@core/base/shared/src/utils/__tests__/util.test.ts",
+          "name": "bindMethods > should not bind constructor method",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/util.test.ts::bindMethods > should not bind getter/setter properties",
+          "file": "packages/@core/base/shared/src/utils/__tests__/util.test.ts",
+          "name": "bindMethods > should not bind getter/setter properties",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/util.test.ts::getNestedValue > should get a nested value when the path is valid",
+          "file": "packages/@core/base/shared/src/utils/__tests__/util.test.ts",
+          "name": "getNestedValue > should get a nested value when the path is valid",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/util.test.ts::getNestedValue > should return undefined for non-existent property",
+          "file": "packages/@core/base/shared/src/utils/__tests__/util.test.ts",
+          "name": "getNestedValue > should return undefined for non-existent property",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/util.test.ts::getNestedValue > should return undefined when accessing a non-existent deep path",
+          "file": "packages/@core/base/shared/src/utils/__tests__/util.test.ts",
+          "name": "getNestedValue > should return undefined when accessing a non-existent deep path",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/util.test.ts::getNestedValue > should return undefined if a middle level is undefined",
+          "file": "packages/@core/base/shared/src/utils/__tests__/util.test.ts",
+          "name": "getNestedValue > should return undefined if a middle level is undefined",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/util.test.ts::getNestedValue > should return the correct value for a nested setting",
+          "file": "packages/@core/base/shared/src/utils/__tests__/util.test.ts",
+          "name": "getNestedValue > should return the correct value for a nested setting",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/util.test.ts::getNestedValue > should work for a single-level path",
+          "file": "packages/@core/base/shared/src/utils/__tests__/util.test.ts",
+          "name": "getNestedValue > should work for a single-level path",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/util.test.ts::getNestedValue > should throw if path is empty",
+          "file": "packages/@core/base/shared/src/utils/__tests__/util.test.ts",
+          "name": "getNestedValue > should throw if path is empty",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/util.test.ts::getNestedValue > should handle paths with array indexes",
+          "file": "packages/@core/base/shared/src/utils/__tests__/util.test.ts",
+          "name": "getNestedValue > should handle paths with array indexes",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/util.test.ts::getNestedValue > should return undefined when accessing an out-of-bounds array index",
+          "file": "packages/@core/base/shared/src/utils/__tests__/util.test.ts",
+          "name": "getNestedValue > should return undefined when accessing an out-of-bounds array index",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/window.test.ts::openWindow > should call window.open with correct arguments",
+          "file": "packages/@core/base/shared/src/utils/__tests__/window.test.ts",
+          "name": "openWindow > should call window.open with correct arguments",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert-builder.test.ts::packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert-builder.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert-builder.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert-builder.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shadcn-ui\" from \"packages/@core/ui-kit/popup-ui/src/alert/alert.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert.test.ts::packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/composables\" from \"packages/@core/ui-kit/popup-ui/src/alert/alert.vue\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-api.test.ts::packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-api.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-api.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-api.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/store\" from \"packages/@core/ui-kit/popup-ui/src/drawer/drawer-api.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-interaction.test.ts::packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-interaction.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-interaction.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-interaction.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-interaction.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-types.test.ts::drawer public data types > infers data from the connected component exposed api",
+          "file": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-types.test.ts",
+          "name": "drawer public data types > infers data from the connected component exposed api",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-types.test.ts::drawer public data types > supports explicit and pre-bound data contracts",
+          "file": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-types.test.ts",
+          "name": "drawer public data types > supports explicit and pre-bound data contracts",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-types.test.ts::drawer public data types > falls back to unknown without a data contract",
+          "file": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-types.test.ts",
+          "name": "drawer public data types > falls back to unknown without a data contract",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer.test.ts::packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/use-drawer.test.ts::packages/@core/ui-kit/popup-ui/src/drawer/__tests__/use-drawer.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/use-drawer.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/use-drawer.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/preferences\" from \"packages/@core/ui-kit/popup-ui/src/drawer/use-drawer.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-api.test.ts::packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-api.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-api.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-api.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/store\" from \"packages/@core/ui-kit/popup-ui/src/modal/modal-api.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-interaction.test.ts::packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-interaction.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-interaction.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-interaction.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-interaction.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-types.test.ts::modal public data types > infers data from the connected component exposed api",
+          "file": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-types.test.ts",
+          "name": "modal public data types > infers data from the connected component exposed api",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-types.test.ts::modal public data types > supports explicit and pre-bound data contracts",
+          "file": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-types.test.ts",
+          "name": "modal public data types > supports explicit and pre-bound data contracts",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-types.test.ts::modal public data types > falls back to unknown without a data contract",
+          "file": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-types.test.ts",
+          "name": "modal public data types > falls back to unknown without a data contract",
+          "outcome": "pass"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal.test.ts::packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/use-modal.test.ts::packages/@core/ui-kit/popup-ui/src/modal/__tests__/use-modal.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/use-modal.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/use-modal.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/preferences\" from \"packages/@core/ui-kit/popup-ui/src/modal/use-modal.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/effects/common-ui/src/components/icon-picker/__tests__/icon-picker.test.ts::packages/effects/common-ui/src/components/icon-picker/__tests__/icon-picker.test.ts",
+          "file": "packages/effects/common-ui/src/components/icon-picker/__tests__/icon-picker.test.ts",
+          "name": "packages/effects/common-ui/src/components/icon-picker/__tests__/icon-picker.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vue/test-utils\" from \"packages/effects/common-ui/src/components/icon-picker/__tests__/icon-picker.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/effects/common-ui/src/components/page/__tests__/page.test.ts::packages/effects/common-ui/src/components/page/__tests__/page.test.ts",
+          "file": "packages/effects/common-ui/src/components/page/__tests__/page.test.ts",
+          "name": "packages/effects/common-ui/src/components/page/__tests__/page.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vue/test-utils\" from \"packages/effects/common-ui/src/components/page/__tests__/page.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/effects/layouts/src/widgets/notification/__tests__/notification.test.ts::packages/effects/layouts/src/widgets/notification/__tests__/notification.test.ts",
+          "file": "packages/effects/layouts/src/widgets/notification/__tests__/notification.test.ts",
+          "name": "packages/effects/layouts/src/widgets/notification/__tests__/notification.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben/icons\" from \"packages/effects/layouts/src/widgets/notification/notification.vue\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/shadcn-ui/src/ui/progress/__tests__/progress.test.ts::packages/@core/ui-kit/shadcn-ui/src/ui/progress/__tests__/progress.test.ts",
+          "file": "packages/@core/ui-kit/shadcn-ui/src/ui/progress/__tests__/progress.test.ts",
+          "name": "packages/@core/ui-kit/shadcn-ui/src/ui/progress/__tests__/progress.test.ts",
+          "outcome": "fail",
+          "message": "[@vue/compiler-sfc] Failed to resolve import source \"reka-ui\". /tmp/trustbut-wt-Wo6dbQ/packages/@core/ui-kit/shadcn-ui/src/ui/progress/Progress.vue 12 | 13 | const props = defineProps< 14 | ProgressRootProps & { class?: HTMLAttributes['class'] } | ^^^^^^^^^^^^^^^^^ 15 | >(); 16 |"
+        }
+      ],
+      "outputTail": "Warning: A vi.mock(\"sortablejs/modular/sortable.complete.esm.js\") call in \"/tmp/trustbut-wt-Wo6dbQ/packages/@core/composables/src/__tests__/use-sortable.test.ts\" is not at the top level of the module. Although it appears nested, it will be hoisted and executed before any tests run. Move it to the top level to reflect its actual execution order. This will become an error in a future version.\nSee: https://vitest.dev/guide/mocking/modules#how-it-works\nJUNIT report written to /tmp/trustbut-junit-1dmgcm/junit.xml"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 8264,
+      "cases": [
+        {
+          "id": "playground/__tests__/unit/date-range-codec.test.ts::playground/__tests__/unit/date-range-codec.test.ts",
+          "file": "playground/__tests__/unit/date-range-codec.test.ts",
+          "name": "playground/__tests__/unit/date-range-codec.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"dayjs\" from \"playground/__tests__/unit/date-range-codec.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/preferences/__tests__/preferences.test.ts::packages/@core/preferences/__tests__/preferences.test.ts",
+          "file": "packages/@core/preferences/__tests__/preferences.test.ts",
+          "name": "packages/@core/preferences/__tests__/preferences.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/color\" from \"packages/@core/preferences/src/update-css-variables.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/stores/src/modules/access.test.ts::packages/stores/src/modules/access.test.ts",
+          "file": "packages/stores/src/modules/access.test.ts",
+          "name": "packages/stores/src/modules/access.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"pinia\" from \"packages/stores/src/modules/access.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/stores/src/modules/tabbar.test.ts::packages/stores/src/modules/tabbar.test.ts",
+          "file": "packages/stores/src/modules/tabbar.test.ts",
+          "name": "packages/stores/src/modules/tabbar.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"pinia\" from \"packages/stores/src/modules/tabbar.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/stores/src/modules/user.test.ts::packages/stores/src/modules/user.test.ts",
+          "file": "packages/stores/src/modules/user.test.ts",
+          "name": "packages/stores/src/modules/user.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"pinia\" from \"packages/stores/src/modules/user.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/composables/src/__tests__/use-layout-style.test.ts::packages/@core/composables/src/__tests__/use-layout-style.test.ts",
+          "file": "packages/@core/composables/src/__tests__/use-layout-style.test.ts",
+          "name": "packages/@core/composables/src/__tests__/use-layout-style.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/@core/composables/src/use-layout-style.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/composables/src/__tests__/use-layout-viewport-height.test.ts::packages/@core/composables/src/__tests__/use-layout-viewport-height.test.ts",
+          "file": "packages/@core/composables/src/__tests__/use-layout-viewport-height.test.ts",
+          "name": "packages/@core/composables/src/__tests__/use-layout-viewport-height.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/@core/composables/src/__tests__/use-layout-viewport-height.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/composables/src/__tests__/use-scroll-lock.test.ts::packages/@core/composables/src/__tests__/use-scroll-lock.test.ts",
+          "file": "packages/@core/composables/src/__tests__/use-scroll-lock.test.ts",
+          "name": "packages/@core/composables/src/__tests__/use-scroll-lock.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/@core/composables/src/__tests__/use-scroll-lock.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/config.test.ts::packages/@core/ui-kit/form-ui/__tests__/config.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/config.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/config.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/global-state\" from \"packages/@core/ui-kit/form-ui/__tests__/config.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-api.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-api.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-api.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-api.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/store\" from \"packages/@core/ui-kit/form-ui/src/form-api.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-compatibility.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-compatibility.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-compatibility.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-compatibility.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shadcn-ui\" from \"packages/@core/ui-kit/form-ui/src/config.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-field-node-name.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-field-node-name.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-field-node-name.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-field-node-name.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vue/test-utils\" from \"packages/@core/ui-kit/form-ui/__tests__/form-field-node-name.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-integration.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-integration.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-integration.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-integration.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vue/test-utils\" from \"packages/@core/ui-kit/form-ui/__tests__/form-integration.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-runtime.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-runtime.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-runtime.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-runtime.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vue/test-utils\" from \"packages/@core/ui-kit/form-ui/__tests__/form-runtime.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-schema.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-schema.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-schema.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-schema.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/utils\" from \"packages/@core/ui-kit/form-ui/src/form-render/schema.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-types.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-types.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-types.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-types.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/store\" from \"packages/@core/ui-kit/form-ui/src/use-vben-form.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/form-value-transform.test.ts::packages/@core/ui-kit/form-ui/__tests__/form-value-transform.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/form-value-transform.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/form-value-transform.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/utils\" from \"packages/@core/ui-kit/form-ui/src/form-value-transform.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/label-width.test.ts::packages/@core/ui-kit/form-ui/__tests__/label-width.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/label-width.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/label-width.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vue/test-utils\" from \"packages/@core/ui-kit/form-ui/__tests__/label-width.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/form-ui/__tests__/zod-v4-schema.test.ts::packages/@core/ui-kit/form-ui/__tests__/zod-v4-schema.test.ts",
+          "file": "packages/@core/ui-kit/form-ui/__tests__/zod-v4-schema.test.ts",
+          "name": "packages/@core/ui-kit/form-ui/__tests__/zod-v4-schema.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"zod\" from \"packages/@core/ui-kit/form-ui/__tests__/zod-v4-schema.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/effects/access/src/__tests__/accessible.test.ts::packages/effects/access/src/__tests__/accessible.test.ts",
+          "file": "packages/effects/access/src/__tests__/accessible.test.ts",
+          "name": "packages/effects/access/src/__tests__/accessible.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben/utils\" from \"packages/effects/access/src/accessible.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/request-client.test.ts::packages/effects/request/src/request-client/request-client.test.ts",
+          "file": "packages/effects/request/src/request-client/request-client.test.ts",
+          "name": "packages/effects/request/src/request-client/request-client.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"axios\" from \"packages/effects/request/src/request-client/request-client.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/utils/src/helpers/__tests__/generate-menus.test.ts::packages/utils/src/helpers/__tests__/generate-menus.test.ts",
+          "file": "packages/utils/src/helpers/__tests__/generate-menus.test.ts",
+          "name": "packages/utils/src/helpers/__tests__/generate-menus.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"vue-router\" from \"packages/utils/src/helpers/__tests__/generate-menus.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/utils/src/helpers/__tests__/generate-routes-frontend.test.ts::packages/utils/src/helpers/__tests__/generate-routes-frontend.test.ts",
+          "file": "packages/utils/src/helpers/__tests__/generate-routes-frontend.test.ts",
+          "name": "packages/utils/src/helpers/__tests__/generate-routes-frontend.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/utils\" from \"packages/utils/src/helpers/generate-routes-frontend.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/effects/layouts/src/basic/__tests__/use-layout-scroll.test.ts::packages/effects/layouts/src/basic/__tests__/use-layout-scroll.test.ts",
+          "file": "packages/effects/layouts/src/basic/__tests__/use-layout-scroll.test.ts",
+          "name": "packages/effects/layouts/src/basic/__tests__/use-layout-scroll.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/effects/layouts/src/basic/__tests__/use-layout-scroll.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/effects/request/src/request-client/modules/uploader.test.ts::packages/effects/request/src/request-client/modules/uploader.test.ts",
+          "file": "packages/effects/request/src/request-client/modules/uploader.test.ts",
+          "name": "packages/effects/request/src/request-client/modules/uploader.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben/utils\" from \"packages/effects/request/src/request-client/modules/uploader.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/base/shared/src/color/__tests__/convert.test.ts::packages/@core/base/shared/src/color/__tests__/convert.test.ts",
+          "file": "packages/@core/base/shared/src/color/__tests__/convert.test.ts",
+          "name": "packages/@core/base/shared/src/color/__tests__/convert.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@ctrl/tinycolor\" from \"packages/@core/base/shared/src/color/convert.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/date.test.ts::packages/@core/base/shared/src/utils/__tests__/date.test.ts",
+          "file": "packages/@core/base/shared/src/utils/__tests__/date.test.ts",
+          "name": "packages/@core/base/shared/src/utils/__tests__/date.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"dayjs\" from \"packages/@core/base/shared/src/utils/__tests__/date.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/base/shared/src/utils/__tests__/inference.test.ts::packages/@core/base/shared/src/utils/__tests__/inference.test.ts",
+          "file": "packages/@core/base/shared/src/utils/__tests__/inference.test.ts",
+          "name": "packages/@core/base/shared/src/utils/__tests__/inference.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vue/shared\" from \"packages/@core/base/shared/src/utils/inference.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert-builder.test.ts::packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert-builder.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert-builder.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert-builder.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shadcn-ui\" from \"packages/@core/ui-kit/popup-ui/src/alert/alert.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert.test.ts::packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/alert/__tests__/alert.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/composables\" from \"packages/@core/ui-kit/popup-ui/src/alert/alert.vue\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-api.test.ts::packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-api.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-api.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-api.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/store\" from \"packages/@core/ui-kit/popup-ui/src/drawer/drawer-api.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-interaction.test.ts::packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-interaction.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-interaction.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-interaction.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer-interaction.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer.test.ts::packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/@core/ui-kit/popup-ui/src/drawer/__tests__/drawer.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/use-drawer.test.ts::packages/@core/ui-kit/popup-ui/src/drawer/__tests__/use-drawer.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/use-drawer.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/drawer/__tests__/use-drawer.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/preferences\" from \"packages/@core/ui-kit/popup-ui/src/drawer/use-drawer.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-api.test.ts::packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-api.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-api.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-api.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/store\" from \"packages/@core/ui-kit/popup-ui/src/modal/modal-api.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-interaction.test.ts::packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-interaction.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-interaction.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-interaction.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal-interaction.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal.test.ts::packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/shared/constants\" from \"packages/@core/ui-kit/popup-ui/src/modal/__tests__/modal.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/use-modal.test.ts::packages/@core/ui-kit/popup-ui/src/modal/__tests__/use-modal.test.ts",
+          "file": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/use-modal.test.ts",
+          "name": "packages/@core/ui-kit/popup-ui/src/modal/__tests__/use-modal.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben-core/preferences\" from \"packages/@core/ui-kit/popup-ui/src/modal/use-modal.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/effects/common-ui/src/components/icon-picker/__tests__/icon-picker.test.ts::packages/effects/common-ui/src/components/icon-picker/__tests__/icon-picker.test.ts",
+          "file": "packages/effects/common-ui/src/components/icon-picker/__tests__/icon-picker.test.ts",
+          "name": "packages/effects/common-ui/src/components/icon-picker/__tests__/icon-picker.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vue/test-utils\" from \"packages/effects/common-ui/src/components/icon-picker/__tests__/icon-picker.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/effects/common-ui/src/components/page/__tests__/page.test.ts::packages/effects/common-ui/src/components/page/__tests__/page.test.ts",
+          "file": "packages/effects/common-ui/src/components/page/__tests__/page.test.ts",
+          "name": "packages/effects/common-ui/src/components/page/__tests__/page.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vue/test-utils\" from \"packages/effects/common-ui/src/components/page/__tests__/page.test.ts\". Does the file exist?"
+        },
+        {
+          "id": "packages/effects/layouts/src/widgets/notification/__tests__/notification.test.ts::packages/effects/layouts/src/widgets/notification/__tests__/notification.test.ts",
+          "file": "packages/effects/layouts/src/widgets/notification/__tests__/notification.test.ts",
+          "name": "packages/effects/layouts/src/widgets/notification/__tests__/notification.test.ts",
+          "outcome": "fail",
+          "message": "Failed to resolve import \"@vben/icons\" from \"packages/effects/layouts/src/widgets/notification/notification.vue\". Does the file exist?"
+        },
+        {
+          "id": "packages/@core/ui-kit/shadcn-ui/src/ui/progress/__tests__/progress.test.ts::packages/@core/ui-kit/shadcn-ui/src/ui/progress/__tests__/progress.test.ts",
+          "file": "packages/@core/ui-kit/shadcn-ui/src/ui/progress/__tests__/progress.test.ts",
+          "name": "packages/@core/ui-kit/shadcn-ui/src/ui/progress/__tests__/progress.test.ts",
+          "outcome": "fail",
+          "message": "[@vue/compiler-sfc] Failed to resolve import source \"reka-ui\". /tmp/trustbut-wt-XPUojy/packages/@core/ui-kit/shadcn-ui/src/ui/progress/Progress.vue 12 | 13 | const props = defineProps< 14 | ProgressRootProps & { class?: HTMLAttributes['class'] } | ^^^^^^^^^^^^^^^^^ 15 | >(); 16 |"
+        }
+      ],
+      "outputTail": "JUNIT report written to /tmp/trustbut-junit-joOYIG/junit.xml"
+    }
+  }
+}

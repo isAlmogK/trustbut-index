@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.6.0"
+  },
+  "subject": {
+    "base": "82d006ff926665d7a3062be5782fc5279f69ec57",
+    "head": "6e85bcc449ef2c156c80658d1d3411672c9a6a7a"
+  },
+  "verdict": "warn",
+  "proofs": [],
+  "findings": [
+    {
+      "id": "escape-added",
+      "severity": "warn",
+      "title": "lint rule disabled",
+      "file": "examples/edgebench-benchmark-adapter-smoke.py",
+      "line": 15,
+      "detail": "from loopx.benchmark_adapters.edgebench import (  # noqa: E402"
+    },
+    {
+      "id": "no-runner",
+      "severity": "warn",
+      "title": "No supported test runner detected (supported: vitest, jest, mocha, node-test, pytest, go, cargo, dotnet, phpunit, maven, gradle, rspec, dart, flutter, swift, command); tests were not rerun"
+    },
+    {
+      "id": "no-tests-changed",
+      "severity": "warn",
+      "title": "Source changed but no tests were added or changed"
+    }
+  ],
+  "risks": [
+    {
+      "file": "examples/edgebench-benchmark-adapter-smoke.py",
+      "score": 3,
+      "reasons": [
+        "has findings",
+        "large change (286 lines)"
+      ]
+    },
+    {
+      "file": "loopx/benchmark_adapters/edgebench.py",
+      "score": 1,
+      "reasons": [
+        "large change (303 lines)"
+      ]
+    },
+    {
+      "file": "loopx/cli_commands/edgebench.py",
+      "score": 1,
+      "reasons": [
+        "large change (205 lines)"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": null,
+    "languages": [
+      "py"
+    ],
+    "root": "."
+  }
+}

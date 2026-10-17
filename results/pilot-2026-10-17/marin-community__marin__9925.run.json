@@ -1,0 +1,26 @@
+{
+  "id": "marin-community__marin__9925",
+  "status": "setup-failed",
+  "stage": "no-passing-tests",
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.12",
+      "install": [
+        "uv pip install -e .",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 13778,
+    "verifyMs": 9025
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.6.0",
+  "installRetries": 0
+}

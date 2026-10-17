@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.1",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.6.0"
+  },
+  "subject": {
+    "base": "bd36670d087718bcc07152cfb8c93b8707ae5cce",
+    "head": "e6d3ee9df2112ebd6350eb7683d57efe06058ef5"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 2400 s"
+    },
+    {
+      "id": "no-tests-changed",
+      "severity": "warn",
+      "title": "Source changed but no tests were added or changed"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 2400412,
+      "timedOut": true,
+      "cases": [],
+      "outputTail": "32m.......... [  3%]\n........................................................................ [  4%]\n.....................................................................    [  4%]\ntest/infer/test_calibration.py .............................             [  4%]\ntest/infer/test_ensemble_mcmc.py ...............                         [  4%]\ntest/infer/test_ensemble_util.py ..                                      [  4%]\ntest/infer/test_external_helpers.py ........                             [  5%]\ntest/infer/test_gibbs.py ............................................... [  5%]\n                                                                         [  5%]\ntest/infer/test_gradient.py ...................................          [  5%]\ntest/infer/test_hmc_gibbs.py ........................................... [  5%]\n........\nCommand timed out after 2400000 ms"
+    }
+  }
+}
