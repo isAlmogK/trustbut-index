@@ -38,8 +38,20 @@ describe('examples', () => {
   });
   it('picks real-labelled findings with their before/after, never the test name', () => {
     expect(pickExamples(sample, finals, results)).toEqual([{
-      description: 'a 12k-star TypeScript project', family: 'proof-gap', title: 'Test passes without the change', before: 'pass', after: 'pass',
+      description: 'a 12k-star TypeScript project', family: 'proof-gap', title: 'Test passes without the change', detail: null, before: 'pass', after: 'pass',
     }]);
+  });
+  it('shows the detail of a change-not-proven example, scrubbed, with no before/after', () => {
+    const finding = { id: 'change-not-proven', severity: 'warn' as const, title: 'Nothing proves the change', detail: '1 new or changed test (copilot), none fails without the change' };
+    const rs = results.map((r) => ({ ...r, receipt: { ...r.receipt!, producer: { name: 'trustbut', version: '0.7.0' }, findings: [finding] } }));
+    const np = [{ ...sample[0]!, finding, family: 'proof-gap' } as SampleItem];
+    const ex = pickExamples(np, finals, rs);
+    expect(ex).toEqual([{
+      description: 'a 12k-star TypeScript project', family: 'proof-gap', title: 'Nothing proves the change',
+      detail: '1 new or changed test ([agent]), none fails without the change', before: null, after: null,
+    }]);
+    const html = renderReport({ ...data(), examples: ex });
+    expect(html).toContain("<b>New tests don't prove the change</b> in a 12k-star TypeScript project: Nothing proves the change: 1 new or changed test ([agent]), none fails without the change.</div>");
   });
   it('uses the latest label per finding', () => {
     const relabelled = [...finals, { key: 'o__r__1:0', label: 'false', draftLabel: 'real', blind: true } as FinalLabel];
@@ -99,6 +111,20 @@ describe('renderReport', () => {
     expect(html).toContain('<meta name="twitter:card" content="summary_large_image">');
     expect(html).not.toContain('content="share.png"');
     expect(renderReport({ ...data(), baseUrl: 'https://example.org/x' })).toContain('content="https://example.org/x/2026-11-02/share.png"');
+  });
+  it('says when the pre-registration was fixed and that the bar and families changed after the pilot', () => {
+    const method = html.slice(html.indexOf('id="method"'));
+    expect(method).toContain("Selection rules, metrics and thresholds were fixed before the study's first run: <a href=\"https://github.com/isAlmogK/trustbut-index/blob/prereg-v1/PREREGISTRATION.md\">pre-registration</a>.");
+    expect(method).toContain('The success bar and the finding families were changed after the pilot: <a href="https://github.com/isAlmogK/trustbut-index/blob/prereg-v1/PREREGISTRATION.md#changes-after-the-pilot">changes after the pilot</a>.');
+    expect(method).not.toContain('fixed before the first run');
+  });
+  it('names the proof families for change-not-proven', () => {
+    const families = html.slice(html.indexOf('id="families"'), html.indexOf('id="coverage"'));
+    expect(families).toContain("New tests don't prove the change");
+    expect(families).toContain('No test proves the change');
+    expect(families).not.toContain('Test passes without the change');
+    expect(families).not.toContain('Change without tests');
+    expect(html).toContain("<b>New tests don't prove the change</b> in a 12k-star TypeScript project: Test passes without the change. The test: pass before the change, pass after.");
   });
   it('is deterministic', () => {
     expect(renderReport(data())).toBe(html);

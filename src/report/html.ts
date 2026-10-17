@@ -23,10 +23,10 @@ export interface ReportData {
 }
 
 const FAMILY_NAMES: Record<string, string> = {
-  'proof-gap': 'Test passes without the change',
+  'proof-gap': "New tests don't prove the change",
   'test-weakening': 'Tests weakened',
   escapes: 'Checks silenced',
-  'untested-change': 'Change without tests',
+  'untested-change': 'No test proves the change',
   'red-at-head': 'Tests that passed at base fail at head',
 };
 
@@ -114,7 +114,7 @@ export function renderReport(d: ReportData): string {
   const human = group(d, 'human');
   const pg = d.agg.comparisons.find((c) => c.metric === 'proof-rate')!;
   const examples = d.examples.length
-    ? d.examples.map((e) => `<div class="ex"><b>${esc(FAMILY_NAMES[e.family]!)}</b> in ${esc(e.description)}: ${esc(e.title)}${e.before !== null && e.after !== null ? `. The test: ${esc(e.before)} before the change, ${esc(e.after)} after.` : '.'}</div>`).join('')
+    ? d.examples.map((e) => `<div class="ex"><b>${esc(FAMILY_NAMES[e.family]!)}</b> in ${esc(e.description)}: ${esc(e.title)}${e.detail !== null ? `: ${esc(e.detail)}` : ''}${e.before !== null && e.after !== null ? `. The test: ${esc(e.before)} before the change, ${esc(e.after)} after.` : '.'}</div>`).join('')
     : '<p class="muted">No confirmed-real examples.</p>';
   const page = `${d.baseUrl.endsWith('/') ? d.baseUrl : `${d.baseUrl}/`}${d.date}/`;
   const title = `Agent test honesty ${d.date}`;
@@ -152,7 +152,7 @@ ${labelDetail(d)}
 <section id="examples"><h2>Examples</h2>${examples}</section>
 
 <section id="method"><h2>Method and limitations</h2>
-<p>Selection rules, metrics and thresholds were fixed before the first run: <a href="${esc(d.preregUrl)}">pre-registration</a>.</p>
+<p>Selection rules, metrics and thresholds were fixed before the study's first run: <a href="${esc(d.preregUrl)}">pre-registration</a>. The success bar and the finding families were changed after the pilot: <a href="${esc(`${d.preregUrl}#changes-after-the-pilot`)}">changes after the pilot</a>.</p>
 ${d.deviations.length ? `<p>Deviations:</p><ul>${d.deviations.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p>No deviations from the pre-registration.</p>'}
 <ul><li>Agents are identified by public markers (bot accounts, branch prefixes, PR text, commit trailers). Undisclosed agent use in the human group makes the groups look more alike, so it would tend to shrink measured differences.</li>
 <li>A test suite could in principle forge its own receipt, or another PR's in the same run; receipts were validated against the spec and against each PR's head commit. Labeled findings were checked against the real diff.</li>
