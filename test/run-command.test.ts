@@ -13,6 +13,12 @@ describe('run command validators', () => {
     expect(parseDate('pilot-2026-11-02')).toBe('pilot-2026-11-02');
     for (const bad of ['', '../x', '2026-11-02/../..', '2026-11-02\nx', 'pilot-', '26-1-2']) expect(() => parseDate(bad)).toThrow(/date/);
   });
+  it('parseDate accepts a pilot folder suffix of lowercase letters, digits and dots', () => {
+    expect(parseDate('pilot-2026-10-17-0.7.0')).toBe('pilot-2026-10-17-0.7.0');
+    expect(parseDate('pilot-2026-10-17-rerun2')).toBe('pilot-2026-10-17-rerun2');
+    for (const bad of ['2026-10-17-0.7.0', 'pilot-2026-10-17-', 'pilot-2026-10-17-.', 'pilot-2026-10-17-..', 'pilot-2026-10-17-a/b', 'pilot-2026-10-17-A', 'pilot-2026-10-17-a b', 'pilot-2026-10-17-a\nb'])
+      expect(() => parseDate(bad)).toThrow(/date/);
+  });
 });
 
 describe('run.yml', () => {

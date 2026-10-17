@@ -46,6 +46,12 @@ Optional inputs: `-f until=YYYY-MM-DD` (last merge date, default today UTC), `-f
 
 A failed collect run can be rerun. Every run saves its GitHub API cache, even when it fails or times out, so a rerun with the same `until` on the same UTC day resumes fully, because the repo list and the 365-day author window are computed by UTC day. A pilot collect takes about 1.5 hours and a full one about 3 to 3.5 hours. Rerun with the same `until`, because the stale and window checks use the current time, so a rerun on a different day can select a different manifest. Delete a partial `results/<name>/` only if you intend to start that collection over.
 
+To rerun an existing pilot manifest (for example on a new trustbut version), skip collect and start `run` directly with a suffixed folder, so the new receipts never share a folder with the old ones. A suffix is lowercase letters, digits and dots:
+
+```
+gh workflow run run.yml --repo isAlmogK/trustbut-index -f manifest=manifests/pilot-2026-10-15.jsonl -f batch=0 -f date=pilot-2026-10-17-0.7.0
+```
+
 ## Run the full study
 
 Tag `prereg-v1` first, because the method is frozen at that tag:
