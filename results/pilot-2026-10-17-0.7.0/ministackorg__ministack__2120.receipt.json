@@ -1,0 +1,468 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.2",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.7.0"
+  },
+  "subject": {
+    "base": "fac7a80f9686a91e979a2f5d667d947df68e8bae",
+    "head": "36d549e6103b030f08668c81b0202691c5fdf629"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 2400 s"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 2400065,
+      "timedOut": true,
+      "cases": [],
+      "outputTail": "FFFFFF.FFFFFFFFFFFFFFFF.................FF.FFFFFFFFFFFFFFFFFFFFFFFFFFFFF [  0%]\nFFFFFFFFFFFFFFFFFFFF.......FFFFFFFFFFF...FFFF.FFFF...F.FFFFFFFFFFFFFFFFF [  1%]\nFFFFFFFFFFFFFFFFFF...FFFFFFFFFFFFFFFFFFFFFFFFFFFFF.FFFEEEEEEFF.......... [  1%]\n..............FFFFFFF.FFFFFFEEEEEEEEEEEEEEEEEEEEEEEEEFFFFFFFFFFFFFFFF... [  2%]\n...FFFFFFFFFFF.FFFFF.......FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [  2%]\nFFF......FFF.FFFF...FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.FFFFFFFFFFFFF.FF..FF [  3%]\nFFFFFFFF.FF...FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.FF.FFFFFFFF...FFFFFFFFFF [  4%]\nFFF...............FFFFFFFFFFF..FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF..FFFFF [  4%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF...F.F...FFFEEEEF......EEE....EsEEEEEE [  5%]\nFEE...................EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE [  5%]\nEEEEEEEEEEEFFF..FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [  6%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [  7%]\nFFFFF.FFFFFFFF.FFFFF..FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [  7%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.... [  8%]\n........FFFFFFFFFFFFFFFFFFF.F.FFFFFFFF.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [  8%]\nFFFFFFFF.......FFsssFFF...........F.FFFFFFsFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [  9%]\nFEEEEEFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.FFFFFFFFFFFFFFFFFFFFFFF [ 10%]\nFFFFFFFFFFFFFFFFF..FF.............FFFFFFFFFFFFFEEEEEEEEEEFFFFFFFFFFFFFFF [ 10%]\nFFFFFFFFFFFFF.......FFFFFFF.FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF [ 11%]\nFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF.FFFFFFFFFFFFFFFFFF [ 11%]\nF\nCommand timed out after 2400000 ms"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 83805,
+      "cases": [
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_resource_policy",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_resource_policy",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_validate_resource_policy",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_validate_resource_policy",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_rotate_secret",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_rotate_secret",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_create_get",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_create_get",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_secrets_are_region_scoped_by_name",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_secrets_are_region_scoped_by_name",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_resource_policies_are_region_scoped",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_resource_policies_are_region_scoped",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_replicate_secret_to_regions_creates_target_region_secret",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_replicate_secret_to_regions_creates_target_region_secret",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_replicate_secret_to_regions_requires_force_for_existing_target",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_replicate_secret_to_regions_requires_force_for_existing_target",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_replicate_secret_to_regions_rejects_source_region",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_replicate_secret_to_regions_rejects_source_region",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_replicate_secret_to_regions_does_not_partially_write",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_replicate_secret_to_regions_does_not_partially_write",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_replicate_secret_to_regions_does_not_copy_primary_kms",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_replicate_secret_to_regions_does_not_copy_primary_kms",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_replicated_secret_versions_stay_in_sync",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_replicated_secret_versions_stay_in_sync",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_replica_rejects_direct_mutation",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_replica_rejects_direct_mutation",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_primary_force_delete_removes_replicas",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_primary_force_delete_removes_replicas",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_primary_force_delete_removes_replica_policy",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_primary_force_delete_removes_replica_policy",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_replica_cannot_be_replicated",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_replica_cannot_be_replicated",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_deleted_secret_cannot_be_replicated",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_deleted_secret_cannot_be_replicated",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_force_overwrite_removes_target_policy",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_force_overwrite_removes_target_policy",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_replicate_secret_to_regions_copies_resource_policy",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_replicate_secret_to_regions_copies_resource_policy",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_replica_resource_policy_stays_in_sync",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_replica_resource_policy_stays_in_sync",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_replicate_secret_to_regions_preserves_replica_kms",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_replicate_secret_to_regions_preserves_replica_kms",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_force_overwrite_transfers_replica_ownership",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_force_overwrite_transfers_replica_ownership",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_force_overwrite_cleans_up_overwritten_primary_replicas",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_force_overwrite_cleans_up_overwritten_primary_replicas",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_self_region_replication_status_does_not_mark_primary_replica",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_self_region_replication_status_does_not_mark_primary_replica",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_update_list",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_update_list",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_create_get_v2",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_create_get_v2",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_update_v2",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_update_v2",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_list_v2",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_list_v2",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_delete_v2",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_delete_v2",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_delete_with_recovery",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_delete_with_recovery",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_force_delete_secret_scheduled_for_deletion",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_force_delete_secret_scheduled_for_deletion",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_delete_secret_scheduled_for_deletion_without_force",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_delete_secret_scheduled_for_deletion_without_force",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_put_value_version_stages_v2",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_put_value_version_stages_v2",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_describe_v2",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_describe_v2",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_tags_v2",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_tags_v2",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_get_random_password_v2",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_get_random_password_v2",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_put_secret_value_stages",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_put_secret_value_stages",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_list_secret_version_ids",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_list_secret_version_ids",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_update_secret_version_stage_moves_current",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_update_secret_version_stage_moves_current",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_update_secret_version_stage_moves_and_removes_custom_label",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_update_secret_version_stage_moves_and_removes_custom_label",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_update_secret_version_stage_requires_matching_remove_version",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_update_secret_version_stage_requires_matching_remove_version",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_delete_and_restore",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_delete_and_restore",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_get_random_password",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_get_random_password",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_batch_get_secret_value",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_batch_get_secret_value",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_batch_get_secret_value_with_missing",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_batch_get_secret_value_with_missing",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_batch_get_secret_value_authorizes_each_secret[names]",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_batch_get_secret_value_authorizes_each_secret[names]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_batch_get_secret_value_authorizes_each_secret[arns]",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_batch_get_secret_value_authorizes_each_secret[arns]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_batch_get_secret_value_authorizes_each_secret[filters-without-list]",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_batch_get_secret_value_authorizes_each_secret[filters-without-list]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_batch_get_secret_value_authorizes_each_secret[filters-with-list]",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_batch_get_secret_value_authorizes_each_secret[filters-with-list]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_batch_get_secret_value_authorizes_each_secret[no-batch-grant]",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_batch_get_secret_value_authorizes_each_secret[no-batch-grant]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_batch_get_secret_value_authorizes_each_secret[missing]",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_batch_get_secret_value_authorizes_each_secret[missing]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_batch_get_secret_value_authorizes_each_secret[no-auth-filters]",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_batch_get_secret_value_authorizes_each_secret[no-auth-filters]",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_kms_key_id_on_create_and_describe",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_kms_key_id_on_create_and_describe",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_kms_key_id_on_update",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_kms_key_id_on_update",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_get_by_partial_arn",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_get_by_partial_arn",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_arn_lookup_rejects_foreign_scope_without_name_fallback",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_arn_lookup_rejects_foreign_scope_without_name_fallback",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_list_include_planned_deletion",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_list_include_planned_deletion",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_force_delete_removes_resource_policy",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_force_delete_removes_resource_policy",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secretsmanager_arn_shaped_secret_name_does_not_bypass_scope_guard",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secretsmanager_arn_shaped_secret_name_does_not_bypass_scope_guard",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests.test_secretsmanager::test_secret_label_updated_event_to_eventbridge",
+          "file": "tests.test_secretsmanager",
+          "name": "test_secret_label_updated_event_to_eventbridge",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        },
+        {
+          "id": "tests.test_secretsmanager::test_unicode_secretsmanager",
+          "file": "tests.test_secretsmanager",
+          "name": "test_unicode_secretsmanager",
+          "outcome": "fail",
+          "message": "botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\""
+        }
+      ],
+      "outputTail": ": \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_put_value_version_stages_v2 - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_describe_v2 - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_tags_v2 - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_get_random_password_v2 - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_put_secret_value_stages - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_list_secret_version_ids - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_update_secret_version_stage_moves_current - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_update_secret_version_stage_moves_and_removes_custom_label - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_update_secret_version_stage_requires_matching_remove_version - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_delete_and_restore - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_get_random_password - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_batch_get_secret_value - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_batch_get_secret_value_with_missing - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_kms_key_id_on_create_and_describe - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_kms_key_id_on_update - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_get_by_partial_arn - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_arn_lookup_rejects_foreign_scope_without_name_fallback - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secretsmanager_list_include_planned_deletion - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_secret_label_updated_event_to_eventbridge - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\nFAILED tests/test_secretsmanager.py::test_unicode_secretsmanager - botocore.exceptions.EndpointConnectionError: Could not connect to the endpoint URL: \"http://localhost:4566/\"\n51 failed, 10 passed in 83.22s (0:01:23)"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "usestrix__strix__1092",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.13",
+      "install": [
+        "uv pip install -e .",
+        "uv pip install --group dev",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 2473,
+    "verifyMs": 95390
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.7.0",
+  "installRetries": 0
+}

@@ -1,0 +1,25 @@
+{
+  "id": "glincker__thesvg__1031",
+  "status": "setup-failed",
+  "stage": "install",
+  "recipe": {
+    "node": {
+      "version": "22",
+      "pm": "pnpm",
+      "install": "pnpm install --frozen-lockfile"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 62048,
+    "verifyMs": 0
+  },
+  "exitCodes": {
+    "install": 1,
+    "verify": null
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "unknown",
+  "installRetries": 2,
+  "installTail": "[WARN] The \"pnpm\" field in package.json is no longer read by pnpm. The following keys were ignored: \"pnpm.overrides\". See https://pnpm.io/settings for the new home of each setting.\nScope: all 9 workspace projects\nError: ERR_PNPM_LOCKFILE_CONFIG_MISMATCH\n\n  × installing dependencies\n  ╰─▶ Cannot proceed with the frozen installation. The current \"overrides\"\n      configuration doesn't match the value found in the lockfile\n  help: Update your lockfile using \"pnpm install --no-frozen-lockfile\""
+}

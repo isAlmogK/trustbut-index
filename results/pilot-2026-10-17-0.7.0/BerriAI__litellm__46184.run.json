@@ -1,0 +1,31 @@
+{
+  "id": "BerriAI__litellm__46184",
+  "status": "setup-failed",
+  "stage": "no-passing-tests",
+  "recipe": {
+    "node": {
+      "version": "22",
+      "pm": "npm",
+      "install": "npm ci"
+    },
+    "python": {
+      "version": "3.13",
+      "install": [
+        "uv pip install -e .",
+        "uv pip install --group dev",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 215373,
+    "verifyMs": 54206
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.7.0",
+  "installRetries": 0
+}

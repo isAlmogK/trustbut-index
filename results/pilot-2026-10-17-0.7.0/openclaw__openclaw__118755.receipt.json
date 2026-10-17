@@ -1,0 +1,49 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.2",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.7.0"
+  },
+  "subject": {
+    "base": "209dc0e6d56e4366673c53ece50f9dbc9b8a8ada",
+    "head": "ba10086d2f8256c3f3941de36fe78ddf30c01497"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "change-not-proven",
+      "severity": "warn",
+      "title": "Nothing proves the change",
+      "detail": "no test added or changed"
+    },
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "}"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 25768,
+      "cases": [],
+      "outputTail": "0m{ playwright } from \"@vitest/browser-playwright\";\n   │                            ──────────────┬─────────────  \n   │                                          ╰─────────────── Module not found, treating it as an external dependency\n───╯\n\nfailed to load config from /tmp/trustbut-wt-PSr6YC/test/vitest/vitest.ui-browser.config.ts\n\n⎯⎯⎯⎯⎯⎯⎯ Startup Error ⎯⎯⎯⎯⎯⎯⎯⎯\nAggregateError: Failed to initialize projects. There were errors during projects setup. See below for more details.\n    at resolveDeclaredProjectEntries (file:///home/runner/work/_temp/work/repo/node_modules/.pnpm/vitest@5.0.0_patch_hash=5e7c1655044613ad5d71751e82ea0e6448f7bf5a7445b86114f495866c9a3bc_5ba113c0e56c30f4c0c8b4b5a5404f1d/node_modules/vitest/dist/chunks/index.B89dZ0-N.js:12659:27)\n    at async resolveProjectEntries (file:///home/runner/work/_temp/work/repo/node_modules/.pnpm/vitest@5.0.0_patch_hash=5e7c1655044613ad5d71751e82ea0e6448f7bf5a7445b86114f495866c9a3bc_5ba113c0e56c30f4c0c8b4b5a5404f1d/node_modules/vitest/dist/chunks/index.B89dZ0-N.js:12463:17)\n    at async resolveConfig$1 (file:///home/runner/work/_temp/work/repo/node_modules/.pnpm/vitest@5.0.0_patch_hash=5e7c1655044613ad5d71751e82ea0e6448f7bf5a7445b86114f495866c9a3bc_5ba113c0e56c30f4c0c8b4b5a5404f1d/node_modules/vitest/dist/chunks/index.B89dZ0-N.js:14890:32)\n    at async createVitest (file:///home/runner/work/_temp/work/repo/node_modules/.pnpm/vitest@5.0.0_patch_hash=5e7c1655044613ad5d71751e82ea0e6448f7bf5a7445b86114f495866c9a3bc_5ba113c0e56c30f4c0c8b4b5a5404f1d/node_modules/vitest/dist/chunks/cli-api.LUtK11-x.js:26:17)\n    at async prepareVitest (file:///home/runner/work/_temp/work/repo/node_modules/.pnpm/vitest@5.0.0_patch_hash=5e7c1655044613ad5d71751e82ea0e6448f7bf5a7445b86114f495866c9a3bc_5ba113c0e56c30f4c0c8b4b5a5404f1d/node_modules/vitest/dist/chunks/cli-api.LUtK11-x.js:421:14)\n    at async startVitest (file:///home/runner/work/_temp/work/repo/node_modules/.pnpm/vitest@5.0.0_patch_hash=5e7c1655044613ad5d71751e82ea0e6448f7bf5a7445b86114f495866c9a3bc_5ba113c0e56c30f4c0c8b4b5a5404f1d/node_modules/vitest/dist/chunks/cli-api.LUtK11-x.js:340:14)\n    at async start (file:///home/runner/work/_temp/work/repo/node_modules/.pnpm/vitest@5.0.0_patch_hash=5e7c1655044613ad5d71751e82ea0e6448f7bf5a7445b86114f495866c9a3bc_5ba113c0e56c30f4c0c8b4b5a5404f1d/node_modules/vitest/dist/chunks/cac.D805sv8h.js:2375:15)\n    at async CAC.run (file:///home/runner/work/_temp/work/repo/node_modules/.pnpm/vitest@5.0.0_patch_hash=5e7c1655044613ad5d71751e82ea0e6448f7bf5a7445b86114f495866c9a3bc_5ba113c0e56c30f4c0c8b4b5a5404f1d/node_modules/vitest/dist/chunks/cac.D805sv8h.js:2351:2) {\n  [errors]: [\n    Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@vitest/browser-playwright' imported from /home/runner/work/_temp/work/repo/node_modules/.vite-temp/vitest.ui-browser.config.ts.timestamp-1792260747292-e059b66069e9a.mjs\n    Did you mean to import \"@vitest/browser-playwright/dist/index.js\"?\n        at Object.getPackageJSONURL (node:internal/modules/package_json_reader:314:9)\n        at packageResolve (node:internal/modules/esm/resolve:772:81)\n        at moduleResolve (node:internal/modules/esm/resolve:859:18)\n        at defaultResolve (node:internal/modules/esm/resolve:989:11)\n        at #cachedDefaultResolve (node:internal/modules/esm/loader:747:20)\n        at ModuleLoader.resolve (node:internal/modules/esm/loader:724:38)\n        at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:320:38)\n        at ModuleJob._link (node:internal/modules/esm/module_job:182:49) {\n      code: 'ERR_MODULE_NOT_FOUND'\n    }\n  ]\n}"
+    }
+  }
+}

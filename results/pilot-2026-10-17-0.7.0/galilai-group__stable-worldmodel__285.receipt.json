@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.2",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.7.0"
+  },
+  "subject": {
+    "base": "4506b1a40c4e9feacdac4150903480afe101639f",
+    "head": "436397ac342c13e8c8fe88b12ce1c9eb8f287b7a"
+  },
+  "verdict": "warn",
+  "proofs": [],
+  "findings": [
+    {
+      "id": "no-runner",
+      "severity": "warn",
+      "title": "No supported test runner detected (supported: vitest, jest, mocha, node-test, pytest, go, cargo, dotnet, phpunit, maven, gradle, rspec, dart, flutter, swift, command); tests were not rerun"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": null,
+    "languages": [
+      "py"
+    ],
+    "root": "."
+  }
+}

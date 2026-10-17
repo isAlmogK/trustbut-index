@@ -1,0 +1,26 @@
+{
+  "id": "Continuum-AI-Corp__OrcaRouter-Lite__87",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.13",
+      "install": [
+        "uv pip install -e \".[dev]\"",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 2032,
+    "verifyMs": 41954
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 0
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.7.0",
+  "installRetries": 0
+}

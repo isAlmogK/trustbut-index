@@ -1,0 +1,24 @@
+{
+  "id": "NVIDIA__NemoClaw__10577",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "24",
+      "pm": "npm",
+      "install": "npm ci"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 30078,
+    "verifyMs": 1875680
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.7.0",
+  "installRetries": 0
+}

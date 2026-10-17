@@ -1,0 +1,504 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.2",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.7.0"
+  },
+  "subject": {
+    "base": "72a167cc1fa2f717b396d9fdca2ce60134bb68f2",
+    "head": "b5fef656f6471b90695011218f8628d48c9ad689"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 63,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 2"
+    },
+    {
+      "id": "proofs-unmatched",
+      "severity": "warn",
+      "title": "No test results matched the changed test files; fail-before/pass-after evidence unavailable"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 2,
+      "durationMs": 18093,
+      "cases": [
+        {
+          "id": "::examples.guides.850_workshop.test_agent_concurrent",
+          "file": "",
+          "name": "examples.guides.850_workshop.test_agent_concurrent",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.guides.aop_examples.discovery.test_aop_discovery",
+          "file": "",
+          "name": "examples.guides.aop_examples.discovery.test_aop_discovery",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.guides.demos.spike.agent_rearrange_test",
+          "file": "",
+          "name": "examples.guides.demos.spike.agent_rearrange_test",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.models.openai.test_async_litellm",
+          "file": "",
+          "name": "examples.models.openai.test_async_litellm",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.agent_rearrange_examples.rearrange_test",
+          "file": "",
+          "name": "examples.multi_agent.agent_rearrange_examples.rearrange_test",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.asb.auto_swarm_builder_test",
+          "file": "",
+          "name": "examples.multi_agent.asb.auto_swarm_builder_test",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.caching_examples.test_simple_agent_caching",
+          "file": "",
+          "name": "examples.multi_agent.caching_examples.test_simple_agent_caching",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.forest_swarm_examples.tree_swarm_test",
+          "file": "",
+          "name": "examples.multi_agent.forest_swarm_examples.tree_swarm_test",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.graphworkflow_examples.rustworkx_examples.test_graph_workflow_rustworkx",
+          "file": "",
+          "name": "examples.multi_agent.graphworkflow_examples.rustworkx_examples.test_graph_workflow_rustworkx",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.graphworkflow_examples.test_enhanced_json_export",
+          "file": "",
+          "name": "examples.multi_agent.graphworkflow_examples.test_enhanced_json_export",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.graphworkflow_examples.test_graph_workflow_caching",
+          "file": "",
+          "name": "examples.multi_agent.graphworkflow_examples.test_graph_workflow_caching",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.graphworkflow_examples.test_graphviz_visualization",
+          "file": "",
+          "name": "examples.multi_agent.graphworkflow_examples.test_graphviz_visualization",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.graphworkflow_examples.test_parallel_processing_example",
+          "file": "",
+          "name": "examples.multi_agent.graphworkflow_examples.test_parallel_processing_example",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.groupchat.test_groupchat_feat",
+          "file": "",
+          "name": "examples.multi_agent.groupchat.test_groupchat_feat",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.hierarchical_swarm.hiearchical_examples.hiearchical_swarm_test",
+          "file": "",
+          "name": "examples.multi_agent.hierarchical_swarm.hiearchical_examples.hiearchical_swarm_test",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.moa_examples.test_moa_new",
+          "file": "",
+          "name": "examples.multi_agent.moa_examples.test_moa_new",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.sequential_workflow.sequential_worflow_test",
+          "file": "",
+          "name": "examples.multi_agent.sequential_workflow.sequential_worflow_test",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.simulations.agent_map.v0.test_group_conversations",
+          "file": "",
+          "name": "examples.multi_agent.simulations.agent_map.v0.test_group_conversations",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.simulations.agent_map.v0.test_simulation",
+          "file": "",
+          "name": "examples.multi_agent.simulations.agent_map.v0.test_simulation",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.simulations.euroswarm_parliament.test_mass_agents",
+          "file": "",
+          "name": "examples.multi_agent.simulations.euroswarm_parliament.test_mass_agents",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.multi_agent.utils.test_agent_concurrent",
+          "file": "",
+          "name": "examples.multi_agent.utils.test_agent_concurrent",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.single_agent.capabilities.autonomy.autonomous_agents.sub_agent_test",
+          "file": "",
+          "name": "examples.single_agent.capabilities.autonomy.autonomous_agents.sub_agent_test",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.single_agent.capabilities.vision.anthropic_vision_test",
+          "file": "",
+          "name": "examples.single_agent.capabilities.vision.anthropic_vision_test",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.single_agent.capabilities.vision.base_64_images.test_base64_image",
+          "file": "",
+          "name": "examples.single_agent.capabilities.vision.base_64_images.test_base64_image",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.single_agent.capabilities.vision.vision_test",
+          "file": "",
+          "name": "examples.single_agent.capabilities.vision.vision_test",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.single_agent.reasoning.reasoning_duo_test",
+          "file": "",
+          "name": "examples.single_agent.reasoning.reasoning_duo_test",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.tools.exa_search.exa_search_test",
+          "file": "",
+          "name": "examples.tools.exa_search.exa_search_test",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.utils.conversation_cache_examples.sequential_cache_test",
+          "file": "",
+          "name": "examples.utils.conversation_cache_examples.sequential_cache_test",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.utils.misc.agent_map_test",
+          "file": "",
+          "name": "examples.utils.misc.agent_map_test",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.utils.misc.aop.test_aop",
+          "file": "",
+          "name": "examples.utils.misc.aop.test_aop",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.utils.misc.conversation_test",
+          "file": "",
+          "name": "examples.utils.misc.conversation_test",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.utils.misc.test_load_conversation",
+          "file": "",
+          "name": "examples.utils.misc.test_load_conversation",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::examples.utils.misc.visualizer_test",
+          "file": "",
+          "name": "examples.utils.misc.visualizer_test",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.agents.test_agent_marketplace_handler",
+          "file": "",
+          "name": "tests.agents.test_agent_marketplace_handler",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.agents.test_autoswarm_writer",
+          "file": "",
+          "name": "tests.agents.test_autoswarm_writer",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.agents.test_llm_manager",
+          "file": "",
+          "name": "tests.agents.test_llm_manager",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_agent",
+          "file": "",
+          "name": "tests.structs.test_agent",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_agent_rearrange",
+          "file": "",
+          "name": "tests.structs.test_agent_rearrange",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_agent_router",
+          "file": "",
+          "name": "tests.structs.test_agent_router",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_aop",
+          "file": "",
+          "name": "tests.structs.test_aop",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_auto_swarms_builder",
+          "file": "",
+          "name": "tests.structs.test_auto_swarms_builder",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_batched_grid_workflow",
+          "file": "",
+          "name": "tests.structs.test_batched_grid_workflow",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_component_ids",
+          "file": "",
+          "name": "tests.structs.test_component_ids",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_concurrent_workflow",
+          "file": "",
+          "name": "tests.structs.test_concurrent_workflow",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_deep_discussion",
+          "file": "",
+          "name": "tests.structs.test_deep_discussion",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_forest_swarm",
+          "file": "",
+          "name": "tests.structs.test_forest_swarm",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_graph_workflow",
+          "file": "",
+          "name": "tests.structs.test_graph_workflow",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_hierarchical_swarm",
+          "file": "",
+          "name": "tests.structs.test_hierarchical_swarm",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_multi_agent_debate",
+          "file": "",
+          "name": "tests.structs.test_multi_agent_debate",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_planner_generator_evaluator",
+          "file": "",
+          "name": "tests.structs.test_planner_generator_evaluator",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_planner_worker_swarm",
+          "file": "",
+          "name": "tests.structs.test_planner_worker_swarm",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_self_moa_seq",
+          "file": "",
+          "name": "tests.structs.test_self_moa_seq",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_sequential_workflow",
+          "file": "",
+          "name": "tests.structs.test_sequential_workflow",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_spreadsheet",
+          "file": "",
+          "name": "tests.structs.test_spreadsheet",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.structs.test_swarm_architectures",
+          "file": "",
+          "name": "tests.structs.test_swarm_architectures",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.telemetry.test_telemetry",
+          "file": "",
+          "name": "tests.telemetry.test_telemetry",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.telemetry.test_telemetry_invariants",
+          "file": "",
+          "name": "tests.telemetry.test_telemetry_invariants",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.telemetry.test_telemetry_multi_agent_advanced",
+          "file": "",
+          "name": "tests.telemetry.test_telemetry_multi_agent_advanced",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.telemetry.test_telemetry_multi_agent_core",
+          "file": "",
+          "name": "tests.telemetry.test_telemetry_multi_agent_core",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_main_features",
+          "file": "",
+          "name": "tests.test_main_features",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_multi_provider",
+          "file": "",
+          "name": "tests.test_multi_provider",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_prompt_caching",
+          "file": "",
+          "name": "tests.test_prompt_caching",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::tests.test_streaming_timing",
+          "file": "",
+          "name": "tests.test_streaming_timing",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ],
+      "outputTail": "ERROR examples/multi_agent/moa_examples/test_moa_new.py\nERROR examples/multi_agent/sequential_workflow/sequential_worflow_test.py\nERROR examples/multi_agent/simulations/agent_map/v0/test_group_conversations.py\nERROR examples/multi_agent/simulations/agent_map/v0/test_simulation.py\nERROR examples/multi_agent/simulations/euroswarm_parliament/test_mass_agents.py\nERROR examples/multi_agent/utils/test_agent_concurrent.py\nERROR examples/single_agent/capabilities/autonomy/autonomous_agents/sub_agent_test.py\nERROR examples/single_agent/capabilities/vision/anthropic_vision_test.py\nERROR examples/single_agent/capabilities/vision/base_64_images/test_base64_image.py\nERROR examples/single_agent/capabilities/vision/vision_test.py\nERROR examples/single_agent/reasoning/reasoning_duo_test.py\nERROR examples/tools/exa_search/exa_search_test.py\nERROR examples/utils/conversation_cache_examples/sequential_cache_test.py\nERROR examples/utils/misc/agent_map_test.py\nERROR examples/utils/misc/aop/test_aop.py\nERROR examples/utils/misc/conversation_test.py - TypeError: Conversation.export_and_count_categories() got an unexpected keyword argument 'tokenizer_model_name'\nERROR examples/utils/misc/test_load_conversation.py - TypeError: Conversation.__init__() got an unexpected keyword argument 'save_enabled'\nERROR examples/utils/misc/visualizer_test.py\nERROR tests/agents/test_agent_marketplace_handler.py\nERROR tests/agents/test_autoswarm_writer.py\nERROR tests/agents/test_llm_manager.py\nERROR tests/structs/test_agent.py\nERROR tests/structs/test_agent_rearrange.py\nERROR tests/structs/test_agent_router.py\nERROR tests/structs/test_aop.py\nERROR tests/structs/test_auto_swarms_builder.py\nERROR tests/structs/test_batched_grid_workflow.py\nERROR tests/structs/test_component_ids.py\nERROR tests/structs/test_concurrent_workflow.py\nERROR tests/structs/test_deep_discussion.py\nERROR tests/structs/test_forest_swarm.py\nERROR tests/structs/test_graph_workflow.py\nERROR tests/structs/test_hierarchical_swarm.py\nERROR tests/structs/test_multi_agent_debate.py\nERROR tests/structs/test_planner_generator_evaluator.py\nERROR tests/structs/test_planner_worker_swarm.py\nERROR tests/structs/test_self_moa_seq.py\nERROR tests/structs/test_sequential_workflow.py\nERROR tests/structs/test_spreadsheet.py\nERROR tests/structs/test_swarm_architectures.py\nERROR tests/telemetry/test_telemetry.py\nERROR tests/telemetry/test_telemetry_invariants.py\nERROR tests/telemetry/test_telemetry_multi_agent_advanced.py\nERROR tests/telemetry/test_telemetry_multi_agent_core.py\nERROR tests/test_main_features.py\nERROR tests/test_multi_provider.py\nERROR tests/test_prompt_caching.py\nERROR tests/test_streaming_timing.py\n!!!!!!!!!!!!!!!!!!! Interrupted: 63 errors during collection !!!!!!!!!!!!!!!!!!!\n63 errors in 16.27s"
+    },
+    "before": {
+      "exitCode": 2,
+      "durationMs": 4996,
+      "cases": [
+        {
+          "id": "::tests.structs.test_sequential_workflow",
+          "file": "",
+          "name": "tests.structs.test_sequential_workflow",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ],
+      "outputTail": "\n==================================== ERRORS ====================================\n__________ ERROR collecting tests/structs/test_sequential_workflow.py __________\nImportError while importing test module '/tmp/trustbut-wt-8JOxtJ/tests/structs/test_sequential_workflow.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n/opt/hostedtoolcache/Python/3.12.15/x64/lib/python3.12/importlib/__init__.py:90: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests/structs/test_sequential_workflow.py:6: in <module>\n    from swarms import Agent, SequentialWorkflow\nswarms/__init__.py:9: in <module>\n    from swarms.agents import *  # noqa: E402, F403\n    ^^^^^^^^^^^^^^^^^^^^^^^^^^^\nswarms/agents/__init__.py:1: in <module>\n    from swarms.agents.agent_judge import AgentJudge\nswarms/agents/agent_judge.py:4: in <module>\n    from swarms.structs.agent import Agent\nswarms/structs/__init__.py:5: in <module>\n    from swarms.structs.aop import AOP\nswarms/structs/aop.py:16: in <module>\n    from mcp.server.fastmcp import FastMCP\n/home/runner/work/_temp/venv/lib/python3.12/site-packages/mcp/server/fastmcp.py:16: in <module>\n    raise ModuleNotFoundError(_MESSAGE, name=__name__)\nE   ModuleNotFoundError: No module named 'mcp.server.fastmcp'. This is mcp 2.x, where FastMCP was renamed to MCPServer (from mcp.server.mcpserver import MCPServer) and other APIs changed; see the migration guide at https://py.sdk.modelcontextprotocol.io/v2/migration/#fastmcp-renamed-to-mcpserver or pin 'mcp<2' to keep running v1 code.\n=========================== short test summary info ============================\nERROR tests/structs/test_sequential_workflow.py\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 error in 3.95s"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id": "OneKeyHQ__app-monorepo__13109",
+  "status": "setup-failed",
+  "stage": "no-passing-tests",
+  "recipe": {
+    "node": {
+      "version": "24",
+      "pm": "yarn-berry",
+      "install": "yarn install --immutable"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 174057,
+    "verifyMs": 221882
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.7.0",
+  "installRetries": 0
+}

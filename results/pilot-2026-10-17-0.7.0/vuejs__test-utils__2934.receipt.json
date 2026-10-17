@@ -1,0 +1,3015 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.2",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.7.0"
+  },
+  "subject": {
+    "base": "3d146ba1c2abd21ed5bcc3090f0ba6b2033502c7",
+    "head": "7bd2bef773e07d4a73f33155e8a0bbc729f155e3"
+  },
+  "verdict": "warn",
+  "tests": {
+    "passed": 493,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 1,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "change-not-proven",
+      "severity": "warn",
+      "title": "Nothing proves the change",
+      "detail": "test files changed, but no new or changed test that ran was found in them"
+    }
+  ],
+  "risks": [
+    {
+      "file": "package.json",
+      "score": 2,
+      "reasons": [
+        "dependencies"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 0,
+      "durationMs": 29543,
+      "cases": [
+        {
+          "id": "tests/vm.spec.ts::vm > returns the component vm",
+          "file": "tests/vm.spec.ts",
+          "name": "vm > returns the component vm",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/vm.spec.ts::vm > allows spying on vm",
+          "file": "tests/vm.spec.ts",
+          "name": "vm > allows spying on vm",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/transition.spec.ts::transitions > work",
+          "file": "tests/features/transition.spec.ts",
+          "name": "transitions > work",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/transition.spec.ts::transitions > have props",
+          "file": "tests/features/transition.spec.ts",
+          "name": "transitions > have props",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setProps.spec.ts::setProps > updates a primitive prop",
+          "file": "tests/setProps.spec.ts",
+          "name": "setProps > updates a primitive prop",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setProps.spec.ts::setProps > updates a function prop",
+          "file": "tests/setProps.spec.ts",
+          "name": "setProps > updates a function prop",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setProps.spec.ts::setProps > sets component props, and updates DOM when props were not initially passed",
+          "file": "tests/setProps.spec.ts",
+          "name": "setProps > sets component props, and updates DOM when props were not initially passed",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setProps.spec.ts::setProps > triggers a watcher",
+          "file": "tests/setProps.spec.ts",
+          "name": "setProps > triggers a watcher",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setProps.spec.ts::setProps > works with composition API",
+          "file": "tests/setProps.spec.ts",
+          "name": "setProps > works with composition API",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setProps.spec.ts::setProps > non-existent props are rendered as attributes",
+          "file": "tests/setProps.spec.ts",
+          "name": "setProps > non-existent props are rendered as attributes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setProps.spec.ts::setProps > allows using only on mounted component",
+          "file": "tests/setProps.spec.ts",
+          "name": "setProps > allows using only on mounted component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setProps.spec.ts::setProps > sets props for functional component",
+          "file": "tests/setProps.spec.ts",
+          "name": "setProps > sets props for functional component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > normal slots > supports providing a plain string text in slot",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > normal slots > supports providing a plain string text in slot",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > normal slots > supports providing an html string into a slot",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > normal slots > supports providing an html string into a slot",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > normal slots > supports providing html string with tags valid only nested in some other tag",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > normal slots > supports providing html string with tags valid only nested in some other tag",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > normal slots > supports providing a render function to slot",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > normal slots > supports providing a render function to slot",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > normal slots > supports providing an object with template to slot",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > normal slots > supports providing an object with template to slot",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > normal slots > does not render slots that do not exist",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > normal slots > does not render slots that do not exist",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > normal slots > supports passing a SFC",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > normal slots > supports passing a SFC",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > scoped slots > allows providing a plain text string",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > scoped slots > allows providing a plain text string",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > scoped slots > allows passing a function that returns a render function",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > scoped slots > allows passing a function that returns a render function",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > scoped slots > allows passing a function to store variables for assertion",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > scoped slots > allows passing a function to store variables for assertion",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > scoped slots > allows passing a scoped slot via string with no destructuring using the # syntax",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > scoped slots > allows passing a scoped slot via string with no destructuring using the # syntax",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > scoped slots > allows passing a scoped slot via a string with destructuring using the # syntax",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > scoped slots > allows passing a scoped slot via a string with destructuring using the # syntax",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > scoped slots > allows passing a scoped slot via string with no destructuring using the v-slot syntax",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > scoped slots > allows passing a scoped slot via string with no destructuring using the v-slot syntax",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > scoped slots > allows passing a scoped slot via string with no destructuring without template tag",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > scoped slots > allows passing a scoped slot via string with no destructuring without template tag",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > scoped slots > allows passing a scoped slot via string with no HTML inside without template tag",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > scoped slots > allows passing a scoped slot via string with no HTML inside without template tag",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > supports an array of components",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > supports an array of components",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > triggers child component lifecycles",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > triggers child component lifecycles",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/slots.spec.ts::slots > should return the correct number of vnodes in the slots",
+          "file": "tests/mountingOptions/slots.spec.ts",
+          "name": "slots > should return the correct number of vnodes in the slots",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mount.spec.ts::mount: general tests > correctly handles component, throwing on mount",
+          "file": "tests/mount.spec.ts",
+          "name": "mount: general tests > correctly handles component, throwing on mount",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mount.spec.ts::mount: general tests > should throw the first error encountered when mounting the component",
+          "file": "tests/mount.spec.ts",
+          "name": "mount: general tests > should throw the first error encountered when mounting the component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mount.spec.ts::mount: general tests > should not warn on readonly hasOwnProperty when mounting a component",
+          "file": "tests/mount.spec.ts",
+          "name": "mount: general tests > should not warn on readonly hasOwnProperty when mounting a component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mount.spec.ts::mount: general tests > should mount a component with props, emits and slot (#1973)",
+          "file": "tests/mount.spec.ts",
+          "name": "mount: general tests > should mount a component with props, emits and slot (#1973)",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mount.spec.ts::mount: general tests > allows access to nested computed values",
+          "file": "tests/mount.spec.ts",
+          "name": "mount: general tests > allows access to nested computed values",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mount.spec.ts::mount: general tests > circular references in non-ref props do not cause a stack overflow",
+          "file": "tests/mount.spec.ts",
+          "name": "mount: general tests > circular references in non-ref props do not cause a stack overflow",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mount.spec.ts::mount: general tests > circular references in ref props do not cause a stack overflow",
+          "file": "tests/mount.spec.ts",
+          "name": "mount: general tests > circular references in ref props do not cause a stack overflow",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mount.spec.ts::mount: general tests > should remove wrapper div when unmount",
+          "file": "tests/mount.spec.ts",
+          "name": "mount: general tests > should remove wrapper div when unmount",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > returns false when element hidden via v-show",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > returns false when element hidden via v-show",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > returns true when element is visible via v-show",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > returns true when element is visible via v-show",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > returns false when element parent is invisible via v-show",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > returns false when element parent is invisible via v-show",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > element becomes hidden reactively",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > element becomes hidden reactively",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > handles transitions",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > handles transitions",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > handles transition-group",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > handles transition-group",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > should take css into account",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > should take css into account",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > isVisible with find Component > root component has v-show > mount: returns false when root has v-show=false",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > isVisible with find Component > root component has v-show > mount: returns false when root has v-show=false",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > isVisible with find Component > root component has v-show > shallowMount: returns false when root has v-show=false",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > isVisible with find Component > root component has v-show > shallowMount: returns false when root has v-show=false",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > isVisible with find Component > child component has v-show > mount: returns false when child has v-show=false",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > isVisible with find Component > child component has v-show > mount: returns false when child has v-show=false",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > isVisible with find Component > child component has v-show > shallowMount: returns true when child has v-show=false, because of shallow mount",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > isVisible with find Component > child component has v-show > shallowMount: returns true when child has v-show=false, because of shallow mount",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > isVisible with find Component > child has two nodes > mount: returns false",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > isVisible with find Component > child has two nodes > mount: returns false",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > isVisible with find Component > child has two nodes > shallowMount: return false",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > isVisible with find Component > child has two nodes > shallowMount: return false",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > isVisible with find Component > details and summary elements > DetailContent should be invisible when display:none is applied by style attribute",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > isVisible with find Component > details and summary elements > DetailContent should be invisible when display:none is applied by style attribute",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > isVisible with find Component > details and summary elements > DetailContent should be visible when summary is visible",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > isVisible with find Component > details and summary elements > DetailContent should be visible when summary is visible",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > isVisible with find Component > details and summary elements > DetailContent shouild be visible when summarys child is visible",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > isVisible with find Component > details and summary elements > DetailContent shouild be visible when summarys child is visible",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > isVisible with find Component > details and summary elements > should consider a summary as hidden when nested inside closed details content",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > isVisible with find Component > details and summary elements > should consider a summary as hidden when nested inside closed details content",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > isVisible with find Component > details and summary elements > should consider a summary as visible when nested inside open details content",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > isVisible with find Component > details and summary elements > should consider a summary as visible when nested inside open details content",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isVisible.spec.ts::isVisible > isVisible with find Component > details and summary elements > should consider a 1st summary as visible and 2nd as hidden when nested inside closed details content which is applied display: none",
+          "file": "tests/isVisible.spec.ts",
+          "name": "isVisible > isVisible with find Component > details and summary elements > should consider a 1st summary as visible and 2nd as hidden when nested inside closed details content which is applied display: none",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findAllComponents.spec.ts::findAllComponents > finds all deeply nested vue components",
+          "file": "tests/findAllComponents.spec.ts",
+          "name": "findAllComponents > finds all deeply nested vue components",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findAllComponents.spec.ts::findAllComponents > finds all deeply nested vue components when chained from dom wrapper",
+          "file": "tests/findAllComponents.spec.ts",
+          "name": "findAllComponents > finds all deeply nested vue components when chained from dom wrapper",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findAllComponents.spec.ts::findAllComponents > ignores DOM nodes matching css selector",
+          "file": "tests/findAllComponents.spec.ts",
+          "name": "findAllComponents > ignores DOM nodes matching css selector",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findAllComponents.spec.ts::findAllComponents > findAllComponents returns top-level components when components are nested",
+          "file": "tests/findAllComponents.spec.ts",
+          "name": "findAllComponents > findAllComponents returns top-level components when components are nested",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findAllComponents.spec.ts::findAllComponents > findAllComponents with function slots",
+          "file": "tests/findAllComponents.spec.ts",
+          "name": "findAllComponents > findAllComponents with function slots",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findAllComponents.spec.ts::findAllComponents > findAllComponents with non-function slots",
+          "file": "tests/findAllComponents.spec.ts",
+          "name": "findAllComponents > findAllComponents with non-function slots",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > does not find plain dom elements",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > does not find plain dom elements",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds component by ref",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds component by ref",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > does not find plain dom element by ref",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > does not find plain dom element by ref",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds component by dom selector",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds component by dom selector",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > does allows using complicated DOM selector query",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > does allows using complicated DOM selector query",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds component by name",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds component by name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds component within script setup by name",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds component within script setup by name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds component within script setup without name",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds component within script setup without name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds root component",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds root component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds root component when recursion is used",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds root component when recursion is used",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds root component without name",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds root component without name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds component without a name by using its object definition",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds component without a name by using its object definition",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds a component by its definition with shallow",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds a component by its definition with shallow",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds a component by its definition when using stub without name",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds a component by its definition when using stub without name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds a component by its definition when stub is reused",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds a component by its definition when stub is reused",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds a component by its stub",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds a component by its stub",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds a component without a name by its locally assigned name",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds a component without a name by its locally assigned name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds component by imported SFC file",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds component by imported SFC file",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds component in a Suspense",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds component in a Suspense",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds a stub by name",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds a stub by name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds a stub by ref",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds a stub by ref",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > throw error if trying to unmount component from find",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > throw error if trying to unmount component from find",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds nested components and obtains expected html and innerText",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds nested components and obtains expected html and innerText",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds single by ref in v-for",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds single by ref in v-for",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds components with slots which will be compiled to `{ default: () => [children] }`",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds components with slots which will be compiled to `{ default: () => [children] }`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds a functional component",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds a functional component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds a functional component in a fragment",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds a functional component in a fragment",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > chaining from dom wrapper > finds a component nested inside a node",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > chaining from dom wrapper > finds a component nested inside a node",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > chaining from dom wrapper > finds a component inside DOM node",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > chaining from dom wrapper > finds a component inside DOM node",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > chaining from dom wrapper > returns correct instance of recursive component",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > chaining from dom wrapper > returns correct instance of recursive component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > chaining from dom wrapper > returns top-level component if it matches",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > chaining from dom wrapper > returns top-level component if it matches",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > chaining from dom wrapper > finds functional components by component displayName",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > chaining from dom wrapper > finds functional components by component displayName",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > chaining from dom wrapper > uses refs of correct component when searching by ref",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > chaining from dom wrapper > uses refs of correct component when searching by ref",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > chaining from dom wrapper > finds top component when searching from nested node",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > chaining from dom wrapper > finds top component when searching from nested node",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/findComponent.spec.ts::findComponent > finds a component without name by its definition when stubbing directives",
+          "file": "tests/findComponent.spec.ts",
+          "name": "findComponent > finds a component without name by its definition when stubbing directives",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/attrs.spec.ts::mountingOptions.attrs > assigns extra attributes on components",
+          "file": "tests/mountingOptions/attrs.spec.ts",
+          "name": "mountingOptions.attrs > assigns extra attributes on components",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/attrs.spec.ts::mountingOptions.attrs > is overridden by a prop with the same name",
+          "file": "tests/mountingOptions/attrs.spec.ts",
+          "name": "mountingOptions.attrs > is overridden by a prop with the same name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/teleport.spec.ts::teleport > teleports a string",
+          "file": "tests/features/teleport.spec.ts",
+          "name": "teleport > teleports a string",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/teleport.spec.ts::teleport > teleports a component with props",
+          "file": "tests/features/teleport.spec.ts",
+          "name": "teleport > teleports a component with props",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/teleport.spec.ts::teleport > works with SFC and gets props",
+          "file": "tests/features/teleport.spec.ts",
+          "name": "teleport > works with SFC and gets props",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/teleport.spec.ts::teleport > works with SFC and captures emitted events",
+          "file": "tests/features/teleport.spec.ts",
+          "name": "teleport > works with SFC and captures emitted events",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/teleport.spec.ts::teleport > should reactively update content with teleport",
+          "file": "tests/features/teleport.spec.ts",
+          "name": "teleport > should reactively update content with teleport",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/ScriptSetup_ToRefsInject.spec.ts::toRefs and inject work with script setup",
+          "file": "tests/features/ScriptSetup_ToRefsInject.spec.ts",
+          "name": "toRefs and inject work with script setup",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isDeepRef.spec.ts::isDeepRef > should return true for a Ref value",
+          "file": "tests/isDeepRef.spec.ts",
+          "name": "isDeepRef > should return true for a Ref value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isDeepRef.spec.ts::isDeepRef > should return false for a non-object, non-Ref value",
+          "file": "tests/isDeepRef.spec.ts",
+          "name": "isDeepRef > should return false for a non-object, non-Ref value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isDeepRef.spec.ts::isDeepRef > should return true for an object with a Ref value",
+          "file": "tests/isDeepRef.spec.ts",
+          "name": "isDeepRef > should return true for an object with a Ref value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isDeepRef.spec.ts::isDeepRef > should return false for an object without a Ref value",
+          "file": "tests/isDeepRef.spec.ts",
+          "name": "isDeepRef > should return false for an object without a Ref value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isDeepRef.spec.ts::isDeepRef > should return true for an array with a Ref value",
+          "file": "tests/isDeepRef.spec.ts",
+          "name": "isDeepRef > should return true for an array with a Ref value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isDeepRef.spec.ts::isDeepRef > should return false for an array without a Ref value",
+          "file": "tests/isDeepRef.spec.ts",
+          "name": "isDeepRef > should return false for an array without a Ref value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isDeepRef.spec.ts::isDeepRef > should return true for a nested object with a Ref value",
+          "file": "tests/isDeepRef.spec.ts",
+          "name": "isDeepRef > should return true for a nested object with a Ref value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isDeepRef.spec.ts::isDeepRef > should return false for a nested object without a Ref value",
+          "file": "tests/isDeepRef.spec.ts",
+          "name": "isDeepRef > should return false for a nested object without a Ref value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isDeepRef.spec.ts::isDeepRef > should return true for a nested array with a Ref value",
+          "file": "tests/isDeepRef.spec.ts",
+          "name": "isDeepRef > should return true for a nested array with a Ref value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isDeepRef.spec.ts::isDeepRef > should return false for a nested array without a Ref value",
+          "file": "tests/isDeepRef.spec.ts",
+          "name": "isDeepRef > should return false for a nested array without a Ref value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isDeepRef.spec.ts::isDeepRef > should return false for an object that has already been visited and does not contain a Ref",
+          "file": "tests/isDeepRef.spec.ts",
+          "name": "isDeepRef > should return false for an object that has already been visited and does not contain a Ref",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isDeepRef.spec.ts::isDeepRef > should return true for an object that has already been visited and contains a Ref",
+          "file": "tests/isDeepRef.spec.ts",
+          "name": "isDeepRef > should return true for an object that has already been visited and contains a Ref",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/isDeepRef.spec.ts::isDeepRef > should return false for an object with a dynamic circular reference",
+          "file": "tests/isDeepRef.spec.ts",
+          "name": "isDeepRef > should return false for an object with a dynamic circular reference",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/data.spec.ts::mounting options: data > merges data from mounting options with component",
+          "file": "tests/mountingOptions/data.spec.ts",
+          "name": "mounting options: data > merges data from mounting options with component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/data.spec.ts::mounting options: data > works with immediate watchers",
+          "file": "tests/mountingOptions/data.spec.ts",
+          "name": "mounting options: data > works with immediate watchers",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/data.spec.ts::mounting options: data > throws when used on functional component",
+          "file": "tests/mountingOptions/data.spec.ts",
+          "name": "mounting options: data > throws when used on functional component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.provides.spec.ts::mounting options: provides > provides a value via `provide`",
+          "file": "tests/mountingOptions/global.provides.spec.ts",
+          "name": "mounting options: provides > provides a value via `provide`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/attributes.spec.ts::attributes > returns an object with attributes",
+          "file": "tests/attributes.spec.ts",
+          "name": "attributes > returns an object with attributes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/attributes.spec.ts::attributes > returns empty object if wrapper does not contain any attributes",
+          "file": "tests/attributes.spec.ts",
+          "name": "attributes > returns empty object if wrapper does not contain any attributes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/attributes.spec.ts::attributes > returns the given attribute if wrapper contains attribute matching value",
+          "file": "tests/attributes.spec.ts",
+          "name": "attributes > returns the given attribute if wrapper contains attribute matching value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/attributes.spec.ts::attributes > returns undefined if the wrapper does not contain the matching value",
+          "file": "tests/attributes.spec.ts",
+          "name": "attributes > returns undefined if the wrapper does not contain the matching value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/attributes.spec.ts::attributes > returns attributes on a stubbed component",
+          "file": "tests/attributes.spec.ts",
+          "name": "attributes > returns attributes on a stubbed component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/vuex.spec.ts::vuex > renders a component using a vuex store",
+          "file": "tests/features/vuex.spec.ts",
+          "name": "vuex > renders a component using a vuex store",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/vuex.spec.ts::vuex > works with an injection key and composition API",
+          "file": "tests/features/vuex.spec.ts",
+          "name": "vuex > works with an injection key and composition API",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallowMount.spec.ts::shallowMount > renders props for stubbed component in a snapshot",
+          "file": "tests/shallowMount.spec.ts",
+          "name": "shallowMount > renders props for stubbed component in a snapshot",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallowMount.spec.ts::shallowMount > stubs all components automatically using { shallow: true }",
+          "file": "tests/shallowMount.spec.ts",
+          "name": "shallowMount > stubs all components automatically using { shallow: true }",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallowMount.spec.ts::shallowMount > stubs all components automatically using shallowMount",
+          "file": "tests/shallowMount.spec.ts",
+          "name": "shallowMount > stubs all components automatically using shallowMount",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallowMount.spec.ts::shallowMount > stub instance of same component",
+          "file": "tests/shallowMount.spec.ts",
+          "name": "shallowMount > stub instance of same component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallowMount.spec.ts::shallowMount > keeps re-rendering a root component after another wrapper is mounted",
+          "file": "tests/shallowMount.spec.ts",
+          "name": "shallowMount > keeps re-rendering a root component after another wrapper is mounted",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallowMount.spec.ts::shallowMount > correctly renders slot content",
+          "file": "tests/shallowMount.spec.ts",
+          "name": "shallowMount > correctly renders slot content",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallowMount.spec.ts::shallowMount > correctly stubs components inside slot",
+          "file": "tests/shallowMount.spec.ts",
+          "name": "shallowMount > correctly stubs components inside slot",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallowMount.spec.ts::shallowMount > stubs all components, but allows providing custom stub",
+          "file": "tests/shallowMount.spec.ts",
+          "name": "shallowMount > stubs all components, but allows providing custom stub",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallowMount.spec.ts::shallowMount > stubs all components, but allows disabling stub by passing false",
+          "file": "tests/shallowMount.spec.ts",
+          "name": "shallowMount > stubs all components, but allows disabling stub by passing false",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallowMount.spec.ts::shallowMount > stubs all components in a script setup component",
+          "file": "tests/shallowMount.spec.ts",
+          "name": "shallowMount > stubs all components in a script setup component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallowMount.spec.ts::shallowMount > should render stubs correctly",
+          "file": "tests/shallowMount.spec.ts",
+          "name": "shallowMount > should render stubs correctly",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallowMount.spec.ts::shallowMount > stubs a given component that is also returned by a computed property",
+          "file": "tests/shallowMount.spec.ts",
+          "name": "shallowMount > stubs a given component that is also returned by a computed property",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/shallowMount.spec.ts::shallowMount > does not attempt to stub a dynamic component based on the name of a computed property",
+          "file": "tests/shallowMount.spec.ts",
+          "name": "shallowMount > does not attempt to stub a dynamic component based on the name of a computed property",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/text.spec.ts::text > returns text when mounting single root node",
+          "file": "tests/text.spec.ts",
+          "name": "text > returns text when mounting single root node",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/text.spec.ts::text > returns text when mounting multiple root nodes",
+          "file": "tests/text.spec.ts",
+          "name": "text > returns text when mounting multiple root nodes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/text.spec.ts::text > returns empty string when the root element is a comment",
+          "file": "tests/text.spec.ts",
+          "name": "text > returns empty string when the root element is a comment",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/text.spec.ts::text > returns correct text for root component with multiple roots",
+          "file": "tests/text.spec.ts",
+          "name": "text > returns correct text for root component with multiple roots",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/text.spec.ts::text > returns correct text for root slot",
+          "file": "tests/text.spec.ts",
+          "name": "text > returns correct text for root slot",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/text.spec.ts::text > should return text for multi root functional component",
+          "file": "tests/text.spec.ts",
+          "name": "text > should return text for multi root functional component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/text.spec.ts::text > returns correct text for root slot with functional component",
+          "file": "tests/text.spec.ts",
+          "name": "text > returns correct text for root slot with functional component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/text.spec.ts::text > returns correct text for root slot with nested component",
+          "file": "tests/text.spec.ts",
+          "name": "text > returns correct text for root slot with nested component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/text.spec.ts::text > returns correct text for suspense component has multiple elements in a slot",
+          "file": "tests/text.spec.ts",
+          "name": "text > returns correct text for suspense component has multiple elements in a slot",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/mocks.spec.ts::mocks > mocks a vuex store",
+          "file": "tests/mountingOptions/mocks.spec.ts",
+          "name": "mocks > mocks a vuex store",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/mocks.spec.ts::mocks > mocks vue-router",
+          "file": "tests/mountingOptions/mocks.spec.ts",
+          "name": "mocks > mocks vue-router",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/mocks.spec.ts::mocks > mocks a global function in a script setup component",
+          "file": "tests/mountingOptions/mocks.spec.ts",
+          "name": "mocks > mocks a global function in a script setup component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/mocks.spec.ts::mocks > mocks a global function in an option component",
+          "file": "tests/mountingOptions/mocks.spec.ts",
+          "name": "mocks > mocks a global function in an option component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/mocks.spec.ts::mocks > mocks a global function in an option component which includes the setup() option",
+          "file": "tests/mountingOptions/mocks.spec.ts",
+          "name": "mocks > mocks a global function in an option component which includes the setup() option",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/element.spec.ts::element > returns element when mounting single root node",
+          "file": "tests/element.spec.ts",
+          "name": "element > returns element when mounting single root node",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/element.spec.ts::element > returns the VTU root element when mounting component with slot",
+          "file": "tests/element.spec.ts",
+          "name": "element > returns the VTU root element when mounting component with slot",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/element.spec.ts::element > returns the VTU root element when mounting multiple root nodes",
+          "file": "tests/element.spec.ts",
+          "name": "element > returns the VTU root element when mounting multiple root nodes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/element.spec.ts::element > returns correct element for root component with multiple roots",
+          "file": "tests/element.spec.ts",
+          "name": "element > returns correct element for root component with multiple roots",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/element.spec.ts::element > returns correct output for functional component with multiple text roots",
+          "file": "tests/element.spec.ts",
+          "name": "element > returns correct output for functional component with multiple text roots",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/element.spec.ts::element > returns correct output for functional component with multiple element roots",
+          "file": "tests/element.spec.ts",
+          "name": "element > returns correct output for functional component with multiple element roots",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/element.spec.ts::element > text() reads DOM content for single-root components with empty vnode children",
+          "file": "tests/element.spec.ts",
+          "name": "element > text() reads DOM content for single-root components with empty vnode children",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/element.spec.ts::element > returns correct element for root slot",
+          "file": "tests/element.spec.ts",
+          "name": "element > returns correct element for root slot",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/element.spec.ts::element > should return element for multi root functional component",
+          "file": "tests/element.spec.ts",
+          "name": "element > should return element for multi root functional component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/element.spec.ts::element > returns correct element for root slot with functional component",
+          "file": "tests/element.spec.ts",
+          "name": "element > returns correct element for root slot with functional component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/element.spec.ts::element > returns correct element for root slot with nested component",
+          "file": "tests/element.spec.ts",
+          "name": "element > returns correct element for root slot with nested component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/element.spec.ts::element > returns correct element for component which renders other component with array of vnodes in default slot",
+          "file": "tests/element.spec.ts",
+          "name": "element > returns correct element for component which renders other component with array of vnodes in default slot",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/options.spec.ts::mounting options: other > passes other options as $options to component",
+          "file": "tests/mountingOptions/options.spec.ts",
+          "name": "mounting options: other > passes other options as $options to component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/options.spec.ts::mounting options: other > warns on deprecated `method` option and methods are preserved",
+          "file": "tests/mountingOptions/options.spec.ts",
+          "name": "mounting options: other > warns on deprecated `method` option and methods are preserved",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/plugins.spec.ts::Plugin#install > accepts options",
+          "file": "tests/features/plugins.spec.ts",
+          "name": "Plugin#install > accepts options",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/plugins.spec.ts::Plugin#install > extends wrappers with the return values from the install function",
+          "file": "tests/features/plugins.spec.ts",
+          "name": "Plugin#install > extends wrappers with the return values from the install function",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/plugins.spec.ts::Plugin#install > receives the wrapper inside the plugin setup",
+          "file": "tests/features/plugins.spec.ts",
+          "name": "Plugin#install > receives the wrapper inside the plugin setup",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/plugins.spec.ts::Plugin#install > supports functions",
+          "file": "tests/features/plugins.spec.ts",
+          "name": "Plugin#install > supports functions",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/plugins.spec.ts::Plugin#install > error states > Calling install with %p is handled gracefully",
+          "file": "tests/features/plugins.spec.ts",
+          "name": "Plugin#install > error states > Calling install with %p is handled gracefully",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/plugins.spec.ts::createStubs > should be called for every stub once",
+          "file": "tests/features/plugins.spec.ts",
+          "name": "createStubs > should be called for every stub once",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/plugins.spec.ts::createStubs > should be called only for stubbed components",
+          "file": "tests/features/plugins.spec.ts",
+          "name": "createStubs > should be called only for stubbed components",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/plugins.spec.ts::createStubs > should not be called for no stubs",
+          "file": "tests/features/plugins.spec.ts",
+          "name": "createStubs > should not be called for no stubs",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/plugins.spec.ts::createStubs > should not be called for manual stubs",
+          "file": "tests/features/plugins.spec.ts",
+          "name": "createStubs > should not be called for manual stubs",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > captures events emitted via this.$emit",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > captures events emitted via this.$emit",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > captures events emitted via ctx.emit",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > captures events emitted via ctx.emit",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > captures events emitted via destructured emit",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > captures events emitted via destructured emit",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > should propagate child native events",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > should propagate child native events",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > should not propagate child custom events",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > should not propagate child custom events",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > should not propagate native events defined in emits",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > should not propagate native events defined in emits",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > should allow passing the name of an event",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > should allow passing the name of an event",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > captures events emitted by functional components",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > captures events emitted by functional components",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > captures an event emitted in setup",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > captures an event emitted in setup",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > captures composition event",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > captures composition event",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > https://github.com/vuejs/test-utils/issues/436",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > https://github.com/vuejs/test-utils/issues/436",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > does not capture native events on component which render non-element root",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > does not capture native events on component which render non-element root",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > does not capture native events on component with multiple root element nodes",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > does not capture native events on component with multiple root element nodes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > capture native events on components which render multiple root nodes with only single element",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > capture native events on components which render multiple root nodes with only single element",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > captures emitted events in SFC",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > captures emitted events in SFC",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > captures emitted events in script setup",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > captures emitted events in script setup",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > does not clear all emitted event history on mount/unmount",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > does not clear all emitted event history on mount/unmount",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > clears emitted event history of child components on unmount",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > clears emitted event history of child components on unmount",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/emit.spec.ts::emitted > clears history of a child removed before the root is unmounted",
+          "file": "tests/emit.spec.ts",
+          "name": "emitted > clears history of a child removed before the root is unmounted",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/get.spec.ts::get > returns the element if it exists",
+          "file": "tests/get.spec.ts",
+          "name": "get > returns the element if it exists",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/get.spec.ts::get > throws if it does not exist",
+          "file": "tests/get.spec.ts",
+          "name": "get > throws if it does not exist",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/props.spec.ts::mountingOptions.props > passes props",
+          "file": "tests/mountingOptions/props.spec.ts",
+          "name": "mountingOptions.props > passes props",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/props.spec.ts::mountingOptions.props > passes props with 'propsData'",
+          "file": "tests/mountingOptions/props.spec.ts",
+          "name": "mountingOptions.props > passes props with 'propsData'",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/props.spec.ts::mountingOptions.props > uses props from 'props' attribute, when 'propsData' also contains same attribute keys",
+          "file": "tests/mountingOptions/props.spec.ts",
+          "name": "mountingOptions.props > uses props from 'props' attribute, when 'propsData' also contains same attribute keys",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/props.spec.ts::mountingOptions.props > assigns extra properties as attributes on components",
+          "file": "tests/mountingOptions/props.spec.ts",
+          "name": "mountingOptions.props > assigns extra properties as attributes on components",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/props.spec.ts::mountingOptions.props > assigns event listeners",
+          "file": "tests/mountingOptions/props.spec.ts",
+          "name": "mountingOptions.props > assigns event listeners",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/props.spec.ts::mountingOptions.props > props with functional component",
+          "file": "tests/mountingOptions/props.spec.ts",
+          "name": "mountingOptions.props > props with functional component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > sets component data",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > sets component data",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > triggers a watcher",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > triggers a watcher",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > causes nested nodes to re-render",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > causes nested nodes to re-render",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > updates a single property of a complex object",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > updates a single property of a complex object",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > does not set new properties",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > does not set new properties",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > updates data set via data mounting option using setData",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > updates data set via data mounting option using setData",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > overwrites array with new value",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > overwrites array with new value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > should keep Date object on setData",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > should keep Date object on setData",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > should retain prototype methods for constructed objects when calling setData",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > should retain prototype methods for constructed objects when calling setData",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > should ignore prototype methods when using setData on objects",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > should ignore prototype methods when using setData on objects",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > updates initial data on a component using <script setup>",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > updates initial data on a component using <script setup>",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > updates nested data returned from setup()",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > updates nested data returned from setup()",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > updates data on a component using <script setup>",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > updates data on a component using <script setup>",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > updates data on a component using setup()",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > updates data on a component using setup()",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > correctly sets initial array refs data when using <script setup>",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > correctly sets initial array refs data when using <script setup>",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > updates data() property on a mixed-API component that also has setup()",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > updates data() property on a mixed-API component that also has setup()",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setData.spec.ts::setData > updates both data() and setup() properties on a mixed-API component",
+          "file": "tests/setData.spec.ts",
+          "name": "setData > updates both data() and setup() properties on a mixed-API component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/functionalComponents.spec.ts::functionalComponents > when mounting functional component > mounts without an error",
+          "file": "tests/functionalComponents.spec.ts",
+          "name": "functionalComponents > when mounting functional component > mounts without an error",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/functionalComponents.spec.ts::functionalComponents > when mounting functional component > renders the slots of a functional component",
+          "file": "tests/functionalComponents.spec.ts",
+          "name": "functionalComponents > when mounting functional component > renders the slots of a functional component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/functionalComponents.spec.ts::functionalComponents > when mounting functional component > asserts classes",
+          "file": "tests/functionalComponents.spec.ts",
+          "name": "functionalComponents > when mounting functional component > asserts classes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/functionalComponents.spec.ts::functionalComponents > when mounting functional component > uses `find`",
+          "file": "tests/functionalComponents.spec.ts",
+          "name": "functionalComponents > when mounting functional component > uses `find`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/functionalComponents.spec.ts::functionalComponents > when mounting functional component > uses `findComponent`",
+          "file": "tests/functionalComponents.spec.ts",
+          "name": "functionalComponents > when mounting functional component > uses `findComponent`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/functionalComponents.spec.ts::functionalComponents > when retrieving functional component via findComponent > returns DOMWrapper",
+          "file": "tests/functionalComponents.spec.ts",
+          "name": "functionalComponents > when retrieving functional component via findComponent > returns DOMWrapper",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/expose.spec.ts::expose > access vm on simple components with custom `expose`",
+          "file": "tests/expose.spec.ts",
+          "name": "expose > access vm on simple components with custom `expose`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/expose.spec.ts::expose > access vm on simple components with custom `expose` and a setup returning a render function",
+          "file": "tests/expose.spec.ts",
+          "name": "expose > access vm on simple components with custom `expose` and a setup returning a render function",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/expose.spec.ts::expose > access vm with <script setup> and defineExpose()",
+          "file": "tests/expose.spec.ts",
+          "name": "expose > access vm with <script setup> and defineExpose()",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/expose.spec.ts::expose > access vm with <script setup> even without defineExpose()",
+          "file": "tests/expose.spec.ts",
+          "name": "expose > access vm with <script setup> even without defineExpose()",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/expose.spec.ts::expose > spies on vm with <script setup> even without defineExpose()",
+          "file": "tests/expose.spec.ts",
+          "name": "expose > spies on vm with <script setup> even without defineExpose()",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/expose.spec.ts::expose > access props on vm with <script setup>",
+          "file": "tests/expose.spec.ts",
+          "name": "expose > access props on vm with <script setup>",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/expose.spec.ts::expose > should not throw when mocking",
+          "file": "tests/expose.spec.ts",
+          "name": "expose > should not throw when mocking",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/expose.spec.ts::expose > access exposed vm properties via findComponent on a bundled-style component",
+          "file": "tests/expose.spec.ts",
+          "name": "expose > access exposed vm properties via findComponent on a bundled-style component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/expose.spec.ts::expose > when exposeProxy is null > access vm on simple components with custom `expose`",
+          "file": "tests/expose.spec.ts",
+          "name": "expose > when exposeProxy is null > access vm on simple components with custom `expose`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/expose.spec.ts::expose > when exposeProxy is null > access vm on simple components with custom `expose` and a setup returning a render function",
+          "file": "tests/expose.spec.ts",
+          "name": "expose > when exposeProxy is null > access vm on simple components with custom `expose` and a setup returning a render function",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/expose.spec.ts::expose > when exposeProxy is null > access vm with <script setup> and defineExpose()",
+          "file": "tests/expose.spec.ts",
+          "name": "expose > when exposeProxy is null > access vm with <script setup> and defineExpose()",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/expose.spec.ts::expose > when exposeProxy is null > access vm with <script setup> even without defineExpose()",
+          "file": "tests/expose.spec.ts",
+          "name": "expose > when exposeProxy is null > access vm with <script setup> even without defineExpose()",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/lifecycle.spec.ts::lifecycles > calls onMounted",
+          "file": "tests/lifecycle.spec.ts",
+          "name": "lifecycles > calls onMounted",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/lifecycle.spec.ts::lifecycles > calls onUnmounted",
+          "file": "tests/lifecycle.spec.ts",
+          "name": "lifecycles > calls onUnmounted",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.mixins.spec.ts::mounting options: mixins > installs a mixin via `mixins`",
+          "file": "tests/mountingOptions/global.mixins.spec.ts",
+          "name": "mounting options: mixins > installs a mixin via `mixins`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/getComponent.spec.ts::getComponent > should delegate to findComponent",
+          "file": "tests/getComponent.spec.ts",
+          "name": "getComponent > should delegate to findComponent",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/getComponent.spec.ts::getComponent > should throw if not found with a string selector",
+          "file": "tests/getComponent.spec.ts",
+          "name": "getComponent > should throw if not found with a string selector",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/getComponent.spec.ts::getComponent > should throw if not found with a name selector",
+          "file": "tests/getComponent.spec.ts",
+          "name": "getComponent > should throw if not found with a name selector",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/getComponent.spec.ts::getComponent > should throw if not found with a component selector that has a name",
+          "file": "tests/getComponent.spec.ts",
+          "name": "getComponent > should throw if not found with a component selector that has a name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/getComponent.spec.ts::getComponent > should throw if not found with a ref selector",
+          "file": "tests/getComponent.spec.ts",
+          "name": "getComponent > should throw if not found with a ref selector",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/getComponent.spec.ts::getComponent > should throw if not found with a component selector that has no name",
+          "file": "tests/getComponent.spec.ts",
+          "name": "getComponent > should throw if not found with a component selector that has no name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/getComponent.spec.ts::getComponent > works with router-link and mount",
+          "file": "tests/getComponent.spec.ts",
+          "name": "getComponent > works with router-link and mount",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/getComponent.spec.ts::getComponent > works with router-link and shallowMount",
+          "file": "tests/getComponent.spec.ts",
+          "name": "getComponent > works with router-link and shallowMount",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/exists.spec.ts::exists > returns false when element does not exist",
+          "file": "tests/exists.spec.ts",
+          "name": "exists > returns false when element does not exist",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/exists.spec.ts::exists > returns true when element does exist",
+          "file": "tests/exists.spec.ts",
+          "name": "exists > returns true when element does exist",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/exists.spec.ts::exists > returns false when component destroyed",
+          "file": "tests/exists.spec.ts",
+          "name": "exists > returns false when component destroyed",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/exists.spec.ts::exists > returns false when wrapper is manually constructed against nullish element",
+          "file": "tests/exists.spec.ts",
+          "name": "exists > returns false when wrapper is manually constructed against nullish element",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/html.spec.ts::html > returns html when mounting single root node",
+          "file": "tests/html.spec.ts",
+          "name": "html > returns html when mounting single root node",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/html.spec.ts::html > returns formatted html string",
+          "file": "tests/html.spec.ts",
+          "name": "html > returns formatted html string",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/html.spec.ts::html > returns raw html string",
+          "file": "tests/html.spec.ts",
+          "name": "html > returns raw html string",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/html.spec.ts::html > multiple root components > returns the html when mounting multiple root nodes",
+          "file": "tests/html.spec.ts",
+          "name": "html > multiple root components > returns the html when mounting multiple root nodes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/html.spec.ts::html > multiple root components > returns the raw html when mounting multiple root nodes",
+          "file": "tests/html.spec.ts",
+          "name": "html > multiple root components > returns the raw html when mounting multiple root nodes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/html.spec.ts::html > multiple root components > returns the html when multiple root component is located inside other component",
+          "file": "tests/html.spec.ts",
+          "name": "html > multiple root components > returns the html when multiple root component is located inside other component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/html.spec.ts::html > returns the html when mounting a Suspense component",
+          "file": "tests/html.spec.ts",
+          "name": "html > returns the html when mounting a Suspense component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/html.spec.ts::html > returns the html with findComponent in a nested Suspense component",
+          "file": "tests/html.spec.ts",
+          "name": "html > returns the html with findComponent in a nested Suspense component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/html.spec.ts::html > get component from within root fragments",
+          "file": "tests/html.spec.ts",
+          "name": "html > get component from within root fragments",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/unmount.spec.ts::Unmount > works on single root component",
+          "file": "tests/unmount.spec.ts",
+          "name": "Unmount > works on single root component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/unmount.spec.ts::Unmount > works on multi-root component",
+          "file": "tests/unmount.spec.ts",
+          "name": "Unmount > works on multi-root component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/renderToString.spec.ts::renderToString > returns a promise",
+          "file": "tests/renderToString.spec.ts",
+          "name": "renderToString > returns a promise",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/renderToString.spec.ts::renderToString > returns correct html on multi root nodes",
+          "file": "tests/renderToString.spec.ts",
+          "name": "renderToString > returns correct html on multi root nodes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/renderToString.spec.ts::renderToString > returns correct html with pre-fetched data on server",
+          "file": "tests/renderToString.spec.ts",
+          "name": "renderToString > returns correct html with pre-fetched data on server",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/renderToString.spec.ts::renderToString > returns print warning if `attachTo` option is used",
+          "file": "tests/renderToString.spec.ts",
+          "name": "renderToString > returns print warning if `attachTo` option is used",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/docs-examples/teleport.spec.ts::teleport",
+          "file": "tests/docs-examples/teleport.spec.ts",
+          "name": "teleport",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/attachTo.spec.ts::options.attachTo > attaches to a provided HTMLElement",
+          "file": "tests/mountingOptions/attachTo.spec.ts",
+          "name": "options.attachTo > attaches to a provided HTMLElement",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/attachTo.spec.ts::options.attachTo > attaches to a provided SVGElement",
+          "file": "tests/mountingOptions/attachTo.spec.ts",
+          "name": "options.attachTo > attaches to a provided SVGElement",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/attachTo.spec.ts::options.attachTo > attaches to a provided CSS selector string",
+          "file": "tests/mountingOptions/attachTo.spec.ts",
+          "name": "options.attachTo > attaches to a provided CSS selector string",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/attachTo.spec.ts::options.attachTo > throws if the provided CSS selector string can not be find",
+          "file": "tests/mountingOptions/attachTo.spec.ts",
+          "name": "options.attachTo > throws if the provided CSS selector string can not be find",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/attachTo.spec.ts::options.attachTo > correctly hydrates markup",
+          "file": "tests/mountingOptions/attachTo.spec.ts",
+          "name": "options.attachTo > correctly hydrates markup",
+          "outcome": "skip"
+        },
+        {
+          "id": "tests/classes.spec.ts::classes > DOMWrapper > returns array of class names if wrapper has class names",
+          "file": "tests/classes.spec.ts",
+          "name": "classes > DOMWrapper > returns array of class names if wrapper has class names",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/classes.spec.ts::classes > DOMWrapper > returns true if the component has the class",
+          "file": "tests/classes.spec.ts",
+          "name": "classes > DOMWrapper > returns true if the component has the class",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/classes.spec.ts::classes > VueWrapper > returns array of class names if wrapper has class names",
+          "file": "tests/classes.spec.ts",
+          "name": "classes > VueWrapper > returns array of class names if wrapper has class names",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/classes.spec.ts::classes > VueWrapper > returns true if the component has the class",
+          "file": "tests/classes.spec.ts",
+          "name": "classes > VueWrapper > returns true if the component has the class",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/classes.spec.ts::classes > VueWrapper > throws an error if called on an empty wrapper",
+          "file": "tests/classes.spec.ts",
+          "name": "classes > VueWrapper > throws an error if called on an empty wrapper",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/autoUnmount.spec.ts::enableAutoUnmount > calls the hook function",
+          "file": "tests/autoUnmount.spec.ts",
+          "name": "enableAutoUnmount > calls the hook function",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/autoUnmount.spec.ts::enableAutoUnmount > uses the hook function to unmount wrappers",
+          "file": "tests/autoUnmount.spec.ts",
+          "name": "enableAutoUnmount > uses the hook function to unmount wrappers",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/autoUnmount.spec.ts::enableAutoUnmount > does not throw when auto unmounting an already unmounted wrapper attached to the document",
+          "file": "tests/autoUnmount.spec.ts",
+          "name": "enableAutoUnmount > does not throw when auto unmounting an already unmounted wrapper attached to the document",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/autoUnmount.spec.ts::enableAutoUnmount > cannot be called twice",
+          "file": "tests/autoUnmount.spec.ts",
+          "name": "enableAutoUnmount > cannot be called twice",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.plugins.spec.ts::mounting options: plugins > installs a plugin via `plugins`",
+          "file": "tests/mountingOptions/global.plugins.spec.ts",
+          "name": "mounting options: plugins > installs a plugin via `plugins`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.plugins.spec.ts::mounting options: plugins > installs a plugin with options `plugins`",
+          "file": "tests/mountingOptions/global.plugins.spec.ts",
+          "name": "mounting options: plugins > installs a plugin with options `plugins`",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.plugins.spec.ts::mounting options: plugins > provides access to a global property > provides access to a global property from a Composition API component",
+          "file": "tests/mountingOptions/global.plugins.spec.ts",
+          "name": "mounting options: plugins > provides access to a global property > provides access to a global property from a Composition API component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.plugins.spec.ts::mounting options: plugins > provides access to a global property > provides access to a global property from an Options API component",
+          "file": "tests/mountingOptions/global.plugins.spec.ts",
+          "name": "mounting options: plugins > provides access to a global property > provides access to a global property from an Options API component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.plugins.spec.ts::mounting options: plugins > provides access to a global property > provides access to a global property from an Options API component with a setup() function",
+          "file": "tests/mountingOptions/global.plugins.spec.ts",
+          "name": "mounting options: plugins > provides access to a global property > provides access to a global property from an Options API component with a setup() function",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.plugins.spec.ts::mounting options: plugins > provides access to a global property > provides access to a global property from an Options API component with a setup() function that does not return",
+          "file": "tests/mountingOptions/global.plugins.spec.ts",
+          "name": "mounting options: plugins > provides access to a global property > provides access to a global property from an Options API component with a setup() function that does not return",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.plugins.spec.ts::installs plugins with and without options",
+          "file": "tests/mountingOptions/global.plugins.spec.ts",
+          "name": "installs plugins with and without options",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.directives.spec.ts::global.directives > registers a directive to all components",
+          "file": "tests/mountingOptions/global.directives.spec.ts",
+          "name": "global.directives > registers a directive to all components",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/compat.spec.ts::@vue/compat build > when RENDER_FUNCTION compat is %p > renders default slot content when renderStubDefaultSlot is true",
+          "file": "tests/features/compat.spec.ts",
+          "name": "@vue/compat build > when RENDER_FUNCTION compat is %p > renders default slot content when renderStubDefaultSlot is true",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/compat.spec.ts::@vue/compat build > when RENDER_FUNCTION compat is %p > correctly renders transition",
+          "file": "tests/features/compat.spec.ts",
+          "name": "@vue/compat build > when RENDER_FUNCTION compat is %p > correctly renders transition",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/compat.spec.ts::@vue/compat build > finds components declared with legacy Vue.extend",
+          "file": "tests/features/compat.spec.ts",
+          "name": "@vue/compat build > finds components declared with legacy Vue.extend",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/compat.spec.ts::@vue/compat build > correctly mounts legacy functional component",
+          "file": "tests/features/compat.spec.ts",
+          "name": "@vue/compat build > correctly mounts legacy functional component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/compat.spec.ts::@vue/compat build > does not stub root legacy functional component when shallow",
+          "file": "tests/features/compat.spec.ts",
+          "name": "@vue/compat build > does not stub root legacy functional component when shallow",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/compat.spec.ts::@vue/compat build > correctly mounts legacy functional component wrapped in Vue.extend",
+          "file": "tests/features/compat.spec.ts",
+          "name": "@vue/compat build > correctly mounts legacy functional component wrapped in Vue.extend",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/compat.spec.ts::@vue/compat build > correctly stubs legacy component wrapped in Vue.extend",
+          "file": "tests/features/compat.spec.ts",
+          "name": "@vue/compat build > correctly stubs legacy component wrapped in Vue.extend",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/compat.spec.ts::@vue/compat build > correctly uses stubs when stub is legacy component",
+          "file": "tests/features/compat.spec.ts",
+          "name": "@vue/compat build > correctly uses stubs when stub is legacy component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/compat.spec.ts::@vue/compat build > wrapper.vm points to correct instance when component is wrapped with Vue.extend",
+          "file": "tests/features/compat.spec.ts",
+          "name": "@vue/compat build > wrapper.vm points to correct instance when component is wrapped with Vue.extend",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/compat.spec.ts::@vue/compat build > correctly passes all props to functional component",
+          "file": "tests/features/compat.spec.ts",
+          "name": "@vue/compat build > correctly passes all props to functional component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/compat.spec.ts::@vue/compat build > does not erase globalProperties added by messing with Vue.prototype",
+          "file": "tests/features/compat.spec.ts",
+          "name": "@vue/compat build > does not erase globalProperties added by messing with Vue.prototype",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/ScriptSetup_WatchEffect.spec.ts::watchEffect works with script setup",
+          "file": "tests/features/ScriptSetup_WatchEffect.spec.ts",
+          "name": "watchEffect works with script setup",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on click > works on the root element",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on click > works on the root element",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on click > works on a nested element",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on click > works on a nested element",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on click > works with right modifier",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on click > works with right modifier",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on click > works with middle modifier",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on click > works with middle modifier",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on click > works with meta and key modifiers",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on click > works with meta and key modifiers",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on click > causes DOM to update after a click handler method that changes components data is called",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on click > causes DOM to update after a click handler method that changes components data is called",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on keydown > causes keydown handler to fire when \"keydown\" is triggered",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on keydown > causes keydown handler to fire when \"keydown\" is triggered",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on keydown > causes keydown handler to fire when \"keydown.enter\" is triggered",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on keydown > causes keydown handler to fire when \"keydown.enter\" is triggered",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on keydown > overwrites key if passed as a modifier",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on keydown > overwrites key if passed as a modifier",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on keydown > causes keydown handler to fire with multiple modifiers",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on keydown > causes keydown handler to fire with multiple modifiers",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on keydown > causes keydown handler to fire with the appropriate keyCode when wrapper.trigger(\"keydown\", { keyCode: 65 }) is fired",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on keydown > causes keydown handler to fire with the appropriate keyCode when wrapper.trigger(\"keydown\", { keyCode: 65 }) is fired",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on keydown > causes keydown handler to fire with the appropriate code when wrapper.trigger(\"keydown\", { code: \"Space\" }) is fired",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on keydown > causes keydown handler to fire with the appropriate code when wrapper.trigger(\"keydown\", { code: \"Space\" }) is fired",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on keydown > causes keydown handler to fire converting keyName in an appropriate keyCode when wrapper.trigger(\"keydown.${keyName}\") is fired",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on keydown > causes keydown handler to fire converting keyName in an appropriate keyCode when wrapper.trigger(\"keydown.${keyName}\") is fired",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on keydown > causes keydown handler to fire with the spec-compliant `code` string when wrapper.trigger(\"keydown.${keyName}\") is fired",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on keydown > causes keydown handler to fire with the spec-compliant `code` string when wrapper.trigger(\"keydown.${keyName}\") is fired",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on disabled elements > does not fires when trigger is called on a valid disabled element",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on disabled elements > does not fires when trigger is called on a valid disabled element",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > on disabled elements > is fired when trigger is called on a element set as disabled but who is invalid to be disabled",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > on disabled elements > is fired when trigger is called on a element set as disabled but who is invalid to be disabled",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > event modifiers > handles .stop",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > event modifiers > handles .stop",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > event modifiers > handles .prevent",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > event modifiers > handles .prevent",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > event modifiers > handles .capture",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > event modifiers > handles .capture",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > event modifiers > handles .self",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > event modifiers > handles .self",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > event modifiers > handles .once",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > event modifiers > handles .once",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > event modifiers > handles .passive",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > event modifiers > handles .passive",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > custom data > adds custom data to events",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > custom data > adds custom data to events",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > errors > throws error if options contains a target value",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > errors > throws error if options contains a target value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > dispatches event",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > dispatches event",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/trigger.spec.ts::trigger > dispatches events even with fakeTimers",
+          "file": "tests/trigger.spec.ts",
+          "name": "trigger > dispatches events even with fakeTimers",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.components.spec.ts::global.components > registers a component to all components",
+          "file": "tests/mountingOptions/global.components.spec.ts",
+          "name": "global.components > registers a component to all components",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.components.spec.ts::global.components > allows global stubs to take precedence without warning",
+          "file": "tests/mountingOptions/global.components.spec.ts",
+          "name": "global.components > allows global stubs to take precedence without warning",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.components.spec.ts::global.components > allows global stubs to be deactivated without warning",
+          "file": "tests/mountingOptions/global.components.spec.ts",
+          "name": "global.components > allows global stubs to be deactivated without warning",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.components.spec.ts::global.components > render children with shallow and renderStubDefaultSlot",
+          "file": "tests/mountingOptions/global.components.spec.ts",
+          "name": "global.components > render children with shallow and renderStubDefaultSlot",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.components.spec.ts::global.components > render children with shallow and renderStubDefaultSlot with v-slot",
+          "file": "tests/mountingOptions/global.components.spec.ts",
+          "name": "global.components > render children with shallow and renderStubDefaultSlot with v-slot",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on input and textarea > sets element of input value",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on input and textarea > sets element of input value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on input and textarea > sets element of textarea value",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on input and textarea > sets element of textarea value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on input and textarea > updates dom with input v-model.lazy",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on input and textarea > updates dom with input v-model.lazy",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on select and option > sets element of select value",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on select and option > sets element of select value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on select and option > as an option of a select as selected",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on select and option > as an option of a select as selected",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on select and option > sets select with an option group",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on select and option > sets select with an option group",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on select and option > does not select an already selected element",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on select and option > does not select an already selected element",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on select and option > sets element of multiselect value",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on select and option > sets element of multiselect value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on select and option > overrides elements of multiselect",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on select and option > overrides elements of multiselect",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on select and option > does trigger input and change event on select",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on select and option > does trigger input and change event on select",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on select and option > does trigger input and change event on option select",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on select and option > does trigger input and change event on option select",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on radio and checkbox > selects a checkbox by passing a value",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on radio and checkbox > selects a checkbox by passing a value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on radio and checkbox > selects a checkbox without passing any value",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on radio and checkbox > selects a checkbox without passing any value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on radio and checkbox > changes state the right amount of times with checkbox v-model",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on radio and checkbox > changes state the right amount of times with checkbox v-model",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on radio and checkbox > does not trigger a change event if the checkbox is already checked",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on radio and checkbox > does not trigger a change event if the checkbox is already checked",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on radio and checkbox > selects radio",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on radio and checkbox > selects radio",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on radio and checkbox > changes state the right amount of times with radio v-model",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on radio and checkbox > changes state the right amount of times with radio v-model",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on radio and checkbox > throws error if element is radio and checked is false",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on radio and checkbox > throws error if element is radio and checked is false",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on radio and checkbox > does trigger input and change event on checkbox",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on radio and checkbox > does trigger input and change event on checkbox",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on radio and checkbox > does trigger input and change event on radio",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on radio and checkbox > does trigger input and change event on radio",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > throws error if element is not valid",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > throws error if element is not valid",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on component instance > mount > triggers a normal `v-model` on a Vue Component",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on component instance > mount > triggers a normal `v-model` on a Vue Component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on component instance > mount > triggers `v-model:parameter` style",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on component instance > mount > triggers `v-model:parameter` style",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on component instance > shallowMount > triggers a normal `v-model` on a Vue Component",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on component instance > shallowMount > triggers a normal `v-model` on a Vue Component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/setValue.spec.ts::setValue > on component instance > shallowMount > triggers `v-model:parameter` style",
+          "file": "tests/setValue.spec.ts",
+          "name": "setValue > on component instance > shallowMount > triggers `v-model:parameter` style",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::find > find using single root node",
+          "file": "tests/find.spec.ts",
+          "name": "find > find using single root node",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::find > find DOM element by ref > works for root element",
+          "file": "tests/find.spec.ts",
+          "name": "find > find DOM element by ref > works for root element",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::find > find DOM element by ref > works when ref is pointing to non-element node",
+          "file": "tests/find.spec.ts",
+          "name": "find > find DOM element by ref > works when ref is pointing to non-element node",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::find > find DOM element by ref > works when ref is in v-for directive",
+          "file": "tests/find.spec.ts",
+          "name": "find > find DOM element by ref > works when ref is in v-for directive",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::find > find DOM element by ref > does not find ref located in the same component but not in current DOM wrapper",
+          "file": "tests/find.spec.ts",
+          "name": "find > find DOM element by ref > does not find ref located in the same component but not in current DOM wrapper",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::find > find using current node after findAllComponents",
+          "file": "tests/find.spec.ts",
+          "name": "find > find using current node after findAllComponents",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::find > returns the root element in single root element",
+          "file": "tests/find.spec.ts",
+          "name": "find > returns the root element in single root element",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::find > can be chained",
+          "file": "tests/find.spec.ts",
+          "name": "find > can be chained",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::find > works with suspense",
+          "file": "tests/find.spec.ts",
+          "name": "find > works with suspense",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::find > can wrap `find` in an async function",
+          "file": "tests/find.spec.ts",
+          "name": "find > can wrap `find` in an async function",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::find > handle empty root node",
+          "file": "tests/find.spec.ts",
+          "name": "find > handle empty root node",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::find > finds root node with SFC render function",
+          "file": "tests/find.spec.ts",
+          "name": "find > finds root node with SFC render function",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > findAll using single root node",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > findAll using single root node",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > findAll using multiple root nodes",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > findAll using multiple root nodes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > findAll using current node after findAllComponents",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > findAll using current node after findAllComponents",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > works with suspense",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > works with suspense",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > chaining finds compiles successfully",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > chaining finds compiles successfully",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > handle empty/comment root node",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > handle empty/comment root node",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > with multiple root nodes > find one of root nodes",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > with multiple root nodes > find one of root nodes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > with multiple root nodes > finds second root node when component is not mount root",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > with multiple root nodes > finds second root node when component is not mount root",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > with multiple root nodes > finds contents of second root node when component is not mount root",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > with multiple root nodes > finds contents of second root node when component is not mount root",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > with multiple root nodes > finds all root nodes with SFC render function",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > with multiple root nodes > finds all root nodes with SFC render function",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > with multiple root nodes > finds all with nested roots inside render function",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > with multiple root nodes > finds all with nested roots inside render function",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > with multiple root nodes > finds all deep nested root nodes",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > with multiple root nodes > finds all deep nested root nodes",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > finds 3 children",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > finds 3 children",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > finds itself on Vue wrapper",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > finds itself on Vue wrapper",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > does not find itself on DOM node",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > does not find itself on DOM node",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/find.spec.ts::findAll > finds all divs with findAll",
+          "file": "tests/find.spec.ts",
+          "name": "findAll > finds all divs with findAll",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/sfc.spec.ts::sfc > mounts an sfc via vue-test-transformer",
+          "file": "tests/features/sfc.spec.ts",
+          "name": "sfc > mounts an sfc via vue-test-transformer",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/sfc.spec.ts::sfc > works with <script setup> (as of Vue 3.0.3)",
+          "file": "tests/features/sfc.spec.ts",
+          "name": "sfc > works with <script setup> (as of Vue 3.0.3)",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/RouterLinkStub.spec.ts::RouterLinkStub > renders an <a> element",
+          "file": "tests/RouterLinkStub.spec.ts",
+          "name": "RouterLinkStub > renders an <a> element",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/RouterLinkStub.spec.ts::RouterLinkStub > binds slot props",
+          "file": "tests/RouterLinkStub.spec.ts",
+          "name": "RouterLinkStub > binds slot props",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > handles Array syntax",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > handles Array syntax",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > applies stubs globally",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > applies stubs globally",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stubs a functional component by its variable declaration name",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stubs a functional component by its variable declaration name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stubs a component without a name",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stubs a component without a name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > passes all attributes to stubbed components",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > passes all attributes to stubbed components",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stubs in a fragment",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stubs in a fragment",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > prevents lifecycle hooks triggering in a stub",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > prevents lifecycle hooks triggering in a stub",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > uses a custom stub implementation",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > uses a custom stub implementation",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > uses functional component as a custom stub",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > uses functional component as a custom stub",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > uses an sfc as a custom stub",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > uses an sfc as a custom stub",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stubs using inline components",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stubs using inline components",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stubs a component with a kabeb-case name",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stubs a component with a kabeb-case name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stubs a component with a PascalCase name",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stubs a component with a PascalCase name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stubs a component with registered with strange casing",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stubs a component with registered with strange casing",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stubs components within script setup",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stubs components within script setup",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stubs a script setup component imported by unplugin-vue-components",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stubs a script setup component imported by unplugin-vue-components",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > transition > stubs transition by default",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > transition > stubs transition by default",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > transition > opts out of stubbing transition",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > transition > opts out of stubbing transition",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > transition > does not stub transition on shallow with false",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > transition > does not stub transition on shallow with false",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > transition > does not stub transition after overriding config.global.stubs",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > transition > does not stub transition after overriding config.global.stubs",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > transition > stub transition after overriding config.global.stubs with Transition: true PascalCase",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > transition > stub transition after overriding config.global.stubs with Transition: true PascalCase",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > transition > custom transition stub",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > transition > custom transition stub",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > transition-group > stubs transition-group by default",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > transition-group > stubs transition-group by default",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > transition-group > opts out of stubbing transition-group by default",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > transition-group > opts out of stubbing transition-group by default",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > transition-group > does not stub transition-group on shallow with false",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > transition-group > does not stub transition-group on shallow with false",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > transition-group > does not stub transition-group after overriding config.global.stubs",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > transition-group > does not stub transition-group after overriding config.global.stubs",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > transition-group > stub transition-group after overriding config.global.stubs with TransitionGroup: true in PascalCase",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > transition-group > stub transition-group after overriding config.global.stubs with TransitionGroup: true in PascalCase",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > teleport > does not stub teleport by default",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > teleport > does not stub teleport by default",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > teleport > opts in to stubbing teleport",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > teleport > opts in to stubbing teleport",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > teleport > does not stub teleport with shallow",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > teleport > does not stub teleport with shallow",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > teleport > opts in to stubbing teleport with Teleport: true",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > teleport > opts in to stubbing teleport with Teleport: true",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > keep-alive > will omit the keep-alive tag by default",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > keep-alive > will omit the keep-alive tag by default",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > keep-alive > opts in to stubbing keep-alive with keep-alive: true",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > keep-alive > opts in to stubbing keep-alive with keep-alive: true",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > keep-alive > opts in to stubbing KeepAlive with KeepAlive: true",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > keep-alive > opts in to stubbing KeepAlive with KeepAlive: true",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > keep-alive > opts in to stubbing keep-alive with KeepAlive: true",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > keep-alive > opts in to stubbing keep-alive with KeepAlive: true",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > keep-alive > does not stub keep-alive with shallow",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > keep-alive > does not stub keep-alive with shallow",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stubs component by key prior before name",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stubs component by key prior before name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stub async component > stubs async component with name",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stub async component > stubs async component with name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stub async component > stubs async component with name by alias",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stub async component > stubs async component with name by alias",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stub async component > stubs async component without name",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stub async component > stubs async component without name",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stub async component > stubs async component without name and kebab-case",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stub async component > stubs async component without name and kebab-case",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stub async component > stubs async component with string",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stub async component > stubs async component with string",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stub async component > stubs async component with other component",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stub async component > stubs async component with other component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stub slots > renders only the default stub slot only behind flag",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stub slots > renders only the default stub slot only behind flag",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stub slots > renders none of the slots on a stub",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stub slots > renders none of the slots on a stub",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > stub slots > renders the default slot of deeply nested stubs when renderStubDefaultSlot=true",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > stub slots > renders the default slot of deeply nested stubs when renderStubDefaultSlot=true",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > renders stub for anonymous component when using shallow mount",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > renders stub for anonymous component when using shallow mount",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > should not recreate stub across multiple renders",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > should not recreate stub across multiple renders",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > directives > stubs directive on root component",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > directives > stubs directive on root component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > directives > stubs directive as noop when true passed as value",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > directives > stubs directive as noop when true passed as value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > directives > does not stub directive as noop when false passed as value",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > directives > does not stub directive as noop when false passed as value",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > directives > stubs directive on child component",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > directives > stubs directive on child component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/mountingOptions/global.stubs.spec.ts::mounting options: stubs > directives > stubs directive on root component with script setup",
+          "file": "tests/mountingOptions/global.stubs.spec.ts",
+          "name": "mounting options: stubs > directives > stubs directive on root component with script setup",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > returns a single prop applied to a component",
+          "file": "tests/props.spec.ts",
+          "name": "props > returns a single prop applied to a component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > returns all props applied to a component",
+          "file": "tests/props.spec.ts",
+          "name": "props > returns all props applied to a component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > returns undefined if props does not exist",
+          "file": "tests/props.spec.ts",
+          "name": "props > returns undefined if props does not exist",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > returns empty object for components without props",
+          "file": "tests/props.spec.ts",
+          "name": "props > returns empty object for components without props",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > returns applied props on a stubbed component with boolean",
+          "file": "tests/props.spec.ts",
+          "name": "props > returns applied props on a stubbed component with boolean",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > returns props on a stubbed component with a custom implementation",
+          "file": "tests/props.spec.ts",
+          "name": "props > returns props on a stubbed component with a custom implementation",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > should return the updated props on 2 way binding",
+          "file": "tests/props.spec.ts",
+          "name": "props > should return the updated props on 2 way binding",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > returns reactive props on a stubbed component",
+          "file": "tests/props.spec.ts",
+          "name": "props > returns reactive props on a stubbed component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > should forward ref as raw prop",
+          "file": "tests/props.spec.ts",
+          "name": "props > should forward ref as raw prop",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > should keep props as same object",
+          "file": "tests/props.spec.ts",
+          "name": "props > should keep props as same object",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > returns props of stubbed root component",
+          "file": "tests/props.spec.ts",
+          "name": "props > returns props of stubbed root component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > returns reactive props on a stubbed component shallow case",
+          "file": "tests/props.spec.ts",
+          "name": "props > returns reactive props on a stubbed component shallow case",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > https://github.com/vuejs/test-utils/issues/440",
+          "file": "tests/props.spec.ts",
+          "name": "props > https://github.com/vuejs/test-utils/issues/440",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > stub function props when shallow mounting",
+          "file": "tests/props.spec.ts",
+          "name": "props > stub function props when shallow mounting",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > should not warn on stringify props in stubs",
+          "file": "tests/props.spec.ts",
+          "name": "props > should not warn on stringify props in stubs",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > edge case with symbol props and stubs > works with Symbol as default",
+          "file": "tests/props.spec.ts",
+          "name": "props > edge case with symbol props and stubs > works with Symbol as default",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > edge case with symbol props and stubs > works with symbol as array syntax",
+          "file": "tests/props.spec.ts",
+          "name": "props > edge case with symbol props and stubs > works with symbol as array syntax",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > edge case with symbol props and stubs > works with symbol as default from SFC",
+          "file": "tests/props.spec.ts",
+          "name": "props > edge case with symbol props and stubs > works with symbol as default from SFC",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/props.spec.ts::props > edge case with symbol props and stubs > should get props from functional component",
+          "file": "tests/props.spec.ts",
+          "name": "props > edge case with symbol props and stubs > should get props from functional component",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/suspense.spec.ts::suspense > fallback state",
+          "file": "tests/features/suspense.spec.ts",
+          "name": "suspense > fallback state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/suspense.spec.ts::suspense > default state",
+          "file": "tests/features/suspense.spec.ts",
+          "name": "suspense > default state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/suspense.spec.ts::suspense > error state",
+          "file": "tests/features/suspense.spec.ts",
+          "name": "suspense > error state",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/suspense.spec.ts::suspense > returns the element if it is a multi root element inside Suspense",
+          "file": "tests/features/suspense.spec.ts",
+          "name": "suspense > returns the element if it is a multi root element inside Suspense",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/suspense.spec.ts::suspense > returns the element if it is a root element inside Suspense",
+          "file": "tests/features/suspense.spec.ts",
+          "name": "suspense > returns the element if it is a root element inside Suspense",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > config merger > should merge the configs in the correct order",
+          "file": "tests/config.spec.ts",
+          "name": "config > config merger > should merge the configs in the correct order",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > config integrity > should not leak config when plugins overwrite globalProperties",
+          "file": "tests/config.spec.ts",
+          "name": "config > config integrity > should not leak config when plugins overwrite globalProperties",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > renderStubDefaultSlot > should override shallow option when set to true",
+          "file": "tests/config.spec.ts",
+          "name": "config > renderStubDefaultSlot > should override shallow option when set to true",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > renderStubDefaultSlot > should evaluate given option as boolean",
+          "file": "tests/config.spec.ts",
+          "name": "config > renderStubDefaultSlot > should evaluate given option as boolean",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > components > allows setting components globally",
+          "file": "tests/config.spec.ts",
+          "name": "config > components > allows setting components globally",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > components > allows overwriting globally set component config on a per mount instance",
+          "file": "tests/config.spec.ts",
+          "name": "config > components > allows overwriting globally set component config on a per mount instance",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > directives > allows setting directives globally",
+          "file": "tests/config.spec.ts",
+          "name": "config > directives > allows setting directives globally",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > directives > allows overwriting globally set directives",
+          "file": "tests/config.spec.ts",
+          "name": "config > directives > allows overwriting globally set directives",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > mocks > sets mock everywhere",
+          "file": "tests/config.spec.ts",
+          "name": "config > mocks > sets mock everywhere",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > mocks > allows overwriting a global mock",
+          "file": "tests/config.spec.ts",
+          "name": "config > mocks > allows overwriting a global mock",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > provide > sets a provide everywhere",
+          "file": "tests/config.spec.ts",
+          "name": "config > provide > sets a provide everywhere",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > provide > overrides with a local provide",
+          "file": "tests/config.spec.ts",
+          "name": "config > provide > overrides with a local provide",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > mixins > sets a mixin everywhere",
+          "file": "tests/config.spec.ts",
+          "name": "config > mixins > sets a mixin everywhere",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > mixins > concat with locally defined mixins",
+          "file": "tests/config.spec.ts",
+          "name": "config > mixins > concat with locally defined mixins",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > stubs > sets a stub globally",
+          "file": "tests/config.spec.ts",
+          "name": "config > stubs > sets a stub globally",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/config.spec.ts::config > stubs > overrides config stub with locally defined stub",
+          "file": "tests/config.spec.ts",
+          "name": "config > stubs > overrides config stub with locally defined stub",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/async-components.spec.ts::defineAsyncComponent > works with the basic usage",
+          "file": "tests/features/async-components.spec.ts",
+          "name": "defineAsyncComponent > works with the basic usage",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/async-components.spec.ts::defineAsyncComponent > works with options usage",
+          "file": "tests/features/async-components.spec.ts",
+          "name": "defineAsyncComponent > works with options usage",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/async-components.spec.ts::defineAsyncComponent > catches error and renders ErrorComponent",
+          "file": "tests/features/async-components.spec.ts",
+          "name": "defineAsyncComponent > catches error and renders ErrorComponent",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/async-components.spec.ts::defineAsyncComponent > works when AsyncComponent is the root",
+          "file": "tests/features/async-components.spec.ts",
+          "name": "defineAsyncComponent > works when AsyncComponent is the root",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/async-components.spec.ts::defineAsyncComponent > finds Async Component by async definition when using shallow mount",
+          "file": "tests/features/async-components.spec.ts",
+          "name": "defineAsyncComponent > finds Async Component by async definition when using shallow mount",
+          "outcome": "pass"
+        },
+        {
+          "id": "tests/features/async-components.spec.ts::defineAsyncComponent > finds Async Component by definition when using shallow mount",
+          "file": "tests/features/async-components.spec.ts",
+          "name": "defineAsyncComponent > finds Async Component by definition when using shallow mount",
+          "outcome": "pass"
+        }
+      ]
+    }
+  }
+}

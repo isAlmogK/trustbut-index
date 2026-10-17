@@ -1,0 +1,91 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.2",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.7.0"
+  },
+  "subject": {
+    "base": "8e281c6e27d07b9a967292308eb8fdd4275e76c8",
+    "head": "b277247036ff3f495caecab0013ecb6968741ffc"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 1,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "escape-added",
+      "severity": "warn",
+      "title": "type check suppressed",
+      "file": "deeptutor/reading/models.py",
+      "line": 374,
+      "detail": "kind=(kind if kind in (\"highlight\", \"underline\", \"note\", \"citation\") else \"highlight\"),  # type: ignore[arg-type]"
+    },
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 2"
+    },
+    {
+      "id": "base-run-failed",
+      "severity": "warn",
+      "title": "Changed tests could not run at base; fail-before evidence unavailable (exit 4)"
+    },
+    {
+      "id": "proofs-unmatched",
+      "severity": "warn",
+      "title": "No test results matched the changed test files; fail-before/pass-after evidence unavailable"
+    }
+  ],
+  "risks": [
+    {
+      "file": "deeptutor/reading/models.py",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "web/components/reading/AnnotationList.tsx",
+      "score": 1,
+      "reasons": [
+        "large change (257 lines)"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "js",
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 2,
+      "durationMs": 20135,
+      "cases": [
+        {
+          "id": "::tests.api.test_co_writer",
+          "file": "",
+          "name": "tests.api.test_co_writer",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ],
+      "outputTail": "\n==================================== ERRORS ====================================\n_________________ ERROR collecting tests/api/test_co_writer.py _________________\ntests/api/test_co_writer.py:8: in <module>\n    from deeptutor.api.routers.co_writer import _validate_doc_id\ndeeptutor/api/routers/co_writer.py:35: in <module>\n    config = load_config_with_main(\"main.yaml\", PROJECT_ROOT)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ndeeptutor/services/config/loader.py:125: in load_config_with_main\n    config_path, _ = resolve_config_path(config_file, project_root)\n                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ndeeptutor/services/config/loader.py:106: in resolve_config_path\n    raise FileNotFoundError(\nE   FileNotFoundError: Configuration file not found: main.yaml (expected under /tmp/trustbut-wt-K4tuJB/data/user/settings)\n=========================== short test summary info ============================\nERROR tests/api/test_co_writer.py - FileNotFoundError: Configuration file not found: main.yaml (expected under /tmp/trustbut-wt-K4tuJB/data/user/settings)\n!!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!\n1 warning, 1 error in 15.65s"
+    },
+    "before": {
+      "exitCode": 4,
+      "durationMs": 400,
+      "cases": [],
+      "outputTail": "ERROR: not found: /tmp/trustbut-wt-7s1KHg/web/tests/reading-citation-capture.test.ts\n(no match in any of [<Dir tests>])\n\n\nno tests ran in 0.01s"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "id": "sipyourdrink-ltd__bernstein__6475",
+  "status": "setup-failed",
+  "stage": "no-passing-tests",
+  "recipe": {
+    "node": null,
+    "python": {
+      "version": "3.14",
+      "install": [
+        "uv pip install -e \".[dev]\"",
+        "uv pip install --group dev",
+        "uv pip install pytest"
+      ]
+    }
+  },
+  "durations": {
+    "installMs": 4403,
+    "verifyMs": 2434520
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.7.0",
+  "installRetries": 0
+}

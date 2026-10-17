@@ -1,0 +1,50 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.2",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.7.0"
+  },
+  "subject": {
+    "base": "1421705c0add0cf9436f43cbe604cc14a903e645",
+    "head": "23e7f6e3c4a97c751cdd5fcbb8c689f06073d0da"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "change-not-proven",
+      "severity": "warn",
+      "title": "Nothing proves the change",
+      "detail": "no test added or changed"
+    },
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 2400 s"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 2400446,
+      "timedOut": true,
+      "cases": [],
+      "outputTail": "m..........................................    [  4%]\ntest/infer/test_calibration.py .............................             [  4%]\ntest/infer/test_ensemble_mcmc.py ...............                         [  4%]\ntest/infer/test_ensemble_util.py ..                                      [  5%]\ntest/infer/test_external_helpers.py ........                             [  5%]\ntest/infer/test_gradient.py ...................................          [  5%]\ntest/infer/test_hmc_gibbs.py ........................................... [  5%]\n.............                                                            [  5%]\ntest/infer/test_hmc_util.py ...........................s................ [  5%]\n...                                                                      [  5%]\ntest/infer/test_importance.py ....................................       [  5%]\ntest/infer/test_infer_util.py .......................................... [  6%]\n............\nCommand timed out after 2400000 ms"
+    }
+  }
+}

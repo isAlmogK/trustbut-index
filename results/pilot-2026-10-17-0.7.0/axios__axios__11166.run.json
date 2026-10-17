@@ -1,0 +1,24 @@
+{
+  "id": "axios__axios__11166",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "22",
+      "pm": "npm",
+      "install": "npm ci"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 6887,
+    "verifyMs": 118768
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.7.0",
+  "installRetries": 0
+}

@@ -1,0 +1,253 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.2",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.7.0"
+  },
+  "subject": {
+    "base": "cae6cf4064816e200fd4f61d4fb5f6524a10c446",
+    "head": "eae04f92c0b63c9b2ae71727c6eeae6f2526489e"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 2,
+    "failed": 5,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [
+    {
+      "file": "src/server/routers/book.unit.spec.ts",
+      "name": "src/server/routers/book.unit.spec.ts",
+      "before": "fail",
+      "after": "fail",
+      "verdict": "failing"
+    },
+    {
+      "file": "src/server/routers/genre.unit.spec.ts",
+      "name": "src/server/routers/genre.unit.spec.ts",
+      "before": "fail",
+      "after": "fail",
+      "verdict": "failing"
+    },
+    {
+      "file": "src/server/routers/user.unit.spec.ts",
+      "name": "src/server/routers/user.unit.spec.ts",
+      "before": "fail",
+      "after": "fail",
+      "verdict": "failing"
+    }
+  ],
+  "findings": [
+    {
+      "id": "deps-changed",
+      "severity": "info",
+      "title": "Dependencies changed; both runs use the currently installed dependencies"
+    },
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 1"
+    },
+    {
+      "id": "test-failing",
+      "severity": "fail",
+      "title": "Test fails at head",
+      "file": "src/server/routers/book.unit.spec.ts",
+      "detail": "src/server/routers/book.unit.spec.ts"
+    },
+    {
+      "id": "test-failing",
+      "severity": "fail",
+      "title": "Test fails at head",
+      "file": "src/server/routers/genre.unit.spec.ts",
+      "detail": "src/server/routers/genre.unit.spec.ts"
+    },
+    {
+      "id": "test-failing",
+      "severity": "fail",
+      "title": "Test fails at head",
+      "file": "src/server/routers/user.unit.spec.ts",
+      "detail": "src/server/routers/user.unit.spec.ts"
+    }
+  ],
+  "risks": [
+    {
+      "file": "pnpm-lock.yaml",
+      "score": 3,
+      "reasons": [
+        "dependencies",
+        "large change (443 lines)"
+      ]
+    },
+    {
+      "file": "src/locales/ar/auth.json",
+      "score": 3,
+      "reasons": [
+        "auth/permissions"
+      ]
+    },
+    {
+      "file": "src/locales/en/auth.json",
+      "score": 3,
+      "reasons": [
+        "auth/permissions"
+      ]
+    },
+    {
+      "file": "src/locales/fr/auth.json",
+      "score": 3,
+      "reasons": [
+        "auth/permissions"
+      ]
+    },
+    {
+      "file": "src/locales/sw/auth.json",
+      "score": 3,
+      "reasons": [
+        "auth/permissions"
+      ]
+    },
+    {
+      "file": "src/routes/api/openapi/auth.schema.ts",
+      "score": 3,
+      "reasons": [
+        "auth/permissions"
+      ]
+    },
+    {
+      "file": "package.json",
+      "score": 2,
+      "reasons": [
+        "dependencies"
+      ]
+    },
+    {
+      "file": "src/server/routers/book.unit.spec.ts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "src/server/routers/genre.unit.spec.ts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    },
+    {
+      "file": "src/server/routers/user.unit.spec.ts",
+      "score": 2,
+      "reasons": [
+        "has findings"
+      ]
+    }
+  ],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 3692,
+      "cases": [
+        {
+          "id": "src/lib/dayjs/parse-string-to-date.unit.spec.ts::parseStringToDate > should parse multiple format by default",
+          "file": "src/lib/dayjs/parse-string-to-date.unit.spec.ts",
+          "name": "parseStringToDate > should parse multiple format by default",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/lib/dayjs/parse-string-to-date.unit.spec.ts::parseStringToDate > should parse custom format",
+          "file": "src/lib/dayjs/parse-string-to-date.unit.spec.ts",
+          "name": "parseStringToDate > should parse custom format",
+          "outcome": "pass"
+        },
+        {
+          "id": "src/server/routers/account.unit.spec.ts::src/server/routers/account.unit.spec.ts",
+          "file": "src/server/routers/account.unit.spec.ts",
+          "name": "src/server/routers/account.unit.spec.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@/server/db/generated/client' imported from /tmp/trustbut-wt-IyEoKj/src/server/orpc.ts"
+        },
+        {
+          "id": "src/server/routers/book.unit.spec.ts::src/server/routers/book.unit.spec.ts",
+          "file": "src/server/routers/book.unit.spec.ts",
+          "name": "src/server/routers/book.unit.spec.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@/server/db/generated/client' imported from /tmp/trustbut-wt-IyEoKj/src/server/routers/book.unit.spec.ts"
+        },
+        {
+          "id": "src/server/routers/config.unit.spec.ts::src/server/routers/config.unit.spec.ts",
+          "file": "src/server/routers/config.unit.spec.ts",
+          "name": "src/server/routers/config.unit.spec.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@/server/db/generated/client' imported from /tmp/trustbut-wt-IyEoKj/src/server/orpc.ts"
+        },
+        {
+          "id": "src/server/routers/genre.unit.spec.ts::src/server/routers/genre.unit.spec.ts",
+          "file": "src/server/routers/genre.unit.spec.ts",
+          "name": "src/server/routers/genre.unit.spec.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@/server/db/generated/client' imported from /tmp/trustbut-wt-IyEoKj/src/server/orpc.ts"
+        },
+        {
+          "id": "src/server/routers/user.unit.spec.ts::src/server/routers/user.unit.spec.ts",
+          "file": "src/server/routers/user.unit.spec.ts",
+          "name": "src/server/routers/user.unit.spec.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@/server/db/generated/client' imported from /tmp/trustbut-wt-IyEoKj/src/server/routers/user.unit.spec.ts"
+        }
+      ],
+      "outputTail": "npm warn Unknown project config \"side-effects-cache\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\nLoaded  vitest@4.1.0  and  @vitest/browser@4.0.18 .\nRunning mixed versions is not supported and may lead into bugs\nUpdate your dependencies and make sure the versions match.\nJUNIT report written to /tmp/trustbut-junit-qC59HY/junit.xml\nerror during close browserType.launch: Executable doesn't exist at /home/runner/.cache/ms-playwright/chromium_headless_shell-1223/chrome-headless-shell-linux64/chrome-headless-shell\n╔════════════════════════════════════════════════════════════╗\n║ Looks like Playwright was just installed or updated.       ║\n║ Please run the following command to download new browsers: ║\n║                                                            ║\n║     npx playwright install                                 ║\n║                                                            ║\n║ <3 Playwright Team                                         ║\n╚════════════════════════════════════════════════════════════╝\n    at /home/runner/work/_temp/work/repo/node_modules/.pnpm/@vitest+browser-playwright@4.0.18_playwright@1.60.0_vite@7.3.5_@types+node@25.0.10_jiti_2f70085644edf280eb815416b73bd8c1/node_modules/@vitest/browser-playwright/dist/index.js:828:54 {\n  name: 'Error',\n  type: 'Unhandled Error'\n}"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 1326,
+      "cases": [
+        {
+          "id": "src/server/routers/account.unit.spec.ts::src/server/routers/account.unit.spec.ts",
+          "file": "src/server/routers/account.unit.spec.ts",
+          "name": "src/server/routers/account.unit.spec.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@/server/db/generated/client' imported from /tmp/trustbut-wt-nvWtVg/src/server/orpc.ts"
+        },
+        {
+          "id": "src/server/routers/book.unit.spec.ts::src/server/routers/book.unit.spec.ts",
+          "file": "src/server/routers/book.unit.spec.ts",
+          "name": "src/server/routers/book.unit.spec.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@/server/db/generated/client' imported from /tmp/trustbut-wt-nvWtVg/src/server/routers/book.unit.spec.ts"
+        },
+        {
+          "id": "src/server/routers/config.unit.spec.ts::src/server/routers/config.unit.spec.ts",
+          "file": "src/server/routers/config.unit.spec.ts",
+          "name": "src/server/routers/config.unit.spec.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@/server/db/generated/client' imported from /tmp/trustbut-wt-nvWtVg/src/server/orpc.ts"
+        },
+        {
+          "id": "src/server/routers/genre.unit.spec.ts::src/server/routers/genre.unit.spec.ts",
+          "file": "src/server/routers/genre.unit.spec.ts",
+          "name": "src/server/routers/genre.unit.spec.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@/server/db/generated/client' imported from /tmp/trustbut-wt-nvWtVg/src/server/orpc.ts"
+        },
+        {
+          "id": "src/server/routers/user.unit.spec.ts::src/server/routers/user.unit.spec.ts",
+          "file": "src/server/routers/user.unit.spec.ts",
+          "name": "src/server/routers/user.unit.spec.ts",
+          "outcome": "fail",
+          "message": "Cannot find package '@/server/db/generated/client' imported from /tmp/trustbut-wt-nvWtVg/src/server/routers/user.unit.spec.ts"
+        }
+      ],
+      "outputTail": "npm warn Unknown project config \"side-effects-cache\". This will stop working in the next major version of npm. See `npm help npmrc` for supported config options.\nJUNIT report written to /tmp/trustbut-junit-yt18Tk/junit.xml"
+    }
+  }
+}

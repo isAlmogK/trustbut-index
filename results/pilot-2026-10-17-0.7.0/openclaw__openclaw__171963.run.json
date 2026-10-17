@@ -1,0 +1,25 @@
+{
+  "id": "openclaw__openclaw__171963",
+  "status": "setup-failed",
+  "stage": "install",
+  "recipe": {
+    "node": {
+      "version": "22",
+      "pm": "pnpm",
+      "install": "pnpm install --frozen-lockfile"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 62033,
+    "verifyMs": 0
+  },
+  "exitCodes": {
+    "install": 1,
+    "verify": null
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "unknown",
+  "installRetries": 2,
+  "installTail": "Scope: all 194 workspace projects\n. pnpm:devPreinstall$ node scripts/check-install-dependency-ownership.mjs\n. pnpm:devPreinstall: Done\n. preinstall$ node scripts/preinstall-package-manager-warning.mjs\n. preinstall: [openclaw] error: this OpenClaw release requires Node >=24.16.0 <25 || >=26.1.0.\n. preinstall: [openclaw] detected Node 22.23.3 (exec: /opt/hostedtoolcache/node/22.23.3/x64/bin/node).\n. preinstall: [openclaw] install Node: https://nodejs.org/en/download\n. preinstall: [openclaw] upgrade Node, then retry the OpenClaw update.\n. preinstall: Failed\nError: ERR_PNPM_EXECUTOR_LIFECYCLE_SCRIPT_FAILED\n\n  × installing dependencies\n  ╰─▶ /home/runner/work/_temp/work/repo preinstall: `node scripts/preinstall-\n      package-manager-warning.mjs` exited with exit status: 1"
+}

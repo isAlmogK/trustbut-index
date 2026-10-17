@@ -1,0 +1,89 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.2",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.7.0"
+  },
+  "subject": {
+    "base": "9e14dee5da9beb129f6c63c4f5e2467f9fcd831b",
+    "head": "bc6a27a76a8830d8da02458d364365cbf2562be3"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "timed out after 2400 s"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "vitest",
+    "languages": [
+      "js"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 2400213,
+      "timedOut": true,
+      "cases": [],
+      "outputTail": "    ok 6 - rejects unknown options\n      ---\n      duration_ms: 0.265553\n      type: 'test'\n      ...\n    1..6\nok 1 - generate-view-heroes CLI option parsing\n  ---\n  duration_ms: 5.9622\n  type: 'suite'\n  ...\n# Subtest: generate-view-heroes app plugin scan and hero detection\n    # Subtest: scans app plugins and detects hero assets accurately\n    ok 1 - scans app plugins and detects hero assets accurately\n      ---\n      duration_ms: 3.746667\n      type: 'test'\n      ...\n    1..1\nok 2 - generate-view-heroes app plugin scan and hero detection\n  ---\n  duration_ms: 4.134787\n  type: 'suite'\n  ...\n# Subtest: generate-view-heroes execution\n    # Subtest: runCli returns 0 for --help\n    ok 1 - runCli returns 0 for --help\n      ---\n      duration_ms: 1.498773\n      type: 'test'\n      ...\n    # Subtest: main returns help result when --help flag is set\n    ok 2 - main returns help result when --help flag is set\n      ---\n      duration_ms: 0.789135\n      type: 'test'\n      ...\n    # Subtest: main supports --dry-run mode\n    ok 3 - main supports --dry-run mode\n      ---\n      duration_ms: 3.18294\n      type: 'test'\n      ...\n    1..3\nok 3 - generate-view-heroes execution\n  ---\n  duration_ms: 5.841326\n  type: 'suite'\n  ...\nCommand timed out after 2400000 ms"
+    },
+    "before": {
+      "exitCode": 1,
+      "durationMs": 4630,
+      "cases": [
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > signs a message payload",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > signs a message payload",
+          "outcome": "pass"
+        },
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > signs a messageBase64 payload",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > signs a messageBase64 payload",
+          "outcome": "pass"
+        },
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > rejects a missing or blank payload as a client error, not 503",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > rejects a missing or blank payload as a client error, not 503",
+          "outcome": "pass"
+        },
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > rejects malformed messageBase64 instead of signing other bytes",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > rejects malformed messageBase64 instead of signing other bytes",
+          "outcome": "fail",
+          "message": "expected 200 to be 400 // Object.is equality"
+        },
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > rejects malformed transactionBase64 as a client error, not 503",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > rejects malformed transactionBase64 as a client error, not 503",
+          "outcome": "fail",
+          "message": "expected 503 to be 400 // Object.is equality"
+        },
+        {
+          "id": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts::POST /api/wallet/browser-solana-sign-message status contract > keeps a missing signer key on the 503 unavailable contract",
+          "file": "plugins/plugin-wallet/src/api/browser-solana-sign-message.test.ts",
+          "name": "POST /api/wallet/browser-solana-sign-message status contract > keeps a missing signer key on the 503 unavailable contract",
+          "outcome": "pass"
+        }
+      ],
+      "outputTail": "JUNIT report written to /tmp/trustbut-junit-k1goyi/junit.xml"
+    }
+  }
+}

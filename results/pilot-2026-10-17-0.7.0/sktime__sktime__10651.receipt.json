@@ -1,0 +1,71 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.2",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.7.0"
+  },
+  "subject": {
+    "base": "7188a92a3986aec8bc84cff31c22757e3722f5e4",
+    "head": "1c60cc473effb5d0de502e1770d44371a4261279"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 3,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "change-not-proven",
+      "severity": "warn",
+      "title": "Nothing proves the change",
+      "detail": "no test added or changed"
+    },
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test suite fails at head (clean checkout)",
+      "detail": "exit code 1"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 1,
+      "durationMs": 111988,
+      "cases": [
+        {
+          "id": "::gw2",
+          "file": "",
+          "name": "gw2",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::gw0",
+          "file": "",
+          "name": "gw0",
+          "outcome": "error",
+          "message": "collection failure"
+        },
+        {
+          "id": "::gw3",
+          "file": "",
+          "name": "gw3",
+          "outcome": "error",
+          "message": "collection failure"
+        }
+      ],
+      "outputTail": "t_load_forecastingdata_hier[australian_electricity_demand_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[m4_hourly_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_fpp3_public\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[wind_farms_minutely_dataset_with_missing_values]\n sktime/datasets/tests/test_datadownload.py::test_load_forecasting_data_invalid_name[invalid_name]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[wind_4_seconds_dataset]\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[us_births_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_check_freq_for_hier_data\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[nn5_daily_dataset_without_missing_values]\n sktime/datasets/tests/test_datadownload.py::test_load_m5\n sktime/datasets/tests/test_datadownload.py::test_load_solar\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata\n sktime/datasets/tests/test_datadownload.py::test_load_fpp3_private\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[hospital_dataset]\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[cif_2016_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[solar_10_minutes_dataset]\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[london_smart_meters_dataset_without_missing_values]\n sktime/datasets/tests/test_datadownload.py::test_load_UEA\n sktime/forecasting/tests/test_pytorchforecasting.py::test_predict_with_future_exogenous_x[PytorchForecastingDeepAR]\n sktime/forecasting/tests/test_pytorchforecasting.py::test_load_model_from_disk[PytorchForecastingTFT]\nTo see why this happens see 'Known limitations' in documentation for pytest-xdist\nERROR gw3 - Different tests were collected between gw1 and gw3. The difference is:\n--- gw1\n\n+++ gw3\n\n@@ -47173,17 +47173,17 @@\n\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[australian_electricity_demand_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[m4_hourly_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_fpp3_public\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[wind_farms_minutely_dataset_with_missing_values]\n sktime/datasets/tests/test_datadownload.py::test_load_forecasting_data_invalid_name[invalid_name]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[wind_4_seconds_dataset]\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[us_births_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_check_freq_for_hier_data\n-sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[nn5_daily_dataset_without_missing_values]\n sktime/datasets/tests/test_datadownload.py::test_load_m5\n sktime/datasets/tests/test_datadownload.py::test_load_solar\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata\n sktime/datasets/tests/test_datadownload.py::test_load_fpp3_private\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[kaggle_web_traffic_weekly_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_forecastingdata_hier[solar_10_minutes_dataset]\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[bitcoin_dataset_with_missing_values]\n+sktime/datasets/tests/test_datadownload.py::test_check_link_downloadable[wind_4_seconds_dataset]\n sktime/datasets/tests/test_datadownload.py::test_load_UEA\n sktime/forecasting/tests/test_pytorchforecasting.py::test_predict_with_future_exogenous_x[PytorchForecastingDeepAR]\n sktime/forecasting/tests/test_pytorchforecasting.py::test_load_model_from_disk[PytorchForecastingTFT]\nTo see why this happens see 'Known limitations' in documentation for pytest-xdist\n16 warnings, 3 errors in 107.64s (0:01:47)"
+    }
+  }
+}

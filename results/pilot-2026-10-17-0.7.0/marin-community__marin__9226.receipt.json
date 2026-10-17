@@ -1,0 +1,54 @@
+{
+  "$schema": "https://raw.githubusercontent.com/isAlmogK/trustbut/main/spec/agent-receipt-v1.schema.json",
+  "specVersion": "1.2",
+  "producer": {
+    "name": "trustbut",
+    "version": "0.7.0"
+  },
+  "subject": {
+    "base": "c139b2dd3f70810b7bb3b2d68e5161956405fbc5",
+    "head": "4bef773920be0fba0560b55df67325a95ce2849b"
+  },
+  "verdict": "fail",
+  "tests": {
+    "passed": 0,
+    "failed": 0,
+    "errored": 0,
+    "skipped": 0,
+    "scope": "full"
+  },
+  "proofs": [],
+  "findings": [
+    {
+      "id": "suite-failing",
+      "severity": "fail",
+      "title": "Test runner failed without reporting any test results",
+      "detail": "rootdir: /tmp/trustbut-wt-DvSiQL"
+    },
+    {
+      "id": "base-run-failed",
+      "severity": "warn",
+      "title": "Changed tests could not run at base; fail-before evidence unavailable (exit 4)"
+    }
+  ],
+  "risks": [],
+  "x-trustbut": {
+    "runner": "pytest",
+    "languages": [
+      "py"
+    ],
+    "root": ".",
+    "after": {
+      "exitCode": 4,
+      "durationMs": 4133,
+      "cases": [],
+      "outputTail": "ERROR: usage: python -m pytest [options] [file_or_dir] [file_or_dir] [...]\npython -m pytest: error: unrecognized arguments: -n --dist=worksteal\n  inifile: /tmp/trustbut-wt-DvSiQL/pyproject.toml\n  rootdir: /tmp/trustbut-wt-DvSiQL"
+    },
+    "before": {
+      "exitCode": 4,
+      "durationMs": 1388,
+      "cases": [],
+      "outputTail": "ERROR: usage: python -m pytest [options] [file_or_dir] [file_or_dir] [...]\npython -m pytest: error: unrecognized arguments: -n --dist=worksteal\n  inifile: /tmp/trustbut-wt-KBnWt4/pyproject.toml\n  rootdir: /tmp/trustbut-wt-KBnWt4"
+    }
+  }
+}

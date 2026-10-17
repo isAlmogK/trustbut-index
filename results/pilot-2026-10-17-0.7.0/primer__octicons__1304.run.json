@@ -1,0 +1,24 @@
+{
+  "id": "primer__octicons__1304",
+  "status": "ran",
+  "stage": null,
+  "recipe": {
+    "node": {
+      "version": "26",
+      "pm": "npm",
+      "install": "npm ci"
+    },
+    "python": null
+  },
+  "durations": {
+    "installMs": 17871,
+    "verifyMs": 4917
+  },
+  "exitCodes": {
+    "install": 0,
+    "verify": 1
+  },
+  "runnerImage": "ubuntu24/20261012.334.1",
+  "trustbutVersion": "0.7.0",
+  "installRetries": 0
+}
