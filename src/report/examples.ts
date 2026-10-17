@@ -2,6 +2,7 @@ import type { PrResult } from '../aggregate/index.js';
 import { latestFinals } from '../label/metrics.js';
 import type { FinalLabel } from '../label/review.js';
 import type { SampleItem } from '../label/sample.js';
+import { scrub } from '../label/blind.js';
 import type { Family } from '../types.js';
 
 /** A published example. It never carries the test name, which could identify the project by search. */
@@ -9,6 +10,8 @@ export interface Example {
   description: string;
   family: Family;
   title: string;
+  /** The finding's detail, shown only for `change-not-proven` (it says which of its facts holds). Scrubbed. */
+  detail: string | null;
   before: string | null;
   after: string | null;
 }
@@ -34,6 +37,7 @@ export function pickExamples(sample: SampleItem[], finals: FinalLabel[], results
         : undefined;
     out.push({
       description: describeRepo(r.entry.repoStars, r.entry.repoLanguage), family: s.family, title: s.finding.title,
+      detail: s.finding.id === 'change-not-proven' && s.finding.detail ? scrub(s.finding.detail) : null,
       before: proof?.before ?? null, after: proof?.after ?? null,
     });
     seenFamilies.add(s.family);

@@ -42,6 +42,14 @@ export function labelStats(sample: SampleItem[], finals: FinalLabel[]): LabelSta
   return out;
 }
 
+/** Precision of the `change-not-proven` finding alone: real over every decided label (unclear excluded). */
+export function notProvenPrecision(sample: SampleItem[], finals: FinalLabel[]): RateCI {
+  const byKey = new Map(latestFinals(finals).map((f) => [f.key, f.label]));
+  const labels = sample.filter((s) => s.finding.id === 'change-not-proven').map((s) => byKey.get(s.key));
+  const decided = labels.filter((l) => l === 'real' || l === 'true-but-benign' || l === 'false').length;
+  return wilson(labels.filter((l) => l === 'real').length, decided);
+}
+
 export interface Calibration {
   blind: RateCI;
   overruled: RateCI;

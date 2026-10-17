@@ -11,6 +11,7 @@ import { buildPacket, type Packet } from './packet.js';
 import { packetFile, startReview } from './review.js';
 import { sampleFindings, type SampleItem } from './sample.js';
 
+export const PROMPT_PATH = 'labels/prompt-v2.md';
 const dirOf = (date: string) => `labels/${date}`;
 
 export function registerLabel(program: Command): void {
@@ -51,7 +52,7 @@ export function registerLabel(program: Command): void {
     .action(async (o: { date: string }) => {
       const sample = await readJsonlStrict<SampleItem>(join(dirOf(o.date), 'sample.jsonl'));
       const packets = await Promise.all(sample.map((s) => readJson<Packet>(join(dirOf(o.date), 'packets', packetFile(s.key)))));
-      const prompt = await readFile('labels/prompt-v1.md', 'utf8');
+      const prompt = await readFile(PROMPT_PATH, 'utf8');
       const res = await submitBatch(new Anthropic(), packets, prompt);
       await writeJson(join(dirOf(o.date), 'batch.json'), res);
       console.log(`submitted batch ${res.batchId} with ${packets.length} requests`);

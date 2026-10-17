@@ -23,10 +23,10 @@ export interface ReportData {
 }
 
 const FAMILY_NAMES: Record<string, string> = {
-  'proof-gap': 'Test passes without the change',
+  'proof-gap': "New tests don't prove the change",
   'test-weakening': 'Tests weakened',
   escapes: 'Checks silenced',
-  'untested-change': 'Change without tests',
+  'untested-change': 'No test proves the change',
   'red-at-head': 'Tests that passed at base fail at head',
 };
 
@@ -35,8 +35,14 @@ const group = (d: ReportData, key: string) => d.agg.groups.find((g) => g.key ===
 function tile(name: string, c: Check, unit: string, interval: string): string {
   const value = c.n === 0 ? 'no data' : pct(c.value);
   const ci = c.n === 0 ? 'n=0' : `${esc(interval)} ${pct(c.lo)}–${pct(c.hi)}`;
-  return `<div class="tile ${c.pass ? 'pass' : 'miss'}"><div class="tname">${esc(name)}</div><div class="tval">${value}</div>
-<div class="tci">${ci}</div><div class="ttarget">Target ≥ ${pct(c.target)} ${esc(unit)} · <b>${c.pass ? 'met' : 'missed'}</b></div></div>`;
+  const foot = c.target === null ? `${esc(unit)} · <b>reported, no bar</b>` : `Target ≥ ${pct(c.target)} ${esc(unit)} · <b>${c.pass ? 'met' : 'missed'}</b>`;
+  return `<div class="tile ${c.pass === null ? 'info' : c.pass ? 'pass' : 'miss'}"><div class="tname">${esc(name)}</div><div class="tval">${value}</div>
+<div class="tci">${ci}</div><div class="ttarget">${foot}</div></div>`;
+}
+
+function notProvenLine(c: Check): string {
+  const value = c.n === 0 ? 'no data (n=0)' : `${pct(c.value)} (n=${c.n}, 95% interval ${pct(c.lo)}–${pct(c.hi)})`;
+  return `<p>“Nothing proves the change” worth a reviewer's time: ${value}</p>`;
 }
 
 function proofChart(d: ReportData, pal: Palette): string {
@@ -98,7 +104,7 @@ const STYLE = `
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,sans-serif}
 main{max-width:980px;margin:0 auto;padding:24px 16px 64px}h1{font-size:28px;line-height:1.2}h2{margin-top:48px}
 .muted{color:var(--muted)}a{color:var(--agent)}.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
-.tile{background:var(--card);border-radius:10px;padding:16px;border-left:6px solid var(--miss)}.tile.pass{border-left-color:var(--pass)}
+.tile{background:var(--card);border-radius:10px;padding:16px;border-left:6px solid var(--miss)}.tile.pass{border-left-color:var(--pass)}.tile.info{border-left-color:var(--muted)}
 .tname{font-weight:600}.tval{font-size:40px;font-weight:700}.tci,.ttarget{color:var(--muted);font-size:14px}
 .ex{background:var(--card);border-radius:10px;padding:12px 16px;margin:8px 0}figure{margin:0}svg{max-width:100%;height:auto}figure{overflow-x:auto}figure svg{min-width:560px}
 .legend span{display:inline-block;margin-right:16px}.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px}`;
@@ -108,7 +114,7 @@ export function renderReport(d: ReportData): string {
   const human = group(d, 'human');
   const pg = d.agg.comparisons.find((c) => c.metric === 'proof-rate')!;
   const examples = d.examples.length
-    ? d.examples.map((e) => `<div class="ex"><b>${esc(FAMILY_NAMES[e.family]!)}</b> in ${esc(e.description)}: ${esc(e.title)}${e.before !== null && e.after !== null ? `. The test: ${esc(e.before)} before the change, ${esc(e.after)} after.` : '.'}</div>`).join('')
+    ? d.examples.map((e) => `<div class="ex"><b>${esc(FAMILY_NAMES[e.family]!)}</b> in ${esc(e.description)}: ${esc(e.title)}${e.detail !== null ? `: ${esc(e.detail)}` : ''}${e.before !== null && e.after !== null ? `. The test: ${esc(e.before)} before the change, ${esc(e.after)} after.` : '.'}</div>`).join('')
     : '<p class="muted">No confirmed-real examples.</p>';
   const page = `${d.baseUrl.endsWith('/') ? d.baseUrl : `${d.baseUrl}/`}${d.date}/`;
   const title = `Agent test honesty ${d.date}`;
@@ -125,8 +131,8 @@ export function renderReport(d: ReportData): string {
 <h1>Do AI agents' tests prove their changes?</h1>
 <p class="muted">Study of ${d.agg.groups.find((g) => g.key === 'all')!.selected} merged pull requests in established open-source projects, ${esc(d.date)}. trustbut ${esc(d.agg.trustbutVersions.join(', '))}.</p>
 
-<section id="verdict"><h2>Verdict</h2><p>${d.verdict.pass ? 'All three pre-registered thresholds were met.' : 'Not every pre-registered threshold was met.'}</p>
-<div class="tiles">${tile('Precision', d.verdict.precision, 'of labeled findings real', '95% interval')}${tile('Hit rate', d.verdict.hitRate, 'of agent PRs with a real finding', '≈90% envelope')}${tile('Run coverage', d.verdict.coverage, 'of selected PRs ran', '95% interval')}</div></section>
+<section id="verdict"><h2>Verdict</h2><p>${d.verdict.pass ? 'Both pre-registered thresholds were met.' : 'Not every pre-registered threshold was met.'}</p>
+<div class="tiles">${tile('Factual accuracy', d.verdict.accuracy, 'of labeled findings true', '95% interval')}${tile('Run coverage', d.verdict.coverage, 'of selected PRs ran', '95% interval')}${tile('Precision', d.verdict.precision, 'of labeled findings real', '95% interval')}${tile('Hit rate', d.verdict.hitRate, 'of agent PRs with a real finding', '≈90% envelope')}</div>\n${notProvenLine(d.verdict.notProven)}</section>
 
 <section id="proof"><h2>Do new tests prove the change?</h2>
 <p>Of the new or changed tests in agent PRs, ${pct(agents.proofs.proofRate.p)} failed before the change and passed after it, compared with ${pct(human.proofs.proofRate.p)} in human PRs from the same projects (difference ${pct(pg.diff.d)}, 95% interval ${pct(pg.diff.lo)} to ${pct(pg.diff.hi)}).</p>
@@ -146,7 +152,7 @@ ${labelDetail(d)}
 <section id="examples"><h2>Examples</h2>${examples}</section>
 
 <section id="method"><h2>Method and limitations</h2>
-<p>Selection rules, metrics and thresholds were fixed before the first run: <a href="${esc(d.preregUrl)}">pre-registration</a>.</p>
+<p>Selection rules, metrics and thresholds were fixed before the study's first run: <a href="${esc(d.preregUrl)}">pre-registration</a>. The success bar and the finding families were changed after the pilot: <a href="${esc(`${d.preregUrl}#changes-after-the-pilot`)}">changes after the pilot</a>.</p>
 ${d.deviations.length ? `<p>Deviations:</p><ul>${d.deviations.map((x) => `<li>${esc(x)}</li>`).join('')}</ul>` : '<p>No deviations from the pre-registration.</p>'}
 <ul><li>Agents are identified by public markers (bot accounts, branch prefixes, PR text, commit trailers). Undisclosed agent use in the human group makes the groups look more alike, so it would tend to shrink measured differences.</li>
 <li>A test suite could in principle forge its own receipt, or another PR's in the same run; receipts were validated against the spec and against each PR's head commit. Labeled findings were checked against the real diff.</li>
@@ -162,12 +168,12 @@ ${d.deviations.length ? `<p>Deviations:</p><ul>${d.deviations.map((x) => `<li>${
 export function shareSvg(d: ReportData): string {
   const pal = LIGHT_PALETTE;
   const t = (x: number, label: string, c: Check) =>
-    `<g transform="translate(${x},150)"><rect width="360" height="170" rx="14" fill="#f4f4f4"/><rect width="8" height="170" fill="${c.pass ? pal.pass : pal.miss}"/>
+    `<g transform="translate(${x},150)"><rect width="360" height="170" rx="14" fill="#f4f4f4"/><rect width="8" height="170" fill="${c.pass === null ? pal.muted : c.pass ? pal.pass : pal.miss}"/>
 <text x="28" y="44" font-size="26" font-weight="600">${esc(label)}</text><text x="28" y="112" font-size="60" font-weight="700">${c.n === 0 ? 'no data' : pct(c.value)}</text>
-<text x="28" y="150" font-size="20" fill="${pal.muted}">target ≥ ${pct(c.target)} · ${c.pass ? 'met' : 'missed'}</text></g>`;
+<text x="28" y="150" font-size="20" fill="${pal.muted}">${c.target === null ? 'reported, no bar' : `target ≥ ${pct(c.target)} · ${c.pass ? 'met' : 'missed'}`}</text></g>`;
   const chart = proofChart(d, pal).replace(' width="100%"', '').replace('font-family="system-ui, sans-serif"', 'font-family="DejaVu Sans, Arial, sans-serif"').replace('<svg ', '<svg x="120" y="350" width="960" height="230" ');
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" font-family="DejaVu Sans, Arial, sans-serif" fill="${pal.fg}">
 <rect width="1200" height="630" fill="${pal.bg}"/><text x="40" y="80" font-size="40" font-weight="700">Do AI agents' tests prove their changes?</text>
 <text x="40" y="118" font-size="22" fill="${pal.muted}">trustbut-index · ${esc(d.date)}</text>
-${t(40, 'Precision', d.verdict.precision)}${t(420, 'Hit rate', d.verdict.hitRate)}${t(800, 'Run coverage', d.verdict.coverage)}${chart}</svg>`;
+${t(40, 'Factual accuracy', d.verdict.accuracy)}${t(420, 'Run coverage', d.verdict.coverage)}${t(800, 'Precision', d.verdict.precision)}${chart}</svg>`;
 }

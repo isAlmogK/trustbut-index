@@ -20,6 +20,9 @@ export interface Packet {
 const MAX_BODY = 2000;
 const MAX_PATCH = 4000;
 const MAX_FILES = 6;
+/** `change-not-proven` has no file; its evidence is every proof and every changed source and test file. */
+const MAX_FILES_NOT_PROVEN = 10;
+const CODE = /\.(js|jsx|ts|tsx|mjs|cjs|mts|cts|vue|svelte|py)$/;
 const WINDOW = 40;
 const HEAD_LINES = 120;
 
@@ -28,6 +31,12 @@ function sourceWindow(text: string, line: number | undefined): { startLine: numb
   if (!line) return { startLine: 1, text: lines.slice(0, HEAD_LINES).join('\n') };
   const start = Math.max(1, line - WINDOW);
   return { startLine: start, text: lines.slice(start - 1, line + WINDOW).join('\n') };
+}
+
+/** Up to `cap` items, half from each list, filling from the other when one runs short. */
+function balanced<T>(a: T[], b: T[], cap: number): T[] {
+  const na = Math.min(a.length, Math.max(Math.ceil(cap / 2), cap - b.length));
+  return [...a.slice(0, na), ...b.slice(0, cap - na)];
 }
 
 const isFailing = (c: TestCase) => c.outcome === 'fail' || c.outcome === 'error';
@@ -58,15 +67,18 @@ export function assemblePacket(
   source: string | null,
 ): Packet {
   const f = item.finding;
+  const notProven = f.id === 'change-not-proven';
   // Filter on raw values; scrubbing happens only after the match.
   const proofs = (receipt.proofs ?? [])
-    .filter((p) => p.file === f.file && (!f.detail || p.name === f.detail || item.family !== 'proof-gap'))
+    .filter((p) => notProven || (p.file === f.file && (!f.detail || p.name === f.detail || item.family !== 'proof-gap')))
     .map((p) => ({ ...p, file: scrub(p.file), name: scrub(p.name) }));
   const withPatch = files.filter((x) => x.patch);
   const own = withPatch.filter((x) => x.filename === f.file);
-  const sources = withPatch.filter((x) => x.filename !== f.file && !isTestPath(x.filename) && /\.(js|jsx|ts|tsx|mjs|cjs|mts|cts|vue|svelte|py)$/.test(x.filename));
+  const sources = withPatch.filter((x) => x.filename !== f.file && !isTestPath(x.filename) && CODE.test(x.filename));
+  const tests = withPatch.filter((x) => isTestPath(x.filename) && CODE.test(x.filename));
+  const picked = notProven ? balanced(sources, tests, MAX_FILES_NOT_PROVEN) : [...own, ...sources].slice(0, MAX_FILES);
   // Scrub before slicing so a marker cannot be cut at the limit.
-  const diff = [...own, ...sources].slice(0, MAX_FILES).map((x) => ({ file: scrub(x.filename), patch: scrub(x.patch!).slice(0, MAX_PATCH) }));
+  const diff = picked.map((x) => ({ file: scrub(x.filename), patch: scrub(x.patch!).slice(0, MAX_PATCH) }));
   const finding: Finding = {
     ...f,
     title: scrub(f.title),

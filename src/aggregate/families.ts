@@ -16,12 +16,41 @@ export const FAMILY_OF: Record<string, Family> = {
   'test-regressed': 'red-at-head',
 };
 
+/** The family a finding counts in, or undefined for context findings. `change-not-proven` (trustbut 0.7.0) depends on whether the receipt has proofs. */
+export function familyOf(finding: Finding, r: Receipt): Family | undefined {
+  if (finding.id === 'change-not-proven') return (r.proofs?.length ?? 0) > 0 ? 'proof-gap' : 'untested-change';
+  // Own keys only: an id like "constructor" must not resolve to an Object.prototype member.
+  return Object.hasOwn(FAMILY_OF, finding.id) ? FAMILY_OF[finding.id] : undefined;
+}
+
 export function countedFindings(r: Receipt): { finding: Finding; index: number; family: Family }[] {
   return r.findings.flatMap((finding, index) => {
-    // Own keys only: an id like "constructor" must not resolve to an Object.prototype member.
-    const family = Object.hasOwn(FAMILY_OF, finding.id) ? FAMILY_OF[finding.id] : undefined;
+    const family = familyOf(finding, r);
     return family ? [{ finding, index, family }] : [];
   });
+}
+
+/** Parses "major.minor.patch" (any suffix ignored). Returns undefined for a missing or unparseable version. */
+export function parseVersion(version: string | undefined): number[] | undefined {
+  const m = /^(\d+)\.(\d+)\.(\d+)/.exec(version ?? '');
+  return m ? [Number(m[1]), Number(m[2]), Number(m[3])] : undefined;
+}
+
+/** Numeric version order. Unparseable versions sort after parseable ones. */
+export function compareVersions(a: string | undefined, b: string | undefined): number {
+  const pa = parseVersion(a);
+  const pb = parseVersion(b);
+  if (!pa || !pb) return pa ? -1 : pb ? 1 : 0;
+  for (let i = 0; i < 3; i++) if (pa[i] !== pb[i]) return pa[i]! - pb[i]!;
+  return 0;
+}
+
+/** True when the receipt's trustbut version is at least `min`. An unparseable version counts as older. */
+function atLeast(r: Receipt, min: number[]): boolean {
+  const v = parseVersion(r.producer?.version);
+  if (!v) return false;
+  for (let i = 0; i < 3; i++) if (v[i] !== min[i]) return v[i]! > min[i]!;
+  return true;
 }
 
 /** trustbut reports `test-regressed` from 0.5.0 (receipt spec 1.1); older receipts can't measure red at head. */
@@ -29,13 +58,15 @@ const RED_AT_HEAD_SINCE = [0, 5, 0];
 
 /** True when the receipt comes from a trustbut that compares failing tests with base. An unparseable version counts as older. */
 export function measuresRedAtHead(r: Receipt): boolean {
-  const m = /^(\d+)\.(\d+)\.(\d+)/.exec(r.producer?.version ?? '');
-  if (!m) return false;
-  for (let i = 0; i < 3; i++) {
-    const v = Number(m[i + 1]);
-    if (v !== RED_AT_HEAD_SINCE[i]) return v > RED_AT_HEAD_SINCE[i]!;
-  }
-  return true;
+  return atLeast(r, RED_AT_HEAD_SINCE);
+}
+
+/** trustbut 0.7.0 is proof-first: it reports `change-not-proven` and no longer `test-passes-without-change` or `no-tests-changed`. */
+export const PROOF_FIRST_SINCE = [0, 7, 0];
+
+/** True when the receipt comes from a proof-first trustbut (0.7.0 or later). */
+export function isProofFirst(r: Receipt): boolean {
+  return atLeast(r, PROOF_FIRST_SINCE);
 }
 
 /** The receipt's counted families. Red at head is left out for receipts that can't measure it. */

@@ -1,7 +1,9 @@
 import { describe, expect, it } from 'vitest';
 import { vi } from 'vitest';
 import type Anthropic from '@anthropic-ai/sdk';
-import { buildRequest, collectBatch, customId, parseResult, submitBatch } from '../src/label/draft.js';
+import { readFileSync } from 'node:fs';
+import { buildRequest, collectBatch, customId, parseResult, PROMPT_VERSION, submitBatch } from '../src/label/draft.js';
+import { PROMPT_PATH } from '../src/label/command.js';
 import type { Packet } from '../src/label/packet.js';
 
 const packet = { key: 'o__r__1:0', family: 'proof-gap' } as Packet;
@@ -31,7 +33,7 @@ describe('parseResult', () => {
       type: 'succeeded',
       message: { stop_reason: 'end_turn', content: [{ type: 'text', text: '{"label":"real","rationale":"line 3 shows…","confidence":"high"}' }] },
     } as never);
-    expect(d).toMatchObject({ key: 'k', label: 'real', confidence: 'high', model: 'claude-opus-5-5', promptVersion: 'v1' });
+    expect(d).toMatchObject({ key: 'k', label: 'real', confidence: 'high', model: 'claude-opus-5-5', promptVersion: 'v2' });
   });
   it('records refusals and errors without a label', () => {
     expect(parseResult('k', { type: 'succeeded', message: { stop_reason: 'refusal', content: [] } } as never)).toMatchObject({ label: null, error: 'refusal' });
@@ -88,7 +90,17 @@ describe('batch round trip', () => {
     const drafts = await collectBatch(f.client, 'b1', ids, async () => {});
     err.mockRestore();
     expect(drafts.map((d) => [d.key, d.label, d.error ?? null])).toEqual([['a:2', null, 'missing'], ['b:1', 'real', null], ['c:0', null, 'missing']]);
-    expect(drafts[0]).toMatchObject({ rationale: '', confidence: null, model: 'claude-opus-5-5', promptVersion: 'v1' });
+    expect(drafts[0]).toMatchObject({ rationale: '', confidence: null, model: 'claude-opus-5-5', promptVersion: 'v2' });
   });
 });
 
+
+describe('prompt v2', () => {
+  it('is the prompt the draft command reads, and drafts record its version', () => {
+    expect(PROMPT_PATH).toBe('labels/prompt-v2.md');
+    expect(PROMPT_VERSION).toBe('v2');
+    const prompt = readFileSync(PROMPT_PATH, 'utf8');
+    expect(prompt).toContain('- change-not-proven (nothing proves the change). Judge the title together with `finding.detail`');
+    for (const detail of ['`no test added or changed`', '`N new or changed tests, none fails without the change`', '`test files changed, but no new or changed test that ran was found in them`']) expect(prompt).toContain(detail);
+  });
+});

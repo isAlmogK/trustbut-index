@@ -4,7 +4,7 @@ import type { Command } from 'commander';
 import { loadResults, type Aggregate } from '../aggregate/index.js';
 import { readJson, readJsonl, readJsonlStrict } from '../jsonl.js';
 import type { Draft } from '../label/draft.js';
-import { calibration, hitRate, labelStats } from '../label/metrics.js';
+import { calibration, hitRate, labelStats, notProvenPrecision } from '../label/metrics.js';
 import type { FinalLabel } from '../label/review.js';
 import type { SampleItem } from '../label/sample.js';
 import { verdict } from '../verdict.js';
@@ -30,13 +30,13 @@ export function registerReport(program: Command): void {
       const hit = hitRate(agg.groups.find((g) => g.key === 'all-agents')!, sample, finals);
       const deviations = (await readFile(`results/${o.date}/deviations.txt`, 'utf8').catch(() => '')).split('\n').map((l) => l.trim()).filter(Boolean);
       const data = {
-        date: o.date, agg, labels, hit, calibration: calibration(sample, finals, drafts), verdict: verdict(agg, labels, hit),
+        date: o.date, agg, labels, hit, calibration: calibration(sample, finals, drafts), verdict: verdict(agg, labels, hit, notProvenPrecision(sample, finals)),
         examples: pickExamples(sample, finals, results), preregUrl: o.prereg, deviations, baseUrl: o.baseUrl,
       };
       await mkdir(`site/${o.date}`, { recursive: true });
       await writeFile(`site/${o.date}/index.html`, renderReport(data));
       await writeFile(`site/${o.date}/share.png`, renderPng(shareSvg(data)));
       await writeFile('site/index.html', `<!doctype html><meta charset="utf-8"><meta http-equiv="refresh" content="0; url=${o.date}/"><title>trustbut-index</title><a href="${o.date}/">Latest study</a>\n`);
-      console.log(`wrote site/${o.date}/ (verdict: ${data.verdict.pass ? 'all thresholds met' : 'not all thresholds met'})`);
+      console.log(`wrote site/${o.date}/ (verdict: ${data.verdict.pass ? 'both thresholds met' : 'not all thresholds met'})`);
     });
 }

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { aggregate, type PrResult } from '../src/aggregate/index.js';
-import { calibration, hitRate, labelStats } from '../src/label/metrics.js';
+import { calibration, hitRate, labelStats, notProvenPrecision } from '../src/label/metrics.js';
 import type { FinalLabel } from '../src/label/review.js';
 import type { SampleItem } from '../src/label/sample.js';
 import { describeRepo, pickExamples } from '../src/report/examples.js';
@@ -25,7 +25,7 @@ function data(rs: PrResult[] = results): ReportData {
   const labels = labelStats(sample, finals);
   const hit = hitRate(agg.groups.find((g) => g.key === 'all-agents')!, sample, finals);
   return {
-    date: '2026-11-02', agg, labels, hit, calibration: calibration(sample, finals, []), verdict: verdict(agg, labels, hit),
+    date: '2026-11-02', agg, labels, hit, calibration: calibration(sample, finals, []), verdict: verdict(agg, labels, hit, notProvenPrecision(sample, finals)),
     examples: pickExamples(sample, finals, rs), preregUrl: 'https://github.com/isAlmogK/trustbut-index/blob/prereg-v1/PREREGISTRATION.md', deviations: [],
     baseUrl: 'https://isalmogk.github.io/trustbut-index/',
   };
@@ -38,8 +38,20 @@ describe('examples', () => {
   });
   it('picks real-labelled findings with their before/after, never the test name', () => {
     expect(pickExamples(sample, finals, results)).toEqual([{
-      description: 'a 12k-star TypeScript project', family: 'proof-gap', title: 'Test passes without the change', before: 'pass', after: 'pass',
+      description: 'a 12k-star TypeScript project', family: 'proof-gap', title: 'Test passes without the change', detail: null, before: 'pass', after: 'pass',
     }]);
+  });
+  it('shows the detail of a change-not-proven example, scrubbed, with no before/after', () => {
+    const finding = { id: 'change-not-proven', severity: 'warn' as const, title: 'Nothing proves the change', detail: '1 new or changed test (copilot), none fails without the change' };
+    const rs = results.map((r) => ({ ...r, receipt: { ...r.receipt!, producer: { name: 'trustbut', version: '0.7.0' }, findings: [finding] } }));
+    const np = [{ ...sample[0]!, finding, family: 'proof-gap' } as SampleItem];
+    const ex = pickExamples(np, finals, rs);
+    expect(ex).toEqual([{
+      description: 'a 12k-star TypeScript project', family: 'proof-gap', title: 'Nothing proves the change',
+      detail: '1 new or changed test ([agent]), none fails without the change', before: null, after: null,
+    }]);
+    const html = renderReport({ ...data(), examples: ex });
+    expect(html).toContain("<b>New tests don't prove the change</b> in a 12k-star TypeScript project: Nothing proves the change: 1 new or changed test ([agent]), none fails without the change.</div>");
   });
   it('uses the latest label per finding', () => {
     const relabelled = [...finals, { key: 'o__r__1:0', label: 'false', draftLabel: 'real', blind: true } as FinalLabel];
@@ -72,12 +84,13 @@ describe('renderReport', () => {
     expect(html).toContain('pass before the change, pass after');
   });
   it('labels the hit-rate tile as an envelope and the other tiles as 95% intervals', () => {
-    const tiles = html.split('<div class="tile ').slice(1);
-    expect(tiles).toHaveLength(3);
+    const tiles = html.slice(0, html.indexOf('id="proof"')).split('<div class="tile ').slice(1);
+    expect(tiles).toHaveLength(4);
     expect(tiles[0]).toContain('95% interval');
-    expect(tiles[1]).toContain('≈90% envelope');
-    expect(tiles[1]).not.toContain('95% interval');
+    expect(tiles[1]).toContain('95% interval');
     expect(tiles[2]).toContain('95% interval');
+    expect(tiles[3]).toContain('≈90% envelope');
+    expect(tiles[3]).not.toContain('95% interval');
   });
   it('states that receipts were checked against each PR head commit', () => {
     expect(html).toContain("A test suite could in principle forge its own receipt, or another PR's in the same run; receipts were validated against the spec and against each PR's head commit.");
@@ -99,8 +112,55 @@ describe('renderReport', () => {
     expect(html).not.toContain('content="share.png"');
     expect(renderReport({ ...data(), baseUrl: 'https://example.org/x' })).toContain('content="https://example.org/x/2026-11-02/share.png"');
   });
+  it('says when the pre-registration was fixed and that the bar and families changed after the pilot', () => {
+    const method = html.slice(html.indexOf('id="method"'));
+    expect(method).toContain("Selection rules, metrics and thresholds were fixed before the study's first run: <a href=\"https://github.com/isAlmogK/trustbut-index/blob/prereg-v1/PREREGISTRATION.md\">pre-registration</a>.");
+    expect(method).toContain('The success bar and the finding families were changed after the pilot: <a href="https://github.com/isAlmogK/trustbut-index/blob/prereg-v1/PREREGISTRATION.md#changes-after-the-pilot">changes after the pilot</a>.');
+    expect(method).not.toContain('fixed before the first run');
+  });
+  it('names the proof families for change-not-proven', () => {
+    const families = html.slice(html.indexOf('id="families"'), html.indexOf('id="coverage"'));
+    expect(families).toContain("New tests don't prove the change");
+    expect(families).toContain('No test proves the change');
+    expect(families).not.toContain('Test passes without the change');
+    expect(families).not.toContain('Change without tests');
+    expect(html).toContain("<b>New tests don't prove the change</b> in a 12k-star TypeScript project: Test passes without the change. The test: pass before the change, pass after.");
+  });
   it('is deterministic', () => {
     expect(renderReport(data())).toBe(html);
+  });
+});
+
+describe('verdict tiles', () => {
+  it('shows bars on accuracy and coverage and "reported, no bar" on precision and hit rate', () => {
+    const tiles = renderReport(data()).split('<div class="tile ').slice(1);
+    expect(tiles[0]).toContain('Factual accuracy');
+    expect(tiles[0]).toContain('Target ≥ 95.0%');
+    expect(tiles[1]).toContain('Run coverage');
+    expect(tiles[1]).toContain('Target ≥ 50.0%');
+    expect(tiles[2]).toContain('Precision');
+    expect(tiles[2]).toContain('reported, no bar');
+    expect(tiles[2].startsWith('info')).toBe(true);
+    expect(tiles[3]).toContain('Hit rate');
+    expect(tiles[3]).toContain('reported, no bar');
+  });
+  it('reports the not-proven precision under the tiles', () => {
+    const np = { ...sample[0]!, finding: { ...sample[0]!.finding, id: 'change-not-proven' } } as SampleItem;
+    const d = data();
+    const html = renderReport({ ...d, verdict: { ...d.verdict, notProven: verdict({ groups: [{ key: 'all', coverage: d.agg.groups[0]!.coverage }] } as never, d.labels, d.hit, notProvenPrecision([np], finals)).notProven } });
+    expect(html).toContain('“Nothing proves the change” worth a reviewer\'s time: 100.0% (n=1, 95% interval 20.7%–100.0%)');
+  });
+  it('words the verdict sentence on the two bars', () => {
+    const d = data();
+    expect(renderReport({ ...d, verdict: { ...d.verdict, pass: true } })).toContain('Both pre-registered thresholds were met.');
+    expect(renderReport({ ...d, verdict: { ...d.verdict, pass: false } })).toContain('Not every pre-registered threshold was met.');
+  });
+  it('renders the share card with accuracy, coverage and precision', () => {
+    const svg = shareSvg(data());
+    expect(svg).toContain('Factual accuracy');
+    expect(svg).toContain('Run coverage');
+    expect(svg).toContain('Precision');
+    expect(svg).not.toContain('Hit rate');
   });
 });
 
@@ -120,7 +180,7 @@ describe('label detail', () => {
 describe('empty samples', () => {
   it('shows "no data" on a verdict tile with n=0, in the page and the share card', () => {
     const d = data();
-    const empty = { ...d, verdict: { ...d.verdict, precision: { value: 0, lo: 0, hi: 0, n: 0, target: 0.8, pass: false } } };
+    const empty = { ...d, verdict: { ...d.verdict, accuracy: { value: 0, lo: 0, hi: 0, n: 0, target: 0.95, pass: false } } };
     const tiles = renderReport(empty).split('<div class="tile ').slice(1);
     expect(tiles[0]).toContain('no data');
     expect(tiles[0]).not.toContain('0.0%–0.0%');
