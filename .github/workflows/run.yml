@@ -19,7 +19,7 @@ on:
 permissions: {}
 
 env:
-  TRUSTBUT_SPEC: '0.6.0'
+  TRUSTBUT_SPEC: '0.7.0'
 
 jobs:
   plan:

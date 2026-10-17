@@ -122,7 +122,7 @@ describe('verdict tiles', () => {
     const np = { ...sample[0]!, finding: { ...sample[0]!.finding, id: 'change-not-proven' } } as SampleItem;
     const d = data();
     const html = renderReport({ ...d, verdict: { ...d.verdict, notProven: verdict({ groups: [{ key: 'all', coverage: d.agg.groups[0]!.coverage }] } as never, d.labels, d.hit, notProvenPrecision([np], finals)).notProven } });
-    expect(html).toContain('“Nothing proves the change” worth a reviewer\'s time: 100.0% (95% interval 20.7%–100.0%)');
+    expect(html).toContain('“Nothing proves the change” worth a reviewer\'s time: 100.0% (n=1, 95% interval 20.7%–100.0%)');
   });
   it('words the verdict sentence on the two bars', () => {
     const d = data();

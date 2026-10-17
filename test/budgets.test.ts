@@ -9,7 +9,7 @@ describe('run budgets', () => {
     const yml = await readFile('.github/workflows/run.yml', 'utf8');
     const { timeoutSec } = JSON.parse(await readFile('config/trustbut.json', 'utf8')) as { timeoutSec: number };
     expect(yml).toMatch(/^ {4}timeout-minutes: 120$/m);
-    expect(yml).toContain("TRUSTBUT_SPEC: '0.6.0'");
+    expect(yml).toContain("TRUSTBUT_SPEC: '0.7.0'");
     expect(INSTALL_BUDGET_MS).toBe(25 * MIN);
     expect(VERIFY_BUDGET_MS).toBe(85 * MIN);
     expect(timeoutSec).toBe(2400);

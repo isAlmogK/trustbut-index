@@ -5,7 +5,7 @@ import { LABELS, type Label } from '../types.js';
 import type { Packet } from './packet.js';
 
 export const DRAFT_MODEL = 'claude-opus-5-5';
-export const PROMPT_VERSION = 'v1';
+export const PROMPT_VERSION = 'v2';
 
 const SCHEMA = {
   type: 'object',

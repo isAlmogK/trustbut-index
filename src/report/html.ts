@@ -41,7 +41,7 @@ function tile(name: string, c: Check, unit: string, interval: string): string {
 }
 
 function notProvenLine(c: Check): string {
-  const value = c.n === 0 ? 'no data (n=0)' : `${pct(c.value)} (95% interval ${pct(c.lo)}–${pct(c.hi)})`;
+  const value = c.n === 0 ? 'no data (n=0)' : `${pct(c.value)} (n=${c.n}, 95% interval ${pct(c.lo)}–${pct(c.hi)})`;
   return `<p>“Nothing proves the change” worth a reviewer's time: ${value}</p>`;
 }
 
