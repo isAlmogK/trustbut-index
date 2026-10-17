@@ -30,14 +30,26 @@ export function countedFindings(r: Receipt): { finding: Finding; index: number; 
   });
 }
 
+/** Parses "major.minor.patch" (any suffix ignored). Returns undefined for a missing or unparseable version. */
+export function parseVersion(version: string | undefined): number[] | undefined {
+  const m = /^(\d+)\.(\d+)\.(\d+)/.exec(version ?? '');
+  return m ? [Number(m[1]), Number(m[2]), Number(m[3])] : undefined;
+}
+
+/** Numeric version order. Unparseable versions sort after parseable ones. */
+export function compareVersions(a: string | undefined, b: string | undefined): number {
+  const pa = parseVersion(a);
+  const pb = parseVersion(b);
+  if (!pa || !pb) return pa ? -1 : pb ? 1 : 0;
+  for (let i = 0; i < 3; i++) if (pa[i] !== pb[i]) return pa[i]! - pb[i]!;
+  return 0;
+}
+
 /** True when the receipt's trustbut version is at least `min`. An unparseable version counts as older. */
 function atLeast(r: Receipt, min: number[]): boolean {
-  const m = /^(\d+)\.(\d+)\.(\d+)/.exec(r.producer?.version ?? '');
-  if (!m) return false;
-  for (let i = 0; i < 3; i++) {
-    const v = Number(m[i + 1]);
-    if (v !== min[i]) return v > min[i]!;
-  }
+  const v = parseVersion(r.producer?.version);
+  if (!v) return false;
+  for (let i = 0; i < 3; i++) if (v[i] !== min[i]) return v[i]! > min[i]!;
   return true;
 }
 

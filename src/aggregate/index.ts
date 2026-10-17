@@ -2,7 +2,7 @@ import { join } from 'node:path';
 import { readJsonOr, readJsonlStrict } from '../jsonl.js';
 import { byCodeUnit } from '../rng.js';
 import { AGENT_IDS, fileId, type Family, type ManifestEntry, type Receipt, type RunRecord } from '../types.js';
-import { FAMILIES, familiesOf, isProofFirst, measuresRedAtHead, redAtHeadNotCompared } from './families.js';
+import { FAMILIES, compareVersions, familiesOf, isProofFirst, measuresRedAtHead, redAtHeadNotCompared } from './families.js';
 import { newcombe, wilson, type DiffCI, type RateCI } from './stats.js';
 
 export interface PrResult {
@@ -83,7 +83,8 @@ export function groupStats(key: string, prs: PrResult[], insufficient: boolean):
 
 export function aggregate(date: string, results: PrResult[], minPerAgent = 30): Aggregate {
   const receipts = results.flatMap((r) => (r.receipt ? [r.receipt] : []));
-  const lowest = (rs: Receipt[]) => rs.map((r) => r.producer?.version ?? '').sort(byCodeUnit)[0];
+  // Unparseable or blank versions count as old (isProofFirst) and sort last on their side; they print as "unknown".
+  const lowest = (rs: Receipt[]) => rs.map((r) => r.producer?.version).sort(compareVersions)[0] || 'unknown';
   const newer = receipts.filter(isProofFirst);
   const older = receipts.filter((r) => !isProofFirst(r));
   if (newer.length && older.length) {

@@ -150,4 +150,15 @@ describe('red at head by trustbut version', () => {
     );
     expect(() => aggregate('d', [at(1, '0.7.0'), at(2, '0.7.1')], 1)).not.toThrow();
   });
+
+  it('names the numerically lowest version on each side of the guard', () => {
+    const at = (n: number, version: string): PrResult => ({ ...pr(n, 'copilot', 'ran'), receipt: receipt([], [], version) });
+    expect(() => aggregate('d', [at(1, '0.10.0'), at(2, '0.7.0'), at(3, '0.6.0')], 1)).toThrow(
+      'results mix trustbut 0.6.0 and 0.7.0 receipts; the proof families differ across 0.7.0',
+    );
+    expect(() => aggregate('d', [at(1, '0.7.0'), at(2, '')], 1)).toThrow(
+      'results mix trustbut unknown and 0.7.0 receipts; the proof families differ across 0.7.0',
+    );
+    expect(() => aggregate('d', [at(1, '0.7.0'), at(2, '0.7.1'), pr(3, 'copilot', 'setup-failed')], 1)).not.toThrow();
+  });
 });
