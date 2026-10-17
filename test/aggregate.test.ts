@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { aggregate, type PrResult } from '../src/aggregate/index.js';
+import { aggregate, minPerAgentFor, type PrResult } from '../src/aggregate/index.js';
 import type { AgentId, Receipt, RunRecord, RunStatus } from '../src/types.js';
 
 const run = (status: RunStatus): RunRecord => ({ id: 'x', status, stage: null, recipe: null, durations: { installMs: 0, verifyMs: 0 },
@@ -60,6 +60,26 @@ describe('aggregate', () => {
     expect(all.families.escapes).toMatchObject({ k: 0, n: 2 });
     expect(all.proofs.doesNotConstrain).toBe(1);
     expect(a2.groups.find((x) => x.key === 'all')!.selected).toBe(7);
+  });
+
+  it('pools every agent into all-agents for a pilot, which selects fewer than 30 PRs per agent', () => {
+    // A pilot collects 20 PRs per agent (collect --pilot), so the 30-PR rule would leave all-agents empty.
+    expect(minPerAgentFor('pilot-2026-10-17-0.7.0')).toBe(0);
+    expect(minPerAgentFor('pilot-2026-10-17')).toBe(0);
+    expect(minPerAgentFor('2026-11-02')).toBe(30);
+    const pilot = [
+      ...Array.from({ length: 20 }, (_, i) => pr(100 + i, 'copilot', i < 10 ? 'ran' : 'setup-failed', i === 0 ? ['escape-added'] : [], [proof('proves-change')])),
+      ...Array.from({ length: 3 }, (_, i) => pr(200 + i, 'jules', 'setup-failed')),
+      pr(300, null, 'ran', ['escape-added']),
+    ];
+    const date = 'pilot-2026-10-17-0.7.0';
+    const a = aggregate(date, pilot, minPerAgentFor(date));
+    const all = a.groups.find((x) => x.key === 'all-agents')!;
+    expect(a.groups.filter((x) => x.insufficient)).toEqual([]);
+    expect(all).toMatchObject({ selected: 23, ran: 10 });
+    expect(all.anyCounted).toMatchObject({ k: 1, n: 10 });
+    expect(all.proofs.provesChange).toBe(10);
+    expect(a.comparisons.find((x) => x.metric === 'escapes')!.agents).toMatchObject({ k: 1, n: 10 });
   });
 
   it('compares any-counted and proof rates', () => {
