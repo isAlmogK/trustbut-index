@@ -2,7 +2,7 @@ import { join } from 'node:path';
 import { readJsonOr, readJsonlStrict } from '../jsonl.js';
 import { byCodeUnit } from '../rng.js';
 import { AGENT_IDS, fileId, type Family, type ManifestEntry, type Receipt, type RunRecord } from '../types.js';
-import { FAMILIES, familiesOf, measuresRedAtHead, redAtHeadNotCompared } from './families.js';
+import { FAMILIES, familiesOf, isProofFirst, measuresRedAtHead, redAtHeadNotCompared } from './families.js';
 import { newcombe, wilson, type DiffCI, type RateCI } from './stats.js';
 
 export interface PrResult {
@@ -82,6 +82,13 @@ export function groupStats(key: string, prs: PrResult[], insufficient: boolean):
 }
 
 export function aggregate(date: string, results: PrResult[], minPerAgent = 30): Aggregate {
+  const receipts = results.flatMap((r) => (r.receipt ? [r.receipt] : []));
+  const lowest = (rs: Receipt[]) => rs.map((r) => r.producer?.version ?? '').sort(byCodeUnit)[0];
+  const newer = receipts.filter(isProofFirst);
+  const older = receipts.filter((r) => !isProofFirst(r));
+  if (newer.length && older.length) {
+    throw new Error(`results mix trustbut ${lowest(older)} and ${lowest(newer)} receipts; the proof families differ across 0.7.0`);
+  }
   const agentGroups = AGENT_IDS.map((a) => {
     const prs = results.filter((r) => r.entry.agent === a);
     return groupStats(a, prs, prs.length < minPerAgent);

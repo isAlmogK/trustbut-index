@@ -142,4 +142,12 @@ describe('red at head by trustbut version', () => {
     expect(g(a, 'copilot').redAtHeadNotCompared).toMatchObject({ k: 2, n: 5 });
     expect(g(a, 'human').redAtHeadNotCompared).toMatchObject({ k: 0, n: 0 });
   });
+
+  it('refuses to mix trustbut generations across 0.7.0', () => {
+    const at = (n: number, version: string): PrResult => ({ ...pr(n, 'copilot', 'ran'), receipt: receipt([], [], version) });
+    expect(() => aggregate('d', [at(1, '0.6.0'), at(2, '0.7.0')], 1)).toThrow(
+      'results mix trustbut 0.6.0 and 0.7.0 receipts; the proof families differ across 0.7.0',
+    );
+    expect(() => aggregate('d', [at(1, '0.7.0'), at(2, '0.7.1')], 1)).not.toThrow();
+  });
 });
