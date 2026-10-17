@@ -1,0 +1,32 @@
+{
+  "key": "vuejs__test-utils__2957:0",
+  "finding": {
+    "id": "change-not-proven",
+    "severity": "warn",
+    "title": "Nothing proves the change",
+    "detail": "test files changed, but no new or changed test that ran was found in them"
+  },
+  "family": "untested-change",
+  "proofs": [],
+  "pr": {
+    "title": "fix(types): infer emitted payloads for components with props",
+    "body": "Follow-up to #2948 (unreleased): event names are inferred, but payloads stay `unknown[]` for `<script setup>` components that also declare props or models.\n\n```vue\n<script setup lang=\"ts\">\ndefineProps<{ title: string }>()\ndefineEmits<{ select: [id: number] }>()\n</script>\n```\n\n```ts\nmount(Comp, { props: { title: '' } }).emitted('select')\n// before: unknown[][] | undefined\n// after:  [id: number][] | undefined\n```\n\nSame for `defineModel` and `defineComponent(setup, { props, emits })`.\n\n`EmittedArgs` checked `T['$props'] extends Record<string, unknown>`, which fails as soon as `$props` includes interfaces like `VNodeProps` (no index signature). It now reads the `onXxx` handler from `$props` directly.\n"
+  },
+  "diff": [
+    {
+      "file": "src/types.ts",
+      "patch": "@@ -197,16 +197,14 @@ export type EmittedEventName<T extends ComponentPublicInstance> = Uncapitalize<\n  * Argument tuple of one emitted event, taken from its `onXxx` handler prop.\n  * Falls back to `unknown[]` for events without a typed payload.\n  */\n-export type EmittedArgs<T extends ComponentPublicInstance, N extends string> =\n-  T['$props'] extends Record<string, unknown>\n-    ? T['$props'][`on${Capitalize<N>}`] extends infer Handler\n-      ? Handler extends EmitHandler\n-        ? Parameters<Handler>\n-        : NonNullable<Handler> extends EmitHandler\n-          ? Parameters<NonNullable<Handler>>\n-          : unknown[]\n-      : unknown[]\n+export type EmittedArgs<\n+  T extends ComponentPublicInstance,\n+  N extends string\n+> = T['$props'] extends { [K in `on${Capitalize<N>}`]?: infer Handler }\n+  ? NonNullable<Handler> extends EmitHandler\n+    ? Parameters<NonNullable<Handler>>\n     : unknown[]\n+  : unknown[]\n \n /**\n  * T is a DeepRef if:"
+    },
+    {
+      "file": "test-dts/EmitsSfc.vue",
+      "patch": "@@ -0,0 +1,9 @@\n+<script setup lang=\"ts\">\n+defineProps<{ title: string }>()\n+defineModel<number>('count', { required: true })\n+defineEmits<{ select: [id: number, label: string] }>()\n+</script>\n+\n+<template>\n+  <div>{{ title }}</div>\n+</template>"
+    },
+    {
+      "file": "test-dts/wrapper.d-test.ts",
+      "patch": "@@ -2,6 +2,7 @@\n import { expectType } from './index'\n import { defineComponent } from 'vue'\n import { mount } from '../src'\n+import EmitsSfc from './EmitsSfc.vue'\n \n const AppWithDefine = defineComponent({\n   template: ''\n@@ -122,6 +123,19 @@ const arrayEmitsWrapper = mount(ArrayEmitsComp)\n const alphaEvent = arrayEmitsWrapper.emitted('alpha')\n expectType<any[][] | undefined>(alphaEvent)\n \n+// payloads are inferred alongside defineProps/defineModel in <script setup>\n+const sfcWrapper = mount(EmitsSfc, { props: { title: '', count: 0 } })\n+expectType<[number, string][] | undefined>(sfcWrapper.emitted('select'))\n+expectType<[number][] | undefined>(sfcWrapper.emitted('update:count'))\n+\n+// and for defineComponent with a setup function\n+const FnEmitsComp = defineComponent(\n+  (props: { msg: string }) => () => props.msg,\n+  { props: ['msg'], emits: { change: (n: number) => true } }\n+)\n+const fnEmitsWrapper = mount(FnEmitsComp, { props: { msg: '' } })\n+expectType<[number][] | undefined>(fnEmitsWrapper.emitted('change'))\n+\n // get\n // HTML element selector\n let input = wrapper.get('input')"
+    }
+  ],
+  "testSource": null,
+  "regression": null,
+  "baseRun": "n/a"
+}
