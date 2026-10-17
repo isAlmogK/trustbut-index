@@ -12,7 +12,9 @@ export function parseBatch(s: string): number {
 }
 
 export function parseDate(s: string): string {
-  if (!/^(pilot-)?\d{4}-\d{2}-\d{2}$/.test(s)) throw new Error(`invalid date "${s}": expected YYYY-MM-DD or pilot-YYYY-MM-DD`);
+  // A pilot folder may carry a suffix (pilot-2026-10-17-0.7.0) so a rerun of the same manifest gets its own folder.
+  if (!/^(\d{4}-\d{2}-\d{2}|pilot-\d{4}-\d{2}-\d{2}(-[a-z0-9][a-z0-9.]*)?)$/.test(s))
+    throw new Error(`invalid date "${s}": expected YYYY-MM-DD, pilot-YYYY-MM-DD or pilot-YYYY-MM-DD-<suffix>`);
   return s;
 }
 
