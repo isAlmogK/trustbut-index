@@ -50,19 +50,19 @@ A receipt is valid when it passes `trustbut validate` and its `subject.head` is 
 
 ## Metrics
 - Finding families:
-  - proof gap: `change-not-proven` on a receipt with proofs (trustbut 0.7.0); `test-passes-without-change` on older receipts
+  - proof gap: `change-not-proven` on a receipt with proofs (trustbut 0.7.0: new or changed tests ran and none fails without the change); `test-passes-without-change` on older receipts
   - test weakening: `test-skipped`, `test-focused`, `tests-removed`, `assertions-removed`, `test-config-changed`
   - escapes: `escape-added`
-  - untested change: `change-not-proven` on a receipt without proofs (trustbut 0.7.0); `no-tests-changed` on older receipts
-  - A results folder never mixes receipts from before 0.7.0 with receipts from 0.7.0.
+  - untested change: `change-not-proven` on a receipt without proofs (trustbut 0.7.0: no test changed, or test files changed but no new or changed test that ran was found in them); `no-tests-changed` on older receipts
   - red at head: `test-regressed` (a test that passes at base and fails at head). From trustbut 0.6.0 it is reported only when a rerun reproduces it (fails again at head and passes again at base); an unreproduced one is `trustbut/regression-not-reproduced`, context only. A failing test with no base result is not counted: the base run failed or timed out, the test file could not be resolved or did not exist at base, or the case id differs between the runs. The rate is therefore a lower bound. Receipts from trustbut older than 0.5.0 have no `test-regressed`; a group with any such receipt reports red at head as not measured.
   - Context only, not counted: `suite-failing`, `test-failing`, `deps-changed`, `deps-not-installed`, `base-run-failed`, `proofs-unmatched`, `no-test-results`, `no-runner`, `snapshot-changed`, `trustbut/regression-not-reproduced`.
+- A results folder never mixes receipts from trustbut before 0.7.0 with receipts from 0.7.0 or later, because the proof families mean different things across that line. `aggregate` fails on a folder that does.
 - Per agent and for humans: the share of `ran` PRs with at least one finding per family and with any counted finding. The proof rate: `proves-change` / (`proves-change` + `does-not-constrain`) over all new or changed tests. Run coverage.
 - Context, not compared: per agent and for humans, the share of `ran` PRs with at least one head test case that fails or errors and whose id is absent from `x-trustbut.before.cases` (or with no `x-trustbut.before`): "red at head not compared". It bounds how much red at head can be undercounted.
 - Comparisons (the only ones made): all agents with sufficient data versus humans, for each family, for any counted finding, and for the proof rate. Wilson 95% intervals for rates; Newcombe hybrid-score intervals for differences. Intervals treat tests (proof rate) and findings (precision) as independent; tests and findings from the same PR are correlated, so the true uncertainty is somewhat wider.
 
 ## Labeling
-- Eligible items are findings of `ran` PRs that have at least one counted finding. Agents with insufficient data (fewer than 30 selected PRs) are not sampled. Agent findings are drawn round-robin across the remaining agents (each agent's PRs shuffled with the seed), a whole PR at a time, taking up to the first 5 counted findings in receipt order from each PR, until at least 150 agent findings are drawn. Human findings are drawn from randomly ordered (seeded) human PRs, taking up to the first 5 counted findings in receipt order from each PR (fewer from the last PR, to stop at exactly 50), until exactly 50 are drawn (fewer only if the eligible human PRs run out).
+- Eligible items are findings of `ran` PRs that have at least one counted finding. Agents with insufficient data (fewer than 30 selected PRs) are not sampled. Agent findings are drawn round-robin across the remaining agents (each agent's PRs shuffled with the seed), a whole PR at a time, taking up to the first 5 counted findings in receipt order from each PR, until at least 150 agent findings are drawn. Human findings are drawn from randomly ordered (seeded) human PRs, taking up to the first 5 counted findings in receipt order from each PR (fewer from the last PR, to stop at exactly 50), until exactly 50 are drawn (fewer only if the eligible human PRs run out). In trustbut 0.7.0 receipts `change-not-proven` is listed first, so it is always sampled when present.
 - The evidence is blinded. Lines containing generator text ("Generated with ...") or co-author trailers are removed. Other matches are replaced with placeholders: agent names, bot accounts, branch names, vendor and model names (for example Anthropic, OpenAI, Gemini, Claude Opus/Sonnet/Haiku), and matching words in file paths and test names become `[agent]`, and vendor links become `[link]`. The review page does not receive the PR's group or agent.
 - Labels:
   - `real`: true, and a reviewer would want to know it.
@@ -71,9 +71,9 @@ A receipt is valid when it passes `trustbut validate` and its `subject.head` is 
   - `unclear`: excluded from the math.
 - If a finding is labeled more than once, the latest label counts.
 - Drafts come from `claude-opus-5-5` (effort high, prompt `labels/prompt-v2.md`) via the Batches API, from the same blinded evidence; the request omits the finding key, which names the repo and PR. The author confirms or changes each one. The first 20 items in sample order are labeled without seeing the draft.
-- Precision = real / (real + benign + false). Factual accuracy = (real + benign) / the same total. Precision of `change-not-proven` = the same ratio over its labeled findings.
+- Precision = real / (real + benign + false). Factual accuracy = (real + benign) / the same total. Precision of `change-not-proven` = real / (real + benign + false) over labeled `change-not-proven` findings, agent and human pooled (they are sampled at different rates and not weighted).
 
-## Thresholds (decided before any data)
+## Thresholds (set after the pilot, before `prereg-v1`; see Changes after the pilot)
 1. Factual accuracy ≥ 95%, over all labeled findings.
 2. Run coverage ≥ 50% of all selected PRs.
 
@@ -91,7 +91,11 @@ The pilot `pilot-2026-10-17` ran trustbut 0.6.0. Its [labels](labels/pilot-2026-
 - the trustbut version, from 0.6.0 to 0.7.0;
 - the finding families, as above;
 - the labeling prompt, from v1 to v2;
-- the thresholds: precision ≥ 80% and hit rate ≥ 10% are replaced by factual accuracy ≥ 95%.
+- the thresholds: precision ≥ 80% and hit rate ≥ 10% are replaced by factual accuracy ≥ 95%;
+- what each outcome means: the precision-miss consequence becomes a factual-accuracy-miss consequence, the hit-rate-miss consequence (rethink what trustbut checks before building a public index) is removed, and low precision or hit rate is reported as is;
+- a new reported metric, the precision of `change-not-proven`, with no threshold.
+
+The 71 pilot labels are Claude drafts made with prompt v1 and not yet confirmed by a human; the drafters could read the repo at the base and head commits, so the evidence was not fully blinded; and every agent had fewer than 30 PRs, so the agent/human sampling targets were not used. The bar moved because the pilot's 7% precision was far below the 80% bar, while the receipt's role is to state true facts: factual accuracy is what a reader can trust. The pilot's 87% factual accuracy would also miss the new 95% bar.
 
 ## Seed
 `prereg-v1`, used for selection, human matching, the labeling sample and its order.

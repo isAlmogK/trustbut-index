@@ -99,6 +99,8 @@ describe('prompt v2', () => {
   it('is the prompt the draft command reads, and drafts record its version', () => {
     expect(PROMPT_PATH).toBe('labels/prompt-v2.md');
     expect(PROMPT_VERSION).toBe('v2');
-    expect(readFileSync(PROMPT_PATH, 'utf8')).toContain('- change-not-proven (nothing proves the change;');
+    const prompt = readFileSync(PROMPT_PATH, 'utf8');
+    expect(prompt).toContain('- change-not-proven (nothing proves the change). Judge the title together with `finding.detail`');
+    for (const detail of ['`no test added or changed`', '`N new or changed tests, none fails without the change`', '`test files changed, but no new or changed test that ran was found in them`']) expect(prompt).toContain(detail);
   });
 });
