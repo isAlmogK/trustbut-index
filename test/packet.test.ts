@@ -141,3 +141,63 @@ describe('assemblePacket for test-regressed', () => {
     expect(assemblePacket(item, receipt, { title: 'Fix', body: '' }, [], null).regression).toBeNull();
   });
 });
+
+describe('assemblePacket for change-not-proven', () => {
+  const np = (detail: string) => ({ id: 'change-not-proven', severity: 'warn' as const, title: 'Nothing proves the change', detail });
+  const npReceipt = (detail: string, proofs: Receipt['proofs']): Receipt => ({
+    specVersion: '1.1', producer: { name: 'trustbut', version: '0.7.0' }, subject: { base: 'b', head: 'h' }, verdict: 'warn',
+    findings: [np(detail)], proofs,
+  });
+  const npItem = (r: Receipt, family: SampleItem['family']): SampleItem => ({ ...item, finding: r.findings[0]!, family });
+  const files = [
+    { filename: 'src/add.ts', patch: '@@ -1 +1 @@\n-a\n+b' },
+    { filename: 'test/a.test.ts', patch: '@@ +1 @@\n+it("adds")' },
+    { filename: 'tests/test_copilot.py', patch: '@@ +1 @@\n+def test_x(): pass' },
+    { filename: 'README.md', patch: 'x' },
+  ];
+
+  it('no test added or changed: the source diff only, no proofs', () => {
+    const r = npReceipt('no test added or changed', []);
+    const p = assemblePacket(npItem(r, 'untested-change'), r, { title: 'Fix', body: '' }, [files[0]!, files[3]!], null);
+    expect(p.finding.detail).toBe('no test added or changed');
+    expect(p.proofs).toEqual([]);
+    expect(p.diff.map((d) => d.file)).toEqual(['src/add.ts']);
+    expect(p.testSource).toBeNull();
+    expect(p.baseRun).toBe('n/a');
+  });
+
+  it('N new or changed tests, none fails without the change: every proof, the test and source diffs, and a base run listing them', () => {
+    const r = npReceipt('2 new or changed tests, none fails without the change', [
+      { file: 'test/a.test.ts', name: 'adds', before: 'pass', after: 'pass', verdict: 'does-not-constrain' },
+      { file: 'tests/test_copilot.py', name: 'copilot x', before: 'pass', after: 'pass', verdict: 'does-not-constrain' },
+    ]);
+    const p = assemblePacket(npItem(r, 'proof-gap'), r, { title: 'Fix', body: '' }, files, null);
+    expect(p.proofs).toEqual([
+      { file: 'test/a.test.ts', name: 'adds', before: 'pass', after: 'pass', verdict: 'does-not-constrain' },
+      { file: 'tests/test_[agent].py', name: '[agent] x', before: 'pass', after: 'pass', verdict: 'does-not-constrain' },
+    ]);
+    expect(p.diff.map((d) => d.file)).toEqual(['src/add.ts', 'test/a.test.ts', 'tests/test_[agent].py']);
+    expect(p.baseRun).toBe('adds: before pass, after pass; [agent] x: before pass, after pass');
+    expect(JSON.stringify(p)).not.toMatch(/copilot/i);
+  });
+
+  it('test files changed with no proofs: the test diffs are included, proofs empty', () => {
+    const r = npReceipt('test files changed, but no new or changed test that ran was found in them', []);
+    const p = assemblePacket(npItem(r, 'untested-change'), r, { title: 'Fix', body: '' }, files, null);
+    expect(p.proofs).toEqual([]);
+    expect(p.diff.map((d) => d.file)).toEqual(['src/add.ts', 'test/a.test.ts', 'tests/test_[agent].py']);
+    expect(p.baseRun).toBe('n/a');
+  });
+
+  it('keeps up to 10 files, test diffs not crowded out by source diffs, each patch capped', () => {
+    const r = npReceipt('no test added or changed', []);
+    const many = [
+      ...Array.from({ length: 12 }, (_, i) => ({ filename: `src/f${i}.ts`, patch: 'x'.repeat(5000) })),
+      ...Array.from({ length: 3 }, (_, i) => ({ filename: `test/t${i}.test.ts`, patch: '+t' })),
+    ];
+    const p = assemblePacket(npItem(r, 'untested-change'), r, { title: 'Fix', body: '' }, many, null);
+    expect(p.diff).toHaveLength(10);
+    expect(p.diff.filter((d) => d.file.startsWith('test/')).map((d) => d.file)).toEqual(['test/t0.test.ts', 'test/t1.test.ts', 'test/t2.test.ts']);
+    expect(Math.max(...p.diff.map((d) => d.patch.length))).toBe(4000);
+  });
+});
