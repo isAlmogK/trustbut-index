@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import type { GroupStats } from '../src/aggregate/index.js';
 import { wilson } from '../src/aggregate/stats.js';
-import { calibration, hitRate, labelStats, latestFinals } from '../src/label/metrics.js';
+import { calibration, hitRate, labelStats, latestFinals, notProvenPrecision } from '../src/label/metrics.js';
 import type { FinalLabel } from '../src/label/review.js';
 import type { SampleItem } from '../src/label/sample.js';
 import type { Label } from '../src/types.js';
@@ -64,5 +64,14 @@ describe('latest label per finding', () => {
 
   it('calibration counts a double-posted blind key once', () => {
     expect(calibration(relabelSample, relabelFinals, []).blind).toMatchObject({ k: 0, n: 1 });
+  });
+});
+
+describe('notProvenPrecision', () => {
+  it('is real over decided labels for change-not-proven findings only', () => {
+    const np = (key: string) => ({ ...item(key, 'p1', 'agent', 'untested-change'), finding: { id: 'change-not-proven' } }) as SampleItem;
+    const s = [np('n1'), np('n2'), np('n3'), { ...item('e1', 'p1', 'agent', 'escapes'), finding: { id: 'escape-added' } } as SampleItem];
+    const f = [fin('n1', 'real', null), fin('n2', 'true-but-benign', null), fin('n3', 'unclear', null), fin('e1', 'real', null)];
+    expect(notProvenPrecision(s, f)).toEqual(wilson(1, 2));
   });
 });
