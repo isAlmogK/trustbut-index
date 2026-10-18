@@ -81,6 +81,11 @@ export function groupStats(key: string, prs: PrResult[], insufficient: boolean):
   };
 }
 
+/** PRs an agent needs to join all-agents. A pilot selects 20 per agent (`collect --pilot`), so it pools every agent, as collect does. */
+export function minPerAgentFor(date: string): number {
+  return date.startsWith('pilot-') ? 0 : 30;
+}
+
 export function aggregate(date: string, results: PrResult[], minPerAgent = 30): Aggregate {
   const receipts = results.flatMap((r) => (r.receipt ? [r.receipt] : []));
   // Unparseable or blank versions count as old (isProofFirst) and sort last on their side; they print as "unknown".

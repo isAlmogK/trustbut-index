@@ -13,7 +13,7 @@ collect  ->  run  ->  ingest  ->  aggregate  ->  label  ->  report
 1. **collect** finds qualifying agent PRs and matched human PRs and writes `manifests/<name>.jsonl`.
 2. **run** is an Actions matrix, one job per PR (250 per batch), running trustbut 0.7.0.
 3. **ingest** validates the artifacts against the manifest and writes `results/<date>/`.
-4. **aggregate** computes rates, coverage and intervals. For a pilot it also writes the by-hand checklist. Both run automatically after each batch's ingest.
+4. **aggregate** computes rates, coverage and intervals. Agents with fewer than 30 PRs are left out of the all-agents group, except in a pilot, which selects 20 per agent and pools them all. For a pilot it also writes the by-hand checklist. Both run automatically after each batch's ingest.
 5. **label** is blinded: Claude drafts the labels and a human confirms every one.
 6. **report** builds `site/<date>/`.
 
