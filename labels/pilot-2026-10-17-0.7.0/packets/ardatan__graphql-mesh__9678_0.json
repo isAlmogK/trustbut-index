@@ -1,0 +1,60 @@
+{
+  "key": "ardatan__graphql-mesh__9678:0",
+  "finding": {
+    "id": "change-not-proven",
+    "severity": "warn",
+    "title": "Nothing proves the change",
+    "detail": "test files changed, but no new or changed test that ran was found in them"
+  },
+  "family": "untested-change",
+  "proofs": [],
+  "pr": {
+    "title": "Bump `@graphql-tools/*`",
+    "body": "In light of the `mergeDeep` CVE in utils."
+  },
+  "diff": [
+    {
+      "file": "packages/legacy/handlers/graphql/src/index.ts",
+      "patch": "@@ -1,10 +1,4 @@\n-import type {\n-  DocumentNode,\n-  ExecutionResult,\n-  GraphQLResolveInfo,\n-  IntrospectionQuery,\n-  SelectionNode,\n-} from 'graphql';\n+import type { DocumentNode, ExecutionResult, IntrospectionQuery, SelectionNode } from 'graphql';\n import {\n   buildASTSchema,\n   buildClientSchema,\n@@ -107,7 +101,7 @@ export default class GraphQLHandler implements MeshHandler {\n     const logger = this.logger;\n     return function executorWithSourceName(executionRequest: ExecutionRequest) {\n       logger.debug(() => `Sending GraphQL Request: `, print(executionRequest.document));\n-      executionRequest.info = executionRequest.info || ({} as GraphQLResolveInfo);\n+      executionRequest.info = executionRequest.info || ({} as ExecutionRequest['info']);\n       (executionRequest.info as any).sourceName = sourceName;\n       return handleMaybePromise(\n         () => executor(executionRequest),"
+    },
+    {
+      "file": "packages/legacy/types/src/index.ts",
+      "patch": "@@ -163,7 +163,7 @@ export interface OnFetchHookPayload<TContext> {\n   info: GraphQLResolveInfo;\n   fetchFn: MeshFetch;\n   setFetchFn: (fetchFn: MeshFetch) => void;\n-  executionRequest?: ExecutionRequest;\n+  executionRequest?: Omit<ExecutionRequest, 'info'> & { info?: GraphQLResolveInfo };\n   logger: Logger;\n   requestId?: string;\n   endResponse: (response$: MaybePromise<Response>) => void;"
+    },
+    {
+      "file": "packages/legacy/utils/src/getRootFieldsWithArgs.ts",
+      "patch": "@@ -10,7 +10,10 @@ import type { ExecutionRequest } from '@graphql-tools/utils';\n import { getRootTypeMap } from '@graphql-tools/utils';\n import { getOperationsAndFragments } from './getOperationsAndFragments.js';\n \n-export function getRootFieldsWithArgs(schema: GraphQLSchema, executionRequest: ExecutionRequest) {\n+export function getRootFieldsWithArgs(\n+  schema: GraphQLSchema,\n+  executionRequest: Pick<ExecutionRequest, 'document' | 'variables' | 'operationName'>,\n+) {\n   const rootTypeMap = getRootTypeMap(schema);\n   const { document, variables, operationName } = executionRequest;\n   const { operations, fragments } = getOperationsAndFragments(document);"
+    },
+    {
+      "file": "packages/legacy/utils/src/wrapFetchWithHooks.ts",
+      "patch": "@@ -1,9 +1,17 @@\n import { getInstrumented } from '@envelop/instrumentation';\n-import type { Logger, MeshFetch, OnFetchHook, OnFetchHookDone } from '@graphql-mesh/types';\n-import { type ExecutionRequest, type MaybePromise } from '@graphql-tools/utils';\n+import type {\n+  Logger,\n+  MeshFetch,\n+  OnFetchHook,\n+  OnFetchHookDone,\n+  OnFetchHookPayload,\n+} from '@graphql-mesh/types';\n+import type { MaybePromise } from '@graphql-tools/utils';\n import { handleMaybePromise, iterateAsync } from '@whatwg-node/promise-helpers';\n import { DefaultLogger } from './logger.js';\n \n+type ExecutionRequest = NonNullable<OnFetchHookPayload<any>['executionRequest']>;\n+\n export const requestIdByRequest = new WeakMap<Request, string>();\n export const loggerForExecutionRequest = new WeakMap<ExecutionRequest, Logger>();\n "
+    },
+    {
+      "file": "packages/loaders/json-schema/src/getComposerFromJSONSchema.ts",
+      "patch": "@@ -252,6 +252,10 @@ export function getComposerFromJSONSchema({\n       if (!subSchema) {\n         throw new Error(`Something is wrong with ${path}`);\n       }\n+      // OpenAPI/JSON Schema often sets `description: \"\"`; omit those so printed SDL stays clean.\n+      if (typeof subSchema.description === 'string' && subSchema.description.trim() === '') {\n+        delete subSchema.description;\n+      }\n       if (subSchema.type === 'array') {\n         if (\n           subSchema.items != null &&"
+    },
+    {
+      "file": "packages/loaders/odata/src/index.ts",
+      "patch": "@@ -424,6 +424,12 @@ export async function loadNonExecutableGraphQLSchemaFromOData(\n         });\n       }\n       const updateInputType = inputType.clone(`${entityTypeName}UpdateInput`);\n+      // graphql-compose clone() uses getDescription() which coerces missing descriptions to \"\".\n+      // Clear that so printed SDL does not emit empty `\"\"\"\"\"\"` blocks.\n+      const clonedDescription = updateInputType.getDescription();\n+      if (!clonedDescription.trim()) {\n+        updateInputType.setDescription(undefined);\n+      }\n       updateInputType\n         .getFieldNames()\n         ?.forEach(fieldName => updateInputType.makeOptional(fieldName));"
+    },
+    {
+      "file": "packages/loaders/openapi/src/getJSONSchemaOptionsFromOpenAPIOptions.ts",
+      "patch": "@@ -32,6 +32,13 @@ function mimeType(contentType: string): string {\n   return contentType.split(';')[0].trim().toLowerCase();\n }\n \n+function cleanDescription(description?: string | null): string | undefined {\n+  if (typeof description !== 'string') {\n+    return undefined;\n+  }\n+  return description.trim() === '' ? undefined : description;\n+}\n+\n /**\n  * Pick a request body content type.\n  * Prefer an explicit Content-Type header when it matches the spec.\n@@ -643,7 +650,7 @@ export async function getJSONSchemaOptionsFromOpenAPIOptions(\n         path: relativePath,\n         type: method.toUpperCase() === 'GET' ? 'query' : 'mutation',\n         field: methodObj.operationId && sanitizeNameForGraphQL(methodObj.operationId),\n-        description: methodObj.description || methodObj.summary,\n+        description: cleanDescription(methodObj.description || methodObj.summary),\n         schemaHeaders,\n         operationHeaders,\n         responseByStatusCode: {},\n@@ -993,7 +1000,7 @@ export async function getJSONSchemaOptionsFromOpenAPIOptions(\n           responseByStatusCode[responseKey] = responseByStatusCode[responseKey] || {};\n           responseByStatusCode[responseKey].responseSchema = {\n             type: 'null',\n-            description: responseObj.description,\n+            description: cleanDescription(responseObj.description),\n           };\n         }\n \n@@ -1182,14 +1189,14 @@ export async function getJSONSchemaOptionsFromOpenAPIOptions(\n                     return linkOperationConfig.field;\n                   },\n                   args,\n-                  description: linkObj.description,\n+                  description: cleanDescription(linkObj.description),\n                 };\n               }\n             } else if ('operationId' in linkObj) {\n               responseByStatusCode[responseKey].links[sanitizedLinkName] = {\n                 fieldName: sanitizeNameForGraphQL(linkObj.operationId),\n                 args,\n-                description: linkObj.description,\n+                description: cleanDescription(linkObj.description),\n               };\n             }\n           }"
+    },
+    {
+      "file": "packages/loaders/thrift/src/schema.ts",
+      "patch": "@@ -394,8 +394,9 @@ export function loadNonExecutableGraphQLSchemaFromThriftDocument({\n   return schema;\n }\n \n-function processComments(comments: Comment[]) {\n-  return comments.map(comment => comment.value).join('\\n');\n+function processComments(comments: Comment[]): string | undefined {\n+  const description = comments.map(comment => comment.value).join('\\n');\n+  return description.trim() === '' ? undefined : description;\n }\n \n interface GetGraphQLFunctionTypeOpts {"
+    },
+    {
+      "file": "packages/transports/mysql/src/execution.ts",
+      "patch": "@@ -4,10 +4,9 @@ import graphqlFields from 'graphql-fields';\n import { createPool, type Pool, type PoolConnection } from 'mysql';\n import { introspection, upgrade } from 'mysql-utilities';\n import { util } from '@graphql-mesh/cross-helpers';\n-import type { DisposableExecutor } from '@graphql-mesh/transport-common';\n+import { createDefaultExecutor, type DisposableExecutor } from '@graphql-mesh/transport-common';\n import { getDefDirectives, makeAsyncDisposable } from '@graphql-mesh/utils';\n-import { createDefaultExecutor } from '@graphql-tools/delegate';\n-import { getDirective, MapperKind, mapSchema, type ExecutionRequest } from '@graphql-tools/utils';\n+import { getDirective, MapperKind, mapSchema } from '@graphql-tools/utils';\n import { getConnectionOptsFromEndpointUri } from './parseEndpointUri.js';\n import type { MySQLContext } from './types.js';\n \n@@ -189,8 +188,8 @@ export function getMySQLExecutor({ subgraph, pool }: GetMySQLExecutorOpts): Disp\n   const defaultExecutor = createDefaultExecutor(subgraph);\n   const getConnection$ = util.promisify(pool.getConnection.bind(pool));\n \n-  return makeAsyncDisposable(\n-    async function mysqlExecutor(executionRequest: ExecutionRequest) {\n+  return makeAsyncDisposable<DisposableExecutor>(\n+    async function mysqlExecutor(executionRequest) {\n       const mysqlConnection = await getConnection$();\n       mysqlConnectionByContext.set(executionRequest.context, mysqlConnection);\n       try {"
+    },
+    {
+      "file": "packages/fusion/composition/tests/transforms/utils.ts",
+      "patch": "@@ -13,7 +13,7 @@ import {\n   type GraphQLSchema,\n } from 'graphql';\n import { UnifiedGraphManager } from '@graphql-mesh/fusion-runtime';\n-import { createDefaultExecutor } from '@graphql-tools/delegate';\n+import { createDefaultExecutor } from '@graphql-mesh/transport-common';\n import { normalizedExecutor } from '@graphql-tools/executor';\n import {\n   getDocumentNodeFromSchema,"
+    }
+  ],
+  "testSource": null,
+  "regression": null,
+  "baseRun": "n/a"
+}

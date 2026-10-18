@@ -1,0 +1,28 @@
+{
+  "key": "open-slide__open-slide__336:0",
+  "finding": {
+    "id": "change-not-proven",
+    "severity": "warn",
+    "title": "Nothing proves the change",
+    "detail": "no test added or changed"
+  },
+  "family": "untested-change",
+  "proofs": [],
+  "pr": {
+    "title": "feat(core): add allowedHosts to open-slide.config.ts",
+    "body": "Closes #334\n\n## What\n\nAdds `allowedHosts` to `open-slide.config.ts`, passed straight to Vite's `server.allowedHosts`:\n\n```ts\nconst config: OpenSlideConfig = {\n  allowedHosts: ['.my-workspace.example.com'], // or `true` to allow any host\n};\n```\n\nRemote IDEs (Coder, Codespaces, Gitpod, …) reach the dev server through a generated proxy domain, and Vite blocks those requests with `Blocked request. This host is not allowed.` Since open-slide owns the Vite config, users had no way to allow their domain.\n\n## Why a config field instead of the proposed CLI flag\n\nThe issue proposed `--allow-all-hosts`. A config field covers the same need with two upsides: the workspace domain is a property of the environment, so it belongs in the config rather than on every invocation, and `string[]` lets users allow just their own domain instead of disabling host checking entirely (`true` still works for that). Happy to add the flag on top if you'd prefer both.\n\nNo change when the field is unset — Vite's default protection stays as is. `open-slide preview` picks it up too, since Vite's `preview.allowedHosts` defaults to `server.allowedHosts`.\n\nDocs updated: schema + a \"Remote IDE / proxied dev server\" recipe in the config reference, and a pointer from the `dev` CLI page.\n\n## Testing\n\nVerified end-to-end against the demo app (curl with a spoofed `Host` header):\n\n| Config | Coder-style host | Other host | localhost |\n| --- | --- | --- | --- |\n| unset (baseline) | 403 Blocked | 403 | 200 |\n| `allowedHosts: true` | 200 | 200 | 200 |\n| `allowedHosts: ['.domain.tld']` | 200 | 403 | 200 |\n\n`pnpm typecheck`, `pnpm check`, and `pnpm test` (305 tests) all pass.\n\n<!-- This is an auto-generated comment: release notes by coderabbit.ai -->\n## Summary by CodeRabbit\n\n* **New Features**\n  * Added optional `allowedHosts` configuration for development and preview servers.\n  * Supports specifying permitted hostnames or allowing all hosts.\n  * Improved compatibility with reverse proxies and remote development en"
+  },
+  "diff": [
+    {
+      "file": "packages/core/src/config.ts",
+      "patch": "@@ -12,6 +12,7 @@ export type OpenSlideConfig = {\n   themesDir?: string;\n   assetsDir?: string;\n   port?: number;\n+  allowedHosts?: string[] | true;\n   /**\n    * @deprecated Pick the UI language from the language switcher in the slide UI\n    * instead. When set, this only seeds the initial language until the user"
+    },
+    {
+      "file": "packages/core/src/vite/config.ts",
+      "patch": "@@ -113,6 +113,7 @@ export async function createViteConfig(opts: CreateViteConfigOptions): Promise<I\n     },\n     server: {\n       port: config.port ?? 5173,\n+      ...(config.allowedHosts !== undefined ? { allowedHosts: config.allowedHosts } : {}),\n       fs: { allow: [APP_ROOT, userCwd, slidesAbs, themesAbs, assetsAbs] },\n     },\n     build: {"
+    }
+  ],
+  "testSource": null,
+  "regression": null,
+  "baseRun": "n/a"
+}

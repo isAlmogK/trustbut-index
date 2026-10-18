@@ -1,0 +1,24 @@
+{
+  "key": "elizaOS__eliza__34811:0",
+  "finding": {
+    "id": "change-not-proven",
+    "severity": "warn",
+    "title": "Nothing proves the change",
+    "detail": "no test added or changed"
+  },
+  "family": "untested-change",
+  "proofs": [],
+  "pr": {
+    "title": "Format embedding dimensions parser to unblock staging validation",
+    "body": "Develop Full stops at the agent formatter check. Format the existing embedding-dimensions parser expression with the declared Biome 2.5.15 formatter so normal staging validation can continue.\n\nValidation: the official agent lint scope checked all 702 files. Before the change it reports one formatter error in this file. After the change it reports no errors. Parsed expressions are unchanged when redundant parentheses are ignored. `git diff --check` passes. Only this file changed; warnings and behavior remain unchanged.\n\nThis fixes the recorded Quality failure in run 38025038372. It does not claim that staging was deployed or that the Network phone callback passed.\n"
+  },
+  "diff": [
+    {
+      "file": "packages/agent/src/runtime/default-documents.ts",
+      "patch": "@@ -129,7 +129,9 @@ function getExpectedEmbeddingDimensions(\n           // parsed to 1536 and was accepted as a deliberate setting instead\n           // of being ignored. Require the whole trimmed value to be decimal,\n           // mirroring resolveGenerationTimeoutMs in the discord plugin.\n-          (/^\\+?\\d+$/.test(raw.trim()) ? Number(raw.trim()) : Number.NaN)\n+          /^\\+?\\d+$/.test(raw.trim())\n+          ? Number(raw.trim())\n+          : Number.NaN\n         : Number.NaN;\n   return Number.isInteger(parsed) && parsed > 0 ? parsed : undefined;\n }"
+    }
+  ],
+  "testSource": null,
+  "regression": null,
+  "baseRun": "n/a"
+}

@@ -1,0 +1,24 @@
+{
+  "key": "elizaOS__eliza__35961:0",
+  "finding": {
+    "id": "change-not-proven",
+    "severity": "warn",
+    "title": "Nothing proves the change",
+    "detail": "no test added or changed"
+  },
+  "family": "untested-change",
+  "proofs": [],
+  "pr": {
+    "title": "fix(cloud): use ? for query params in GitHub OAuth redirect",
+    "body": "The dashboard URL has no query string, so the first separator must be ? not &.<!-- eliza-computer-attribution:v1 {\"provider\":\"meta\",\"model\":\"unavailable\",\"client\":\"muse\",\"skill_revision\":\"N/A - ordinary GitHub contribution without optional run evidence\"} -->\r\n"
+  },
+  "diff": [
+    {
+      "file": "packages/cloud/api/v1/eliza/lifeops/github-complete/route.ts",
+      "patch": "@@ -75,7 +75,7 @@ async function __hono_GET(\n       });\n     }\n     return Response.redirect(\n-      `${dashboardUrl}&github_error=${encodeURIComponent(githubError)}`,\n+      `${dashboardUrl}?github_error=${encodeURIComponent(githubError)}`,\n     );\n   }\n \n@@ -101,7 +101,7 @@ async function __hono_GET(\n       });\n     }\n     return Response.redirect(\n-      `${dashboardUrl}&github_error=${encodeURIComponent(message)}`,\n+      `${dashboardUrl}?github_error=${encodeURIComponent(message)}`,\n     );\n   }\n \n@@ -128,7 +128,7 @@ async function __hono_GET(\n   }\n \n   return Response.redirect(\n-    `${dashboardUrl}&github_connected=true&platform=github&connection_id=${encodeURIComponent(\n+    `${dashboardUrl}?github_connected=true&platform=github&connection_id=${encodeURIComponent(\n       connectionId,\n     )}`,\n   );"
+    }
+  ],
+  "testSource": null,
+  "regression": null,
+  "baseRun": "n/a"
+}

@@ -1,0 +1,32 @@
+{
+  "key": "PrefectHQ__fastmcp__4831:0",
+  "finding": {
+    "id": "change-not-proven",
+    "severity": "warn",
+    "title": "Nothing proves the change",
+    "detail": "no test added or changed"
+  },
+  "family": "untested-change",
+  "proofs": [],
+  "pr": {
+    "title": "Fix static analysis under newer ty releases",
+    "body": "The scheduled upgrade-checks workflow has been red since Aug 11 (#4812): newer ty releases flag `_CacheEntry[Tool]` in `ProxyProvider` because the class was annotated as a subscripted generic without actually being `Generic`. This makes it one, and clears the rest of the drift between the pinned and current ty so the two CI paths agree again.\n\nNewer ty also narrows `isinstance` unions and dict accesses that the pinned 0.0.61 couldn't, leaving four suppression comments in `client/roots.py` and `utilities/json_schema.py` that old ty required and new ty rejects as unused — unsatisfiable from both sides. Bumping the pin to 0.0.69 (the newest release the one-week dependency cooldown allows) lets the suppressions come out entirely. Verified clean on ty 0.0.69, 0.0.70, and 0.0.71, so the upgrade job stays green as the cooldown window advances.\n\n"
+  },
+  "diff": [
+    {
+      "file": "fastmcp_slim/fastmcp/client/roots.py",
+      "patch": "@@ -35,8 +35,7 @@ def create_roots_callback(\n     handler: RootsList | RootsHandler,\n ) -> ListRootsFnT:\n     if isinstance(handler, list):\n-        # TODO(ty): remove when ty supports isinstance union narrowing\n-        return _create_roots_callback_from_roots(handler)  # type: ignore[arg-type]  # ty:ignore[invalid-argument-type]\n+        return _create_roots_callback_from_roots(handler)\n     elif callable(handler):\n         return _create_roots_callback_from_fn(handler)\n     else:"
+    },
+    {
+      "file": "fastmcp_slim/fastmcp/server/providers/proxy.py",
+      "patch": "@@ -14,7 +14,7 @@\n from collections.abc import Awaitable, Callable, Sequence\n from copy import deepcopy\n from dataclasses import dataclass, replace\n-from typing import TYPE_CHECKING, Any, Literal, cast\n+from typing import TYPE_CHECKING, Any, Generic, Literal, TypeVar, cast\n \n import anyio\n import httpx2\n@@ -819,12 +819,15 @@ def get_span_attributes(self) -> dict[str, Any]:\n # -----------------------------------------------------------------------------\n \n \n-class _CacheEntry:\n+_ComponentT = TypeVar(\"_ComponentT\")\n+\n+\n+class _CacheEntry(Generic[_ComponentT]):\n     \"\"\"A cached sequence of components with a monotonic timestamp.\"\"\"\n \n     __slots__ = (\"items\", \"timestamp\")\n \n-    def __init__(self, items: Sequence[Any], timestamp: float):\n+    def __init__(self, items: Sequence[_ComponentT], timestamp: float):\n         self.items = items\n         self.timestamp = timestamp\n "
+    },
+    {
+      "file": "fastmcp_slim/fastmcp/utilities/json_schema.py",
+      "patch": "@@ -610,19 +610,19 @@ def traverse_and_clean(\n                 if (\n                     prune_titles\n                     and \"title\" in node\n-                    and isinstance(node[\"title\"], str)  # type: ignore\n+                    and isinstance(node[\"title\"], str)\n                     and (\n                         any(k in node for k in _SCHEMA_KEYWORDS)\n                         or all(k in _METADATA_KEYS for k in node)\n                     )\n                 ):\n-                    node.pop(\"title\")  # type: ignore\n+                    node.pop(\"title\")\n \n                 if (\n                     prune_additional_properties\n                     and node.get(\"additionalProperties\") is False\n                 ):\n-                    node.pop(\"additionalProperties\")  # type: ignore\n+                    node.pop(\"additionalProperties\")\n \n             # Recursive traversal\n             for key, value in node.items():"
+    }
+  ],
+  "testSource": null,
+  "regression": null,
+  "baseRun": "n/a"
+}

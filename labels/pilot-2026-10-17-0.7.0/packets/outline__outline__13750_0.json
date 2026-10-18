@@ -1,0 +1,24 @@
+{
+  "key": "outline__outline__13750:0",
+  "finding": {
+    "id": "change-not-proven",
+    "severity": "warn",
+    "title": "Nothing proves the change",
+    "detail": "no test added or changed"
+  },
+  "family": "untested-change",
+  "proofs": [],
+  "pr": {
+    "title": "fix: Imported attachment keys end in \"null\" when no name is set",
+    "body": "Attachments from an API import end up with a key like `uploads/<userId>/<uuid>/null`.\n\n`uploadAttachments` reads the name off `alt` for images and `title` for video/attachment. Both come through as `null` when the markup doesn't set one, and `String(null)` is `\"null\"` — 4 chars, so the `name.length !== 0` check passes and the `node.type.name` fallback never runs. `getKey` then sticks `\"null\"` on the end of the key.\n\nFall back to the node type before the `String()`, same shape as `node.attrs.alt || \"image\"` in Image.tsx. Left the length check in, it still catches `title=\"   \"`.\n\nOnly hits importers on the default `shouldUploadAttachmentsPerPage()` — markdown import opts out of this path.\n\nTest checks the last key segment for all three node types, fails on main with `[ 'null', 'null', 'attachment' ]`. It mocks around Sequelize since `uploadAttachments` is private — say the word if you'd rather it sat somewhere else.\n\nMight be related to #13746. That one blames the markdown zip import, which doesn't reach this code, but the key shape is the same.\n"
+  },
+  "diff": [
+    {
+      "file": "server/queues/tasks/APIImportTask.ts",
+      "patch": "@@ -378,7 +378,8 @@ export default abstract class APIImportTask<\n           node.type.name === \"attachment\" ? node.attrs.href : node.attrs.src\n         );\n         const name = String(\n-          node.type.name === \"image\" ? node.attrs.alt : node.attrs.title\n+          (node.type.name === \"image\" ? node.attrs.alt : node.attrs.title) ||\n+            node.type.name\n         ).trim();\n \n         return { url, name: name.length !== 0 ? name : node.type.name };"
+    }
+  ],
+  "testSource": null,
+  "regression": null,
+  "baseRun": "n/a"
+}
